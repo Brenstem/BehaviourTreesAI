@@ -24,6 +24,14 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         currentHealth = startHealth;
+        ConstructBehaviourTree();
+
+        // agent.SetDestination(player.transform.position);
+    }
+
+    private void Update()
+    {
+        topNode.Evaluate();
     }
 
     public void TakeDamage(int damage)
@@ -43,10 +51,13 @@ public class EnemyAI : MonoBehaviour
 
     private void ConstructBehaviourTree()
     {
+        IdleNode idleNode = new IdleNode();
+        RangeNode chaseRangeNode = new RangeNode(chasingRange, player.transform.position, transform.position);
         ChaseNode chaseNode = new ChaseNode(player.transform, agent);
-        RangeNode chaseRangeNode = new RangeNode(chasingRange, player.transform.position, this.transform.position);
 
         Sequence chaseSequence = new Sequence(new List<Node> { chaseRangeNode, chaseNode });
+
+        topNode = new Selector(new List<Node> { chaseSequence, idleNode });
     }
 
     private void OnDrawGizmos()

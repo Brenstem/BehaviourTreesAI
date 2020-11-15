@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class IdleNode : Node
 {
-
-
     public override NodeStates Evaluate()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Idling");
+        return NodeStates.SUCCESS;
     }
 }

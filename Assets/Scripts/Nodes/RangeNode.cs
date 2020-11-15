@@ -17,6 +17,8 @@ public class RangeNode : Node
 
     public override NodeStates Evaluate()
     {
+        Debug.Log("Range node");
+
         float distance = Vector3.Distance(origin, target);
         return distance <= range ? NodeStates.SUCCESS : NodeStates.FAILURE;
     }

@@ -31,6 +31,7 @@ public class Sequence : Node
                     break;
             }
         }
+
         _nodeState = isAnyNodeRunning ? NodeStates.RUNNING : NodeStates.SUCCESS;
 
         return _nodeState;

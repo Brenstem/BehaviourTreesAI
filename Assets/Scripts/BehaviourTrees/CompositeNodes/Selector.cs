@@ -13,7 +13,7 @@ public class Selector : Node
 
     public override NodeStates Evaluate()
     {
-        bool isAnyNodeRunning = false;
+        Debug.Log(NodeState);
 
         foreach (Node node in nodes)
         {
@@ -21,12 +21,12 @@ public class Selector : Node
             {
                 case NodeStates.RUNNING:
                     _nodeState = NodeStates.RUNNING;
-                    break;
+                    return _nodeState;
                 case NodeStates.SUCCESS:
                     _nodeState = NodeStates.SUCCESS;
-                    break;
-                case NodeStates.FAILURE:
                     return _nodeState;
+                case NodeStates.FAILURE:
+                    break;
                 default:
                     break;
             }

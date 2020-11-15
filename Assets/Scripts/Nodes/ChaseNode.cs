@@ -17,9 +17,11 @@ public class ChaseNode : Node
 
     public override NodeStates Evaluate()
     {
+        Debug.Log("Chase node");
+
         float distance = Vector3.Distance(target.position, agent.transform.position);
 
-        if (distance > agent.stoppingDistance)
+        if (distance >= agent.stoppingDistance)
         {
             agent.isStopped = false;
             agent.SetDestination(target.position);
