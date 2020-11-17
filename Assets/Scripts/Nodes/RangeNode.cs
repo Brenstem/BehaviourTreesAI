@@ -5,10 +5,10 @@ using UnityEngine;
 public class RangeNode : Node
 {
     private float range;
-    private Vector3 target;
-    private Vector3 origin;
+    private Transform target;
+    private Transform origin;
 
-    public RangeNode(float range, Vector3 target, Vector3 origin)
+    public RangeNode(float range, Transform target, Transform origin)
     {
         this.range = range;
         this.target = target;
@@ -17,9 +17,8 @@ public class RangeNode : Node
 
     public override NodeStates Evaluate()
     {
-        Debug.Log("Range node");
+        float distance = Vector3.Distance(origin.position, target.position);
 
-        float distance = Vector3.Distance(origin, target);
         return distance <= range ? NodeStates.SUCCESS : NodeStates.FAILURE;
     }
 }

@@ -6,7 +6,6 @@ public class IdleNode : Node
 {
     public override NodeStates Evaluate()
     {
-        Debug.Log("Idling");
         return NodeStates.SUCCESS;
     }
 }
