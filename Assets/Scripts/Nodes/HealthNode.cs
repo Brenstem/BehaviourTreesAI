@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthNode : Node
+public class HealthNode : BehaviourNode
 {
     private EnemyAI ai;
     private float threshold;

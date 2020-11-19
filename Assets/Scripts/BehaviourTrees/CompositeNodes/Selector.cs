@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Selector : Node
+public class Selector : BehaviourNode
 {
-    protected List<Node> nodes = new List<Node>();
+    protected List<BehaviourNode> nodes = new List<BehaviourNode>();
 
-    public Selector(List<Node> nodes)
+    public Selector(List<BehaviourNode> nodes)
     {
         this.nodes = nodes;
     }
 
     public override NodeStates Evaluate()
     {
-        foreach (Node node in nodes)
+        foreach (BehaviourNode node in nodes)
         {
             switch (node.Evaluate())
             {

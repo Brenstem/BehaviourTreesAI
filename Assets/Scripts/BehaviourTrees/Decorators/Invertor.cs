@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invertor : Node
+public class Invertor : BehaviourNode
 {
-    protected Node node;
+    protected BehaviourNode node;
 
-    public Invertor(Node node)
+    public Invertor(BehaviourNode node)
     {
         this.node = node;
     }

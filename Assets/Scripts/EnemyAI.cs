@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float chasingRange;
 
     private NavMeshAgent agent;
-    private Node topNode;
+    private BehaviourNode topNode;
     private int currentHealth;
     public int CurrentHealth { get { return currentHealth; } set { currentHealth = Mathf.Clamp(value, 0, startHealth); } }
 
@@ -53,9 +53,9 @@ public class EnemyAI : MonoBehaviour
         RangeNode chaseRangeNode = new RangeNode(chasingRange, player.transform, transform);
         ChaseNode chaseNode = new ChaseNode(player.transform, agent);
 
-        Sequence chaseSequence = new Sequence(new List<Node> { chaseRangeNode, chaseNode });
+        Sequence chaseSequence = new Sequence(new List<BehaviourNode> { chaseRangeNode, chaseNode });
 
-        topNode = new Selector(new List<Node> { chaseSequence, idleNode });
+        topNode = new Selector(new List<BehaviourNode> { chaseSequence, idleNode });
     }
 
     private void OnDrawGizmos()

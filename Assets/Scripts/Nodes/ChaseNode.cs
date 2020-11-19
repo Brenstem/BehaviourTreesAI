@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ChaseNode : Node
+public class ChaseNode : BehaviourNode
 {
     private Transform target;
     private NavMeshAgent agent;

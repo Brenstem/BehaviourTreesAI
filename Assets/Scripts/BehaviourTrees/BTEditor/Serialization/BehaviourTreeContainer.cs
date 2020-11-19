@@ -1,0 +1,10 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class BehaviourTreeContainer : ScriptableObject
+{
+    public List<NodeLinkData> nodeLinks = new List<NodeLinkData>();
+    public List<BehaviourNodeData> nodeData = new List<BehaviourNodeData>();
+}

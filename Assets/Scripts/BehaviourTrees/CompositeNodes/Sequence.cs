@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sequence : Node
+public class Sequence : BehaviourNode
 {
-    protected List<Node> nodes = new List<Node>();
+    protected List<BehaviourNode> nodes = new List<BehaviourNode>();
 
-    public Sequence(List<Node> nodes)
+    public Sequence(List<BehaviourNode> nodes)
     {
         this.nodes = nodes;
     }
@@ -15,7 +15,7 @@ public class Sequence : Node
     {
         bool isAnyNodeRunning = false;
 
-        foreach (Node node in nodes)
+        foreach (BehaviourNode node in nodes)
         {
             switch (node.Evaluate())
             {

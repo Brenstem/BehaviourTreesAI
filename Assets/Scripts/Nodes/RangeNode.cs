@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeNode : Node
+public class RangeNode : BehaviourNode
 {
     private float range;
     private Transform target;

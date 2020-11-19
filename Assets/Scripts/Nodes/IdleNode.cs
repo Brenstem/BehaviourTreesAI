@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleNode : Node
+public class IdleNode : BehaviourNode
 {
     public override NodeStates Evaluate()
     {

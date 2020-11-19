@@ -14,4 +14,14 @@ public class TreeNode<T>
         this.parent = parent;
         this.children = children;
     }
+
+    public void AddChildren()
+    {
+
+    }
+
+    public void Traverse()
+    {
+
+    }
 }
