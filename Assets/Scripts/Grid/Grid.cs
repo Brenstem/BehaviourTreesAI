@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class Grid 
 {
+
+    //public event EgentHandler<>
+    //public class OnGridValueChangeEventArgs : eventarg
 
     int width;
     int height;

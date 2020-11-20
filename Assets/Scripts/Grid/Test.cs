@@ -9,9 +9,9 @@ public class Test : MonoBehaviour
 
     void Start()
     {
-        grid = new Grid(6, 4, 10f, new Vector3(-15, 10));
-        new Grid(4, 2, 5f, new Vector3(-5, -3));
-        new Grid(3, 8, 8f, new Vector3(60, -10));
+        grid = new Grid(6, 4, 10f, new Vector3(-15, 0));
+        //new Grid(4, 2, 5f, new Vector3(-5, -3));
+        //new Grid(3, 8, 8f, new Vector3(60, -10));
     }
 
 
