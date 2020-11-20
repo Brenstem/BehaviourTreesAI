@@ -48,8 +48,10 @@ public class GraphSaveUtility
         {
             btContainer.nodeData.Add(new BehaviourNodeData
             {
+                nodeName = node.nodeName,
                 Guid = node.GUID,
-                Position = node.GetPosition().position
+                Position = node.GetPosition().position,
+                nodeType = (int)node.nodeType
             });
         }
 
@@ -88,7 +90,12 @@ public class GraphSaveUtility
         {
             // TODO https://youtu.be/OMDfr1dzBco?t=790
 
-            // BehaviourNode tempNode = _targetGraphView.CreateNode();
+            BTEditorNode tempNode = _targetGraphView.GenerateBehaviournode(nodeData.nodeName, (BTGraphView.NodeTypes)nodeData.nodeType);
+            tempNode.GUID = nodeData.Guid;
+            _targetGraphView.AddElement(tempNode);
+
+            List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
+            nodePorts.ForEach(x => _targetGraphView.AddPort(tempNode,x.PortName));
         }
     }
 

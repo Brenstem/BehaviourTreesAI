@@ -5,7 +5,8 @@ using UnityEditor.Experimental.GraphView;
 
 public class BTEditorNode : Node
 {
+    public string nodeName;
     public string GUID;
     public bool topNode = false;
-    public System.Type type;
+    public BTGraphView.NodeTypes nodeType;
 }

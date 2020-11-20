@@ -9,7 +9,7 @@ public class BTGraphView : GraphView
 {
     private readonly Vector2 defaultNodeSize = new Vector2(200, 200);
 
-    public enum NodeTypes { Selector, Sequence, Invertor }
+    public enum NodeTypes { Composite, Decorator, Behaviour }
 
     public BTGraphView()
     {
@@ -51,20 +51,20 @@ public class BTGraphView : GraphView
     }
 
     // General behaviour node generation
-    private BTEditorNode GenerateBehaviournode(string nodeName, NodeTypes type)
+    public BTEditorNode GenerateBehaviournode(string nodeName, NodeTypes type)
     {
         BTEditorNode node = null;
 
         switch (type)
         {
-            case NodeTypes.Selector:
-                node = GenerateSelectorNode(nodeName);
+            case NodeTypes.Composite:
+                node = GenerateCompositeNode(nodeName);
                 break;
-            case NodeTypes.Sequence:
-                node = GenerateSequenceNode(nodeName);
+            case NodeTypes.Decorator:
+                node = GenerateBehaviourNode(nodeName);
                 break;
-            case NodeTypes.Invertor:
-                node = GenerateInvertorNode(nodeName);
+            case NodeTypes.Behaviour:
+                node = GenerateDecoratorNode(nodeName);
                 break;
             default:
                 break;
@@ -72,13 +72,12 @@ public class BTGraphView : GraphView
         return node;
     }
 
-    private BTEditorNode GenerateSelectorNode(string nodeName)
+    private BTEditorNode GenerateCompositeNode(string nodeName)
     {
         BTEditorNode node = new BTEditorNode
         {
             title = nodeName,
             GUID = System.Guid.NewGuid().ToString(),
-            type = typeof(Selector)
         };
 
         node.inputContainer.Add(GeneratePort(node, Direction.Input));
@@ -95,19 +94,15 @@ public class BTGraphView : GraphView
         return node;
     }
 
-    private BTEditorNode GenerateSequenceNode(string nodeName)
+    private BTEditorNode GenerateBehaviourNode(string nodeName)
     {
         BTEditorNode node = new BTEditorNode
         {
             title = nodeName,
-            GUID = System.Guid.NewGuid().ToString()
+            GUID = System.Guid.NewGuid().ToString(),
         };
 
         node.inputContainer.Add(GeneratePort(node, Direction.Input));
-
-        Button button = new Button(() => { AddPort(node); });
-        button.text = "New Child Behaviour";
-        node.titleContainer.Add(button);
 
         node.RefreshExpandedState();
         node.RefreshPorts();
@@ -117,12 +112,12 @@ public class BTGraphView : GraphView
         return node;
     }
 
-    private BTEditorNode GenerateInvertorNode(string nodeName)
+    private BTEditorNode GenerateDecoratorNode(string nodeName)
     {
         BTEditorNode node = new BTEditorNode
         {
             title = nodeName,
-            GUID = System.Guid.NewGuid().ToString()
+            GUID = System.Guid.NewGuid().ToString(),
         };
 
         node.inputContainer.Add(GeneratePort(node, Direction.Input, Port.Capacity.Multi));
@@ -139,13 +134,29 @@ public class BTGraphView : GraphView
 
 #region Port Generation
 
-    private void AddPort(BTEditorNode target)
+    public void AddPort(BTEditorNode target, string overriddenPortName= "")
     {
         Port generatedPort = GeneratePort(target, Direction.Output);
 
         int outputPortCount = target.outputContainer.Query("connector").ToList().Count;
         generatedPort.portName = $"Child Behaviour {outputPortCount}";
 
+        string portName = string.IsNullOrEmpty(overriddenPortName) 
+            ? $"Child Behaviour {outputPortCount}" 
+            : overriddenPortName;
+
+        TextField textField = new TextField
+        {
+            name = string.Empty,
+            value = portName
+        };
+
+        textField.RegisterValueChangedCallback(evt => generatedPort.portName = evt.newValue);
+        generatedPort.contentContainer.Add(new Label("   "));
+        generatedPort.contentContainer.Add(textField);
+        // Button deleteButton = new Button(() => RemovePort());
+
+        generatedPort.portName = portName;
         target.outputContainer.Add(generatedPort);
         target.RefreshPorts();
         target.RefreshExpandedState();

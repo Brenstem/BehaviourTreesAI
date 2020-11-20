@@ -10,6 +10,7 @@ public class BTEditorWindow : EditorWindow
 {
     private BTGraphView _graphView;
     private string _fileName = "New Behaviour Tree";
+    private static EditorWindow window;
 
     [MenuItem("BTUtils/BTEditor")]
     public static void ShowWindow()
@@ -61,16 +62,16 @@ public class BTEditorWindow : EditorWindow
     {
         Toolbar toolbar = new Toolbar();
 
-        Button button = new Button(() => { _graphView.CreateNode("Selector", BTGraphView.NodeTypes.Selector); });
-        button.text = "Create Selector";
+        Button button = new Button(() => { _graphView.CreateNode("Composite", BTGraphView.NodeTypes.Composite); });
+        button.text = "Create Composite node";
         toolbar.Add(button);
 
-        button = new Button(() => { _graphView.CreateNode("Sequence", BTGraphView.NodeTypes.Sequence); });
-        button.text = "Create Sequence";
+        button = new Button(() => { _graphView.CreateNode("Decorator", BTGraphView.NodeTypes.Decorator); });
+        button.text = "Create Decorator node";
         toolbar.Add(button);
 
-        button = new Button(() => { _graphView.CreateNode("Invertor", BTGraphView.NodeTypes.Invertor); });
-        button.text = "Create Invertor";
+        button = new Button(() => { _graphView.CreateNode("Behaviour", BTGraphView.NodeTypes.Behaviour); });
+        button.text = "Create Behaviour node";
         toolbar.Add(button);
 
         rootVisualElement.Add(toolbar);
@@ -97,7 +98,7 @@ public class BTEditorWindow : EditorWindow
     }
 
     #region old
-    private static List<BaseNode> windows = new List<BaseNode>();
+    /* private static List<BaseNode> windows = new List<BaseNode>();
     private Vector3 mousePos;
     private bool makeTransition;
     private bool clickedOnWindow;
@@ -263,6 +264,6 @@ public class BTEditorWindow : EditorWindow
                 break;
         }
     }
-
+    */
     #endregion
 }
