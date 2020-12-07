@@ -1,117 +1,205 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
-using System.Linq;
-using System;
+using UnityEngine.UIElements;
 
-public class GraphSaveUtility
+namespace BehaviourTreeEditor
 {
-    private BTGraphView _targetGraphView;
-    private BehaviourTreeContainer _containerCache;
-
-    private List<Edge> edges => _targetGraphView.edges.ToList();
-    private List<BTEditorNode> nodes => _targetGraphView.nodes.ToList().Cast<BTEditorNode>().ToList();
-
-    public static GraphSaveUtility GetInstance(BTGraphView targetGraphView)
+    /// <summary>
+    /// Save data utility for behaviour tree
+    /// </summary>
+    public class GraphSaveUtility
     {
-        return new GraphSaveUtility
+        private BTGraphView _targetGraphView;
+        private BTDataContainer _containerCache; // Data container for connection and node data
+
+        private List<Edge> edges => _targetGraphView.edges.ToList();
+        private List<BTEditorNode> nodes => _targetGraphView.nodes.ToList().Cast<BTEditorNode>().ToList();
+
+        /// <summary>
+        /// Returns an instance of the save utility for a given target graph view
+        /// </summary>
+        /// <param name="targetGraphView"></param>
+        /// <returns></returns>
+        public static GraphSaveUtility GetInstance(BTGraphView targetGraphView)
         {
-            _targetGraphView = targetGraphView
-        };
-    }
-
-    public void SaveGraph(string fileName)
-    {
-        if (!edges.Any()) return; // If there are no connections than return
-
-        BehaviourTreeContainer btContainer = ScriptableObject.CreateInstance<BehaviourTreeContainer>();
-
-        // Save node connection 
-        Edge[] connectedPorts = edges.Where(x => x.input.node != null).ToArray();
-        for (int i = 0; i < connectedPorts.Length; i++)
-        {
-            BTEditorNode outputNode = connectedPorts[i].output.node as BTEditorNode;
-            BTEditorNode inputNode = connectedPorts[i].input.node as BTEditorNode;
-
-            btContainer.nodeLinks.Add(new NodeLinkData
+            return new GraphSaveUtility
             {
-                BaseNodeGuid = outputNode.GUID,
-                PortName = connectedPorts[i].output.portName,
-                TargetNodeGuid = inputNode.GUID
-            });
+                _targetGraphView = targetGraphView
+            };
         }
 
-        // Save individual node data
-        foreach (BTEditorNode node in nodes.Where(node =>! node.topNode))
+        /// <summary>
+        /// Saves active graph data
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void SaveGraph(string fileName)
         {
-            btContainer.nodeData.Add(new BehaviourNodeData
+            // Generate data container
+            BTDataContainer btContainer = ScriptableObject.CreateInstance<BTDataContainer>();
+
+            if (!SaveNodes(btContainer)) return;
+            SaveExposedProperties(btContainer);
+
+            // Put savefile in Assets/BTResources
+            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                AssetDatabase.CreateFolder("Assets", "Resources");
+
+            AssetDatabase.CreateAsset(btContainer, $"Assets/Resources/{fileName}.asset");
+            AssetDatabase.SaveAssets();
+        }
+
+        // Saves exposed blackboard properties
+        private void SaveExposedProperties(BTDataContainer btContainer)
+        {
+            btContainer.exposedProperties.AddRange(_targetGraphView.exposedProperties);
+        }
+
+        // Saves nodes
+        private bool SaveNodes(BTDataContainer btContainer)
+        {
+            // If there are no connections then display error
+            if (!edges.Any())
             {
-                nodeName = node.nodeName,
-                Guid = node.GUID,
-                Position = node.GetPosition().position,
-                nodeType = (int)node.nodeType
-            });
+                EditorUtility.DisplayDialog("No connections", "Create some connections in your tree before saving!", "Ok");
+                return false;
+            }
+
+            // Save node connections
+            Edge[] connectedPorts = edges.Where(x => x.input.node != null).ToArray();
+            for (int i = 0; i < connectedPorts.Length; i++)
+            {
+                BTEditorNode outputNode = connectedPorts[i].output.node as BTEditorNode;
+                BTEditorNode inputNode = connectedPorts[i].input.node as BTEditorNode;
+
+                btContainer.nodeLinks.Add(new NodeLinkData
+                {
+                    BaseNodeGuid = outputNode.GUID,
+                    PortName = connectedPorts[i].output.portName,
+                    TargetNodeGuid = inputNode.GUID
+                });
+            }
+
+            // Save individual node data
+            foreach (BTEditorNode node in nodes)
+            {
+                btContainer.nodeData.Add(new NodeData
+                {
+                    nodeName = node.title,
+                    Guid = node.GUID,
+                    Position = node.GetPosition().position,
+                    nodeType = (int)node.nodeType
+                });
+            }
+
+            return true;
         }
 
-        if (!AssetDatabase.IsValidFolder("Assets/BTResources"))
+        /// <summary>
+        /// Loads savedata into graph view (overwrites active graph)
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void LoadGraph(string fileName)
         {
-            AssetDatabase.CreateFolder("Assets", "BTResources");
+            // Load data based on filename
+            _containerCache = Resources.Load<BTDataContainer>(fileName);
+
+            if (_containerCache == null)
+            {
+                EditorUtility.DisplayDialog("File Not Found", "Given file does not exist :(", "Ok");
+                return;
+            }
+
+            ClearGraph();
+            CreateNodes();
+            ConnectNodes();
+            CreateExposedProperties();
         }
 
-        AssetDatabase.CreateAsset(btContainer, $"Assets/BTResources/{fileName}.asset");
-        AssetDatabase.SaveAssets();
-    }
-
-    public void LoadGraph(string fileName)
-    {
-        _containerCache = Resources.Load<BehaviourTreeContainer>(fileName);
-
-        if (_containerCache == null)
+        // Generate exposed blackboardproperties from savedata
+        private void CreateExposedProperties()
         {
-            EditorUtility.DisplayDialog("File Not Found", "", "Okay daddy :(");
-            return;
+            // Clear current blackboard
+            _targetGraphView.ClearBlackBoardAndExposedProperties();
+
+            // Add properties from data
+            foreach (ExposedProperty exposedProperty in _containerCache.exposedProperties)
+            {
+                _targetGraphView.exposedProperties.Add(exposedProperty);
+            }
         }
 
-        ClearGraph();
-        CreateNodes();
-        ConnectNodes();
-    }
-
-    private void ConnectNodes()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void CreateNodes()
-    {
-        foreach (BehaviourNodeData nodeData in _containerCache.nodeData)
+        // Connect nodes based on save data
+        private void ConnectNodes()
         {
-            // TODO https://youtu.be/OMDfr1dzBco?t=790
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                // Get connections from savedata where node guid matches data guid
+                List<NodeLinkData> connections = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodes[i].GUID).ToList();
 
-            BTEditorNode tempNode = _targetGraphView.GenerateBehaviournode(nodeData.nodeName, (BTGraphView.NodeTypes)nodeData.nodeType);
-            tempNode.GUID = nodeData.Guid;
-            _targetGraphView.AddElement(tempNode);
+                for (int j = 0; j < connections.Count; j++)
+                {
+                    string targetNodeGuid = connections[j].TargetNodeGuid;
+                    Node targetNode = nodes.First(x => x.GUID == targetNodeGuid);
+                    LinkNodes(nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
 
-            List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
-            nodePorts.ForEach(x => _targetGraphView.AddPort(tempNode,x.PortName));
+                    targetNode.SetPosition(new Rect(_containerCache.nodeData.First(x => x.Guid == targetNodeGuid).Position,
+                        _targetGraphView.defaultNodeSize));
+                }
+            }
         }
-    }
 
-    private void ClearGraph()
-    {
-        // Set entry points guid based on save file
-        nodes.Find(x => x.topNode).GUID = _containerCache.nodeLinks[0].BaseNodeGuid; 
-        foreach (BTEditorNode node in nodes)
+        // Link nodes visually in graph based on save data
+        private void LinkNodes(Port output, Port input)
         {
-            if (node.topNode) return;
+            Edge edge = new Edge
+            {
+                output = output,
+                input = input
+            };
 
-            // Remove all connections to this node
-            edges.Where(x => x.input.node == node).ToList().ForEach(edge => _targetGraphView.RemoveElement(edge));
+            edge?.input.Connect(edge);
+            edge?.output.Connect(edge);
 
-            // Then remove node
-            _targetGraphView.RemoveElement(node);
+            _targetGraphView.Add(edge);
+        }
+
+        // Generate nodes based on save data
+        private void CreateNodes()
+        {
+            foreach (NodeData nodeData in _containerCache.nodeData)
+            {
+                // Generate node based on node data. We pass node position later so we can use zerovector while loading
+                BTEditorNode tempNode = _targetGraphView.GenerateNode(nodeData.nodeName, (BTGraphView.NodeTypes)nodeData.nodeType, Vector2.zero);
+                tempNode.GUID = nodeData.Guid;
+
+                // Add ports to node based on node data
+                List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
+                nodePorts.ForEach(x => _targetGraphView.AddPort(tempNode, x.PortName));
+
+                _targetGraphView.AddElement(tempNode);
+            }
+        }
+
+        // Clear the editor before loading a new graph
+        private void ClearGraph()
+        {
+            // Set entry points guid based on save file
+            nodes.Find(x => x.topNode).GUID = _containerCache.nodeLinks[0].BaseNodeGuid;
+            foreach (BTEditorNode node in nodes)
+            {
+                // if (node.topNode) continue;
+
+                // Remove all connections to this node
+                edges.Where(x => x.input.node == node).ToList().ForEach(edge => _targetGraphView.RemoveElement(edge));
+
+                // Then remove node
+                _targetGraphView.RemoveElement(node);
+            }
         }
     }
 }

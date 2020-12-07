@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class BehaviourNodeData
+public class NodeData
 {
     public string nodeName;
     public string Guid;

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: New Behaviour Tree
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: 3c0777d1-75df-4d26-bfd6-2abbc6e9ceca
+    PortName: Child Behaviour 0
+    TargetNodeGuid: 490606cc-184c-414b-b5cf-2519853c599f
+  - BaseNodeGuid: 3c0777d1-75df-4d26-bfd6-2abbc6e9ceca
+    PortName: Child Behaviour 1
+    TargetNodeGuid: e662b271-5df1-4169-8d4c-3e033bd482db
+  nodeData:
+  - nodeName: Top Node
+    Guid: 3c0777d1-75df-4d26-bfd6-2abbc6e9ceca
+    Position: {x: 100, y: 200}
+    nodeType: 3
+  - nodeName: Composite
+    Guid: 490606cc-184c-414b-b5cf-2519853c599f
+    Position: {x: 459, y: 141}
+    nodeType: 0
+  - nodeName: Behaviour
+    Guid: e662b271-5df1-4169-8d4c-3e033bd482db
+    Position: {x: 478, y: 272}
+    nodeType: 0
+  exposedProperties:
+  - PropertyName: prop1
+    PropertyValue: 0
+  - PropertyName: prop2
+    PropertyValue: 1
