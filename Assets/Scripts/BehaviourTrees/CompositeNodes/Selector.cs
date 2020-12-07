@@ -10,6 +10,13 @@ public class Selector : BehaviourNode
     {
         this.nodes = nodes;
     }
+    
+    //public Selector() { }
+
+    //public override void Initialize()
+    //{
+    //    this.nodes = nodes;
+    //}
 
     public override NodeStates Evaluate()
     {

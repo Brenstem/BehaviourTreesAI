@@ -10,6 +10,13 @@ public class Invertor : BehaviourNode
     {
         this.node = node;
     }
+    
+    //public Invertor() { }
+
+    //public override void Initialize()
+    //{
+    //    throw new System.NotImplementedException();
+    //}
 
     public override NodeStates Evaluate()
     {
@@ -30,4 +37,5 @@ public class Invertor : BehaviourNode
 
         return _nodeState;
     }
+
 }

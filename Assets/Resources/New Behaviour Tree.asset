@@ -13,27 +13,37 @@ MonoBehaviour:
   m_Name: New Behaviour Tree
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: 3c0777d1-75df-4d26-bfd6-2abbc6e9ceca
+  - BaseNodeGuid: 4179cb61-b59f-4489-ad5e-68238c9cf0de
     PortName: Child Behaviour 0
-    TargetNodeGuid: 490606cc-184c-414b-b5cf-2519853c599f
-  - BaseNodeGuid: 3c0777d1-75df-4d26-bfd6-2abbc6e9ceca
+    TargetNodeGuid: 7a562a01-40a6-4a34-a767-113dc542e3d1
+  - BaseNodeGuid: 2cd81586-0688-43ea-bd10-02ef477b91d1
+    PortName: Single
+    TargetNodeGuid: cae6d33c-f4db-44a2-8370-1fb6972e9c8b
+  - BaseNodeGuid: f92392f4-e016-4d99-a428-b064b17088d2
     PortName: Child Behaviour 1
-    TargetNodeGuid: e662b271-5df1-4169-8d4c-3e033bd482db
+    TargetNodeGuid: 2cd81586-0688-43ea-bd10-02ef477b91d1
+  - BaseNodeGuid: f92392f4-e016-4d99-a428-b064b17088d2
+    PortName: Child Behaviour 0
+    TargetNodeGuid: 4179cb61-b59f-4489-ad5e-68238c9cf0de
   nodeData:
-  - nodeName: Top Node
-    Guid: 3c0777d1-75df-4d26-bfd6-2abbc6e9ceca
-    Position: {x: 100, y: 200}
-    nodeType: 3
+  - nodeName: Behaviour
+    Guid: 7a562a01-40a6-4a34-a767-113dc542e3d1
+    Position: {x: 705, y: 158}
+    nodeType: 0
   - nodeName: Composite
-    Guid: 490606cc-184c-414b-b5cf-2519853c599f
-    Position: {x: 459, y: 141}
+    Guid: 4179cb61-b59f-4489-ad5e-68238c9cf0de
+    Position: {x: 404, y: 146}
     nodeType: 0
   - nodeName: Behaviour
-    Guid: e662b271-5df1-4169-8d4c-3e033bd482db
-    Position: {x: 478, y: 272}
+    Guid: cae6d33c-f4db-44a2-8370-1fb6972e9c8b
+    Position: {x: 734, y: 337}
     nodeType: 0
-  exposedProperties:
-  - PropertyName: prop1
-    PropertyValue: 0
-  - PropertyName: prop2
-    PropertyValue: 1
+  - nodeName: Decorator
+    Guid: 2cd81586-0688-43ea-bd10-02ef477b91d1
+    Position: {x: 483, y: 333}
+    nodeType: 0
+  - nodeName: Top Node
+    Guid: f92392f4-e016-4d99-a428-b064b17088d2
+    Position: {x: 100, y: 200}
+    nodeType: 3
+  exposedProperties: []

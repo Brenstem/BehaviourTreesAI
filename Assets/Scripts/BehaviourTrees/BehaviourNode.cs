@@ -10,6 +10,7 @@ public abstract class BehaviourNode
     public NodeStates NodeState { get { return _nodeState; } }
 
     public abstract NodeStates Evaluate();
+    //public abstract void Initialize();
 }
 
 public enum NodeStates
