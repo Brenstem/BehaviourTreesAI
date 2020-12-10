@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeNode<BehaviourNode>
+public class TreeNode
 {
     //om _parent är null är det topnoden
-    private TreeNode<BehaviourNode> _parent;
-    private List<TreeNode<BehaviourNode>> _children;
+    private TreeNode _parent;
+    private List<TreeNode> _children;
     private BehaviourNode _nodeType;
 
-    public TreeNode(BehaviourNode nodeType, TreeNode<BehaviourNode> parent = null, List<TreeNode<BehaviourNode>> children = null)
+    public TreeNode(BehaviourNode nodeType, TreeNode parent = null, List<TreeNode> children = null)
     {
         //for (int i = 0; i < children.Count; i++)
         //{
@@ -31,6 +31,7 @@ public class TreeNode<BehaviourNode>
         }
         Initialize();
     }
+
     public void Initialize()
     {
         //_nodeType
@@ -38,10 +39,10 @@ public class TreeNode<BehaviourNode>
 
     public void AddChild(BehaviourNode value)
     {
-        TreeNode<BehaviourNode> newChild = new TreeNode<BehaviourNode>(value, this);
+        TreeNode newChild = new TreeNode(value, this);
         _children.Add(newChild);
     }
-    public void AddParent(TreeNode<BehaviourNode> parent)
+    public void AddParent(TreeNode parent)
     {
         _parent = parent;
     }
@@ -50,7 +51,7 @@ public class TreeNode<BehaviourNode>
     {
         for (int i = 0; i < values.Length; i++)
         {
-            TreeNode<BehaviourNode> newChild = new TreeNode<BehaviourNode>(values[i], this);
+            TreeNode newChild = new TreeNode(values[i], this);
             _children.Add(newChild);
         }
     }

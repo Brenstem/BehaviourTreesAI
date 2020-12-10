@@ -82,7 +82,7 @@ namespace BehaviourTreeEditor
             switch (SearchTreeEntry.userData)
             {
                 case BTEditorNode selector:
-                    _graphView.CreateNode("Selector", BTGraphView.NodeTypes.Composite, localMousePosition);
+                    _graphView.CreateNode("Selector", NodeTypes.Composite, localMousePosition);
                     break;
                 default:
                     break;

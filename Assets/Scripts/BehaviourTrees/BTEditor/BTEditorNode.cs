@@ -14,6 +14,8 @@ namespace BehaviourTreeEditor
         public string nodeName;
         public string GUID;
         public bool topNode = false;
-        public BTGraphView.NodeTypes nodeType;
+        public NodeTypes nodeType;
     }
+
+    public enum NodeTypes { Composite, Decorator, Behaviour, TopNode }
 }

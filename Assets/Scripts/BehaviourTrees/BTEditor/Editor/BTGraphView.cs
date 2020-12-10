@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
-
+using UnityEditor;
 
 namespace BehaviourTreeEditor
 {
@@ -19,8 +19,6 @@ namespace BehaviourTreeEditor
         private NodeSearchWindow _searchWindow;
         public Blackboard Blackboard;
         public List<ExposedProperty> exposedProperties = new List<ExposedProperty>();
-
-        public enum NodeTypes { Composite, Decorator, Behaviour, TopNode }
 
         #region GraphViewInitialization
         // Initialize graphview with manipulater presets
@@ -107,7 +105,7 @@ namespace BehaviourTreeEditor
                 title = nodeName,
                 GUID = System.Guid.NewGuid().ToString(),
                 topNode = true,
-                nodeType = NodeTypes.TopNode
+                nodeType = NodeTypes.TopNode,
             };
 
             // Stash and remove old title and minimize button elements

@@ -174,7 +174,7 @@ namespace BehaviourTreeEditor
             foreach (NodeData nodeData in _containerCache.nodeData)
             {
                 // Generate node based on node data. We pass node position later so we can use zerovector while loading
-                BTEditorNode tempNode = _targetGraphView.GenerateNode(nodeData.nodeName, (BTGraphView.NodeTypes)nodeData.nodeType, Vector2.zero);
+                BTEditorNode tempNode = _targetGraphView.GenerateNode(nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero);
                 tempNode.GUID = nodeData.Guid;
 
                 // Add ports to node based on node data

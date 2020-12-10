@@ -103,6 +103,7 @@ namespace BehaviourTreeEditor
 
             toolbar.Add(new Button(() => RequestDataOperation(true)) { text = "Save Data" });
             toolbar.Add(new Button(() => RequestDataOperation(false)) { text = "Load Data" });
+            toolbar.Add(new Button(() => GenerateBehaviourTree()));
 
             rootVisualElement.Add(toolbar);
         }
@@ -112,15 +113,15 @@ namespace BehaviourTreeEditor
         {
             Toolbar toolbar = new Toolbar();
 
-            Button button = new Button(() => { _graphView.CreateNode("Composite", BTGraphView.NodeTypes.Composite, Vector2.zero); });
+            Button button = new Button(() => { _graphView.CreateNode("Composite", NodeTypes.Composite, Vector2.zero); });
             button.text = "Create Composite node";
             toolbar.Add(button);
 
-            button = new Button(() => { _graphView.CreateNode("Decorator", BTGraphView.NodeTypes.Decorator, Vector2.zero); });
+            button = new Button(() => { _graphView.CreateNode("Decorator", NodeTypes.Decorator, Vector2.zero); });
             button.text = "Create Decorator node";
             toolbar.Add(button);
 
-            button = new Button(() => { _graphView.CreateNode("Behaviour", BTGraphView.NodeTypes.Behaviour, Vector2.zero); });
+            button = new Button(() => { _graphView.CreateNode("Behaviour", NodeTypes.Behaviour, Vector2.zero); });
             button.text = "Create Behaviour node";
             toolbar.Add(button);
 
@@ -146,6 +147,18 @@ namespace BehaviourTreeEditor
             {
                 saveUtility.LoadGraph(_fileName);
             }
+        }
+
+        // Generates AI usable behaviour tree thingy
+        private void GenerateBehaviourTree()
+        {
+            List<Node> tempNodes = _graphView.nodes.ToList();
+            List<BTEditorNode> nodes = new List<BTEditorNode>();
+
+            foreach (Node node in tempNodes)
+                nodes.Add((BTEditorNode)node);
+            
+            BTEditorNode[] childNodes = (BTEditorNode[])nodes[1].Children().ToArray();
         }
     }
 }
