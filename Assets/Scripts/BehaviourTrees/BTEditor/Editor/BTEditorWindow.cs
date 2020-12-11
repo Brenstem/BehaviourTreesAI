@@ -17,6 +17,7 @@ namespace BehaviourTreeEditor
     {
         private BTGraphView _graphView;
         private string _fileName = "New Behaviour Tree";
+        private string _newBehaviourName = "New Behaviour Name";
         private static EditorWindow window;
 
         [MenuItem("BTUtils/BTEditor")]
@@ -103,7 +104,7 @@ namespace BehaviourTreeEditor
 
             toolbar.Add(new Button(() => RequestDataOperation(true)) { text = "Save Data" });
             toolbar.Add(new Button(() => RequestDataOperation(false)) { text = "Load Data" });
-            toolbar.Add(new Button(() => GenerateBehaviourTree()));
+            toolbar.Add(new Button(() => GenerateBehaviourTree()) { text = "Generate Behaviour Tree"});
 
             rootVisualElement.Add(toolbar);
         }
@@ -113,16 +114,20 @@ namespace BehaviourTreeEditor
         {
             Toolbar toolbar = new Toolbar();
 
-            Button button = new Button(() => { _graphView.CreateNode("Composite", NodeTypes.Composite, Vector2.zero); });
-            button.text = "Create Composite node";
+            TextField behaviourNameField = new TextField();
+            behaviourNameField.label = "Filename: ";
+            behaviourNameField.labelElement.style.color = Color.black;
+            behaviourNameField.SetValueWithoutNotify(_newBehaviourName);
+            behaviourNameField.MarkDirtyRepaint();
+            behaviourNameField.RegisterValueChangedCallback(evt => _newBehaviourName = evt.newValue);
+            toolbar.Add(behaviourNameField);
+
+            Button button = new Button(() => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Behaviour); });
+            button.text = "Create new node";
             toolbar.Add(button);
 
-            button = new Button(() => { _graphView.CreateNode("Decorator", NodeTypes.Decorator, Vector2.zero); });
-            button.text = "Create Decorator node";
-            toolbar.Add(button);
-
-            button = new Button(() => { _graphView.CreateNode("Behaviour", NodeTypes.Behaviour, Vector2.zero); });
-            button.text = "Create Behaviour node";
+            button = new Button(() => { SearchWindow.Open(new SearchWindowContext(mouseOverWindow.position.position), _graphView._searchWindow); });
+            button.text = "Add existing node";
             toolbar.Add(button);
 
             rootVisualElement.Add(toolbar);
@@ -157,7 +162,7 @@ namespace BehaviourTreeEditor
 
             foreach (Node node in tempNodes)
                 nodes.Add((BTEditorNode)node);
-            
+
             BTEditorNode[] childNodes = (BTEditorNode[])nodes[1].Children().ToArray();
         }
     }

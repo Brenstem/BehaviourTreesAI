@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEditor;
+using System.IO;
 
 namespace BehaviourTreeEditor
 {
@@ -16,9 +17,11 @@ namespace BehaviourTreeEditor
     {
         public readonly Vector2 defaultNodeSize = new Vector2(200, 200);
 
-        private NodeSearchWindow _searchWindow;
+        public NodeSearchWindow _searchWindow;
         public Blackboard Blackboard;
         public List<ExposedProperty> exposedProperties = new List<ExposedProperty>();
+
+        public List<BehaviourNode> behaviours = new List<BehaviourNode>();
 
         #region GraphViewInitialization
         // Initialize graphview with manipulater presets
@@ -96,6 +99,95 @@ namespace BehaviourTreeEditor
         #endregion
 
         #region Node Generation
+
+        private string _behaviourFolder = "Assets/AIBehaviours/";
+        private string _templateTextFilePath = "TemplateTextFile.txt";
+        private string _templateFolder = "Assets/Scripts/BehaviourTrees/BTEditor/ScriptTemplates/";
+        private const string BEHAVIOUR_CLASS_NAME = "CLASS_NAME_HERE";
+
+        
+        /// <summary>
+        /// Creates new node script in the AIBehaviours folder based on template classes
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        public void CreateNewNode(string name, NodeTypes type)
+        {
+            TextAsset templateTextFile = null;
+
+            // Loads different template based on node type to be created
+            switch (type)
+            {
+                case NodeTypes.Composite:
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_templateFolder + _templateTextFilePath, typeof(TextAsset));
+                    break;
+                case NodeTypes.Decorator:
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_templateFolder + _templateTextFilePath, typeof(TextAsset));
+                    break;
+                case NodeTypes.Behaviour:
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_templateFolder + _templateTextFilePath, typeof(TextAsset));
+                    break;
+                case NodeTypes.TopNode:
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_templateFolder + _templateTextFilePath, typeof(TextAsset));
+                    break;
+            }
+
+            string content = "";
+
+            // If textfile returns replace keywords in textfile with variables 
+            if (templateTextFile != null)
+            {
+                content = templateTextFile.text;
+                content = content.Replace(BEHAVIOUR_CLASS_NAME, name);
+            }
+            else
+            {
+                Debug.LogError("Can't find behaviour template text");
+            }
+
+            // If no folder for behaviours create the folder
+            if (!AssetDatabase.IsValidFolder("Assets/AIBehaviours"))
+                AssetDatabase.CreateFolder("Assets", "AIBehaviours");
+
+            // Use streamwriter to create a new .cs file with the correct name in the behaviours folder
+            using (StreamWriter sw = new StreamWriter(string.Format(Application.dataPath + $"/AIBehaviours/{name}.cs", new object[] { name.Replace(" ", "") })))
+            {
+                sw.Write(content);
+            }
+
+
+
+            /*
+            TextAsset componentGetterFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_behaviourFolder + "/ComponentGetter.cs", typeof(TextAsset));
+ 
+            content = componentGetterFile.text;
+
+            if (componentGetterFile != null)
+            {
+                content.Replace("GenericClassName", name);
+            }
+
+            using (StreamWriter sw = new StreamWriter(string.Format(Application.dataPath + $"/AIBehaviours/ComponentGetter.cs")))
+            {
+                sw.Write(content);
+            }
+
+            behaviours.Add(ComponentGetter.GetScriptWithName());
+
+            if (componentGetterFile != null)
+            {
+                content.Replace(name, "GenericClassName");
+            }
+
+            using (StreamWriter sw = new StreamWriter(string.Format(Application.dataPath + $"/AIBehaviours/ComponentGetter.cs")))
+            {
+                sw.Write(content);
+            }*/
+        }
+
+        #endregion
+
+        #region Node Creation
         // Generates entry point node at editor startup
         private BTEditorNode GenerateEntryPointNode(string nodeName)
         {
