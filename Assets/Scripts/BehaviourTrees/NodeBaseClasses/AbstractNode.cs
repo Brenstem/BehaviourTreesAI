@@ -6,6 +6,13 @@ using UnityEngine;
 [System.Serializable]
 public abstract class AbstractNode
 {
+    protected BehaviourNode parent;
+    public BehaviourNode Parent
+    {
+        get { return parent; }
+        set { parent = value; }
+    }
+
     protected NodeStates _nodeState;
 
     protected bool _constructed = false;
