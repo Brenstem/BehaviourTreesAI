@@ -2,34 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Selector : BehaviourNode
+public class Selector : CompositeNode
 {
-    protected List<BehaviourNode> nodes = new List<BehaviourNode>();
-
-    public Selector(List<BehaviourNode> nodes)
-    {
-        this.nodes = nodes;
-    }
-
     public override NodeStates Evaluate()
     {
-        foreach (BehaviourNode node in nodes)
+        if (_constructed)
         {
-            switch (node.Evaluate())
+            foreach (AbstractNode node in nodes)
             {
-                case NodeStates.RUNNING:
-                    _nodeState = NodeStates.RUNNING;
-                    return _nodeState;
-                case NodeStates.SUCCESS:
-                    _nodeState = NodeStates.SUCCESS;
-                    return _nodeState;
-                case NodeStates.FAILURE:
-                    break;
-                default:
-                    break;
+                switch (node.Evaluate())
+                {
+                    case NodeStates.RUNNING:
+                        _nodeState = NodeStates.RUNNING;
+                        return _nodeState;
+                    case NodeStates.SUCCESS:
+                        _nodeState = NodeStates.SUCCESS;
+                        return _nodeState;
+                    case NodeStates.FAILURE:
+                        break;
+                    default:
+                        break;
+                }
             }
+            _nodeState = NodeStates.FAILURE;
+            return _nodeState;
         }
-        _nodeState = NodeStates.FAILURE;
-        return _nodeState;
+        else
+        {
+            Debug.LogError("Node not constructed!");
+            return NodeStates.FAILURE;
+        }
     }
 }

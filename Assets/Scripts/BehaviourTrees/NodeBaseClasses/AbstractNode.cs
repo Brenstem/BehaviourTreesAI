@@ -1,14 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class BehaviourNode
+public abstract class AbstractNode
 {
     protected NodeStates _nodeState;
 
+    protected bool _constructed = false;
+
     public NodeStates NodeState { get { return _nodeState; } }
 
+    /// <summary>
+    /// This is the update method of your behaviour
+    /// </summary>
+    /// <returns></returns>
     public abstract NodeStates Evaluate();
 }
 

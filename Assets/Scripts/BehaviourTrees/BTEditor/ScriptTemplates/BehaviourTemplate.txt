@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleNode : BehaviourNode<IdleNodeParameters>
+public class #CLASS_NAME_HERE# : BehaviourNode<#CLASS_NAME_HERE#Parameters>
 {
-    public override void Construct(IdleNodeParameters parameters) { }
+    public override void Construct(#CLASS_NAME_HERE#Parameters parameters)
+    {
+        _constructed = true;
+    }
 
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
-            return NodeStates.SUCCESS;
+            throw new System.NotImplementedException();
         }
         else
         {
@@ -20,7 +23,7 @@ public class IdleNode : BehaviourNode<IdleNodeParameters>
     }
 }
 
-public class IdleNodeParameters 
+public class #CLASS_NAME_HERE#Parameters
 {
 
 }

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: AIBehaviour
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: 6f050cb8-e12b-405a-a792-2e9ef46b44a9
+    PortName: Child Behaviour 0
+    TargetNodeGuid: f28eedbe-ca20-4cba-8c69-fc499f8949a8
+  - BaseNodeGuid: f28eedbe-ca20-4cba-8c69-fc499f8949a8
+    PortName: Child Behaviour 0
+    TargetNodeGuid: bb0aedbf-590f-46d9-855c-624fa77f2052
+  - BaseNodeGuid: f28eedbe-ca20-4cba-8c69-fc499f8949a8
+    PortName: Child Behaviour 1
+    TargetNodeGuid: 2ddd118c-f5eb-4471-af11-90cd281afc9f
+  - BaseNodeGuid: 6f050cb8-e12b-405a-a792-2e9ef46b44a9
+    PortName: Child Behaviour 1
+    TargetNodeGuid: 662d23f4-2d0e-4177-94bd-f5c148e7aa8b
+  nodeData:
+  - nodeName: Top Node
+    Guid: 6f050cb8-e12b-405a-a792-2e9ef46b44a9
+    Position: {x: 100, y: 200}
+    nodeType: 3
+  - nodeName: Sequence
+    Guid: f28eedbe-ca20-4cba-8c69-fc499f8949a8
+    Position: {x: 422, y: 77}
+    nodeType: 0
+  - nodeName: ChaseRange
+    Guid: bb0aedbf-590f-46d9-855c-624fa77f2052
+    Position: {x: 751, y: 41}
+    nodeType: 0
+  - nodeName: Chase
+    Guid: 2ddd118c-f5eb-4471-af11-90cd281afc9f
+    Position: {x: 768, y: 149}
+    nodeType: 0
+  - nodeName: Idle
+    Guid: 662d23f4-2d0e-4177-94bd-f5c148e7aa8b
+    Position: {x: 448, y: 300}
+    nodeType: 0
+  exposedProperties: []

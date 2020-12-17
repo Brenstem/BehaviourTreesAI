@@ -7,9 +7,9 @@ public class TreeNode
     //om _parent är null är det topnoden
     private TreeNode _parent;
     private List<TreeNode> _children;
-    private BehaviourNode _nodeType;
+    private AbstractNode _nodeType;
 
-    public TreeNode(BehaviourNode nodeType, TreeNode parent = null, List<TreeNode> children = null)
+    public TreeNode(AbstractNode nodeType, TreeNode parent = null, List<TreeNode> children = null)
     {
         //for (int i = 0; i < children.Count; i++)
         //{
@@ -37,7 +37,7 @@ public class TreeNode
         //_nodeType
     }
 
-    public void AddChild(BehaviourNode value)
+    public void AddChild(AbstractNode value)
     {
         TreeNode newChild = new TreeNode(value, this);
         _children.Add(newChild);
@@ -47,7 +47,7 @@ public class TreeNode
         _parent = parent;
     }
 
-    public void AddChildren(BehaviourNode[] values)
+    public void AddChildren(AbstractNode[] values)
     {
         for (int i = 0; i < values.Length; i++)
         {

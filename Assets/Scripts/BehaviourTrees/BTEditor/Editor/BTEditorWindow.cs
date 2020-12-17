@@ -34,6 +34,7 @@ namespace BehaviourTreeEditor
             GenerateNodeToolbar();
             GenerateBlackBoard();
             GenerateMiniMap();
+            _graphView.LoadTypeData();
         }
 
         // Generates blackboard
@@ -78,6 +79,9 @@ namespace BehaviourTreeEditor
 
         private void OnDisable()
         {
+            Debug.Log("disable");
+
+            _graphView.SaveTypeData();
             rootVisualElement.Remove(_graphView);
         }
 
@@ -114,20 +118,31 @@ namespace BehaviourTreeEditor
         {
             Toolbar toolbar = new Toolbar();
 
+            // Behaviour name field
             TextField behaviourNameField = new TextField();
-            behaviourNameField.label = "Filename: ";
+            behaviourNameField.label = "Behaviour Name: ";
             behaviourNameField.labelElement.style.color = Color.black;
             behaviourNameField.SetValueWithoutNotify(_newBehaviourName);
             behaviourNameField.MarkDirtyRepaint();
             behaviourNameField.RegisterValueChangedCallback(evt => _newBehaviourName = evt.newValue);
             toolbar.Add(behaviourNameField);
 
-            Button button = new Button(() => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Behaviour); });
-            button.text = "Create new node";
+            // Create new node menu
+            ToolbarMenu menu = new ToolbarMenu();
+            menu.text = "Create New Behaviour";
+
+            menu.menu.AppendAction("New Behaviour", x => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Behaviour); });
+            menu.menu.AppendAction("New Composite", x => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Composite); });
+            menu.menu.AppendAction("New Decorator", x => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Decorator); });
+
+            toolbar.Add(menu);
+
+            Button button = new Button(() => { SearchWindow.Open(new SearchWindowContext(mouseOverWindow.position.position), _graphView._addNodeSearchWindow); });
+            button.text = "Add existing node";
             toolbar.Add(button);
 
-            button = new Button(() => { SearchWindow.Open(new SearchWindowContext(mouseOverWindow.position.position), _graphView._searchWindow); });
-            button.text = "Add existing node";
+            button = new Button(() => { _graphView.TestPrintBehaviourLists(); });
+            button.text = "test print node lists";
             toolbar.Add(button);
 
             rootVisualElement.Add(toolbar);

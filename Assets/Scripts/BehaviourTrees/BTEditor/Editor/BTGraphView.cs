@@ -17,11 +17,11 @@ namespace BehaviourTreeEditor
     {
         public readonly Vector2 defaultNodeSize = new Vector2(200, 200);
 
-        public NodeSearchWindow _searchWindow;
+        public AddNodeSearchWindow _addNodeSearchWindow;
         public Blackboard Blackboard;
         public List<ExposedProperty> exposedProperties = new List<ExposedProperty>();
 
-        public List<BehaviourNode> behaviours = new List<BehaviourNode>();
+        public NodeTypeData typeData;
 
         #region GraphViewInitialization
         // Initialize graphview with manipulater presets
@@ -34,15 +34,39 @@ namespace BehaviourTreeEditor
             this.AddManipulator(new RectangleSelector());
 
             AddElement(GenerateEntryPointNode("Top Node"));
-            AddSearchWindow(editorWindow);
+            AddNodeSearchWindow(editorWindow);
         }
 
         // Generates and adds a search window to a given editorwindow
-        private void AddSearchWindow(BTEditorWindow editorWindow)
+        private void AddNodeSearchWindow(BTEditorWindow editorWindow)
         {
-            _searchWindow = ScriptableObject.CreateInstance<NodeSearchWindow>();
-            _searchWindow.Init(editorWindow, this);
-            nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), _searchWindow);
+            _addNodeSearchWindow = ScriptableObject.CreateInstance<AddNodeSearchWindow>();
+            _addNodeSearchWindow.Init(editorWindow, this);
+            nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), _addNodeSearchWindow);
+        }
+
+        public void LoadTypeData()
+        {
+            typeData = Resources.Load("TypeData.asset") as NodeTypeData;
+
+            Debug.Log(typeData);
+
+            if (typeData == null)
+            {
+                Debug.Log("no type data found");
+                return;
+            }
+        }
+
+        public void SaveTypeData()
+        {
+            NodeTypeData typeData = ScriptableObject.CreateInstance<NodeTypeData>();
+
+            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                AssetDatabase.CreateFolder("Assets", "Resources");
+
+            AssetDatabase.CreateAsset(typeData, $"Assets/Resources/TypeData.asset");
+            AssetDatabase.SaveAssets();
         }
 
         public void ClearBlackBoardAndExposedProperties()
@@ -102,43 +126,52 @@ namespace BehaviourTreeEditor
 
         private string _behaviourFolder = "Assets/AIBehaviours/";
         private string _templateTextFilePath = "TemplateTextFile.txt";
-        private string _templateFolder = "Assets/Scripts/BehaviourTrees/BTEditor/ScriptTemplates/";
-        private const string BEHAVIOUR_CLASS_NAME = "CLASS_NAME_HERE";
 
+        private const string BEHAVIOUR_TEMPLATE_PATH = "BehaviourTemplate.txt";
+        private const string COMPOSITE_TEMPLATE_PATH = "CompositeTemplate.txt";
+        private const string DECORATOR_TEMPLATE_PATH = "DecoratorTemplate.txt";
+        private const string TEMPLATE_FOLDER_PATH = "Assets/Scripts/BehaviourTrees/BTEditor/ScriptTemplates/";
+        private const string BEHAVIOUR_CLASS_NAME = "#CLASS_NAME_HERE#";
         
         /// <summary>
         /// Creates new node script in the AIBehaviours folder based on template classes
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="behaviourName"></param>
         /// <param name="type"></param>
-        public void CreateNewNode(string name, NodeTypes type)
+        public void CreateNewNode(string behaviourName, NodeTypes type)
         {
             TextAsset templateTextFile = null;
 
-            // Loads different template based on node type to be created
+            // Loads different template based on node type and adds behaviour name to corresponding node list
             switch (type)
             {
                 case NodeTypes.Composite:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_templateFolder + _templateTextFilePath, typeof(TextAsset));
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + COMPOSITE_TEMPLATE_PATH, typeof(TextAsset));
+                    typeData.compositeNodes.Add(behaviourName);
                     break;
                 case NodeTypes.Decorator:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_templateFolder + _templateTextFilePath, typeof(TextAsset));
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + DECORATOR_TEMPLATE_PATH, typeof(TextAsset));
+                    typeData.decoratorNodes.Add(behaviourName);
                     break;
                 case NodeTypes.Behaviour:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_templateFolder + _templateTextFilePath, typeof(TextAsset));
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + BEHAVIOUR_TEMPLATE_PATH, typeof(TextAsset));
+                    typeData.behaviourNodes.Add(behaviourName);
                     break;
                 case NodeTypes.TopNode:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_templateFolder + _templateTextFilePath, typeof(TextAsset));
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + _templateTextFilePath, typeof(TextAsset));
                     break;
             }
 
             string content = "";
 
+            // Avoid potential incorrect naming
+            behaviourName = behaviourName.Replace(" ", "");
+
             // If textfile returns replace keywords in textfile with variables 
             if (templateTextFile != null)
             {
                 content = templateTextFile.text;
-                content = content.Replace(BEHAVIOUR_CLASS_NAME, name);
+                content = content.Replace(BEHAVIOUR_CLASS_NAME, behaviourName);
             }
             else
             {
@@ -148,41 +181,32 @@ namespace BehaviourTreeEditor
             // If no folder for behaviours create the folder
             if (!AssetDatabase.IsValidFolder("Assets/AIBehaviours"))
                 AssetDatabase.CreateFolder("Assets", "AIBehaviours");
-
-            // Use streamwriter to create a new .cs file with the correct name in the behaviours folder
-            using (StreamWriter sw = new StreamWriter(string.Format(Application.dataPath + $"/AIBehaviours/{name}.cs", new object[] { name.Replace(" ", "") })))
-            {
-                sw.Write(content);
-            }
-
-
-
-            /*
-            TextAsset componentGetterFile = (TextAsset)AssetDatabase.LoadAssetAtPath(_behaviourFolder + "/ComponentGetter.cs", typeof(TextAsset));
  
-            content = componentGetterFile.text;
-
-            if (componentGetterFile != null)
-            {
-                content.Replace("GenericClassName", name);
-            }
-
-            using (StreamWriter sw = new StreamWriter(string.Format(Application.dataPath + $"/AIBehaviours/ComponentGetter.cs")))
+            // Use streamwriter to create a new .cs file with the correct name in the behaviours folder
+            using (StreamWriter sw = new StreamWriter(string.Format(Application.dataPath + $"/AIBehaviours/{behaviourName}.cs", new object[] { behaviourName.Replace(" ", "") })))
             {
                 sw.Write(content);
             }
+        }
 
-            behaviours.Add(ComponentGetter.GetScriptWithName());
+        public void TestPrintBehaviourLists()
+        {
+            Debug.Log(typeData.behaviourNodes.Count);
 
-            if (componentGetterFile != null)
+            foreach (string name in typeData.behaviourNodes)
             {
-                content.Replace(name, "GenericClassName");
+                Debug.Log("Behaviour: " + name);
             }
 
-            using (StreamWriter sw = new StreamWriter(string.Format(Application.dataPath + $"/AIBehaviours/ComponentGetter.cs")))
+            foreach (string name in typeData.compositeNodes)
             {
-                sw.Write(content);
-            }*/
+                Debug.Log("Composite: " + name);
+            }
+
+            foreach (string name in typeData.decoratorNodes)
+            {
+                Debug.Log("Decorator: " + name);
+            }
         }
 
         #endregion

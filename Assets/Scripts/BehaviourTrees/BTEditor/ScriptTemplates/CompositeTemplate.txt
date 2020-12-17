@@ -1,16 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleNode : BehaviourNode<IdleNodeParameters>
+public class #CLASS_NAME_HERE# : CompositeNode
 {
-    public override void Construct(IdleNodeParameters parameters) { }
-
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
-            return NodeStates.SUCCESS;
+            throw new System.NotImplementedException();
         }
         else
         {
@@ -18,9 +16,4 @@ public class IdleNode : BehaviourNode<IdleNodeParameters>
             return NodeStates.FAILURE;
         }
     }
-}
-
-public class IdleNodeParameters 
-{
-
 }

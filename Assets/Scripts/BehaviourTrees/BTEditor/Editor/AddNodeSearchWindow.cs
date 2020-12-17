@@ -9,7 +9,7 @@ namespace BehaviourTreeEditor
     /// <summary>
     /// BT editor node search window 
     /// </summary>
-    public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
+    public class AddNodeSearchWindow : ScriptableObject, ISearchWindowProvider
     {
         private BTGraphView _graphView;
         private BTEditorWindow _editorWindow;
@@ -40,25 +40,33 @@ namespace BehaviourTreeEditor
         {
             // SearchTreeGroupEntry functions as an submenu accessor 
             // SearchTreeEntry functions as a selectable item that should spawn a node corresponding to its type
-            List<SearchTreeEntry> tree = new List<SearchTreeEntry>
+            List<SearchTreeEntry> tree = new List<SearchTreeEntry>();
+
+            tree.Add(new SearchTreeGroupEntry(new GUIContent("Create Elements"), 0));
+            tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
+
+            foreach (var name in _graphView.typeData.behaviourNodes)
             {
-                new SearchTreeGroupEntry(new GUIContent("Create Elements"), 0),
-                new SearchTreeGroupEntry(new GUIContent("Composite Nodes"), 1),
-                new SearchTreeEntry(new GUIContent("Selector", _indentationIcon))
+                tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
                 {
-                    userData = new BTEditorNode(), level = 2
-                }, 
-                new SearchTreeGroupEntry(new GUIContent("Decorator Nodes"), 1),
-                new SearchTreeEntry(new GUIContent("Invertor", _indentationIcon))
-                {
-                    userData = new BTEditorNode(), level = 2
-                },
-                new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1),
-                new SearchTreeEntry(new GUIContent("Behaviour", _indentationIcon))
-                {
-                    userData = new BTEditorNode(), level = 2
-                },
-            };
+                    userData = new BTEditorNode(),
+                    level = 2
+                });
+            }
+
+            tree.Add(new SearchTreeGroupEntry(new GUIContent("Decorator Nodes"), 1));
+            tree.Add(new SearchTreeEntry(new GUIContent("Invertor", _indentationIcon))
+            {
+                userData = new BTEditorNode(),
+                level = 2
+            });
+
+            tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
+            tree.Add(new SearchTreeEntry(new GUIContent("Behaviour", _indentationIcon))
+            {
+                userData = new BTEditorNode(),
+                level = 2
+            });
 
             return tree;
         }
