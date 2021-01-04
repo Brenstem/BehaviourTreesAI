@@ -24,7 +24,8 @@ public class Timer
         if (currentTime <= 0)
         {
             done = true;
-            eventCallback();
+            if(eventCallback != null)
+                eventCallback();
         }
     }
 
