@@ -49,24 +49,32 @@ namespace BehaviourTreeEditor
             {
                 tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
                 {
-                    userData = new BTEditorNode(),
+                    userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Behaviour },
+                    level = 2
+                });
+            }
+
+            tree.Add(new SearchTreeGroupEntry(new GUIContent("Composite Nodes"), 1));
+
+            foreach (var name in _graphView.typeData.compositeNodes)
+            {
+                tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
+                {
+                    userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Composite },
                     level = 2
                 });
             }
 
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Decorator Nodes"), 1));
-            tree.Add(new SearchTreeEntry(new GUIContent("Invertor", _indentationIcon))
-            {
-                userData = new BTEditorNode(),
-                level = 2
-            });
 
-            tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
-            tree.Add(new SearchTreeEntry(new GUIContent("Behaviour", _indentationIcon))
+            foreach (var name in _graphView.typeData.decoratorNodes)
             {
-                userData = new BTEditorNode(),
-                level = 2
-            });
+                tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
+                {
+                    userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Decorator },
+                    level = 2
+                });
+            }
 
             return tree;
         }
@@ -87,14 +95,9 @@ namespace BehaviourTreeEditor
             Vector2 localMousePosition = _graphView.contentViewContainer.WorldToLocal(worldMousePosition);
 
             // TODO figure out how to spawn correct node type based on userdata
-            switch (SearchTreeEntry.userData)
-            {
-                case BTEditorNode selector:
-                    _graphView.CreateNode("Selector", NodeTypes.Composite, localMousePosition);
-                    break;
-                default:
-                    break;
-            }
+            BTEditorNode tempNode = (BTEditorNode)SearchTreeEntry.userData;
+
+            _graphView.CreateNode(tempNode.nodeName, tempNode.nodeType, localMousePosition);
 
             return true;
         }

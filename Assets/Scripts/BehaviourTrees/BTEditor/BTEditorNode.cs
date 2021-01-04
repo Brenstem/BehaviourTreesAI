@@ -17,5 +17,5 @@ namespace BehaviourTreeEditor
         public NodeTypes nodeType;
     }
 
-    public enum NodeTypes { Composite, Decorator, Behaviour, TopNode }
+    public enum NodeTypes { Composite, Decorator, Behaviour }
 }

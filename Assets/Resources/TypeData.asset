@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc819be525a3694e96c487bcbec6e4e, type: 3}
   m_Name: TypeData
   m_EditorClassIdentifier: 
-  behaviourNodes: []
-  compositeNodes: []
-  decoratorNodes: []
+  behaviourNodes:
+  - Cool
+  - ChaseNode
+  - HealthNode
+  - IdleNode
+  - RangeNode
+  compositeNodes:
+  - Selector
+  - Sequence
+  decoratorNodes:
+  - Invertor

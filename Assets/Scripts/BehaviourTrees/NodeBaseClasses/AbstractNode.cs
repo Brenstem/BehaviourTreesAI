@@ -4,15 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class AbstractNode
+public abstract class AbstractNode : ScriptableObject
 {
-    protected BehaviourNode parent;
-    public BehaviourNode Parent
-    {
-        get { return parent; }
-        set { parent = value; }
-    }
-
     protected NodeStates _nodeState;
 
     protected bool _constructed = false;

@@ -79,8 +79,6 @@ namespace BehaviourTreeEditor
 
         private void OnDisable()
         {
-            Debug.Log("disable");
-
             _graphView.SaveTypeData();
             rootVisualElement.Remove(_graphView);
         }
@@ -172,13 +170,44 @@ namespace BehaviourTreeEditor
         // Generates AI usable behaviour tree thingy
         private void GenerateBehaviourTree()
         {
-            List<Node> tempNodes = _graphView.nodes.ToList();
-            List<BTEditorNode> nodes = new List<BTEditorNode>();
+            Debug.Log("Generating...");
 
-            foreach (Node node in tempNodes)
-                nodes.Add((BTEditorNode)node);
+            // Get instance of save utility to get node children
+            GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
 
-            BTEditorNode[] childNodes = (BTEditorNode[])nodes[1].Children().ToArray();
+            // Define behaviourtree
+            TreeNode behaviourTree;
+
+            BTEditorNode tempEditorNode = _graphView.nodes.ToList()[0] as BTEditorNode;
+
+            if (tempEditorNode.nodeType == NodeTypes.Composite)
+            {
+                saveUtility.GetChildNodes(tempEditorNode.GUID);
+
+                Debug.Log(saveUtility.GetChildNodes(tempEditorNode.GUID).Count);
+            }
+        }
+
+        private AbstractNode ConvertEditorNode(BTEditorNode node)
+        {
+            AbstractNode tempNode = null;
+
+            switch (node.nodeType)
+            {
+                case NodeTypes.Composite:
+                    tempNode = CreateInstance(node.nodeName) as CompositeNode;
+                    break;
+                case NodeTypes.Decorator:
+                    tempNode = CreateInstance(node.nodeName) as DecoratorNode;
+                    break;
+                case NodeTypes.Behaviour:
+                    tempNode = CreateInstance(node.nodeName) as AbstractNode;
+                    break;
+                default:
+                    break;
+            }
+
+            return tempNode;
         }
     }
 }

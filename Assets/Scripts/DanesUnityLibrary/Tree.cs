@@ -11,11 +11,6 @@ public class TreeNode
 
     public TreeNode(AbstractNode nodeType, TreeNode parent = null, List<TreeNode> children = null)
     {
-        //for (int i = 0; i < children.Count; i++)
-        //{
-        //    AddChildren(children[i]);
-        //}
-
         _nodeType = nodeType;
 
         _children = children;
@@ -29,12 +24,6 @@ public class TreeNode
         {
             _children[i].ConstructTree();
         }
-        Initialize();
-    }
-
-    public void Initialize()
-    {
-        //_nodeType
     }
 
     public void AddChild(AbstractNode value)

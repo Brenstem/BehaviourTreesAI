@@ -45,19 +45,23 @@ namespace BehaviourTreeEditor
             nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), _addNodeSearchWindow);
         }
 
+        /// <summary>
+        /// Loads type data object from resources folder
+        /// </summary>
         public void LoadTypeData()
         {
-            typeData = Resources.Load("TypeData.asset") as NodeTypeData;
-
-            Debug.Log(typeData);
+            typeData = Resources.Load("TypeData") as NodeTypeData;
 
             if (typeData == null)
             {
-                Debug.Log("no type data found");
+                EditorUtility.DisplayDialog("No typedata object found", "The type data object could not be found in the resources folder", "ok");
                 return;
             }
         }
-
+        
+        /// <summary>
+        /// Save type data as NodeTypeData scriptable object in resources folder
+        /// </summary>
         public void SaveTypeData()
         {
             NodeTypeData typeData = ScriptableObject.CreateInstance<NodeTypeData>();
@@ -65,8 +69,11 @@ namespace BehaviourTreeEditor
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
                 AssetDatabase.CreateFolder("Assets", "Resources");
 
-            AssetDatabase.CreateAsset(typeData, $"Assets/Resources/TypeData.asset");
-            AssetDatabase.SaveAssets();
+            if (!File.Exists("Assets/Resources/TypeData.asset"))
+            {
+                AssetDatabase.CreateAsset(typeData, $"Assets/Resources/TypeData.asset");
+                AssetDatabase.SaveAssets();
+            }
         }
 
         public void ClearBlackBoardAndExposedProperties()
@@ -157,9 +164,6 @@ namespace BehaviourTreeEditor
                     templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + BEHAVIOUR_TEMPLATE_PATH, typeof(TextAsset));
                     typeData.behaviourNodes.Add(behaviourName);
                     break;
-                case NodeTypes.TopNode:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + _templateTextFilePath, typeof(TextAsset));
-                    break;
             }
 
             string content = "";
@@ -221,7 +225,7 @@ namespace BehaviourTreeEditor
                 title = nodeName,
                 GUID = System.Guid.NewGuid().ToString(),
                 topNode = true,
-                nodeType = NodeTypes.TopNode,
+                nodeType = NodeTypes.Composite,
             };
 
             // Stash and remove old title and minimize button elements
@@ -285,9 +289,6 @@ namespace BehaviourTreeEditor
 
             switch (type)
             {
-                case NodeTypes.TopNode:
-                    node = GenerateEntryPointNode(nodeName);
-                    break;
                 case NodeTypes.Composite:
                     node = GenerateCompositeNode(nodeName, position);
                     break;

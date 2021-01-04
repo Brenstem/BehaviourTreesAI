@@ -42,7 +42,9 @@ namespace BehaviourTreeEditor
             // Generate data container
             BTDataContainer btContainer = ScriptableObject.CreateInstance<BTDataContainer>();
 
+            // Save nodes to container
             if (!SaveNodes(btContainer)) return;
+
             SaveExposedProperties(btContainer);
 
             // Put savefile in Assets/BTResources
@@ -71,6 +73,7 @@ namespace BehaviourTreeEditor
 
             // Save node connections
             Edge[] connectedPorts = edges.Where(x => x.input.node != null).ToArray();
+
             for (int i = 0; i < connectedPorts.Length; i++)
             {
                 BTEditorNode outputNode = connectedPorts[i].output.node as BTEditorNode;
@@ -151,6 +154,35 @@ namespace BehaviourTreeEditor
                         _targetGraphView.defaultNodeSize));
                 }
             }
+        }
+
+        // TODO fix this shitty ass function
+        // Problem is that we need an instance of container cache to get our connections from and theres only an instance of container cache when we load a behaviour tree into the graph view :((
+
+        /// <summary>
+        /// Returns list of child nodes based on node GUID
+        /// </summary>
+        /// <param name="nodeGUID"></param>
+        /// <returns></returns>
+        public List<Node> GetChildNodes(string nodeGUID)
+        {
+            // Update cache to contain current nodes
+            SaveNodes(_containerCache);
+
+            List<NodeLinkData> connections = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeGUID).ToList(); // Get connections from active container cache
+            List<Node> childNodes = new List<Node>();
+
+            // Loop through connections for a given node and find its child nodes via GUID matching
+            for (int i = 0; i < connections.Count; i++)
+            {
+                string targetNodeGUID = connections[i].TargetNodeGuid;
+
+                Node targetNode = nodes.First(x => x.GUID == targetNodeGUID);
+
+                childNodes.Add(targetNode);
+            }
+
+            return childNodes;
         }
 
         // Link nodes visually in graph based on save data
