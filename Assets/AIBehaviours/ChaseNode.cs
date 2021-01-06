@@ -12,6 +12,7 @@ public class ChaseNode : BehaviourNode<ChaseNodeParameters>
     {
         target = parameters.target;
         agent = parameters.agent;
+        _constructed = true;
     }
 
     public override NodeStates Evaluate()

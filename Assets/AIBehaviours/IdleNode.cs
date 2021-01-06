@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class IdleNode : BehaviourNode<IdleNodeParameters>
 {
-    public override void Construct(IdleNodeParameters parameters) { }
+    public override void Construct(IdleNodeParameters parameters) 
+    { 
+        _constructed = true;
+    }
 
     public override NodeStates Evaluate()
     {

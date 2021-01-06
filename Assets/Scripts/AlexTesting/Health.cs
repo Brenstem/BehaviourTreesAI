@@ -23,7 +23,6 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject hurtParticle;
 
     [HideInInspector] public bool isDead;
-    //private float currentHealth;
 
     void Start()
     {
@@ -43,9 +42,10 @@ public class Health : MonoBehaviour
         {
             TookDamage?.Invoke(debuff);
 
-            Instantiate(hurtParticle, transform.position, transform.rotation);
-
             currentHealth -= damageVal;
+
+            if(hurtParticle != null)
+                Instantiate(hurtParticle, transform.position, transform.rotation);
 
             if (healthbar != null)
                 healthbar.value = currentHealth;

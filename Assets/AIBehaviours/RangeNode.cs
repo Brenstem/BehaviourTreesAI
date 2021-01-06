@@ -13,6 +13,7 @@ public class RangeNode : BehaviourNode<RangeNodeParameters>
         range = parameters.range;
         target = parameters.target;
         origin = parameters.origin;
+        _constructed = true;
     }
 
     public override NodeStates Evaluate()
