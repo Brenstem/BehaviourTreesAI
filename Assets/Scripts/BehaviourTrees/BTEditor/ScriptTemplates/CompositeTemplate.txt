@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class #CLASS_NAME_HERE# : CompositeNode
 {
+    public override void Construct(List<AbstractNode> nodes)
+    {
+        _constructed = true;
+    }
+
     public override NodeStates Evaluate()
     {
         if (_constructed)

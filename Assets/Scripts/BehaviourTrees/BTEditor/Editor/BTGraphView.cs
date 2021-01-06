@@ -224,8 +224,8 @@ namespace BehaviourTreeEditor
             {
                 title = nodeName,
                 GUID = System.Guid.NewGuid().ToString(),
-                topNode = true,
                 nodeType = NodeTypes.Composite,
+                topNode = true,
             };
 
             // Stash and remove old title and minimize button elements
@@ -244,7 +244,7 @@ namespace BehaviourTreeEditor
 
             textField.RegisterValueChangedCallback(evt => node.title = evt.newValue);
             node.titleContainer.Add(textField);
-            node.titleContainer.Add(oldTitleButton); // Add back minimize button in title container after adding title input field
+            node.titleContainer.Add(oldTitleButton); // Add back minixmize button in title container after adding title input field
 
             // Instantiate add port button
             Button button = new Button(() => { AddPort(node); });
@@ -272,9 +272,9 @@ namespace BehaviourTreeEditor
         /// </summary>
         /// <param name="nodename"></param>
         /// <param name="type"></param>
-        public void CreateNode(string nodename, NodeTypes type, Vector2 position)
+        public void CreateNode(string nodename, NodeTypes type, Vector2 position, bool isTopNode = false)
         {
-            AddElement(GenerateNode(nodename, type, position));
+            AddElement(GenerateNode(nodename, type, position, isTopNode));
         }
 
         /// <summary>
@@ -283,20 +283,20 @@ namespace BehaviourTreeEditor
         /// <param name="nodeName"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public BTEditorNode GenerateNode(string nodeName, NodeTypes type, Vector2 position)
+        public BTEditorNode GenerateNode(string nodeName, NodeTypes type, Vector2 position, bool isTopNode = false)
         {
             BTEditorNode node = null;
 
             switch (type)
             {
                 case NodeTypes.Composite:
-                    node = GenerateCompositeNode(nodeName, position);
+                    node = GenerateCompositeNode(nodeName, position, isTopNode);
                     break;
                 case NodeTypes.Decorator:
-                    node = GenerateDecoratorNode(nodeName, position);
+                    node = GenerateDecoratorNode(nodeName, position, isTopNode);
                     break;
                 case NodeTypes.Behaviour:
-                    node = GenerateBehaviourNode(nodeName, position);
+                    node = GenerateBehaviourNode(nodeName, position, isTopNode);
                     break;
                 default:
                     break;
@@ -305,12 +305,14 @@ namespace BehaviourTreeEditor
         }
 
         // Generate composite type node
-        private BTEditorNode GenerateCompositeNode(string nodeName, Vector2 position)
+        private BTEditorNode GenerateCompositeNode(string nodeName, Vector2 position, bool isTopNode = false)
         {
             BTEditorNode node = new BTEditorNode
             {
                 title = nodeName,
                 GUID = System.Guid.NewGuid().ToString(),
+                nodeType = NodeTypes.Composite,
+                topNode = isTopNode
             };
 
             // Stash and remove old title and minimize button elements
@@ -348,12 +350,14 @@ namespace BehaviourTreeEditor
         }
 
         // Generate behaviour node
-        private BTEditorNode GenerateBehaviourNode(string nodeName, Vector2 position)
+        private BTEditorNode GenerateBehaviourNode(string nodeName, Vector2 position, bool isTopNode = false)
         {
             BTEditorNode node = new BTEditorNode
             {
                 title = nodeName,
                 GUID = System.Guid.NewGuid().ToString(),
+                nodeType = NodeTypes.Behaviour,
+                topNode = isTopNode
             };
 
             // Stash and remove old title and minimize button elements
@@ -386,12 +390,14 @@ namespace BehaviourTreeEditor
         }
 
         // Generate decorator node
-        private BTEditorNode GenerateDecoratorNode(string nodeName, Vector2 position)
+        private BTEditorNode GenerateDecoratorNode(string nodeName, Vector2 position, bool isTopNode = false)
         {
             BTEditorNode node = new BTEditorNode
             {
                 title = nodeName,
                 GUID = System.Guid.NewGuid().ToString(),
+                nodeType = NodeTypes.Decorator,
+                topNode = isTopNode
             };
 
             // Stash and remove old title and minimize button elements
@@ -443,11 +449,11 @@ namespace BehaviourTreeEditor
 
             // Adds default port name
             int outputPortCount = targetNode.outputContainer.Query("connector").ToList().Count;
-            generatedPort.portName = $"Child Behaviour {outputPortCount}";
+            generatedPort.portName = outputPortCount.ToString();
 
             // Check if default portname is overridden
             string portName = string.IsNullOrEmpty(overriddenPortName)
-                ? $"Child Behaviour {outputPortCount}"
+                ? outputPortCount.ToString()
                 : overriddenPortName;
 
             // Adds name field
@@ -457,7 +463,7 @@ namespace BehaviourTreeEditor
                 value = portName
             };
 
-            textField.RegisterValueChangedCallback(evt => generatedPort.portName = evt.newValue);
+            // textField.RegisterValueChangedCallback(evt => generatedPort.portName = evt.newValue);
             generatedPort.contentContainer.Add(new Label("     "));
             generatedPort.contentContainer.Add(textField);
 
@@ -482,17 +488,22 @@ namespace BehaviourTreeEditor
             // Find port in node that matches port to remove
             IEnumerable<Edge> targetEdge = edges.ToList().Where(x => x.output.portName == portToRemove.portName && x.output.node == portToRemove.node);
 
-            // If no edges got added to the list return
-            if (!targetEdge.Any()) return; 
+            // If no edges got added to the list only remove port
+            if (!targetEdge.Any()) 
+            {
+                targetNode.outputContainer.Remove(portToRemove);
+            }
+            else // If edges remove edges then remove port
+            {
+                // Get edge matching the above requirements and remove connections and then the port
+                Edge edge = targetEdge.First();
+                edge.input.Disconnect(edge);
+                RemoveElement(targetEdge.First());
 
-            // Get edge matching the above requirements and remove connections and then the port
-            Edge edge = targetEdge.First();
-            edge.input.Disconnect(edge);
-            RemoveElement(targetEdge.First());
-
-            targetNode.outputContainer.Remove(portToRemove);
-            targetNode.RefreshPorts();
-            targetNode.RefreshExpandedState();
+                targetNode.outputContainer.Remove(portToRemove);
+                targetNode.RefreshPorts();
+                targetNode.RefreshExpandedState();
+            }
         }
 
         // Generate a port

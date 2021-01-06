@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class #CLASS_NAME_HERE# : DecoratorNode
 {
+    public override void Construct(AbstractNode node)
+    {
+        _constructed = true;
+    }
+
     public override NodeStates Evaluate()
     {
         if (_constructed)

@@ -39,6 +39,8 @@ namespace BehaviourTreeEditor
         /// <param name="fileName"></param>
         public void SaveGraph(string fileName)
         {
+            string tempFileName = fileName.Replace(" ", "");
+
             // Generate data container
             BTDataContainer btContainer = ScriptableObject.CreateInstance<BTDataContainer>();
 
@@ -51,7 +53,7 @@ namespace BehaviourTreeEditor
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
                 AssetDatabase.CreateFolder("Assets", "Resources");
 
-            AssetDatabase.CreateAsset(btContainer, $"Assets/Resources/{fileName}.asset");
+            AssetDatabase.CreateAsset(btContainer, $"Assets/Resources/{tempFileName}.asset");
             AssetDatabase.SaveAssets();
         }
 
@@ -95,8 +97,10 @@ namespace BehaviourTreeEditor
                     nodeName = node.title,
                     Guid = node.GUID,
                     Position = node.GetPosition().position,
-                    nodeType = (int)node.nodeType
+                    nodeType = (int)node.nodeType,
+                    topNode = node.topNode
                 });
+
             }
 
             return true;
@@ -127,7 +131,7 @@ namespace BehaviourTreeEditor
         private void CreateExposedProperties()
         {
             // Clear current blackboard
-            _targetGraphView.ClearBlackBoardAndExposedProperties();
+            // _targetGraphView.ClearBlackBoardAndExposedProperties();
 
             // Add properties from data
             foreach (ExposedProperty exposedProperty in _containerCache.exposedProperties)
@@ -157,27 +161,28 @@ namespace BehaviourTreeEditor
         }
 
         // TODO fix this shitty ass function
-        // Problem is that we need an instance of container cache to get our connections from and theres only an instance of container cache when we load a behaviour tree into the graph view :((
-
+        // Problem is that we need an instance of container cache to get our connections from 
+        // and theres only an instance of container cache when we load a behaviour tree into the graph view :((
         /// <summary>
         /// Returns list of child nodes based on node GUID
         /// </summary>
         /// <param name="nodeGUID"></param>
         /// <returns></returns>
-        public List<Node> GetChildNodes(string nodeGUID)
+        public List<BTEditorNode> GetChildNodes(string nodeGUID)
         {
             // Update cache to contain current nodes
-            SaveNodes(_containerCache);
+            SaveGraph("temp");
+            _containerCache = Resources.Load<BTDataContainer>("temp");
 
             List<NodeLinkData> connections = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeGUID).ToList(); // Get connections from active container cache
-            List<Node> childNodes = new List<Node>();
+            List<BTEditorNode> childNodes = new List<BTEditorNode>();
 
             // Loop through connections for a given node and find its child nodes via GUID matching
             for (int i = 0; i < connections.Count; i++)
             {
                 string targetNodeGUID = connections[i].TargetNodeGuid;
 
-                Node targetNode = nodes.First(x => x.GUID == targetNodeGUID);
+                BTEditorNode targetNode = nodes.First(x => x.GUID == targetNodeGUID);
 
                 childNodes.Add(targetNode);
             }
@@ -206,12 +211,15 @@ namespace BehaviourTreeEditor
             foreach (NodeData nodeData in _containerCache.nodeData)
             {
                 // Generate node based on node data. We pass node position later so we can use zerovector while loading
-                BTEditorNode tempNode = _targetGraphView.GenerateNode(nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero);
+                BTEditorNode tempNode = _targetGraphView.GenerateNode(nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode);
                 tempNode.GUID = nodeData.Guid;
 
-                // Add ports to node based on node data
-                List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
-                nodePorts.ForEach(x => _targetGraphView.AddPort(tempNode, x.PortName));
+                // Add ports to node based on node data. If it's a decorator node the port will be generated automatically so theres no need to add ports
+                if (tempNode.nodeType != NodeTypes.Decorator)
+                {
+                    List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
+                    nodePorts.ForEach(x => _targetGraphView.AddPort(tempNode, x.PortName));
+                }
 
                 _targetGraphView.AddElement(tempNode);
             }
@@ -220,14 +228,10 @@ namespace BehaviourTreeEditor
         // Clear the editor before loading a new graph
         private void ClearGraph()
         {
-            // Set entry points guid based on save file
-            nodes.Find(x => x.topNode).GUID = _containerCache.nodeLinks[0].BaseNodeGuid;
             foreach (BTEditorNode node in nodes)
             {
-                // if (node.topNode) continue;
-
                 // Remove all connections to this node
-                edges.Where(x => x.input.node == node).ToList().ForEach(edge => _targetGraphView.RemoveElement(edge));
+                edges.Where(edge => edge.input.node == node).ToList().ForEach(edge => _targetGraphView.RemoveElement(edge));
 
                 // Then remove node
                 _targetGraphView.RemoveElement(node);

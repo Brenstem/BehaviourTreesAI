@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: cool1
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: bbd22977-8667-494f-bf98-f41ad38784bf
+    PortName: 0
+    TargetNodeGuid: 6b5242dc-605d-4467-9c83-4e398af5dd10
+  - BaseNodeGuid: bbd22977-8667-494f-bf98-f41ad38784bf
+    PortName: 1
+    TargetNodeGuid: aa244ebb-2ebd-4004-8ae4-45486d9e37ea
+  nodeData:
+  - nodeName: Top Node
+    Guid: bbd22977-8667-494f-bf98-f41ad38784bf
+    Position: {x: 100, y: 200}
+    nodeType: 0
+    topNode: 1
+  - nodeName: Selector
+    Guid: 6b5242dc-605d-4467-9c83-4e398af5dd10
+    Position: {x: 419, y: 131}
+    nodeType: 0
+    topNode: 0
+  - nodeName: Invertor
+    Guid: aa244ebb-2ebd-4004-8ae4-45486d9e37ea
+    Position: {x: 450, y: 292}
+    nodeType: 1
+    topNode: 0
+  exposedProperties: []

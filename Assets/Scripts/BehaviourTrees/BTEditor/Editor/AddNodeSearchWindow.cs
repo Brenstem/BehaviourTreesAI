@@ -94,7 +94,6 @@ namespace BehaviourTreeEditor
             // Convert it to graphview coords to spawn nodes at mouse position
             Vector2 localMousePosition = _graphView.contentViewContainer.WorldToLocal(worldMousePosition);
 
-            // TODO figure out how to spawn correct node type based on userdata
             BTEditorNode tempNode = (BTEditorNode)SearchTreeEntry.userData;
 
             _graphView.CreateNode(tempNode.nodeName, tempNode.nodeType, localMousePosition);

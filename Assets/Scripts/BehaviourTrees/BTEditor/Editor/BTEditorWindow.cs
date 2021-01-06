@@ -32,7 +32,7 @@ namespace BehaviourTreeEditor
             GenerateGraph();
             GenerateSavetoolbar();
             GenerateNodeToolbar();
-            GenerateBlackBoard();
+            // GenerateBlackBoard();
             GenerateMiniMap();
             _graphView.LoadTypeData();
         }
@@ -167,6 +167,7 @@ namespace BehaviourTreeEditor
             }
         }
 
+        // TODO finish this function
         // Generates AI usable behaviour tree thingy
         private void GenerateBehaviourTree()
         {
@@ -175,19 +176,25 @@ namespace BehaviourTreeEditor
             // Get instance of save utility to get node children
             GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
 
-            // Define behaviourtree
-            TreeNode behaviourTree;
-
             BTEditorNode tempEditorNode = _graphView.nodes.ToList()[0] as BTEditorNode;
 
-            if (tempEditorNode.nodeType == NodeTypes.Composite)
+            if (ConvertEditorNode(tempEditorNode) != null)
             {
-                saveUtility.GetChildNodes(tempEditorNode.GUID);
+                TreeNode behaviourTree = new TreeNode(ConvertEditorNode(tempEditorNode));
 
-                Debug.Log(saveUtility.GetChildNodes(tempEditorNode.GUID).Count);
+                foreach (var child in saveUtility.GetChildNodes(tempEditorNode.GUID))
+                {
+                    behaviourTree.AddChild(ConvertEditorNode(child));
+                }
             }
-        }
 
+            saveUtility.GetChildNodes(tempEditorNode.GUID);
+
+            Debug.Log(saveUtility.GetChildNodes(tempEditorNode.GUID)[1].nodeType);
+
+        }
+        
+        // Converts editor node to behaviournode
         private AbstractNode ConvertEditorNode(BTEditorNode node)
         {
             AbstractNode tempNode = null;

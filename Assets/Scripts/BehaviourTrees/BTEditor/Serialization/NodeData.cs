@@ -9,4 +9,5 @@ public class NodeData
     public string Guid;
     public Vector2 Position;
     public int nodeType;
+    public bool topNode;
 }
