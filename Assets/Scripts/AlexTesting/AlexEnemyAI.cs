@@ -26,7 +26,7 @@ public class AlexEnemyAI : MonoBehaviour
         //currentHealth = startHealth;
         ConstructBehaviourTree();
     }
-
+    
     private void Update()
     {
         topNode.Evaluate();
