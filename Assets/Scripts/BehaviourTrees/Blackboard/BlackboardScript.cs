@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BlackboardScript : ScriptableObject
+[CreateAssetMenu(fileName = "EnemyBlackboard", menuName = "ScriptableObjects/Blackboard", order = 1)]
+public class BlackboardScript : ScriptableObject
 {
-
-
-
+    public BlackboardNodeData nodeData;
+    public BlackboardLocalData localData;
+    public BlackboardGroupData groupData;
+    public BlackboardGlobalData globalData;
 }

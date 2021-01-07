@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ChaseNode : BehaviourNode<ChaseNodeParameters>
+public class ChaseNode : BehaviourNode
 {
-    private Transform target;
-    private NavMeshAgent agent;
+    BlackboardScript blackboard;
+    Transform playerTransform;
+    NavMeshAgent agent;
 
-    public override void Construct(ChaseNodeParameters parameters)
+    public override void Construct(BlackboardScript blackboard)
     {
-        target = parameters.target;
-        agent = parameters.agent;
+        this.blackboard = blackboard;
+        playerTransform = blackboard.globalData.player.transform;
+        agent = blackboard.localData.thisAI.GetComponent<NavMeshAgent>();
         _constructed = true;
     }
 
@@ -19,12 +21,12 @@ public class ChaseNode : BehaviourNode<ChaseNodeParameters>
     {
         if (_constructed)
         {
-            float distance = Vector3.Distance(target.position, agent.transform.position);
+            float distance = Vector3.Distance(playerTransform.position, agent.transform.position);
 
             if (distance >= agent.stoppingDistance)
             {
                 agent.isStopped = false;
-                agent.SetDestination(target.position);
+                agent.SetDestination(playerTransform.position);
                 return NodeStates.RUNNING;
             }
             else

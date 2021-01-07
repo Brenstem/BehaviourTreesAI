@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BehaviourNode<TParams> : AbstractNode
+public abstract class BehaviourNode : AbstractNode
 {
-    public abstract void Construct(TParams parameters);
+    public abstract void Construct(BlackboardScript blackboard);
 }

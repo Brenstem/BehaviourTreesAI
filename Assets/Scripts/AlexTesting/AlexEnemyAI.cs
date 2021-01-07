@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class AlexEnemyAI : MonoBehaviour
 {
-    //[SerializeField] private int startHealth;
+    [SerializeField] BlackboardScript blackboard;
+
     [SerializeField] private GameObject player;
 
     [Header("Behaviour parameters")]
@@ -13,8 +14,7 @@ public class AlexEnemyAI : MonoBehaviour
 
     private NavMeshAgent agent;
     private Selector topNode;
-    //private int currentHealth;
-    //public int CurrentHealth { get { return currentHealth; } set { currentHealth = Mathf.Clamp(value, 0, startHealth); } }
+
 
     private void Awake()
     {
@@ -39,18 +39,17 @@ public class AlexEnemyAI : MonoBehaviour
     private void ConstructBehaviourTree()
     {
         IdleNode idleNode = ScriptableObject.CreateInstance<IdleNode>();
-        idleNode.Construct(new IdleNodeParameters());
+        idleNode.Construct(blackboard);
         RangeNode chaseRangeNode = ScriptableObject.CreateInstance<RangeNode>();
-        chaseRangeNode.Construct(new RangeNodeParameters(chasingRange, player.transform, transform));
+        chaseRangeNode.Construct(blackboard);
         ChaseNode chaseNode = ScriptableObject.CreateInstance<ChaseNode>();
-        chaseNode.Construct(new ChaseNodeParameters(player.transform, agent));
-
-
+        chaseNode.Construct(blackboard);
 
         Sequence chaseSequence = ScriptableObject.CreateInstance<Sequence>();
         chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
 
         topNode = ScriptableObject.CreateInstance<Selector>();
+        topNode.blackboard = blackboard;
         topNode.Construct(new List<AbstractNode> { chaseSequence, idleNode });
     }
 }

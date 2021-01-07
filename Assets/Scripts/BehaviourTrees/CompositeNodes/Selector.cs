@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Selector : CompositeNode
 {
+    public BlackboardScript blackboard { get; set; }
+
     public override NodeStates Evaluate()
     {
         if (_constructed)

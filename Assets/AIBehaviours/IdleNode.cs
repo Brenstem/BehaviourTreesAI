@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleNode : BehaviourNode<IdleNodeParameters>
+public class IdleNode : BehaviourNode
 {
-    public override void Construct(IdleNodeParameters parameters) 
-    { 
+    BlackboardScript blackboard;
+    public override void Construct(BlackboardScript blackboard)
+    {
+        this.blackboard = blackboard;
         _constructed = true;
     }
 
@@ -23,7 +25,7 @@ public class IdleNode : BehaviourNode<IdleNodeParameters>
     }
 }
 
-public class IdleNodeParameters 
+public class IdleNodeParameters
 {
 
 }
