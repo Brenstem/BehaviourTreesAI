@@ -15,7 +15,6 @@ public class AlexEnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     private Selector topNode;
 
-
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -31,6 +30,7 @@ public class AlexEnemyAI : MonoBehaviour
     {
         topNode.Evaluate();
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, chasingRange);
@@ -51,5 +51,10 @@ public class AlexEnemyAI : MonoBehaviour
         topNode = ScriptableObject.CreateInstance<Selector>();
         topNode.blackboard = blackboard;
         topNode.Construct(new List<AbstractNode> { chaseSequence, idleNode });
+    }
+
+    private void ConstructBlackBoard()
+    {
+
     }
 }

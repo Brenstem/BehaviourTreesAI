@@ -29,7 +29,7 @@ MonoBehaviour:
     PortName: 0
     TargetNodeGuid: e6f81591-6d11-4fee-a613-384057883d3e
   nodeData:
-  - nodeName: Top Node
+  - nodeName: Selector
     Guid: f05d3134-8848-4cda-96cb-0803cf70a373
     Position: {x: 0, y: 0}
     nodeType: 0

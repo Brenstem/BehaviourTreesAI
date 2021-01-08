@@ -160,9 +160,6 @@ namespace BehaviourTreeEditor
             }
         }
 
-        // TODO fix this shitty ass function
-        // Problem is that we need an instance of container cache to get our connections from 
-        // and theres only an instance of container cache when we load a behaviour tree into the graph view :((
         /// <summary>
         /// Returns list of child nodes based on node GUID
         /// </summary>

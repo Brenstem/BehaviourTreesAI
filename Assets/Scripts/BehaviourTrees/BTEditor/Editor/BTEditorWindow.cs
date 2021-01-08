@@ -106,7 +106,7 @@ namespace BehaviourTreeEditor
 
             toolbar.Add(new Button(() => RequestDataOperation(true)) { text = "Save Data" });
             toolbar.Add(new Button(() => RequestDataOperation(false)) { text = "Load Data" });
-            toolbar.Add(new Button(() => GenerateBehaviourTree()) { text = "Generate Behaviour Tree"});
+            toolbar.Add(new Button(() => GenerateBehaviourTree()) { text = "Generate Behaviour Tree" });
 
             rootVisualElement.Add(toolbar);
         }
@@ -169,6 +169,9 @@ namespace BehaviourTreeEditor
 
         // TODO finish this function
         // Generates AI usable behaviour tree thingy
+
+        TreeNode behaviourTree;
+
         private void GenerateBehaviourTree()
         {
             Debug.Log("Generating...");
@@ -176,28 +179,43 @@ namespace BehaviourTreeEditor
             // Get instance of save utility to get node children
             GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
 
-            BTEditorNode tempEditorNode = _graphView.nodes.ToList()[0] as BTEditorNode;
+            BTEditorNode topNode = _graphView.nodes.ToList()[0] as BTEditorNode;
 
-            if (ConvertEditorNode(tempEditorNode) != null)
+            Debug.Log(topNode.topNode);
+
+            if (ConvertEditorNode(topNode) != null)
             {
-                TreeNode behaviourTree = new TreeNode(ConvertEditorNode(tempEditorNode));
+                behaviourTree = new TreeNode(ConvertEditorNode(topNode));
 
-                foreach (var child in saveUtility.GetChildNodes(tempEditorNode.GUID))
-                {
-                    behaviourTree.AddChild(ConvertEditorNode(child));
-                }
+                // AddNodeToTree(topNode);
             }
 
-            saveUtility.GetChildNodes(tempEditorNode.GUID);
+            saveUtility.GetChildNodes(topNode.GUID);
 
-            Debug.Log(saveUtility.GetChildNodes(tempEditorNode.GUID)[1].nodeType);
-
+            Debug.Log(saveUtility.GetChildNodes(topNode.GUID)[0].nodeType);
         }
-        
+
+        private void AddNodeToTree(BTEditorNode node)
+        {
+            GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
+
+            if (ConvertEditorNode(node) != null)
+            {
+                foreach (var child in saveUtility.GetChildNodes(node.GUID))
+                {
+                    behaviourTree.AddChild(ConvertEditorNode(child));
+
+                    AddNodeToTree(child);
+                }
+            }
+        }
+
         // Converts editor node to behaviournode
         private AbstractNode ConvertEditorNode(BTEditorNode node)
         {
             AbstractNode tempNode = null;
+
+            Debug.Log(node.nodeName);
 
             switch (node.nodeType)
             {
@@ -208,7 +226,7 @@ namespace BehaviourTreeEditor
                     tempNode = CreateInstance(node.nodeName) as DecoratorNode;
                     break;
                 case NodeTypes.Behaviour:
-                    tempNode = CreateInstance(node.nodeName) as AbstractNode;
+                    tempNode = CreateInstance(node.nodeName) as BehaviourNode;
                     break;
                 default:
                     break;

@@ -7,6 +7,6 @@ public class BlackboardScript : ScriptableObject
 {
     public BlackboardNodeData nodeData;
     public BlackboardLocalData localData;
-    public BlackboardGroupData groupData;
+    // public BlackboardGroupData groupData;
     public BlackboardGlobalData globalData;
 }
