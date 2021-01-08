@@ -16,14 +16,16 @@ public class AlexEnemyAI : MonoBehaviour
     private Selector topNode;
     public Health health { get; private set; }
 
+    public static BlackBoardProperty<float> aggroRange { get; private set; }
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        aggroRange = new BlackBoardProperty<float>("aggroRange", chasingRange);
     }
 
     private void Start()
     {
-        //currentHealth = startHealth;
         ConstructBlackBoard();
         ConstructBehaviourTree();
     }
@@ -46,8 +48,6 @@ public class AlexEnemyAI : MonoBehaviour
         chaseRangeNode.Construct(blackboard);
         ChaseNode chaseNode = ScriptableObject.CreateInstance<ChaseNode>();
         chaseNode.Construct(blackboard);
-        HealthNode healthCheck = ScriptableObject.CreateInstance<HealthNode>();
-        healthCheck.Construct(blackboard);
 
         Sequence chaseSequence = ScriptableObject.CreateInstance<Sequence>();
         chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
@@ -61,11 +61,10 @@ public class AlexEnemyAI : MonoBehaviour
     {
         blackboard = new Context();
 
-        blackboard.nodeData = new Enemy1NodeBoard();
-        blackboard.nodeData.aggroRange = chasingRange;
+        blackboard.nodeData = new NodeBoard();
+        blackboard.nodeData.Add<float>(aggroRange);
 
-        blackboard.localData = new LocalBoard();
-        blackboard.localData.thisAI = this;
+        blackboard.localData = new LocalBoard(this.gameObject);
 
         blackboard.globalData = new GlobalBoard();
         blackboard.globalData.player = player;

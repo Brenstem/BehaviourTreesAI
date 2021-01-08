@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class HealthNode : BehaviourNode
 {
-    private AlexEnemyAI ai;
+    private Health aiHealth;
     private float threshold;
 
     public override void Construct(Context context)
     {
         this.context = context;
-        ai = context.localData.thisAI;
+        aiHealth = context.localData.thisAI.GetComponent<Health>();
+        threshold = context.nodeData.Get<float>("healthThreshold");
 
         _constructed = true;
     }
@@ -19,7 +20,7 @@ public class HealthNode : BehaviourNode
     {
         if (_constructed)
         {
-            return ai.health.currentHealth <= threshold ? NodeStates.SUCCESS : NodeStates.FAILURE;
+            return aiHealth.currentHealth <= threshold ? NodeStates.SUCCESS : NodeStates.FAILURE;
         }
         else
         {

@@ -5,5 +5,10 @@ using UnityEngine.AI;
 
 public class LocalBoard
 {
-    public AlexEnemyAI thisAI;
+    public GameObject thisAI { get; private set; }
+
+    public LocalBoard(GameObject thisAI)
+    {
+        this.thisAI = thisAI;
+    }
 }

@@ -13,7 +13,7 @@ public class RangeNode : BehaviourNode
         this.context = blackboard;
         playerTransform = blackboard.globalData.player.transform;
         myTransform = blackboard.localData.thisAI.transform;
-        aggroRange = blackboard.nodeData.aggroRange;
+        aggroRange = blackboard.nodeData.Get<float>("meme");
 
         _constructed = true;
     }

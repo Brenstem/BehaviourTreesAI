@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Context
 {
-    public Enemy1NodeBoard nodeData;
+    public NodeBoard nodeData;
     public LocalBoard localData;
-    // public BlackboardGroupData groupData;
     public GlobalBoard globalData;
 }
