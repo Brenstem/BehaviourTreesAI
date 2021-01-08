@@ -7,4 +7,5 @@ public class Context
     public NodeBoard nodeData;
     public LocalBoard localData;
     public GlobalBoard globalData;
+    public BaseAI owner;
 }

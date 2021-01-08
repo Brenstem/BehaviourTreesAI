@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AlexEnemyAI : BaseAI
+public class AlexEnemyAI1 : BaseAI
 {
-    /*TODO
-    kolla om vi kan fixa återavnändning av ex range node i samma tree
-    annars slå ihop dem med de dem används för
-    */
     private Context blackboard;
 
     [SerializeField] private GameObject player;

@@ -12,8 +12,8 @@ public class RangeNode : Action
     {
         this.context = blackboard;
         playerTransform = blackboard.globalData.player.transform;
-        myTransform = blackboard.localData.thisAI.transform;
-        aggroRange = blackboard.nodeData.Get<float>("meme");
+        myTransform = blackboard.owner.transform;
+        aggroRange = blackboard.nodeData.Get<float>("aggroRange");
 
         _constructed = true;
     }
@@ -22,7 +22,7 @@ public class RangeNode : Action
     {
         if (_constructed)
         {
-            float distance = Vector3.Distance(myTransform.position, playerTransform.position);
+            float distance = Vector3.Distance(context.owner.transform.position, playerTransform.position);
 
             return distance <= aggroRange ? NodeStates.SUCCESS : NodeStates.FAILURE;
         }
@@ -31,6 +31,17 @@ public class RangeNode : Action
             Debug.LogError("Node not constructed!");
             return NodeStates.FAILURE;
         }
+        //if (_constructed)
+        //{
+        //    float distance = Vector3.Distance(myTransform.position, playerTransform.position);
+
+        //    return distance <= aggroRange ? NodeStates.SUCCESS : NodeStates.FAILURE;
+        //}
+        //else
+        //{
+        //    Debug.LogError("Node not constructed!");
+        //    return NodeStates.FAILURE;
+        //}
     }
 }
 

@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 293495303}
   - component: {fileID: 293495309}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,6 +410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b023c64d190384294622a94fba4740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  behaviorTree: {fileID: 11400000, guid: 7f9d1b392c526be4291aee249ddd862b, type: 2}
   player: {fileID: 175408857}
   chasingRange: 7
 --- !u!136 &293495304
@@ -865,10 +867,10 @@ GameObject:
   - component: {fileID: 1939238759}
   - component: {fileID: 1939238758}
   - component: {fileID: 1939238757}
-  - component: {fileID: 1939238756}
   - component: {fileID: 1939238755}
+  - component: {fileID: 1939238756}
   m_Layer: 0
-  m_Name: Enemy (1)
+  m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -900,11 +902,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1939238754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b023c64d190384294622a94fba4740, type: 3}
+  m_Script: {fileID: 11500000, guid: a185c6a0aafe09e40874ad9431737b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  behaviorTree: {fileID: 11400000, guid: bf47dc50d5527284492172eb6eac4054, type: 2}
   player: {fileID: 175408857}
-  chasingRange: 7
+  chasingRange: 4
 --- !u!195 &1939238757
 NavMeshAgent:
   m_ObjectHideFlags: 0

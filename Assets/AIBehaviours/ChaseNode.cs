@@ -5,15 +5,16 @@ using UnityEngine.AI;
 
 public class ChaseNode : Action
 {
-    Context blackboard;
+    //Context blackboard;
     Transform playerTransform;
     NavMeshAgent agent;
 
     public override void Construct(Context blackboard)
     {
-        this.blackboard = blackboard;
+        this.context = blackboard;
         playerTransform = blackboard.globalData.player.transform;
-        agent = blackboard.localData.thisAI.GetComponent<NavMeshAgent>();
+        //agent = blackboard.localData.thisAI.GetComponent<NavMeshAgent>();
+        agent = blackboard.owner.agent;
         _constructed = true;
     }
 
@@ -21,6 +22,8 @@ public class ChaseNode : Action
     {
         if (_constructed)
         {
+            agent = context.owner.agent;
+
             float distance = Vector3.Distance(playerTransform.position, agent.transform.position);
 
             if (distance >= agent.stoppingDistance)
