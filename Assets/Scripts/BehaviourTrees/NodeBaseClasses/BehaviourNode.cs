@@ -4,5 +4,7 @@ using UnityEngine;
 
 public abstract class BehaviourNode : AbstractNode
 {
-    public abstract void Construct(BlackboardScript blackboard);
+    protected Context context;
+
+    public abstract void Construct(Context blackboard);
 }

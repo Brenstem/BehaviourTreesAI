@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class RangeNode : BehaviourNode
 {
-    BlackboardScript blackboard;
     Transform playerTransform;
     Transform myTransform;
     float aggroRange;
 
-    public override void Construct(BlackboardScript blackboard)
+    public override void Construct(Context blackboard)
     {
-        this.blackboard = blackboard;
+        this.context = blackboard;
         playerTransform = blackboard.globalData.player.transform;
         myTransform = blackboard.localData.thisAI.transform;
         aggroRange = blackboard.nodeData.aggroRange;

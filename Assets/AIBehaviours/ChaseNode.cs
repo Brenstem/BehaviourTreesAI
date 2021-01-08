@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class ChaseNode : BehaviourNode
 {
-    BlackboardScript blackboard;
+    Context blackboard;
     Transform playerTransform;
     NavMeshAgent agent;
 
-    public override void Construct(BlackboardScript blackboard)
+    public override void Construct(Context blackboard)
     {
         this.blackboard = blackboard;
         playerTransform = blackboard.globalData.player.transform;

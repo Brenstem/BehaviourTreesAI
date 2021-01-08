@@ -32,7 +32,7 @@ namespace BehaviourTreeEditor
             GenerateGraph();
             GenerateSavetoolbar();
             GenerateNodeToolbar();
-            // GenerateBlackBoard();
+            GenerateBlackBoard();
             GenerateMiniMap();
             _graphView.LoadTypeData();
         }

@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
     public event OnDamaged TookDamage;
 
     [SerializeField] private float startingHealth;
-    [SerializeField] private float currentHealth;
+    [SerializeField] public float currentHealth { get; private set; }
     [SerializeField] public bool invulnerable;
     [SerializeField] private Slider healthbar;
 

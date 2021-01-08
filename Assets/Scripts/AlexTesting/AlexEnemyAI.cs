@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AlexEnemyAI : MonoBehaviour
 {
-    [SerializeField] BlackboardScript blackboard;
+    private Context blackboard;
 
     [SerializeField] private GameObject player;
 
@@ -14,6 +14,7 @@ public class AlexEnemyAI : MonoBehaviour
 
     private NavMeshAgent agent;
     private Selector topNode;
+    public Health health { get; private set; }
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class AlexEnemyAI : MonoBehaviour
     private void Start()
     {
         //currentHealth = startHealth;
+        ConstructBlackBoard();
         ConstructBehaviourTree();
     }
     
@@ -44,6 +46,8 @@ public class AlexEnemyAI : MonoBehaviour
         chaseRangeNode.Construct(blackboard);
         ChaseNode chaseNode = ScriptableObject.CreateInstance<ChaseNode>();
         chaseNode.Construct(blackboard);
+        HealthNode healthCheck = ScriptableObject.CreateInstance<HealthNode>();
+        healthCheck.Construct(blackboard);
 
         Sequence chaseSequence = ScriptableObject.CreateInstance<Sequence>();
         chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
@@ -55,6 +59,15 @@ public class AlexEnemyAI : MonoBehaviour
 
     private void ConstructBlackBoard()
     {
+        blackboard = new Context();
 
+        blackboard.nodeData = new Enemy1NodeBoard();
+        blackboard.nodeData.aggroRange = chasingRange;
+
+        blackboard.localData = new LocalBoard();
+        blackboard.localData.thisAI = this;
+
+        blackboard.globalData = new GlobalBoard();
+        blackboard.globalData.player = player;
     }
 }

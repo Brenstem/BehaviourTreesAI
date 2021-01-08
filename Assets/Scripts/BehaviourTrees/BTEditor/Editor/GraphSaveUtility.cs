@@ -131,7 +131,7 @@ namespace BehaviourTreeEditor
         private void CreateExposedProperties()
         {
             // Clear current blackboard
-            // _targetGraphView.ClearBlackBoardAndExposedProperties();
+            _targetGraphView.ClearBlackBoardAndExposedProperties();
 
             // Add properties from data
             foreach (ExposedProperty exposedProperty in _containerCache.exposedProperties)

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class IdleNode : BehaviourNode
 {
-    BlackboardScript blackboard;
-    public override void Construct(BlackboardScript blackboard)
+    Context blackboard;
+    public override void Construct(Context blackboard)
     {
         this.blackboard = blackboard;
         _constructed = true;
