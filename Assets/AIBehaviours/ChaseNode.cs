@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ChaseNode : BehaviourNode
+public class ChaseNode : Action
 {
     Context blackboard;
     Transform playerTransform;

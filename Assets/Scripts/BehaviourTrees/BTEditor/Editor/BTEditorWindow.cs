@@ -226,7 +226,7 @@ namespace BehaviourTreeEditor
                     tempNode = CreateInstance(node.nodeName) as DecoratorNode;
                     break;
                 case NodeTypes.Behaviour:
-                    tempNode = CreateInstance(node.nodeName) as BehaviourNode;
+                    tempNode = CreateInstance(node.nodeName) as Action;
                     break;
                 default:
                     break;

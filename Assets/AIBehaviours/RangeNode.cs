@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeNode : BehaviourNode
+public class RangeNode : Action
 {
     Transform playerTransform;
     Transform myTransform;

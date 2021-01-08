@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleNode : BehaviourNode
+public class IdleNode : Action
 {
     Context blackboard;
     public override void Construct(Context blackboard)

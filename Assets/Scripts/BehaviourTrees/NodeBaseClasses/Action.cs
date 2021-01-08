@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BehaviourNode : AbstractNode
+public abstract class Action : AbstractNode
 {
     protected Context context;
 

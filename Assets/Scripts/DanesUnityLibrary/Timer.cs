@@ -9,9 +9,9 @@ public class Timer
     private float currentTime;
     private bool done;
     public bool Done { get { return done; } }
-    public Action eventCallback;
+    public System.Action eventCallback;
 
-    public Timer(float time, Action eventCallback = null)
+    public Timer(float time, System.Action eventCallback = null)
     {
         startTime = time;
         currentTime = startTime;
