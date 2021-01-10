@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class IdleNode : Action
 {
-    Context blackboard;
     public override void Construct(Context blackboard)
     {
-        this.blackboard = blackboard;
+        context = blackboard;
         _constructed = true;
     }
 

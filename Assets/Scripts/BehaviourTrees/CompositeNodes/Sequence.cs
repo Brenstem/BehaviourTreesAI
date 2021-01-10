@@ -8,6 +8,8 @@ public class Sequence : CompositeNode
     {
         if (_constructed)
         {
+            Debug.Log(nodes.Count);
+
             bool isAnyNodeRunning = false;
 
             foreach (AbstractNode node in nodes)

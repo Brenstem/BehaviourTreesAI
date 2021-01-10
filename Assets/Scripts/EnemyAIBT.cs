@@ -16,8 +16,13 @@ public class EnemyAIBT : ScriptableObject
         //måste ha för att ScriptableObject
         _generated = false;
 
-        Debug.Log(topNode);
+        // Debug.Log(topNode);
     }
+
+    public void SetTopNode(Selector topNode)
+    {
+        this.topNode = topNode;
+    } 
 
     public void ConstructBehaviourTree()
     {

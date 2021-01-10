@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: cool1
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    PortName: 0
-    TargetNodeGuid: d3da41f0-29e7-463d-b9d3-d5f33ffa2bc3
   - BaseNodeGuid: d3da41f0-29e7-463d-b9d3-d5f33ffa2bc3
     PortName: 0
     TargetNodeGuid: 33232ee3-4a17-477c-843d-505d1fdefcd7
   - BaseNodeGuid: d3da41f0-29e7-463d-b9d3-d5f33ffa2bc3
     PortName: 1
     TargetNodeGuid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
+  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
+    PortName: 0
+    TargetNodeGuid: d3da41f0-29e7-463d-b9d3-d5f33ffa2bc3
   nodeData:
   - nodeTitle: Sequence
     nodeName: Sequence
@@ -44,7 +44,7 @@ MonoBehaviour:
   - nodeTitle: Selector
     nodeName: Selector
     Guid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    Position: {x: 81, y: 204}
+    Position: {x: 0, y: 0}
     nodeType: 0
     topNode: 1
   exposedProperties: []

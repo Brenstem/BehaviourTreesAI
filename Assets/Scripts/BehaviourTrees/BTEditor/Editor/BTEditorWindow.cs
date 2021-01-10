@@ -177,23 +177,23 @@ namespace BehaviourTreeEditor
             EnemyAIBT behaviourTree = CreateInstance<EnemyAIBT>();
             BTEditorNode topNode = GetTopNode();
 
+            CompositeNode tempTopNode = null;
+
             // Create rest of nodes here
             if (ConvertEditorNode(topNode) != null)
             {
-                InitializeNodes(topNode);
+                tempTopNode = InitializeNodes(topNode);
             }
 
-            Debug.Log((CompositeNode)ConvertEditorNode(topNode));
+            // Debug.Log((CompositeNode)ConvertEditorNode(topNode));
 
-            Selector temp = (Selector)ConvertEditorNode(topNode);
-
-            behaviourTree.topNode = temp;
+            // behaviourTree.SetTopNode();
 
             // Put savefile in Assets/BTResources
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
                 AssetDatabase.CreateFolder("Assets", "Resources");
 
-            AssetDatabase.CreateAsset(behaviourTree, $"Assets/Resources/{_fileName}BehaviourTree.asset");
+            AssetDatabase.CreateAsset(tempTopNode, $"Assets/Resources/{_fileName}BehaviourTree.asset");
             AssetDatabase.SaveAssets();
 
             Debug.Log("I have been generated");
@@ -213,7 +213,9 @@ namespace BehaviourTreeEditor
             return null;
         }
 
-        private void InitializeNodes(BTEditorNode node)
+        Context context = new Context();
+
+        private CompositeNode InitializeNodes(BTEditorNode node)
         {
             GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
 
@@ -233,25 +235,40 @@ namespace BehaviourTreeEditor
 
                         CompositeNode tempCompositeNode = CreateInstance(node.nodeName) as CompositeNode;
 
+                        // TODO we need to get references to the constructed children instead of instatiating new instances of them here
+                        // Maybe use an external list or dictionary with node.GUID as key to do this?
                         foreach (var child in childEditorNodes)
                             childNodes.Add(ConvertEditorNode(child));
 
                         tempCompositeNode.Construct(childNodes);
+
+                        Debug.Log("Constructed: " + node.title);
+
+                        if (node.topNode)
+                        {
+                            Debug.Log("top node: " + node.title);
+                            return tempCompositeNode;
+                        }
                         break;
 
                     case NodeTypes.Decorator:
                         DecoratorNode tempDecoratorNode = CreateInstance(node.nodeName) as DecoratorNode;
                         tempDecoratorNode.Construct(ConvertEditorNode(saveUtility.GetChildNodes(node.GUID)[0]));
+
+                        Debug.Log("Constructed: " + node.title);
                         break;
 
                     case NodeTypes.Behaviour:
                         Action tempActionNode = CreateInstance(node.nodeName) as Action;
-                        tempActionNode.Construct(Activator.CreateInstance<Context>()); // TODO this is stupid fix ur blackboard bitch
+                        tempActionNode.Construct(context); // TODO this is stupid fix ur blackboard bitch
+
+                        Debug.Log("Constructed: " + node.title);
                         break;
                     default:
                         break;
                 }
             }
+            return null;
         }
 
         // Converts editor node to behaviournode

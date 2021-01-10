@@ -6,7 +6,8 @@ public class DebugNode : Action
 {
     public override void Construct(Context blackboard)
     {
-
+        Debug.Log("WTF");
+        context = blackboard;
 
         _constructed = true;
     }
