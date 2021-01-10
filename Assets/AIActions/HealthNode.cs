@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthNode : BehaviourNode<HealthNodeParameters>
+public class HealthNode : Action
 {
-    private EnemyAI ai;
+    private Health aiHealth;
     private float threshold;
 
-    public override void Construct(HealthNodeParameters parameters)
+    public override void Construct(Context context)
     {
-        ai = parameters.ai;
-        threshold = parameters.threshold;
+        this.context = context;
+        aiHealth = context.localData.thisAI.GetComponent<Health>();
+        threshold = context.nodeData.Get<float>("healthThreshold");
 
         _constructed = true;
     }
@@ -19,7 +20,7 @@ public class HealthNode : BehaviourNode<HealthNodeParameters>
     {
         if (_constructed)
         {
-            return ai.CurrentHealth <= threshold ? NodeStates.SUCCESS : NodeStates.FAILURE;
+            return aiHealth.currentHealth <= threshold ? NodeStates.SUCCESS : NodeStates.FAILURE;
         }
         else
         {

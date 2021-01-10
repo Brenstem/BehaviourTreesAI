@@ -29,7 +29,7 @@ public class Selector : CompositeNode
         }
         else
         {
-            Debug.LogError("Node not constructed!");
+            Debug.LogError("Node not constructed! " + this.name);
             return NodeStates.FAILURE;
         }
     }

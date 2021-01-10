@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         currentHealth = startHealth;
-        ConstructBehaviourTree();
+        //ConstructBehaviourTree();
     }
 
     private void Update()
@@ -47,20 +47,20 @@ public class EnemyAI : MonoBehaviour
         print("ded");
     }
 
-    private void ConstructBehaviourTree()
-    {
-        IdleNode idleNode = new IdleNode();
-        RangeNode chaseRangeNode = new RangeNode();
-        chaseRangeNode.Construct(new RangeNodeParameters(chasingRange, player.transform, transform));
-        ChaseNode chaseNode = new ChaseNode();
-        chaseNode.Construct(new ChaseNodeParameters(player.transform, agent));
+    //private void ConstructBehaviourTree()
+    //{
+    //    IdleNode idleNode = new IdleNode();
+    //    RangeNode chaseRangeNode = new RangeNode();
+    //    chaseRangeNode.Construct(new RangeNodeParameters(chasingRange, player.transform, transform));
+    //    ChaseNode chaseNode = new ChaseNode();
+    //    chaseNode.Construct(new ChaseNodeParameters(player.transform, agent));
 
-        Sequence chaseSequence = new Sequence();
-        chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
+    //    Sequence chaseSequence = new Sequence();
+    //    chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
 
-        topNode = new Selector();
-        topNode.Construct(new List<AbstractNode> { chaseSequence, idleNode });
-    }
+    //    topNode = new Selector();
+    //    topNode.Construct(new List<AbstractNode> { chaseSequence, idleNode });
+    //}
 
     private void OnDrawGizmos()
     {
