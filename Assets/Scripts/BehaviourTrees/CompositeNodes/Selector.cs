@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Selector : CompositeNode
 {
-    public Context blackboard { get; set; }
-
     public override NodeStates Evaluate()
     {
         if (_constructed)
@@ -31,7 +29,7 @@ public class Selector : CompositeNode
         }
         else
         {
-            Debug.LogError("Node not constructed!");
+            Debug.LogError("Node not constructed! " + this.name);
             return NodeStates.FAILURE;
         }
     }

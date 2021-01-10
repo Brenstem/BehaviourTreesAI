@@ -5,17 +5,26 @@ using UnityEngine;
 public class RangeNode : Action
 {
     Transform playerTransform;
-    Transform myTransform;
-    float aggroRange;
+    //Transform myTransform;
+    float range;
 
     public override void Construct(Context blackboard)
     {
         this.context = blackboard;
         playerTransform = blackboard.globalData.player.transform;
-        myTransform = blackboard.owner.transform;
-        aggroRange = blackboard.nodeData.Get<float>("aggroRange");
+        //myTransform = blackboard.owner.transform;
+        //range = blackboard.nodeData.Get<float>("aggroRange");
 
         _constructed = true;
+    }
+    
+    public void AddProperty(BlackBoardProperty<float> range)
+    {
+        this.range = context.nodeData.Get<float>(range);
+    }
+    public void AddProperty(float range)
+    {
+        this.range = range;
     }
 
     public override NodeStates Evaluate()
@@ -24,7 +33,7 @@ public class RangeNode : Action
         {
             float distance = Vector3.Distance(context.owner.transform.position, playerTransform.position);
 
-            return distance <= aggroRange ? NodeStates.SUCCESS : NodeStates.FAILURE;
+            return distance <= range ? NodeStates.SUCCESS : NodeStates.FAILURE;
         }
         else
         {

@@ -26,9 +26,7 @@ public class Sequence : CompositeNode
                         break;
                 }
             }
-
             _nodeState = isAnyNodeRunning ? NodeStates.RUNNING : NodeStates.SUCCESS;
-
             return _nodeState;
         }
         else

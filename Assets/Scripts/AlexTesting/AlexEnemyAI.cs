@@ -5,63 +5,45 @@ using UnityEngine.AI;
 
 public class AlexEnemyAI : BaseAI
 {
-    /*TODO
-    kolla om vi kan fixa återavnändning av ex range node i samma tree
-    annars slå ihop dem med de dem används för
-    */
     private Context blackboard;
 
     [SerializeField] private GameObject player;
 
     [Header("Behaviour parameters")]
-    [SerializeField] private float chasingRange;
+    [SerializeField] private float aggroRange;
+    [SerializeField] private float attackRange;
 
     //private Selector topNode;
 
-    public static BlackBoardProperty<float> aggroRange { get; private set; }
+    public static BlackBoardProperty<float> aggroRangeProperty { get; private set; }
+    public static BlackBoardProperty<float> attackRangeProperty { get; private set; }
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        aggroRange = new BlackBoardProperty<float>("aggroRange", chasingRange);
+        aggroRangeProperty = new BlackBoardProperty<float>("aggroRange", aggroRange);
+        attackRangeProperty = new BlackBoardProperty<float>("attackRange", attackRange);
     }
 
     private void Start()
     {
         ConstructBlackBoard();
         behaviorTree.ConstructBehaviourTree();
-        //ConstructBehaviourTree();
     }
     
     private void Update()
     {
         behaviorTree.blackboard.owner = this;
         behaviorTree.topNode.Evaluate();
-        //topNode.Evaluate();
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, chasingRange);
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
-
-    //private void ConstructBehaviourTree()
-    //{
-    //    IdleNode idleNode = ScriptableObject.CreateInstance<IdleNode>();
-    //    idleNode.Construct(blackboard);
-    //    RangeNode chaseRangeNode = ScriptableObject.CreateInstance<RangeNode>();
-    //    chaseRangeNode.Construct(blackboard);
-    //    ChaseNode chaseNode = ScriptableObject.CreateInstance<ChaseNode>();
-    //    chaseNode.Construct(blackboard);
-
-    //    Sequence chaseSequence = ScriptableObject.CreateInstance<Sequence>();
-    //    chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
-
-    //    topNode = ScriptableObject.CreateInstance<Selector>();
-    //    topNode.blackboard = blackboard;
-    //    topNode.Construct(new List<AbstractNode> { chaseSequence, idleNode });
-    //}
 
     private void ConstructBlackBoard()
     {
@@ -70,7 +52,8 @@ public class AlexEnemyAI : BaseAI
             blackboard = new Context();
 
             blackboard.nodeData = new NodeBoard();
-            blackboard.nodeData.Add<float>(aggroRange);
+            blackboard.nodeData.Add<float>(aggroRangeProperty);
+            blackboard.nodeData.Add<float>(attackRangeProperty);
 
             blackboard.localData = new LocalBoard(this.gameObject);
 
