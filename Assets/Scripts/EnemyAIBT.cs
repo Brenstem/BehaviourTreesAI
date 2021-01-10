@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviorTrees/EnemyAIBT", order = 0)]
 public class EnemyAIBT : ScriptableObject
 {
-    public Selector topNode;
+    [HideInInspector] public Selector topNode;
 
     [HideInInspector] public Context blackboard;
 
@@ -28,13 +28,13 @@ public class EnemyAIBT : ScriptableObject
 
             RangeNode chaseRangeNode = ScriptableObject.CreateInstance<RangeNode>();
             chaseRangeNode.Construct(blackboard);
-            chaseRangeNode.AddProperty(blackboard.nodeData.Get<float>("aggroRange"));
+            chaseRangeNode.AddProperties(new string[] { "aggroRange" });
             ChaseNode chaseNode = ScriptableObject.CreateInstance<ChaseNode>();
             chaseNode.Construct(blackboard);
 
             RangeNode attackRangeNode = ScriptableObject.CreateInstance<RangeNode>();
             attackRangeNode.Construct(blackboard);
-            attackRangeNode.AddProperty(blackboard.nodeData.Get<float>("attackRange"));
+            attackRangeNode.AddProperties(new string[] { "attackRange" });
             DebugNode debugNode = ScriptableObject.CreateInstance<DebugNode>();
             debugNode.Construct(blackboard);
 
@@ -51,11 +51,8 @@ public class EnemyAIBT : ScriptableObject
 
 
             topNode = ScriptableObject.CreateInstance<Selector>();
-            //topNode.Construct(new List<AbstractNode> { chaseSequence, idleNode });
             topNode.Construct(new List<AbstractNode> { behaviorSelector, idleNode });
 
-
-            //FIXA!!!
             _generated = true;
 
             Debug.Log("BT generated");

@@ -13,10 +13,8 @@ public class AlexEnemyAI : BaseAI
     [SerializeField] private float aggroRange;
     [SerializeField] private float attackRange;
 
-    //private Selector topNode;
-
-    public static BlackBoardProperty<float> aggroRangeProperty { get; private set; }
-    public static BlackBoardProperty<float> attackRangeProperty { get; private set; }
+    public BlackBoardProperty<float> aggroRangeProperty { get; private set; }
+    public BlackBoardProperty<float> attackRangeProperty { get; private set; }
 
     private void Awake()
     {
@@ -61,7 +59,7 @@ public class AlexEnemyAI : BaseAI
             blackboard.globalData.player = player;
 
             behaviorTree.blackboard = blackboard;
-            print("black borad generated");
+            print("black borat generated");
             
             behaviorTree.blackboard.owner = this;
         }
