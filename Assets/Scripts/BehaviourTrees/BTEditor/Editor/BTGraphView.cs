@@ -223,6 +223,7 @@ namespace BehaviourTreeEditor
             BTEditorNode node = new BTEditorNode
             {
                 title = nodeName,
+                nodeName = "Selector",
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Composite,
                 topNode = true,
@@ -238,7 +239,7 @@ namespace BehaviourTreeEditor
             // Create and add text field for title input
             TextField textField = new TextField
             {
-                name = string.Empty,
+                name = nodeName,
                 value = "Top Node"
             };
 
@@ -272,31 +273,31 @@ namespace BehaviourTreeEditor
         /// </summary>
         /// <param name="nodename"></param>
         /// <param name="type"></param>
-        public void CreateNode(string nodename, NodeTypes type, Vector2 position, bool isTopNode = false)
+        public void CreateNode(string nodeTitle, string nodename, NodeTypes type, Vector2 position, bool isTopNode = false)
         {
-            AddElement(GenerateNode(nodename, type, position, isTopNode));
+            AddElement(GenerateNode(nodeTitle, nodename, type, position, isTopNode));
         }
 
         /// <summary>
         /// Generates and returns an node instance without adding it to the editor window
         /// </summary>
-        /// <param name="nodeName"></param>
+        /// <param name="nodeTitle"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public BTEditorNode GenerateNode(string nodeName, NodeTypes type, Vector2 position, bool isTopNode = false)
+        public BTEditorNode GenerateNode(string nodeTitle, string nodeName, NodeTypes type, Vector2 position, bool isTopNode = false)
         {
             BTEditorNode node = null;
 
             switch (type)
             {
                 case NodeTypes.Composite:
-                    node = GenerateCompositeNode(nodeName, position, isTopNode);
+                    node = GenerateCompositeNode(nodeTitle, nodeName, position, isTopNode);
                     break;
                 case NodeTypes.Decorator:
-                    node = GenerateDecoratorNode(nodeName, position, isTopNode);
+                    node = GenerateDecoratorNode(nodeTitle, nodeName, position, isTopNode);
                     break;
                 case NodeTypes.Behaviour:
-                    node = GenerateBehaviourNode(nodeName, position, isTopNode);
+                    node = GenerateBehaviourNode(nodeTitle, nodeName, position, isTopNode);
                     break;
                 default:
                     break;
@@ -305,11 +306,12 @@ namespace BehaviourTreeEditor
         }
 
         // Generate composite type node
-        private BTEditorNode GenerateCompositeNode(string nodeName, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateCompositeNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = nodeName,
+                title = name,
+                nodeName = name,  
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Composite,
                 topNode = isTopNode
@@ -326,7 +328,7 @@ namespace BehaviourTreeEditor
             TextField textField = new TextField
             {
                 name = string.Empty,
-                value = nodeName
+                value = name
             };
 
             textField.RegisterValueChangedCallback(evt => node.title = evt.newValue);
@@ -350,11 +352,12 @@ namespace BehaviourTreeEditor
         }
 
         // Generate behaviour node
-        private BTEditorNode GenerateBehaviourNode(string nodeName, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateBehaviourNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = nodeName,
+                title = name,
+                nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Behaviour,
                 topNode = isTopNode
@@ -371,7 +374,7 @@ namespace BehaviourTreeEditor
             TextField textField = new TextField
             {
                 name = string.Empty,
-                value = nodeName
+                value = name
             };
 
             textField.RegisterValueChangedCallback(evt => node.title = evt.newValue);
@@ -390,11 +393,12 @@ namespace BehaviourTreeEditor
         }
 
         // Generate decorator node
-        private BTEditorNode GenerateDecoratorNode(string nodeName, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateDecoratorNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = nodeName,
+                title = name,
+                nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Decorator,
                 topNode = isTopNode
@@ -411,7 +415,7 @@ namespace BehaviourTreeEditor
             TextField textField = new TextField
             {
                 name = string.Empty,
-                value = nodeName
+                value = name
             };
 
             textField.RegisterValueChangedCallback(evt => node.title = evt.newValue);

@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class NodeData
 {
+    public string nodeTitle;
     public string nodeName;
     public string Guid;
     public Vector2 Position;

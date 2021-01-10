@@ -15,6 +15,7 @@ public class IdleNode : Action
     {
         if (_constructed)
         {
+            Debug.Log("NOT MEME!!!");
             return NodeStates.SUCCESS;
         }
         else

@@ -9,18 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dc819be525a3694e96c487bcbec6e4e, type: 3}
-  m_Name: TypeData
+  m_Script: {fileID: 11500000, guid: 1d7c25d3ab9dd494dbbdf1cceb02225d, type: 3}
+  m_Name: cool1BehaviourTree
   m_EditorClassIdentifier: 
-  behaviourNodes:
-  - Cool
-  - ChaseNode
-  - HealthNode
-  - IdleNode
-  - RangeNode
-  - DebugNode
-  compositeNodes:
-  - Selector
-  - Sequence
-  decoratorNodes:
-  - Invertor
+  topNode: {fileID: 0}
