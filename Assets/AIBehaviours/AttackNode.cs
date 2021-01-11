@@ -1,12 +1,15 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleNode : Action
+public class AttackNode : Action
 {
+    HitBoxController hitBox;
+
     public override void Construct(Context blackboard)
     {
         context = blackboard;
+        hitBox = blackboard.localData.thisAI.GetComponentInChildren<HitBoxController>();
         _constructed = true;
     }
 
@@ -14,7 +17,8 @@ public class IdleNode : Action
     {
         if (_constructed)
         {
-            //Debug.Log("NOT MEME!!!");
+            hitBox.ExposeHitBox();
+            Debug.Log("Attacking");
             return NodeStates.SUCCESS;
         }
         else
@@ -25,7 +29,7 @@ public class IdleNode : Action
     }
 }
 
-public class IdleNodeParameters
-{
+//public class AttackNodeParameters
+//{
 
-}
+//}

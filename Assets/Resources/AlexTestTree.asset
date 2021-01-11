@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: AlexTestTree
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: 4c1065a6-39a0-4dde-b75f-25f67204383d
+    PortName: 0
+    TargetNodeGuid: 11828005-e59e-412d-9e48-f2e27e5cd6bf
+  - BaseNodeGuid: 11828005-e59e-412d-9e48-f2e27e5cd6bf
+    PortName: 0
+    TargetNodeGuid: 89a8ca93-c0a8-4a3d-8f1c-c7db4582a9d4
+  - BaseNodeGuid: 11828005-e59e-412d-9e48-f2e27e5cd6bf
+    PortName: 1
+    TargetNodeGuid: fb72ecba-f7f6-4dd1-b385-fb4c0c338e69
+  - BaseNodeGuid: 47d38bd9-ed4e-4779-b19c-f9e0091a82ef
+    PortName: 0
+    TargetNodeGuid: a12dac96-5998-44d1-9c10-2c777ef8e530
+  - BaseNodeGuid: 4c1065a6-39a0-4dde-b75f-25f67204383d
+    PortName: 1
+    TargetNodeGuid: 47d38bd9-ed4e-4779-b19c-f9e0091a82ef
+  - BaseNodeGuid: 47d38bd9-ed4e-4779-b19c-f9e0091a82ef
+    PortName: 1
+    TargetNodeGuid: 900a5e7f-c031-4351-9a22-5a31229f38f0
+  - BaseNodeGuid: 4c1065a6-39a0-4dde-b75f-25f67204383d
+    PortName: 2
+    TargetNodeGuid: ddbd96c3-b841-457c-ba2b-5af96cb2b4e2
+  nodeData:
+  - nodeTitle: Top Node
+    nodeName: Selector
+    Guid: 4c1065a6-39a0-4dde-b75f-25f67204383d
+    Position: {x: 100, y: 200}
+    nodeType: 0
+    topNode: 1
+  - nodeTitle: Sequence
+    nodeName: Sequence
+    Guid: 11828005-e59e-412d-9e48-f2e27e5cd6bf
+    Position: {x: 431, y: 37}
+    nodeType: 0
+    topNode: 0
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    Guid: ddbd96c3-b841-457c-ba2b-5af96cb2b4e2
+    Position: {x: 462, y: 366}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: Sequence
+    nodeName: Sequence
+    Guid: 47d38bd9-ed4e-4779-b19c-f9e0091a82ef
+    Position: {x: 434, y: 220}
+    nodeType: 0
+    topNode: 0
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    Guid: a12dac96-5998-44d1-9c10-2c777ef8e530
+    Position: {x: 755, y: 196}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: ChaseNode
+    nodeName: ChaseNode
+    Guid: 900a5e7f-c031-4351-9a22-5a31229f38f0
+    Position: {x: 755, y: 295}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    Guid: 89a8ca93-c0a8-4a3d-8f1c-c7db4582a9d4
+    Position: {x: 749, y: -3}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: AttackNode
+    nodeName: AttackNode
+    Guid: fb72ecba-f7f6-4dd1-b385-fb4c0c338e69
+    Position: {x: 751, y: 103}
+    nodeType: 2
+    topNode: 0
+  exposedProperties: []

@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class ChaseNode : Action
 {
-    //Context blackboard;
     Transform playerTransform;
     NavMeshAgent agent;
 

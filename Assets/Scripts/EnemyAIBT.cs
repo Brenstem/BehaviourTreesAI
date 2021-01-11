@@ -42,23 +42,27 @@ public class EnemyAIBT : ScriptableObject
             RangeNode attackRangeNode = ScriptableObject.CreateInstance<RangeNode>();
             attackRangeNode.Construct(blackboard);
             attackRangeNode.AddProperties(new string[] { "attackRange" });
-            DebugNode debugNode = ScriptableObject.CreateInstance<DebugNode>();
-            debugNode.Construct(blackboard);
+            //DebugNode debugNode = ScriptableObject.CreateInstance<DebugNode>();
+            //debugNode.Construct(blackboard);
 
+            AttackNode attackNode = CreateInstance<AttackNode>();
+            attackNode.Construct(blackboard);
 
             Sequence chaseSequence = ScriptableObject.CreateInstance<Sequence>();
             chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
             
             Sequence attackSequence = ScriptableObject.CreateInstance<Sequence>();
-            attackSequence.Construct(new List<AbstractNode> { attackRangeNode, debugNode });
+            //attackSequence.Construct(new List<AbstractNode> { attackRangeNode, debugNode });
+            attackSequence.Construct(new List<AbstractNode> { attackRangeNode, attackNode });
 
 
-            Selector behaviorSelector = ScriptableObject.CreateInstance<Selector>();
-            behaviorSelector.Construct(new List<AbstractNode> { attackSequence, chaseSequence });
+            //Selector behaviorSelector = ScriptableObject.CreateInstance<Selector>();
+            //behaviorSelector.Construct(new List<AbstractNode> { attackSequence, chaseSequence });
 
 
             topNode = ScriptableObject.CreateInstance<Selector>();
-            topNode.Construct(new List<AbstractNode> { behaviorSelector, idleNode });
+            //topNode.Construct(new List<AbstractNode> { behaviorSelector, idleNode });
+            topNode.Construct(new List<AbstractNode> { attackSequence, chaseSequence, idleNode });
 
             _generated = true;
 
