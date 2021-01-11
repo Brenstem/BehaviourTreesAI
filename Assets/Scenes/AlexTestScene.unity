@@ -412,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviorTree: {fileID: 11400000, guid: 7f9d1b392c526be4291aee249ddd862b, type: 2}
   player: {fileID: 175408857}
-  aggroRange: 7
+  aggroRange: 8.97
   attackRange: 3
 --- !u!136 &293495304
 CapsuleCollider:

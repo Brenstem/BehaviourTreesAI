@@ -27,6 +27,7 @@ public class AlexEnemyAI : BaseAI
     private void Start()
     {
         ConstructBlackBoard();
+        behaviorTree.ConstructBehaviourTree();
         // behaviorTree.TestConstruct();
     }
     

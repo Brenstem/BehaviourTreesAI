@@ -12,8 +12,8 @@ public class ChaseNode : Action
     public override void Construct(Context blackboard)
     {
         this.context = blackboard;
-        // playerTransform = blackboard.globalData.player.transform;
-        // agent = blackboard.owner.agent;
+        playerTransform = blackboard.globalData.player.transform;
+        agent = blackboard.owner.agent;
         _constructed = true;
     }
 
