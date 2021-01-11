@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7c25d3ab9dd494dbbdf1cceb02225d, type: 3}
   m_Name: EnemyAIBT
   m_EditorClassIdentifier: 
-  topNode: {fileID: 0}
+  topNode: {fileID: 11400000, guid: 4a697e2bf4413074bba8b1f40cd69983, type: 2}

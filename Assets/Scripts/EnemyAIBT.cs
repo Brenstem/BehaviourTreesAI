@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviorTrees/EnemyAIBT", order = 0)]
 public class EnemyAIBT : ScriptableObject
 {
-    [HideInInspector] public Selector topNode;
+    public Selector topNode;
 
     [HideInInspector] public Context blackboard;
 
@@ -15,7 +15,14 @@ public class EnemyAIBT : ScriptableObject
     {
         //måste ha för att ScriptableObject
         _generated = false;
+
+        // Debug.Log(topNode);
     }
+
+    public void SetTopNode(Selector topNode)
+    {
+        this.topNode = topNode;
+    } 
 
     public void ConstructBehaviourTree()
     {
@@ -57,5 +64,20 @@ public class EnemyAIBT : ScriptableObject
 
             Debug.Log("BT generated");
         }
+    }
+
+    public void TestConstruct()
+    {
+        IdleNode idleNode = ScriptableObject.CreateInstance<IdleNode>();
+        idleNode.Construct(blackboard);
+
+        DebugNode debugNode = ScriptableObject.CreateInstance<DebugNode>();
+        debugNode.Construct(blackboard);
+
+        Sequence sequence = ScriptableObject.CreateInstance<Sequence>();
+        sequence.Construct(new List<AbstractNode> { idleNode, debugNode });
+
+        topNode = ScriptableObject.CreateInstance<Selector>();
+        topNode.Construct(new List<AbstractNode> { sequence });
     }
 }

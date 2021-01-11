@@ -94,7 +94,8 @@ namespace BehaviourTreeEditor
             {
                 btContainer.nodeData.Add(new NodeData
                 {
-                    nodeName = node.title,
+                    nodeTitle = node.title,
+                    nodeName = node.nodeName,
                     Guid = node.GUID,
                     Position = node.GetPosition().position,
                     nodeType = (int)node.nodeType,
@@ -160,6 +161,55 @@ namespace BehaviourTreeEditor
             }
         }
 
+
+        // Link nodes visually in graph based on save data
+        private void LinkNodes(Port output, Port input)
+        {
+            Edge edge = new Edge
+            {
+                output = output,
+                input = input
+            };
+
+            edge?.input.Connect(edge);
+            edge?.output.Connect(edge);
+
+            _targetGraphView.Add(edge);
+        }
+
+        // Generate nodes based on save data
+        private void CreateNodes()
+        {
+            foreach (NodeData nodeData in _containerCache.nodeData)
+            {
+                // Generate node based on node data. We pass node position later so we can use zerovector while loading
+                BTEditorNode tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode);
+                tempNode.GUID = nodeData.Guid;
+
+                // Add ports to node based on node data. If it's a decorator node the port will be generated automatically so theres no need to add ports
+                if (tempNode.nodeType != NodeTypes.Decorator)
+                {
+                    List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
+                    nodePorts.ForEach(x => _targetGraphView.AddPort(tempNode, x.PortName));
+                }
+
+                _targetGraphView.AddElement(tempNode);
+            }
+        }
+
+        // Clear the editor before loading a new graph
+        private void ClearGraph()
+        {
+            foreach (BTEditorNode node in nodes)
+            {
+                // Remove all connections to this node
+                edges.Where(edge => edge.input.node == node).ToList().ForEach(edge => _targetGraphView.RemoveElement(edge));
+
+                // Then remove node
+                _targetGraphView.RemoveElement(node);
+            }
+        }
+
         /// <summary>
         /// Returns list of child nodes based on node GUID
         /// </summary>
@@ -185,54 +235,6 @@ namespace BehaviourTreeEditor
             }
 
             return childNodes;
-        }
-
-        // Link nodes visually in graph based on save data
-        private void LinkNodes(Port output, Port input)
-        {
-            Edge edge = new Edge
-            {
-                output = output,
-                input = input
-            };
-
-            edge?.input.Connect(edge);
-            edge?.output.Connect(edge);
-
-            _targetGraphView.Add(edge);
-        }
-
-        // Generate nodes based on save data
-        private void CreateNodes()
-        {
-            foreach (NodeData nodeData in _containerCache.nodeData)
-            {
-                // Generate node based on node data. We pass node position later so we can use zerovector while loading
-                BTEditorNode tempNode = _targetGraphView.GenerateNode(nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode);
-                tempNode.GUID = nodeData.Guid;
-
-                // Add ports to node based on node data. If it's a decorator node the port will be generated automatically so theres no need to add ports
-                if (tempNode.nodeType != NodeTypes.Decorator)
-                {
-                    List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
-                    nodePorts.ForEach(x => _targetGraphView.AddPort(tempNode, x.PortName));
-                }
-
-                _targetGraphView.AddElement(tempNode);
-            }
-        }
-
-        // Clear the editor before loading a new graph
-        private void ClearGraph()
-        {
-            foreach (BTEditorNode node in nodes)
-            {
-                // Remove all connections to this node
-                edges.Where(edge => edge.input.node == node).ToList().ForEach(edge => _targetGraphView.RemoveElement(edge));
-
-                // Then remove node
-                _targetGraphView.RemoveElement(node);
-            }
         }
     }
 }

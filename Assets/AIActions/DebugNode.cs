@@ -6,7 +6,7 @@ public class DebugNode : Action
 {
     public override void Construct(Context blackboard)
     {
-
+        context = blackboard;
 
         _constructed = true;
     }

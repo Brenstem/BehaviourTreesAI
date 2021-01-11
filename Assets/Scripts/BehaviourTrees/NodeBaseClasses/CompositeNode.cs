@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CompositeNode : AbstractNode
 {
-    protected List<AbstractNode> nodes = new List<AbstractNode>();
+    [SerializeField] protected List<AbstractNode> nodes = new List<AbstractNode>();
 
     public virtual void Construct(List<AbstractNode> nodes)
     {

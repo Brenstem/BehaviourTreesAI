@@ -8,7 +8,7 @@ public abstract class AbstractNode : ScriptableObject
 {
     protected NodeStates _nodeState;
 
-    protected bool _constructed = false;
+    [SerializeField] protected bool _constructed = false;
 
     public NodeStates NodeState { get { return _nodeState; } }
 

@@ -96,7 +96,7 @@ namespace BehaviourTreeEditor
 
             BTEditorNode tempNode = (BTEditorNode)SearchTreeEntry.userData;
 
-            _graphView.CreateNode(tempNode.nodeName, tempNode.nodeType, localMousePosition);
+            _graphView.CreateNode(tempNode.nodeName, tempNode.nodeName, tempNode.nodeType, localMousePosition);
 
             return true;
         }
