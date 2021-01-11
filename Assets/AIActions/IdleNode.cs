@@ -14,7 +14,7 @@ public class IdleNode : Action
     {
         if (_constructed)
         {
-            Debug.Log("NOT MEME!!!");
+            Debug.Log("NOT MEME!!!" + context.player/*.transform.position*/);
             return NodeStates.SUCCESS;
         }
         else

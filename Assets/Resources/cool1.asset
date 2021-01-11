@@ -14,28 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeLinks:
   - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    PortName: 0
-    TargetNodeGuid: 33232ee3-4a17-477c-843d-505d1fdefcd7
-  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
     PortName: 1
     TargetNodeGuid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
+  - BaseNodeGuid: 893d454f-8b39-40b6-922d-8780cfaeb1f9
+    PortName: 0
+    TargetNodeGuid: c2f3673c-d388-4cd0-9da1-4b5b20df62cf
+  - BaseNodeGuid: 893d454f-8b39-40b6-922d-8780cfaeb1f9
+    PortName: 1
+    TargetNodeGuid: 33232ee3-4a17-477c-843d-505d1fdefcd7
+  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
+    PortName: 0
+    TargetNodeGuid: 893d454f-8b39-40b6-922d-8780cfaeb1f9
   nodeData:
   - nodeTitle: Selector
     nodeName: Selector
     Guid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    Position: {x: 64, y: 187}
+    Position: {x: 17, y: 177}
     nodeType: 0
     topNode: 1
-  - nodeTitle: IdleNode
-    nodeName: IdleNode
-    Guid: 33232ee3-4a17-477c-843d-505d1fdefcd7
-    Position: {x: 362, y: 157}
-    nodeType: 2
+  - nodeTitle: Sequence
+    nodeName: Sequence
+    Guid: 893d454f-8b39-40b6-922d-8780cfaeb1f9
+    Position: {x: 361, y: 105}
+    nodeType: 0
     topNode: 0
   - nodeTitle: DebugNode
     nodeName: DebugNode
     Guid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
     Position: {x: 367, y: 275}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    Guid: c2f3673c-d388-4cd0-9da1-4b5b20df62cf
+    Position: {x: 707, y: 50}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    Guid: 33232ee3-4a17-477c-843d-505d1fdefcd7
+    Position: {x: 709, y: 195}
     nodeType: 2
     topNode: 0
   exposedProperties: []

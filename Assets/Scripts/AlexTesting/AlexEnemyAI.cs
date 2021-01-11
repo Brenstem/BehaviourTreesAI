@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AlexEnemyAI : BaseAI
 {
-    private Context blackboard;
+    //private Context blackboard;
 
     [SerializeField] private GameObject player;
 
@@ -22,12 +22,13 @@ public class AlexEnemyAI : BaseAI
         health = GetComponent<Health>();
         aggroRangeProperty = new BlackBoardProperty<float>("aggroRange", aggroRange);
         attackRangeProperty = new BlackBoardProperty<float>("attackRange", attackRange);
+        behaviorTree.blackboard.Initialize();
     }
 
     private void Start()
     {
-        ConstructBlackBoard();
-        // behaviorTree.TestConstruct();
+        //ConstructBlackBoard();
+        //behaviorTree.TestConstruct();
     }
     
     private void Update()
@@ -43,25 +44,25 @@ public class AlexEnemyAI : BaseAI
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    private void ConstructBlackBoard()
-    {
-        if (behaviorTree.blackboard == null)
-        {
-            blackboard = new Context();
+    //private void ConstructBlackBoard()
+    //{
+    //    if (behaviorTree.blackboard == null)
+    //    {
+    //        blackboard = new Context();
 
-            blackboard.nodeData = new NodeBoard();
-            blackboard.nodeData.Add<float>(aggroRangeProperty);
-            blackboard.nodeData.Add<float>(attackRangeProperty);
+    //        blackboard.nodeData = new NodeBoard();
+    //        blackboard.nodeData.Add<float>(aggroRangeProperty);
+    //        blackboard.nodeData.Add<float>(attackRangeProperty);
 
-            blackboard.localData = new LocalBoard(this.gameObject);
+    //        blackboard.localData = new LocalBoard(this.gameObject);
 
-            blackboard.globalData = new GlobalBoard();
-            blackboard.globalData.player = player;
+    //        blackboard.globalData = new GlobalBoard();
+    //        blackboard.globalData.player = player;
 
-            behaviorTree.blackboard = blackboard;
-            print("black borat generated");
+    //        behaviorTree.blackboard = blackboard;
+    //        print("black borat generated");
             
-            behaviorTree.blackboard.owner = this;
-        }
-    }
+    //        //behaviorTree.blackboard.owner = this;
+    //    }
+    //}
 }

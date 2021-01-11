@@ -20,6 +20,9 @@ namespace BehaviourTreeEditor
         private string _newBehaviourName = "New Behaviour Name";
         private static EditorWindow window;
 
+        private Context context;
+        private Stack<AbstractNode> nodeStack;
+
         [MenuItem("BTUtils/BTEditor")]
         public static void ShowWindow()
         {
@@ -32,7 +35,7 @@ namespace BehaviourTreeEditor
             GenerateGraph();
             GenerateSavetoolbar();
             GenerateNodeToolbar();
-            GenerateBlackBoard();
+            //GenerateBlackBoard();
             GenerateMiniMap();
             _graphView.LoadTypeData();
         }
@@ -42,6 +45,7 @@ namespace BehaviourTreeEditor
         {
             Blackboard blackBoard = new Blackboard(_graphView);
             blackBoard.Add(new BlackboardSection { title = "Exposed properties" });
+            blackBoard.Add(new BlackboardSection { title = "test" });
 
             blackBoard.addItemRequested = _blackboard =>
             {
@@ -172,6 +176,9 @@ namespace BehaviourTreeEditor
         {
             Debug.Log("Generating...");
 
+            //context = CreateInstance<Context>();
+            nodeStack = new Stack<AbstractNode>();
+
             // Create rest of nodes here
             if (ConvertEditorNode(GetTopNode()) != null)
             {
@@ -195,9 +202,6 @@ namespace BehaviourTreeEditor
             }
             return null;
         }
-
-        Context context = new Context();
-        Stack<AbstractNode> nodeStack = new Stack<AbstractNode>();
         
         // Initialize all nodes recursively
         private AbstractNode InitializeNodes(BTEditorNode node)
@@ -273,13 +277,14 @@ namespace BehaviourTreeEditor
             return null;
         }
 
+        //TODO kanske inte behöver göra såhär, kanske räcker med en system.serializeable tag, kan vara värt att tästa 
         // Saves object with filename in path (Default is Assets/Resources)
         private void SaveNode(string fileName, ScriptableObject obj, string path = "Assets/Resources")
         {
             if (!AssetDatabase.IsValidFolder(path))
                 AssetDatabase.CreateFolder("Assets", "Resources"); // TODO fix createfolder to create folder in the correct place
 
-            AssetDatabase.CreateAsset(obj, $"{ path + fileName }.asset");
+            AssetDatabase.CreateAsset(obj, $"{ path }/{ fileName }.asset");
             AssetDatabase.SaveAssets();
         }
 

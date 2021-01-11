@@ -10,7 +10,9 @@ public class RangeNode : Action
     public override void Construct(Context blackboard)
     {
         this.context = blackboard;
-        targetTransform = blackboard.globalData.player.transform;
+        //targetTransform = blackboard.globalData.player.transform;
+        targetTransform = blackboard.player.transform;
+        range = blackboard.range;
 
         _constructed = true;
     }
@@ -19,7 +21,7 @@ public class RangeNode : Action
     {
         foreach (var name in names)
         {
-            range = context.nodeData.Get<float>(name);
+            //range = context.nodeData.Get<float>(name);
         }
     }
 

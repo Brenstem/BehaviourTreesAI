@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeBoard
+public class NodeBoard 
 {
     private Dictionary<string, object> variables = new Dictionary<string, object>();
 

@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviorTrees/EnemyAIBT", order = 0)]
 public class EnemyAIBT : ScriptableObject
 {
-    public Selector topNode;
+    public CompositeNode topNode;
 
-    [HideInInspector] public Context blackboard;
+    public Context blackboard;
 
     private bool _generated;
 
@@ -19,10 +19,10 @@ public class EnemyAIBT : ScriptableObject
         // Debug.Log(topNode);
     }
 
-    public void SetTopNode(Selector topNode)
-    {
-        this.topNode = topNode;
-    } 
+    //public void SetTopNode(Selector topNode)
+    //{
+    //    this.topNode = topNode;
+    //} 
 
     public void ConstructBehaviourTree()
     {

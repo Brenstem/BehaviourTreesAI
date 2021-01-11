@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: temp
+  m_Name: cool2
   m_EditorClassIdentifier: 
   nodeLinks:
   - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
@@ -35,7 +35,7 @@ MonoBehaviour:
   - nodeTitle: Selector
     nodeName: Selector
     Guid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    Position: {x: 0, y: 0}
+    Position: {x: 17, y: 118}
     nodeType: 0
     topNode: 1
   exposedProperties: []

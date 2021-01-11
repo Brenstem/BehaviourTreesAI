@@ -125,7 +125,7 @@ namespace BehaviourTreeEditor
             ClearGraph();
             CreateNodes();
             ConnectNodes();
-            CreateExposedProperties();
+            //CreateExposedProperties();
         }
 
         // Generate exposed blackboardproperties from savedata

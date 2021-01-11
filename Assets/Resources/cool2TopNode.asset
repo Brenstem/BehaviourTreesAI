@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7c25d3ab9dd494dbbdf1cceb02225d, type: 3}
-  m_Name: EnemyAIBT
+  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
+  m_Name: cool2TopNode
   m_EditorClassIdentifier: 
-  topNode: {fileID: 11400000, guid: bfc6ce9a5ee8fcd4d91b1e4f493e4317, type: 2}
-  blackboard: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
+  _constructed: 1
+  nodes:
+  - {fileID: 11400000, guid: 2e3990dd64c61f94db6f7a2360dcb034, type: 2}
+  - {fileID: 11400000, guid: 0be0b0028c3069d4e8a799c3a0ddbadd, type: 2}
