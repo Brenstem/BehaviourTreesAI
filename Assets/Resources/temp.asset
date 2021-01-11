@@ -13,29 +13,29 @@ MonoBehaviour:
   m_Name: temp
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: 554c6a18-6cfd-4b86-9b0f-18fe3eb3d8d5
+  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
     PortName: 0
-    TargetNodeGuid: 409457da-1b60-4f54-9b65-4b3e61f2523a
-  - BaseNodeGuid: 554c6a18-6cfd-4b86-9b0f-18fe3eb3d8d5
+    TargetNodeGuid: 33232ee3-4a17-477c-843d-505d1fdefcd7
+  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
     PortName: 1
-    TargetNodeGuid: b1df2d5e-5c38-4e4e-8c33-5520b4ba76c1
+    TargetNodeGuid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
   nodeData:
-  - nodeTitle: DebugNode
-    nodeName: DebugNode
-    Guid: 409457da-1b60-4f54-9b65-4b3e61f2523a
-    Position: {x: 396, y: 132}
-    nodeType: 2
-    topNode: 0
   - nodeTitle: IdleNode
     nodeName: IdleNode
-    Guid: b1df2d5e-5c38-4e4e-8c33-5520b4ba76c1
-    Position: {x: 405, y: 262}
+    Guid: 33232ee3-4a17-477c-843d-505d1fdefcd7
+    Position: {x: 362, y: 157}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: DebugNode
+    nodeName: DebugNode
+    Guid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
+    Position: {x: 367, y: 275}
     nodeType: 2
     topNode: 0
   - nodeTitle: Selector
     nodeName: Selector
-    Guid: 554c6a18-6cfd-4b86-9b0f-18fe3eb3d8d5
-    Position: {x: 146, y: 184}
+    Guid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
+    Position: {x: 103, y: 186}
     nodeType: 0
     topNode: 1
   exposedProperties: []

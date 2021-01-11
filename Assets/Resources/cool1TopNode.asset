@@ -10,5 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: Cool2BehaviourTree
+  m_Name: cool1TopNode
   m_EditorClassIdentifier: 
+  _constructed: 1
+  nodes:
+  - {fileID: 11400000, guid: 43c18b20dd7af9748a53358334753006, type: 2}
+  - {fileID: 11400000, guid: 0a5114661288cb448838f3d14c7be38b, type: 2}

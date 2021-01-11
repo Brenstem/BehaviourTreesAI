@@ -12,6 +12,7 @@ namespace BehaviourTreeEditor
     public class BTEditorNode : Node
     {
         public string nodeName;
+        public AbstractNode node;
         public string GUID;
         public bool topNode = false;
         public NodeTypes nodeType;

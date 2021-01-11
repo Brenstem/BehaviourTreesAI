@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7c25d3ab9dd494dbbdf1cceb02225d, type: 3}
-  m_Name: EnemyAIBT
+  m_Script: {fileID: 11500000, guid: a9879966925a97e4682273a47a168976, type: 3}
+  m_Name: IdleNode33232ee3-4a17-477c-843d-505d1fdefcd7
   m_EditorClassIdentifier: 
-  topNode: {fileID: 11400000, guid: 4a697e2bf4413074bba8b1f40cd69983, type: 2}
+  _constructed: 1

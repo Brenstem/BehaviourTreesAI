@@ -167,38 +167,21 @@ namespace BehaviourTreeEditor
             }
         }
 
-        // TODO finish this function
-        // Generates AI usable behaviour tree thingy
-
+        // Generates initialized topnode
         private void GenerateBehaviourTree()
         {
             Debug.Log("Generating...");
 
-            EnemyAIBT behaviourTree = CreateInstance<EnemyAIBT>();
-            BTEditorNode topNode = GetTopNode();
-
-            CompositeNode tempTopNode = null;
-
             // Create rest of nodes here
-            if (ConvertEditorNode(topNode) != null)
+            if (ConvertEditorNode(GetTopNode()) != null)
             {
-                tempTopNode = InitializeNodes(topNode);
+                InitializeNodes(GetTopNode());
             }
-
-            // Debug.Log((CompositeNode)ConvertEditorNode(topNode));
-
-            // behaviourTree.SetTopNode();
-
-            // Put savefile in Assets/BTResources
-            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
-                AssetDatabase.CreateFolder("Assets", "Resources");
-
-            AssetDatabase.CreateAsset(tempTopNode, $"Assets/Resources/{_fileName}BehaviourTree.asset");
-            AssetDatabase.SaveAssets();
 
             Debug.Log("I have been generated");
         }
 
+        // Get current topnode
         private BTEditorNode GetTopNode()
         {
             foreach (var node in _graphView.nodes.ToList())
@@ -214,61 +197,90 @@ namespace BehaviourTreeEditor
         }
 
         Context context = new Context();
-
-        private CompositeNode InitializeNodes(BTEditorNode node)
+        Stack<AbstractNode> nodeStack = new Stack<AbstractNode>();
+        
+        // Initialize all nodes recursively
+        private AbstractNode InitializeNodes(BTEditorNode node)
         {
+            // Get save utility to use for getting child nodes
             GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
 
             if (ConvertEditorNode(node) != null)
             {
+                // Recursively initialize children and add them to stack
                 foreach (var child in saveUtility.GetChildNodes(node.GUID))
                 {
-                    InitializeNodes(child);
+                    nodeStack.Push(InitializeNodes(child));
                 }
 
-                // do construct things here
+                string fileName;
+
+                // Construct nodes based on node type
                 switch (node.nodeType)
                 {
                     case NodeTypes.Composite:
+                        CompositeNode tempCompositeNode = CreateInstance(node.nodeName) as CompositeNode;
                         List<BTEditorNode> childEditorNodes = saveUtility.GetChildNodes(node.GUID);
                         List<AbstractNode> childNodes = new List<AbstractNode>();
 
-                        CompositeNode tempCompositeNode = CreateInstance(node.nodeName) as CompositeNode;
+                        // loop for the amount of children and pop them from the stack into list of nodes to be used for constructing
+                        for (int i = 0; i < childEditorNodes.Count; i++)
+                        {
+                            childNodes.Add(nodeStack.Pop());
+                        }
 
-                        // TODO we need to get references to the constructed children instead of instatiating new instances of them here
-                        // Maybe use an external list or dictionary with node.GUID as key to do this?
-                        foreach (var child in childEditorNodes)
-                            childNodes.Add(ConvertEditorNode(child));
+                        // Reverse list since nodes are popped in reverse order
+                        childNodes.Reverse();
 
                         tempCompositeNode.Construct(childNodes);
 
-                        Debug.Log("Constructed: " + node.title);
+                        fileName = node.nodeName + node.GUID;
 
-                        if (node.topNode)
+                        if (node.topNode) // If topnode then save with the name of the behaviourtree
                         {
-                            Debug.Log("top node: " + node.title);
-                            return tempCompositeNode;
+                            fileName = _fileName + "TopNode";
+                            SaveNode(fileName, tempCompositeNode);
                         }
-                        break;
+                        else // Else save node with default filename
+                        {
+                            SaveNode(fileName, tempCompositeNode);
+                        }
+                        return tempCompositeNode;
 
                     case NodeTypes.Decorator:
+                        // Construct node
                         DecoratorNode tempDecoratorNode = CreateInstance(node.nodeName) as DecoratorNode;
-                        tempDecoratorNode.Construct(ConvertEditorNode(saveUtility.GetChildNodes(node.GUID)[0]));
+                        tempDecoratorNode.Construct(nodeStack.Pop());
 
-                        Debug.Log("Constructed: " + node.title);
-                        break;
+                        // Save node
+                        fileName = node.nodeName + node.GUID;
+                        SaveNode(fileName, tempDecoratorNode);
+                        return tempDecoratorNode;
 
                     case NodeTypes.Behaviour:
+                        // Construct node
                         Action tempActionNode = CreateInstance(node.nodeName) as Action;
                         tempActionNode.Construct(context); // TODO this is stupid fix ur blackboard bitch
 
-                        Debug.Log("Constructed: " + node.title);
-                        break;
+                        // Save node
+                        fileName = node.nodeName + node.GUID;
+                        SaveNode(fileName, tempActionNode);
+                        return tempActionNode;
                     default:
                         break;
                 }
             }
             return null;
+        }
+
+        // Saves object with filename in path (Default is Assets/Resources)
+        private void SaveNode(string fileName, ScriptableObject obj, string path = "Assets/Resources")
+        {
+            if (!AssetDatabase.IsValidFolder(path))
+                AssetDatabase.CreateFolder("Assets", "Resources"); // TODO fix createfolder to create folder in the correct place
+
+            AssetDatabase.CreateAsset(obj, $"{ path + fileName }.asset");
+            AssetDatabase.SaveAssets();
         }
 
         // Converts editor node to behaviournode

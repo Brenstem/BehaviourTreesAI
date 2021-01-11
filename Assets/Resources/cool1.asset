@@ -13,38 +13,29 @@ MonoBehaviour:
   m_Name: cool1
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: d3da41f0-29e7-463d-b9d3-d5f33ffa2bc3
-    PortName: 0
-    TargetNodeGuid: 33232ee3-4a17-477c-843d-505d1fdefcd7
-  - BaseNodeGuid: d3da41f0-29e7-463d-b9d3-d5f33ffa2bc3
-    PortName: 1
-    TargetNodeGuid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
   - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
     PortName: 0
-    TargetNodeGuid: d3da41f0-29e7-463d-b9d3-d5f33ffa2bc3
+    TargetNodeGuid: 33232ee3-4a17-477c-843d-505d1fdefcd7
+  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
+    PortName: 1
+    TargetNodeGuid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
   nodeData:
-  - nodeTitle: Sequence
-    nodeName: Sequence
-    Guid: d3da41f0-29e7-463d-b9d3-d5f33ffa2bc3
-    Position: {x: 372, y: 194}
+  - nodeTitle: Selector
+    nodeName: Selector
+    Guid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
+    Position: {x: 64, y: 187}
     nodeType: 0
-    topNode: 0
+    topNode: 1
   - nodeTitle: IdleNode
     nodeName: IdleNode
     Guid: 33232ee3-4a17-477c-843d-505d1fdefcd7
-    Position: {x: 692, y: 125}
+    Position: {x: 362, y: 157}
     nodeType: 2
     topNode: 0
   - nodeTitle: DebugNode
     nodeName: DebugNode
     Guid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
-    Position: {x: 697, y: 243}
+    Position: {x: 367, y: 275}
     nodeType: 2
     topNode: 0
-  - nodeTitle: Selector
-    nodeName: Selector
-    Guid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    Position: {x: 0, y: 0}
-    nodeType: 0
-    topNode: 1
   exposedProperties: []
