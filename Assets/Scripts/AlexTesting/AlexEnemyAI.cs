@@ -12,9 +12,13 @@ public class AlexEnemyAI : BaseAI
     [Header("Behaviour parameters")]
     [SerializeField] private float aggroRange;
     [SerializeField] private float attackRange;
+    [SerializeField] private float attackStartupTime;
+    [SerializeField] private float attackEndLagTime;
 
     public BlackBoardProperty<float> aggroRangeProperty { get; private set; }
     public BlackBoardProperty<float> attackRangeProperty { get; private set; }
+    public BlackBoardProperty<float> attackStartupTimeProperty { get; private set; }
+    public BlackBoardProperty<float> attackEndLagTimeProperty { get; private set; }
 
     private void Awake()
     {
@@ -22,13 +26,15 @@ public class AlexEnemyAI : BaseAI
         health = GetComponent<Health>();
         aggroRangeProperty = new BlackBoardProperty<float>("aggroRange", aggroRange);
         attackRangeProperty = new BlackBoardProperty<float>("attackRange", attackRange);
+        attackStartupTimeProperty = new BlackBoardProperty<float>("attackStartupTime", attackStartupTime);
+        attackEndLagTimeProperty = new BlackBoardProperty<float>("attackEndLagTime", attackEndLagTime);
     }
 
     private void Start()
     {
         ConstructBlackBoard();
         behaviorTree.ConstructBehaviourTree();
-        // behaviorTree.TestConstruct();
+        //behaviorTree.TestConstruct();
     }
     
     private void Update()
@@ -53,6 +59,9 @@ public class AlexEnemyAI : BaseAI
             blackboard.nodeData = new NodeBoard();
             blackboard.nodeData.Add<float>(aggroRangeProperty);
             blackboard.nodeData.Add<float>(attackRangeProperty);
+            blackboard.nodeData.Add<float>(attackStartupTimeProperty);
+            blackboard.nodeData.Add<float>(attackEndLagTimeProperty);
+
 
             blackboard.localData = new LocalBoard(this.gameObject);
 

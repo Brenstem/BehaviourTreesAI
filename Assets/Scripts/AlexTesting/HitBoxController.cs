@@ -16,6 +16,9 @@ public class HitBoxController : MonoBehaviour
     [SerializeField] private bool debug;
     [SerializeField] private bool showHitBox;
 
+    public bool isActive { get; private set; }
+    public bool wasActive { get; private set; }
+
     private Timer hitBoxTimer;
     private bool doneDamage;
 
@@ -26,6 +29,8 @@ public class HitBoxController : MonoBehaviour
 
     private void Update()
     {
+        wasActive = isActive;
+
         hitBoxTimer.DecrementTimer(Time.deltaTime);
 
         if (!hitBoxTimer.Done && !doneDamage)
@@ -49,13 +54,19 @@ public class HitBoxController : MonoBehaviour
             if (debug)
                 showHitBox = false;
 
+            if(isActive)
+                //print("ATTACK IS OVER!!!!!!!");
+
             doneDamage = false;
+            isActive = false;
         }
     }
 
     public void ExposeHitBox()
     {
         hitBoxTimer = new Timer(lifeTime);
+        doneDamage = false;
+        isActive = true;
     }
 
     public void OnDrawGizmos()

@@ -17,9 +17,23 @@ public class AttackNode : Action
     {
         if (_constructed)
         {
-            hitBox.ExposeHitBox();
-            Debug.Log("Attacking");
-            return NodeStates.SUCCESS;
+            if (hitBox.wasActive && !hitBox.isActive)
+            {
+                Debug.Log("Attack done");
+                return NodeStates.SUCCESS;
+            }
+            else if (hitBox.isActive)
+            {
+                //Debug.Log("Attack Running");
+                return NodeStates.RUNNING;
+            }
+            else
+            {
+                hitBox.ExposeHitBox();
+                Debug.Log("New Attack");
+                return NodeStates.RUNNING;
+                //return NodeStates.SUCCESS;
+            }
         }
         else
         {

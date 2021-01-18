@@ -19,8 +19,11 @@ MonoBehaviour:
   - IdleNode
   - RangeNode
   - DebugNode
+  - AttackNode
+  - WaitNode
   compositeNodes:
   - Selector
   - Sequence
+  - ConcurrentNode
   decoratorNodes:
   - Invertor

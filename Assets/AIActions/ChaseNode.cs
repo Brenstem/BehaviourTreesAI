@@ -28,7 +28,7 @@ public class ChaseNode : Action
             {
                 agent.isStopped = false;
                 agent.SetDestination(playerTransform.position);
-                return NodeStates.RUNNING;
+                return NodeStates.SUCCESS;
             }
             else
             {
