@@ -556,6 +556,10 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1630537609924514077, guid: 6247d766764899e4488e1058f5cf6b76, type: 3}
+      propertyPath: damage
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 4396627475226880279, guid: 6247d766764899e4488e1058f5cf6b76, type: 3}
       propertyPath: m_Name
       value: Hitbox

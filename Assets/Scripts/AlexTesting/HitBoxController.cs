@@ -54,9 +54,6 @@ public class HitBoxController : MonoBehaviour
             if (debug)
                 showHitBox = false;
 
-            if(isActive)
-                //print("ATTACK IS OVER!!!!!!!");
-
             doneDamage = false;
             isActive = false;
         }

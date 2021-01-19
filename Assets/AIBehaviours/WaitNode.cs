@@ -30,8 +30,7 @@ public class WaitNode : Action
             //ingen timer körs, skapa en ny timer som börjar köras
             if (timer.Done)
             {
-                Debug.Log("new timer");
-                timer = new Timer(runTime);
+                timer.Reset(runTime);
                 //context.owner.agent.SetDestination(context.owner.transform.position);
                 return NodeStates.RUNNING;
             }
@@ -41,7 +40,6 @@ public class WaitNode : Action
             //timern som kördes är nu klar
             if(timer.Done)
             {
-                Debug.Log("timer is done");
                 return NodeStates.SUCCESS;
             }
             //timern som körs är inte än klar

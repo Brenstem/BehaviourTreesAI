@@ -7,7 +7,6 @@ public class Timer
 {
     private float startTime;
     private float currentTime;
-    //private bool done;
     public bool Done { get { return currentTime <= 0; } }
     public System.Action eventCallback;
 
@@ -23,7 +22,6 @@ public class Timer
 
         if (currentTime <= 0)
         {
-            //done = true;
             if(eventCallback != null)
                 eventCallback();
         }
@@ -32,6 +30,11 @@ public class Timer
     public void Reset()
     {
         currentTime = startTime;
-        //done = false;
+    }
+    
+    public void Reset(float newTime)
+    {
+        startTime = newTime;
+        currentTime = startTime;
     }
 }

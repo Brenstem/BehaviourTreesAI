@@ -19,20 +19,16 @@ public class AttackNode : Action
         {
             if (hitBox.wasActive && !hitBox.isActive)
             {
-                Debug.Log("Attack done");
                 return NodeStates.SUCCESS;
             }
             else if (hitBox.isActive)
             {
-                //Debug.Log("Attack Running");
                 return NodeStates.RUNNING;
             }
             else
             {
                 hitBox.ExposeHitBox();
-                Debug.Log("New Attack");
                 return NodeStates.RUNNING;
-                //return NodeStates.SUCCESS;
             }
         }
         else
@@ -42,8 +38,3 @@ public class AttackNode : Action
         }
     }
 }
-
-//public class AttackNodeParameters
-//{
-
-//}

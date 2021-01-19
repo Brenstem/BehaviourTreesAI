@@ -22,6 +22,11 @@ public class ChaseNode : Action
         {
             agent = context.owner.agent;
 
+            //test kod
+            //agent.SetDestination(context.owner.transform.position + (playerTransform.position - context.owner.transform.position).normalized);
+            //Debug.Log(context.owner.transform.position + (playerTransform.position - context.owner.transform.position).normalized;
+            //return NodeStates.SUCCESS;
+
             float distance = Vector3.Distance(playerTransform.position, agent.transform.position);
 
             if (distance >= agent.stoppingDistance)
