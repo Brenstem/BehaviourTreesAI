@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DebugNode : Action
 {
+    [SerializeField] private string debugText;
+
     public override void Construct(Context blackboard)
     {
         context = blackboard;
@@ -15,7 +17,7 @@ public class DebugNode : Action
     {
         if (_constructed)
         {
-            Debug.Log("MEME!");
+            Debug.Log(debugText);
 
             return NodeStates.SUCCESS;
         }

@@ -227,6 +227,8 @@ namespace BehaviourTreeEditor
                         List<BTEditorNode> childEditorNodes = saveUtility.GetChildNodes(node.GUID);
                         List<AbstractNode> childNodes = new List<AbstractNode>();
 
+                        node.instance = tempCompositeNode;
+
                         // loop for the amount of children and pop them from the stack into list of nodes to be used for constructing
                         for (int i = 0; i < childEditorNodes.Count; i++)
                         {
@@ -255,6 +257,7 @@ namespace BehaviourTreeEditor
                         // Construct node
                         DecoratorNode tempDecoratorNode = CreateInstance(node.nodeName) as DecoratorNode;
                         tempDecoratorNode.Construct(nodeStack.Pop());
+                        node.instance = tempDecoratorNode;
 
                         // Save node
                         fileName = node.nodeName + node.GUID;
@@ -265,6 +268,7 @@ namespace BehaviourTreeEditor
                         // Construct node
                         Action tempActionNode = CreateInstance(node.nodeName) as Action;
                         tempActionNode.Construct(context); // TODO this is stupid fix ur blackboard bitch
+                        node.instance = tempActionNode;
 
                         // Save node
                         fileName = node.nodeName + node.GUID;
