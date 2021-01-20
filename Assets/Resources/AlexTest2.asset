@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: cool1
+  m_Name: AlexTest2
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: 2442aaf1-dc97-47a6-bad7-83577f33fce7
+  - BaseNodeGuid: ebe70a54-77af-4e2b-b862-8758c7415a19
     PortName: 0
-    TargetNodeGuid: 8f6ea5cd-37ab-477d-8229-8d8cba8b92d1
-  - BaseNodeGuid: 2442aaf1-dc97-47a6-bad7-83577f33fce7
+    TargetNodeGuid: 2f6e59ce-8ba5-448a-bc6b-47b4e209fc4a
+  - BaseNodeGuid: ebe70a54-77af-4e2b-b862-8758c7415a19
     PortName: 1
-    TargetNodeGuid: 8dbb295e-5d89-4729-b605-edcc1d9527d4
+    TargetNodeGuid: fc24a842-d470-41fc-89a2-8d580eef9ca4
   nodeData:
   - nodeTitle: IdleNode
     nodeName: IdleNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
-    Guid: 8dbb295e-5d89-4729-b605-edcc1d9527d4
-    Position: {x: 446, y: 279}
+    Guid: fc24a842-d470-41fc-89a2-8d580eef9ca4
+    Position: {x: 544, y: 264}
     nodeType: 2
     topNode: 0
-  - nodeTitle: ChaseNode
-    nodeName: ChaseNode
+  - nodeTitle: DebugNode
+    nodeName: DebugNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
-    Guid: 8f6ea5cd-37ab-477d-8229-8d8cba8b92d1
-    Position: {x: 433, y: 144}
+    Guid: 2f6e59ce-8ba5-448a-bc6b-47b4e209fc4a
+    Position: {x: 552, y: 104}
     nodeType: 2
     topNode: 0
   - nodeTitle: Top Node
@@ -43,8 +43,8 @@ MonoBehaviour:
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
-    Guid: 2442aaf1-dc97-47a6-bad7-83577f33fce7
-    Position: {x: 150, y: 205}
+    Guid: ebe70a54-77af-4e2b-b862-8758c7415a19
+    Position: {x: 203, y: 152}
     nodeType: 0
     topNode: 1
   exposedProperties: []

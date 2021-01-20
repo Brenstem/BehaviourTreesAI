@@ -252,6 +252,7 @@ namespace BehaviourTreeEditor
         // Saves object with filename in path (Default is Assets/Resources)
         public ScriptableObject SaveNode(string fileName, ScriptableObject obj, string path = "Assets/Resources")
         {
+
             if (!AssetDatabase.IsValidFolder(path)) 
             {
                 AssetDatabase.CreateFolder("Assets", "Resources"); // TODO fix createfolder to create folder in the correct place
@@ -259,9 +260,23 @@ namespace BehaviourTreeEditor
 
             if (AssetDatabase.GetAssetPath(obj) == null)
             {
+                Debug.Log("we in here");
                 AssetDatabase.CreateAsset(obj, $"{ path }/{ fileName }.asset");
                 AssetDatabase.SaveAssets();
             }
+
+            //if (AssetDatabase.GetAssetPath(obj) != null)
+            //{
+            //    Debug.Log("delet this " + $"{ path }/{ fileName }.asset");
+            //    //AssetDatabase.DeleteAsset($"{ path }/{ fileName }.asset");
+            //    //AssetDatabase.SaveAssets();
+            //}
+
+            //if (obj != null)
+            //{
+            //    AssetDatabase.CreateAsset(obj, $"{ path }/{ fileName }.asset");
+            //    AssetDatabase.SaveAssets();
+            //}
 
             return obj;
         }

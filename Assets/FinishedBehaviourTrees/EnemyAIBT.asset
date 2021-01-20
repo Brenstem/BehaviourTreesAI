@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7c25d3ab9dd494dbbdf1cceb02225d, type: 3}
   m_Name: EnemyAIBT
   m_EditorClassIdentifier: 
-  topNode: {fileID: 11400000, guid: bfc6ce9a5ee8fcd4d91b1e4f493e4317, type: 2}
+  topNode: {fileID: 11400000, guid: 2f477527a127b9d408638d5e8e2c429c, type: 2}
   blackboard: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

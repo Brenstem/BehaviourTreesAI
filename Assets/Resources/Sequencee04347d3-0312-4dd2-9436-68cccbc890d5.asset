@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: cool1TopNode
+  m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
+  m_Name: Sequencee04347d3-0312-4dd2-9436-68cccbc890d5
   m_EditorClassIdentifier: 
-  _constructed: 1
-  nodes:
-  - {fileID: 0}
+  nodes: []

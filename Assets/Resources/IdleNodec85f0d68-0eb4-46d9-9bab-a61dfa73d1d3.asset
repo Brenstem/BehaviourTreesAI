@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: cool1TopNode
+  m_Script: {fileID: 11500000, guid: a9879966925a97e4682273a47a168976, type: 3}
+  m_Name: IdleNodec85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
   m_EditorClassIdentifier: 
-  _constructed: 1
-  nodes:
-  - {fileID: 0}

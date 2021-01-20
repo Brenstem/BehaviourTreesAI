@@ -5,7 +5,7 @@ using UnityEngine;
 public class RangeNode : Action
 {
     Transform targetTransform;
-    float range;
+    [SerializeField] float range;
 
     public override void Construct(Context blackboard)
     {

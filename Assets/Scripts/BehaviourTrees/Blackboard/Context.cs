@@ -14,7 +14,7 @@ public class Context : ScriptableObject
     public LocalBoard localData;
     public GlobalBoard globalData;
 
-    public float range;
+    [HideInInspector] public float range;
     [HideInInspector] public GameObject player;
 
     [HideInInspector] public BaseAI owner;
