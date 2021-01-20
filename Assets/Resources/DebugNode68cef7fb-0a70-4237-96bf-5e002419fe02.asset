@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 314eca22099ca2847b6735246a608a22, type: 3}
-  m_Name: DebugNode771996c2-1b70-4cd8-9a52-96a149a6aa3c
+  m_Name: DebugNode68cef7fb-0a70-4237-96bf-5e002419fe02
   m_EditorClassIdentifier: 
-  _constructed: 1
+  _constructed: 0
+  debugText: 2

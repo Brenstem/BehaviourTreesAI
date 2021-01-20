@@ -10,50 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: cool1
+  m_Name: Cool1
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    PortName: 1
-    TargetNodeGuid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
-  - BaseNodeGuid: 893d454f-8b39-40b6-922d-8780cfaeb1f9
+  - BaseNodeGuid: 2442aaf1-dc97-47a6-bad7-83577f33fce7
     PortName: 0
-    TargetNodeGuid: c2f3673c-d388-4cd0-9da1-4b5b20df62cf
-  - BaseNodeGuid: 893d454f-8b39-40b6-922d-8780cfaeb1f9
+    TargetNodeGuid: 8f6ea5cd-37ab-477d-8229-8d8cba8b92d1
+  - BaseNodeGuid: 2442aaf1-dc97-47a6-bad7-83577f33fce7
     PortName: 1
-    TargetNodeGuid: 33232ee3-4a17-477c-843d-505d1fdefcd7
-  - BaseNodeGuid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    PortName: 0
-    TargetNodeGuid: 893d454f-8b39-40b6-922d-8780cfaeb1f9
+    TargetNodeGuid: 8dbb295e-5d89-4729-b605-edcc1d9527d4
   nodeData:
-  - nodeTitle: Selector
-    nodeName: Selector
-    Guid: 2ab0953b-85ed-4df4-b564-00bfd9ab7eda
-    Position: {x: 17, y: 177}
-    nodeType: 0
-    topNode: 1
-  - nodeTitle: Sequence
-    nodeName: Sequence
-    Guid: 893d454f-8b39-40b6-922d-8780cfaeb1f9
-    Position: {x: 361, y: 105}
-    nodeType: 0
-    topNode: 0
-  - nodeTitle: DebugNode
-    nodeName: DebugNode
-    Guid: 771996c2-1b70-4cd8-9a52-96a149a6aa3c
-    Position: {x: 367, y: 275}
-    nodeType: 2
-    topNode: 0
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    Guid: c2f3673c-d388-4cd0-9da1-4b5b20df62cf
-    Position: {x: 707, y: 50}
-    nodeType: 2
-    topNode: 0
   - nodeTitle: IdleNode
     nodeName: IdleNode
-    Guid: 33232ee3-4a17-477c-843d-505d1fdefcd7
-    Position: {x: 709, y: 195}
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 518e9163c5bbe2f4c98e9eecf304fda5, type: 2}
+    Guid: 8dbb295e-5d89-4729-b605-edcc1d9527d4
+    Position: {x: 446, y: 279}
     nodeType: 2
     topNode: 0
+  - nodeTitle: ChaseNode
+    nodeName: ChaseNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 5e4a500894ee761418fbf636d1a13eb1, type: 2}
+    Guid: 8f6ea5cd-37ab-477d-8229-8d8cba8b92d1
+    Position: {x: 433, y: 144}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: Top Node
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: 883e6f78a25407b4d836ef993e16e9f2, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 2442aaf1-dc97-47a6-bad7-83577f33fce7
+    Position: {x: 150, y: 205}
+    nodeType: 0
+    topNode: 1
   exposedProperties: []

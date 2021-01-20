@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sequence : CompositeNode
+public class Sequence : Composite
 {
     public override NodeStates Evaluate()
     {

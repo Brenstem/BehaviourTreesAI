@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CompositeNode : AbstractNode
+public abstract class Composite : AbstractNode
 {
     [SerializeField] protected List<AbstractNode> nodes = new List<AbstractNode>();
 

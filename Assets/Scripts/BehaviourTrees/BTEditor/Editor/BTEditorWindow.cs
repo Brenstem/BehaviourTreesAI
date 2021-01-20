@@ -19,9 +19,11 @@ namespace BehaviourTreeEditor
         private string _fileName = "New Behaviour Tree";
         private string _newBehaviourName = "New Behaviour Name";
         private static EditorWindow window;
+        private ObjectField contextField;
 
-        private Context context;
         private Stack<AbstractNode> nodeStack;
+
+        #region Editor window generation
 
         [MenuItem("BTUtils/BTEditor")]
         public static void ShowWindow()
@@ -35,41 +37,8 @@ namespace BehaviourTreeEditor
             GenerateGraph();
             GenerateSavetoolbar();
             GenerateNodeToolbar();
-            //GenerateBlackBoard();
-            GenerateMiniMap();
+            //GenerateMiniMap();
             _graphView.LoadTypeData();
-        }
-
-        // Generates blackboard
-        private void GenerateBlackBoard()
-        {
-            Blackboard blackBoard = new Blackboard(_graphView);
-            blackBoard.Add(new BlackboardSection { title = "Exposed properties" });
-            blackBoard.Add(new BlackboardSection { title = "test" });
-
-            blackBoard.addItemRequested = _blackboard =>
-            {
-                _graphView.AddPropertyToBlackBoard(new ExposedProperty());
-            };
-
-            blackBoard.editTextRequested = (blackBoard1, element, newValue) =>
-            {
-                string oldPropertyName = ((BlackboardField)element).text;
-                if (_graphView.exposedProperties.Any(x => x.PropertyName == newValue))
-                {
-                    EditorUtility.DisplayDialog("Error", "This property name already exists, please choose another one!", "ok :(");
-                    return;
-                }
-
-                int propertyIndex = _graphView.exposedProperties.FindIndex(x => x.PropertyName == oldPropertyName);
-                _graphView.exposedProperties[propertyIndex].PropertyName = newValue;
-                ((BlackboardField)element).text = newValue;
-            };
-
-            blackBoard.SetPosition(new Rect(10, 30, 200, 300));
-
-            _graphView.Add(blackBoard);
-            _graphView.Blackboard = blackBoard;
         }
 
         // TODO Doesnt work atm :)) 
@@ -91,6 +60,7 @@ namespace BehaviourTreeEditor
         private void GenerateGraph()
         {
             _graphView = new BTGraphView(this) { name = "Behaviour Tree Editor" };
+            contextField = new ObjectField { objectType = typeof(Context) };
             _graphView.StretchToParentSize();
             rootVisualElement.Add(_graphView);
         }
@@ -111,6 +81,7 @@ namespace BehaviourTreeEditor
             toolbar.Add(new Button(() => RequestDataOperation(true)) { text = "Save Data" });
             toolbar.Add(new Button(() => RequestDataOperation(false)) { text = "Load Data" });
             toolbar.Add(new Button(() => GenerateBehaviourTree()) { text = "Generate Behaviour Tree" });
+            toolbar.Add(contextField);
 
             rootVisualElement.Add(toolbar);
         }
@@ -150,6 +121,8 @@ namespace BehaviourTreeEditor
             rootVisualElement.Add(toolbar);
         }
 
+#endregion
+
         // Save/Load function
         private void RequestDataOperation(bool save)
         {
@@ -176,7 +149,6 @@ namespace BehaviourTreeEditor
         {
             Debug.Log("Generating...");
 
-            //context = CreateInstance<Context>();
             nodeStack = new Stack<AbstractNode>();
 
             // Create rest of nodes here
@@ -202,7 +174,7 @@ namespace BehaviourTreeEditor
             }
             return null;
         }
-        
+
         // Initialize all nodes recursively
         private AbstractNode InitializeNodes(BTEditorNode node)
         {
@@ -217,17 +189,12 @@ namespace BehaviourTreeEditor
                     nodeStack.Push(InitializeNodes(child));
                 }
 
-                string fileName;
-
                 // Construct nodes based on node type
                 switch (node.nodeType)
                 {
                     case NodeTypes.Composite:
-                        CompositeNode tempCompositeNode = CreateInstance(node.nodeName) as CompositeNode;
                         List<BTEditorNode> childEditorNodes = saveUtility.GetChildNodes(node.GUID);
                         List<AbstractNode> childNodes = new List<AbstractNode>();
-
-                        node.instance = tempCompositeNode;
 
                         // loop for the amount of children and pop them from the stack into list of nodes to be used for constructing
                         for (int i = 0; i < childEditorNodes.Count; i++)
@@ -238,58 +205,32 @@ namespace BehaviourTreeEditor
                         // Reverse list since nodes are popped in reverse order
                         childNodes.Reverse();
 
-                        tempCompositeNode.Construct(childNodes);
-
-                        fileName = node.nodeName + node.GUID;
+                        node.compositeInstance.Construct(childNodes);
 
                         if (node.topNode) // If topnode then save with the name of the behaviourtree
                         {
-                            fileName = _fileName + "TopNode";
-                            SaveNode(fileName, tempCompositeNode);
+                            string fileName = node.nodeName + "TopNode";
+
+                            AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(node.compositeInstance), fileName);
                         }
-                        else // Else save node with default filename
-                        {
-                            SaveNode(fileName, tempCompositeNode);
-                        }
-                        return tempCompositeNode;
+                        return node.compositeInstance;
 
                     case NodeTypes.Decorator:
                         // Construct node
-                        DecoratorNode tempDecoratorNode = CreateInstance(node.nodeName) as DecoratorNode;
-                        tempDecoratorNode.Construct(nodeStack.Pop());
-                        node.instance = tempDecoratorNode;
+                        node.decoratorInstance.Construct(nodeStack.Pop());
 
-                        // Save node
-                        fileName = node.nodeName + node.GUID;
-                        SaveNode(fileName, tempDecoratorNode);
-                        return tempDecoratorNode;
+                        return node.decoratorInstance;
 
                     case NodeTypes.Behaviour:
                         // Construct node
-                        Action tempActionNode = CreateInstance(node.nodeName) as Action;
-                        tempActionNode.Construct(context); // TODO this is stupid fix ur blackboard bitch
-                        node.instance = tempActionNode;
+                        node.actionInstance.Construct((Context)contextField.value);
 
-                        // Save node
-                        fileName = node.nodeName + node.GUID;
-                        SaveNode(fileName, tempActionNode);
-                        return tempActionNode;
+                        return node.actionInstance;
                     default:
                         break;
                 }
             }
             return null;
-        }
-
-        //TODO kanske inte behöver göra såhär, kanske räcker med en system.serializeable tag, kan vara värt att tästa 
-        // Saves object with filename in path (Default is Assets/Resources)
-        private void SaveNode(string fileName, ScriptableObject obj, string path = "Assets/Resources")
-        {
-            if (!AssetDatabase.IsValidFolder(path))
-                AssetDatabase.CreateFolder("Assets", "Resources"); // TODO fix createfolder to create folder in the correct place
-
-            AssetDatabase.CreateAsset(obj, $"{ path }/{ fileName }.asset");
-            AssetDatabase.SaveAssets();
         }
 
         // Converts editor node to behaviournode
@@ -300,11 +241,11 @@ namespace BehaviourTreeEditor
             switch (node.nodeType)
             {
                 case NodeTypes.Composite:
-                    tempNode = CreateInstance(node.nodeName) as CompositeNode;
+                    tempNode = CreateInstance(node.nodeName) as Composite;
                     break;
 
                 case NodeTypes.Decorator:
-                    tempNode = CreateInstance(node.nodeName) as DecoratorNode;
+                    tempNode = CreateInstance(node.nodeName) as Decorator;
                     break;
 
                 case NodeTypes.Behaviour:

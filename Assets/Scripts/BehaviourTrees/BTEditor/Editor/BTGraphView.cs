@@ -224,10 +224,13 @@ namespace BehaviourTreeEditor
             {
                 title = nodeName,
                 nodeName = "Selector",
+                compositeInstance = (Composite)ScriptableObject.CreateInstance("Selector"),
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Composite,
                 topNode = true,
             };
+
+            // GraphSaveUtility.GetInstance(this).SaveNode(node.title + node.GUID, node.compositeInstance);
 
             // Stash and remove old title and minimize button elements
             Label oldTitleLabel = node.titleContainer.Q<Label>("title-label");
@@ -252,6 +255,11 @@ namespace BehaviourTreeEditor
             button.text = "New Child Behaviour";
             node.titleContainer.Add(button);
 
+            UnityEditor.UIElements.ObjectField objectField = new UnityEditor.UIElements.ObjectField();
+            objectField.objectType = typeof(ScriptableObject);
+            objectField.value = node.compositeInstance;
+            node.mainContainer.Add(objectField);
+
             AddPort(node);
             AddPort(node);
 
@@ -273,9 +281,9 @@ namespace BehaviourTreeEditor
         /// </summary>
         /// <param name="nodename"></param>
         /// <param name="type"></param>
-        public void CreateNode(string nodeTitle, string nodename, NodeTypes type, Vector2 position, bool isTopNode = false)
+        public void CreateNode(string nodeTitle, string nodename, NodeTypes type, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
-            AddElement(GenerateNode(nodeTitle, nodename, type, position, isTopNode));
+            AddElement(GenerateNode(nodeTitle, nodename, type, position, isTopNode, instance));
         }
 
         /// <summary>
@@ -284,20 +292,20 @@ namespace BehaviourTreeEditor
         /// <param name="nodeTitle"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public BTEditorNode GenerateNode(string nodeTitle, string nodeName, NodeTypes type, Vector2 position, bool isTopNode = false)
+        public BTEditorNode GenerateNode(string nodeTitle, string nodeName, NodeTypes type, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = null;
 
             switch (type)
             {
                 case NodeTypes.Composite:
-                    node = GenerateCompositeNode(nodeTitle, nodeName, position, isTopNode);
+                    node = GenerateCompositeNode(nodeTitle, nodeName, position, isTopNode, instance);
                     break;
                 case NodeTypes.Decorator:
-                    node = GenerateDecoratorNode(nodeTitle, nodeName, position, isTopNode);
+                    node = GenerateDecoratorNode(nodeTitle, nodeName, position, isTopNode, instance);
                     break;
                 case NodeTypes.Behaviour:
-                    node = GenerateBehaviourNode(nodeTitle, nodeName, position, isTopNode);
+                    node = GenerateBehaviourNode(nodeTitle, nodeName, position, isTopNode, instance);
                     break;
                 default:
                     break;
@@ -306,16 +314,22 @@ namespace BehaviourTreeEditor
         }
 
         // Generate composite type node
-        private BTEditorNode GenerateCompositeNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateCompositeNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = name,
-                nodeName = name,  
+                title = nodeTitle,
+                nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Composite,
                 topNode = isTopNode
             };
+
+            // Create new instance if not loading from already existing behaviour tree
+            if (instance != null)
+                node.compositeInstance = instance as Composite;
+            else
+                node.compositeInstance = ScriptableObject.CreateInstance(name) as Composite;
 
             // Stash and remove old title and minimize button elements
             Label oldTitleLabel = node.titleContainer.Q<Label>("title-label");
@@ -343,6 +357,13 @@ namespace BehaviourTreeEditor
             button.text = "New Child Behaviour";
             node.titleContainer.Add(button);
 
+            // Object field for behaviour instance
+            UnityEditor.UIElements.ObjectField objectField = new UnityEditor.UIElements.ObjectField();
+            node.mainContainer.Add(objectField);
+
+            objectField.objectType = typeof(ScriptableObject);
+            objectField.value = node.compositeInstance;
+
             node.RefreshExpandedState();
             node.RefreshPorts();
 
@@ -352,16 +373,22 @@ namespace BehaviourTreeEditor
         }
 
         // Generate behaviour node
-        private BTEditorNode GenerateBehaviourNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateBehaviourNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = name,
+                title = nodeTitle,
                 nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Behaviour,
                 topNode = isTopNode
             };
+
+            // Create new instance if not loading from already existing behaviour tree
+            if (instance != null)
+                node.actionInstance = instance as Action;
+            else
+                node.actionInstance = ScriptableObject.CreateInstance(name) as Action;
 
             // Stash and remove old title and minimize button elements
             Label oldTitleLabel = node.titleContainer.Q<Label>("title-label");
@@ -384,6 +411,13 @@ namespace BehaviourTreeEditor
             // Input port
             node.inputContainer.Add(GeneratePort(node, Direction.Input));
 
+            UnityEditor.UIElements.ObjectField objectField = new UnityEditor.UIElements.ObjectField();
+            node.mainContainer.Add(objectField);
+
+            // Object field for behaviour instance
+            objectField.objectType = typeof(ScriptableObject);
+            objectField.value = node.actionInstance;
+
             node.RefreshExpandedState();
             node.RefreshPorts();
 
@@ -393,16 +427,22 @@ namespace BehaviourTreeEditor
         }
 
         // Generate decorator node
-        private BTEditorNode GenerateDecoratorNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateDecoratorNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = name,
+                title = nodeTitle,
                 nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Decorator,
                 topNode = isTopNode
             };
+
+            // Create new instance if not loading from already existing behaviour tree
+            if (instance != null)
+                node.decoratorInstance = instance as Decorator;
+            else
+                node.decoratorInstance = ScriptableObject.CreateInstance(name) as Decorator;
 
             // Stash and remove old title and minimize button elements
             Label oldTitleLabel = node.titleContainer.Q<Label>("title-label");
@@ -421,6 +461,13 @@ namespace BehaviourTreeEditor
             textField.RegisterValueChangedCallback(evt => node.title = evt.newValue);
             node.titleContainer.Add(textField);
             node.titleContainer.Add(oldTitleButton); // Add back minimize button in title container after adding title input field
+
+            // Object field for behaviour instance
+            UnityEditor.UIElements.ObjectField objectField = new UnityEditor.UIElements.ObjectField();
+            node.mainContainer.Add(objectField);
+
+            objectField.objectType = typeof(ScriptableObject);
+            objectField.value = node.actionInstance;
 
             // Input/Output port
             node.inputContainer.Add(GeneratePort(node, Direction.Input, Port.Capacity.Multi));

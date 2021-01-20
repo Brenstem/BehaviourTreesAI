@@ -15,13 +15,12 @@ public class Context : ScriptableObject
     public GlobalBoard globalData;
 
     public float range;
-    public GameObject player;
+    [HideInInspector] public GameObject player;
 
     [HideInInspector] public BaseAI owner;
 
     public void Initialize()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log("Initialized" + player);
     }
 }

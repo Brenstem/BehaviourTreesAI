@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviorTrees/EnemyAIBT", order = 0)]
 public class EnemyAIBT : ScriptableObject
 {
-    public CompositeNode topNode;
+    public Composite topNode;
 
     public Context blackboard;
 

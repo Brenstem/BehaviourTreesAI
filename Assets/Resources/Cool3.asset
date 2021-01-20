@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: temp
+  m_Name: Cool3
   m_EditorClassIdentifier: 
   nodeLinks:
   - BaseNodeGuid: 2da8af13-7106-4f3f-a755-1e8f9e01a44e
@@ -44,7 +44,7 @@ MonoBehaviour:
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
     Guid: 2da8af13-7106-4f3f-a755-1e8f9e01a44e
-    Position: {x: 21, y: 114}
+    Position: {x: 0, y: 0}
     nodeType: 0
     topNode: 1
   exposedProperties: []
