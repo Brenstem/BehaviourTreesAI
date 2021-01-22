@@ -13,46 +13,19 @@ MonoBehaviour:
   m_Name: temp
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
-    PortName: 0
-    TargetNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
-  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
-    PortName: 1
-    TargetNodeGuid: c85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
   - BaseNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
     PortName: 0
     TargetNodeGuid: 7437a471-b7f1-48a6-9bbd-9140db714bec
   - BaseNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
     PortName: 1
     TargetNodeGuid: f48dc7a7-6127-4d7c-b2d9-a71a48aab8b8
+  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
+    PortName: 0
+    TargetNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
+  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
+    PortName: 1
+    TargetNodeGuid: c85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
   nodeData:
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 918862e9ede35bb499dca03db91cf028, type: 2}
-    Guid: 7437a471-b7f1-48a6-9bbd-9140db714bec
-    Position: {x: 917, y: 28}
-    nodeType: 2
-    topNode: 0
-  - nodeTitle: AlexTest
-    nodeName: Selector
-    compositeInstance: {fileID: 11400000, guid: 2f477527a127b9d408638d5e8e2c429c, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
-    Position: {x: 0, y: 0}
-    nodeType: 0
-    topNode: 1
-  - nodeTitle: IdleNode
-    nodeName: IdleNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: fa76044071ed1704891ff351ae2443f8, type: 2}
-    Guid: c85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
-    Position: {x: 533, y: 268}
-    nodeType: 2
-    topNode: 0
   - nodeTitle: Sequence
     nodeName: Sequence
     compositeInstance: {fileID: 11400000, guid: 6bc5094083e40464da9878855f5ab41c, type: 2}
@@ -62,13 +35,40 @@ MonoBehaviour:
     Position: {x: 483, y: 89}
     nodeType: 0
     topNode: 0
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: fa76044071ed1704891ff351ae2443f8, type: 2}
+    Guid: c85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
+    Position: {x: 485, y: 245}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 918862e9ede35bb499dca03db91cf028, type: 2}
+    Guid: 7437a471-b7f1-48a6-9bbd-9140db714bec
+    Position: {x: 960, y: 34}
+    nodeType: 2
+    topNode: 0
   - nodeTitle: ChaseNode
     nodeName: ChaseNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 33181f8f5c1d21a45aa95574bc4a11b1, type: 2}
     Guid: f48dc7a7-6127-4d7c-b2d9-a71a48aab8b8
-    Position: {x: 948, y: 136}
+    Position: {x: 963, y: 158}
     nodeType: 2
     topNode: 0
+  - nodeTitle: AlexTest
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: 2f477527a127b9d408638d5e8e2c429c, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
+    Position: {x: 63, y: 168}
+    nodeType: 0
+    topNode: 1
   exposedProperties: []

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Decorator : AbstractNode
 {
-    protected AbstractNode node;
+    public AbstractNode node;
 
     public virtual void Construct(AbstractNode node)
     {

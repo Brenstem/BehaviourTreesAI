@@ -258,25 +258,11 @@ namespace BehaviourTreeEditor
                 AssetDatabase.CreateFolder("Assets", "Resources"); // TODO fix createfolder to create folder in the correct place
             }
 
-            if (AssetDatabase.GetAssetPath(obj) == null)
+            if (AssetDatabase.GetAssetPath(obj) == "" || AssetDatabase.GetAssetPath(obj) == null)
             {
-                Debug.Log("we in here");
                 AssetDatabase.CreateAsset(obj, $"{ path }/{ fileName }.asset");
                 AssetDatabase.SaveAssets();
             }
-
-            //if (AssetDatabase.GetAssetPath(obj) != null)
-            //{
-            //    Debug.Log("delet this " + $"{ path }/{ fileName }.asset");
-            //    //AssetDatabase.DeleteAsset($"{ path }/{ fileName }.asset");
-            //    //AssetDatabase.SaveAssets();
-            //}
-
-            //if (obj != null)
-            //{
-            //    AssetDatabase.CreateAsset(obj, $"{ path }/{ fileName }.asset");
-            //    AssetDatabase.SaveAssets();
-            //}
 
             return obj;
         }

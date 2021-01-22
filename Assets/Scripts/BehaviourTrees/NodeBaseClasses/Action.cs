@@ -4,9 +4,10 @@ using UnityEngine;
 
 public abstract class Action : AbstractNode
 {
-    protected Context context;
+    public Context context;
 
-    public abstract void Construct(Context blackboard);
+    //public abstract void Construct(Context blackboard);
+    public abstract void Construct();
 
     public virtual void AddProperties(string[] names) { }
 }

@@ -13,6 +13,8 @@ public class AlexEnemyAI : BaseAI
     [SerializeField] private float aggroRange;
     [SerializeField] private float attackRange;
 
+    Stack<AbstractNode> constructStack = new Stack<AbstractNode>();
+
     public BlackBoardProperty<float> aggroRangeProperty { get; private set; }
     public BlackBoardProperty<float> attackRangeProperty { get; private set; }
 
@@ -23,6 +25,40 @@ public class AlexEnemyAI : BaseAI
         aggroRangeProperty = new BlackBoardProperty<float>("aggroRange", aggroRange);
         attackRangeProperty = new BlackBoardProperty<float>("attackRange", attackRange);
         behaviorTree.blackboard.Initialize();
+        
+        behaviorTree.blackboard.owner = this;
+
+        constructStack.Push(behaviorTree.topNode);
+
+        while(constructStack.Count > 0)
+        {
+            AbstractNode currentNode = constructStack.Pop();
+
+            if (currentNode.GetType().IsSubclassOf(typeof(Composite)))
+            {
+                Composite compositetNode = (Composite)currentNode;
+                print(compositetNode.nodes.Count);
+                for (int i = 0; i < compositetNode.nodes.Count; i++)
+                {
+                    constructStack.Push(compositetNode.nodes[i]);
+                }
+                print("Composite");
+            }
+            else if (currentNode.GetType().IsSubclassOf(typeof(Decorator)))
+            {
+                Decorator decoratorNode = (Decorator)currentNode;
+                constructStack.Push(decoratorNode.node);
+                print("Decorator");
+
+            }
+            else
+            {
+                Action actionNode = (Action)currentNode;
+                actionNode.Construct();
+                print("Action");
+            }
+            print("did a node :)");
+        }
     }
 
     private void Start()

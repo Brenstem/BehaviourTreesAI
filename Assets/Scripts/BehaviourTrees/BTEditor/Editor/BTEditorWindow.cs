@@ -223,7 +223,8 @@ namespace BehaviourTreeEditor
 
                     case NodeTypes.Behaviour:
                         // Construct node
-                        node.actionInstance.Construct((Context)contextField.value);
+                        //node.actionInstance.Construct((Context)contextField.value);
+                        node.actionInstance.context = (Context)contextField.value;
 
                         return node.actionInstance;
                     default:

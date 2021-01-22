@@ -7,9 +7,8 @@ public class HealthNode : Action
     private Health aiHealth;
     private float threshold;
 
-    public override void Construct(Context context)
+    public override void Construct()
     {
-        this.context = context;
         aiHealth = context.localData.thisAI.GetComponent<Health>();
         threshold = context.nodeData.Get<float>("healthThreshold");
 

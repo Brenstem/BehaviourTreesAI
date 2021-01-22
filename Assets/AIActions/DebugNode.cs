@@ -6,10 +6,8 @@ public class DebugNode : Action
 {
     [SerializeField] private string debugText;
 
-    public override void Construct(Context blackboard)
+    public override void Construct()
     {
-        context = blackboard;
-
         _constructed = true;
     }
 

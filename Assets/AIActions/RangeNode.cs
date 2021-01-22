@@ -7,12 +7,11 @@ public class RangeNode : Action
     Transform targetTransform;
     [SerializeField] float range;
 
-    public override void Construct(Context blackboard)
+    public override void Construct()
     {
-        this.context = blackboard;
         //targetTransform = blackboard.globalData.player.transform;
-        targetTransform = blackboard.player.transform;
-        range = blackboard.range;
+        targetTransform = context.player.transform;
+        range = context.range;
 
         _constructed = true;
     }
@@ -27,9 +26,13 @@ public class RangeNode : Action
 
     public override NodeStates Evaluate()
     {
+        //Debug.Log("meme");
+
         if (_constructed)
         {
             float distance = Vector3.Distance(context.owner.transform.position, targetTransform.position);
+
+            Debug.Log(distance);
 
             return distance <= range ? NodeStates.SUCCESS : NodeStates.FAILURE;
         }

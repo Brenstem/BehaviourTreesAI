@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class IdleNode : Action
 {
-    public override void Construct(Context blackboard)
+    public override void Construct()
     {
-        context = blackboard;
         _constructed = true;
+        Debug.Log("idle time baybeeee");
     }
 
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
-            Debug.Log("NOT MEME!!!" + context.player/*.transform.position*/);
+            Debug.Log("IDLE NODE " /*+ Vector3.Distance(context.player.transform.position, context.owner.transform.position)*/);
             return NodeStates.SUCCESS;
         }
         else

@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: AlexTest
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
-    PortName: 0
-    TargetNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
-  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
-    PortName: 1
-    TargetNodeGuid: c85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
   - BaseNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
     PortName: 0
     TargetNodeGuid: 7437a471-b7f1-48a6-9bbd-9140db714bec
   - BaseNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
     PortName: 1
     TargetNodeGuid: f48dc7a7-6127-4d7c-b2d9-a71a48aab8b8
+  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
+    PortName: 0
+    TargetNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
+  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
+    PortName: 1
+    TargetNodeGuid: c85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
   nodeData:
   - nodeTitle: Sequence
     nodeName: Sequence
@@ -35,15 +35,6 @@ MonoBehaviour:
     Position: {x: 483, y: 89}
     nodeType: 0
     topNode: 0
-  - nodeTitle: AlexTest
-    nodeName: Selector
-    compositeInstance: {fileID: 11400000, guid: 2f477527a127b9d408638d5e8e2c429c, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
-    Position: {x: 165, y: 147}
-    nodeType: 0
-    topNode: 1
   - nodeTitle: IdleNode
     nodeName: IdleNode
     compositeInstance: {fileID: 0}
@@ -66,9 +57,18 @@ MonoBehaviour:
     nodeName: ChaseNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 33181f8f5c1d21a45aa95574bc4a11b1, type: 2}
     Guid: f48dc7a7-6127-4d7c-b2d9-a71a48aab8b8
     Position: {x: 963, y: 158}
     nodeType: 2
     topNode: 0
+  - nodeTitle: AlexTest
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: 2f477527a127b9d408638d5e8e2c429c, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
+    Position: {x: 167, y: 137}
+    nodeType: 0
+    topNode: 1
   exposedProperties: []
