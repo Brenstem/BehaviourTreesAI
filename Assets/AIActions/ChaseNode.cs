@@ -11,7 +11,6 @@ public class ChaseNode : Action
     public override void Construct()
     {
         playerTransform = context.player.transform;
-        agent = context.owner.agent;
         _constructed = true;
     }
 
@@ -19,6 +18,8 @@ public class ChaseNode : Action
     {
         if (_constructed)
         {
+            agent = context.owner.agent;
+
             float distance = Vector3.Distance(playerTransform.position, agent.transform.position);
 
             if (distance >= agent.stoppingDistance)
@@ -38,17 +39,5 @@ public class ChaseNode : Action
             Debug.LogError("Node not constructed!");
             return NodeStates.FAILURE;
         }
-    }
-}
-
-public class ChaseNodeParameters
-{
-    public Transform target;
-    public NavMeshAgent agent;
-
-    public ChaseNodeParameters(Transform target, NavMeshAgent agent)
-    {
-        this.target = target;
-        this.agent = agent;
     }
 }

@@ -7,14 +7,12 @@ public class IdleNode : Action
     public override void Construct()
     {
         _constructed = true;
-        Debug.Log("idle time baybeeee");
     }
 
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
-            Debug.Log("IDLE NODE " /*+ Vector3.Distance(context.player.transform.position, context.owner.transform.position)*/);
             return NodeStates.SUCCESS;
         }
         else
@@ -23,9 +21,4 @@ public class IdleNode : Action
             return NodeStates.FAILURE;
         }
     }
-}
-
-public class IdleNodeParameters
-{
-
 }

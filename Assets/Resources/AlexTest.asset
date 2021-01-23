@@ -10,65 +10,65 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: AlexTest
+  m_Name: alextest
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
+  - BaseNodeGuid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
     PortName: 0
-    TargetNodeGuid: 7437a471-b7f1-48a6-9bbd-9140db714bec
-  - BaseNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
+    TargetNodeGuid: df060248-2855-493b-b70f-038ece7e814c
+  - BaseNodeGuid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
     PortName: 1
-    TargetNodeGuid: f48dc7a7-6127-4d7c-b2d9-a71a48aab8b8
-  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
+    TargetNodeGuid: 49a0d2f6-7969-43c1-8c0b-2414c5ac3cbe
+  - BaseNodeGuid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
     PortName: 0
-    TargetNodeGuid: e04347d3-0312-4dd2-9436-68cccbc890d5
-  - BaseNodeGuid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
+    TargetNodeGuid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
+  - BaseNodeGuid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
     PortName: 1
-    TargetNodeGuid: c85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
+    TargetNodeGuid: 975278de-90a2-497c-b9c5-e8990ee80be3
   nodeData:
-  - nodeTitle: Sequence
+  - nodeTitle: Chase Sequence
     nodeName: Sequence
-    compositeInstance: {fileID: 11400000, guid: 6bc5094083e40464da9878855f5ab41c, type: 2}
+    compositeInstance: {fileID: 11400000, guid: 7e692c9fe11387744b06af263779a28c, type: 2}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
-    Guid: e04347d3-0312-4dd2-9436-68cccbc890d5
-    Position: {x: 483, y: 89}
+    Guid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
+    Position: {x: 393, y: 87}
     nodeType: 0
-    topNode: 0
-  - nodeTitle: IdleNode
-    nodeName: IdleNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: fa76044071ed1704891ff351ae2443f8, type: 2}
-    Guid: c85f0d68-0eb4-46d9-9bab-a61dfa73d1d3
-    Position: {x: 485, y: 245}
-    nodeType: 2
-    topNode: 0
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 918862e9ede35bb499dca03db91cf028, type: 2}
-    Guid: 7437a471-b7f1-48a6-9bbd-9140db714bec
-    Position: {x: 960, y: 34}
-    nodeType: 2
     topNode: 0
   - nodeTitle: ChaseNode
     nodeName: ChaseNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 33181f8f5c1d21a45aa95574bc4a11b1, type: 2}
-    Guid: f48dc7a7-6127-4d7c-b2d9-a71a48aab8b8
-    Position: {x: 963, y: 158}
+    actionInstance: {fileID: 11400000, guid: b06ece8a9e4b26a4ca3e0a7e6d0fea41, type: 2}
+    Guid: 49a0d2f6-7969-43c1-8c0b-2414c5ac3cbe
+    Position: {x: 940, y: 153}
     nodeType: 2
     topNode: 0
-  - nodeTitle: AlexTest
+  - nodeTitle: Chase range check
+    nodeName: RangeNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: b3c235ecd4632dc42a868a367309eee1, type: 2}
+    Guid: df060248-2855-493b-b70f-038ece7e814c
+    Position: {x: 928, y: 30}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: Top Node
     nodeName: Selector
-    compositeInstance: {fileID: 11400000, guid: 2f477527a127b9d408638d5e8e2c429c, type: 2}
+    compositeInstance: {fileID: 11400000, guid: af92e2d24014ef5408c89dace1c17dbf, type: 2}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
-    Guid: e5cb4e5f-23b5-4061-bf6e-3fa82fc87382
-    Position: {x: 167, y: 137}
+    Guid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
+    Position: {x: 70, y: 146}
     nodeType: 0
     topNode: 1
-  exposedProperties: []
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 28dbe388a2728f8438632f93928021a4, type: 2}
+    Guid: 975278de-90a2-497c-b9c5-e8990ee80be3
+    Position: {x: 401, y: 257}
+    nodeType: 2
+    topNode: 0
+  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

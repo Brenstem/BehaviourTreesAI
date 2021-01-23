@@ -47,7 +47,7 @@ namespace BehaviourTreeEditor
             // Save nodes to container
             if (!SaveNodes(btContainer)) return;
 
-            SaveExposedProperties(btContainer);
+            btContainer.context = _targetGraphView.contextField.value as Context;
 
             // Put savefile in Assets/BTResources
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
@@ -55,12 +55,6 @@ namespace BehaviourTreeEditor
 
             AssetDatabase.CreateAsset(btContainer, $"Assets/Resources/{tempFileName}.asset");
             AssetDatabase.SaveAssets();
-        }
-
-        // Saves exposed blackboard properties
-        private void SaveExposedProperties(BTDataContainer btContainer)
-        {
-            btContainer.exposedProperties.AddRange(_targetGraphView.exposedProperties);
         }
 
         // Saves nodes
@@ -133,6 +127,7 @@ namespace BehaviourTreeEditor
             ClearGraph();
             CreateNodes();
             ConnectNodes();
+            _targetGraphView.contextField.value = _containerCache.context;
         }
 
 

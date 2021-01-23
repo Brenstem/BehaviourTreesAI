@@ -8,7 +8,7 @@ public abstract class BaseAI : MonoBehaviour
     public NavMeshAgent agent { get; protected set; }
     public Health health { get; protected set; }
 
-    [SerializeField] protected EnemyAIBT behaviorTree;
+    [SerializeField] protected BehaviourTree behaviorTree;
 
     private void Awake()
     {

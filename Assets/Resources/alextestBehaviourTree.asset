@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: Cool3TopNode
+  m_Script: {fileID: 11500000, guid: e14480b28aead7a4c9dfe3cb5c4409b3, type: 3}
+  m_Name: alextestBehaviourTree
   m_EditorClassIdentifier: 
-  _constructed: 1
-  nodes:
-  - {fileID: 11400000, guid: 6f5344eb2f34d724a8a6202c6dc67edb, type: 2}
-  - {fileID: 11400000, guid: 90b047fce17a3424092f8a7287d56c4c, type: 2}
+  topNode: {fileID: 11400000, guid: af92e2d24014ef5408c89dace1c17dbf, type: 2}
+  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

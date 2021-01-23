@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: AlexTest3
+  m_Name: alextest3
   m_EditorClassIdentifier: 
   nodeLinks:
   - BaseNodeGuid: 9b237198-5ce1-4a2e-9b36-c22258f74f71
@@ -20,7 +20,7 @@ MonoBehaviour:
     PortName: 1
     TargetNodeGuid: 092e193d-53d1-4c67-9e43-282c07573e5d
   nodeData:
-  - nodeTitle: DebugNode
+  - nodeTitle: 
     nodeName: DebugNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     Position: {x: 484, y: 262}
     nodeType: 2
     topNode: 0
-  - nodeTitle: IdleNode
+  - nodeTitle: 
     nodeName: IdleNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
@@ -38,13 +38,13 @@ MonoBehaviour:
     Position: {x: 486, y: 156}
     nodeType: 2
     topNode: 0
-  - nodeTitle: Top Node
+  - nodeTitle: 12341234
     nodeName: Selector
     compositeInstance: {fileID: 11400000, guid: 4bf6b3c07bbf1554a9782a547c805b63, type: 2}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
     Guid: 9b237198-5ce1-4a2e-9b36-c22258f74f71
-    Position: {x: 0, y: 0}
+    Position: {x: 53, y: 204}
     nodeType: 0
     topNode: 1
-  exposedProperties: []
+  context: {fileID: 0}

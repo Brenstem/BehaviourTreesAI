@@ -9,8 +9,7 @@ public class HealthNode : Action
 
     public override void Construct()
     {
-        aiHealth = context.localData.thisAI.GetComponent<Health>();
-        threshold = context.nodeData.Get<float>("healthThreshold");
+        aiHealth = context.owner.GetComponent<Health>();
 
         _constructed = true;
     }
@@ -26,17 +25,5 @@ public class HealthNode : Action
             Debug.LogError("Node not constructed!");
             return NodeStates.FAILURE;
         }
-    }
-}
-
-public class HealthNodeParameters
-{
-    public EnemyAI ai;
-    public float threshold;
-
-    public HealthNodeParameters(EnemyAI ai, float threshold)
-    {
-        this.ai = ai;
-        this.threshold = threshold;
     }
 }

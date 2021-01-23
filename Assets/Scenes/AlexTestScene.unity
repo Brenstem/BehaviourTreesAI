@@ -206,11 +206,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &175408857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1393914868876154873, guid: 538aa64c9c8f752448ae00f4fb2b22a0, type: 3}
-  m_PrefabInstance: {fileID: 1393914868700746016}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &293495302
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,10 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b023c64d190384294622a94fba4740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviorTree: {fileID: 11400000, guid: 7f9d1b392c526be4291aee249ddd862b, type: 2}
-  player: {fileID: 175408857}
-  aggroRange: 7
-  attackRange: 3
+  behaviorTree: {fileID: 11400000, guid: 06e137c2c80ef924898df89125749331, type: 2}
 --- !u!136 &293495304
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -347,7 +339,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &293495309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,10 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b023c64d190384294622a94fba4740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviorTree: {fileID: 11400000, guid: 7f9d1b392c526be4291aee249ddd862b, type: 2}
-  player: {fileID: 175408857}
-  aggroRange: 9.07
-  attackRange: 1.45
+  behaviorTree: {fileID: 0}
 --- !u!195 &1961127138
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -743,7 +732,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!136 &1961127139
 CapsuleCollider:
   m_ObjectHideFlags: 0

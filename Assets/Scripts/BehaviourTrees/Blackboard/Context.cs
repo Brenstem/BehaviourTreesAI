@@ -10,14 +10,11 @@ public class Context : ScriptableObject
      * kanske funkar om det är monobehavior men då blir det lite wack
      * kanske funkar om nodeData är scriptable object men de andra inte är det
     */
-    public NodeBoard nodeData;
-    public LocalBoard localData;
-    public GlobalBoard globalData;
 
-    [HideInInspector] public float range;
     [HideInInspector] public GameObject player;
-
     [HideInInspector] public BaseAI owner;
+
+    // public LocalBoard localData;
 
     public void Initialize()
     {

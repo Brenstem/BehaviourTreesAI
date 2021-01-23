@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314eca22099ca2847b6735246a608a22, type: 3}
-  m_Name: DebugNode68cef7fb-0a70-4237-96bf-5e002419fe02
+  m_Script: {fileID: 11500000, guid: cf76a4276415e5348a310ba4c7dff3bd, type: 3}
+  m_Name: ChaseNode49a0d2f6-7969-43c1-8c0b-2414c5ac3cbe
   m_EditorClassIdentifier: 
-  _constructed: 0
-  debugText: 2
+  context: {fileID: 0}

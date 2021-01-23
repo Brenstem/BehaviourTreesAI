@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: TypeData
   m_EditorClassIdentifier: 
   behaviourNodes:
-  - Cool
+  - DebugNode
   - ChaseNode
   - HealthNode
   - IdleNode
   - RangeNode
-  - DebugNode
   compositeNodes:
   - Selector
   - Sequence

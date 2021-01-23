@@ -18,8 +18,7 @@ namespace BehaviourTreeEditor
         private BTGraphView _graphView;
         private string _fileName = "New Behaviour Tree";
         private string _newBehaviourName = "New Behaviour Name";
-        private static EditorWindow window;
-        private ObjectField contextField;
+        public static EditorWindow window;
 
         private Stack<AbstractNode> nodeStack;
 
@@ -37,7 +36,6 @@ namespace BehaviourTreeEditor
             GenerateGraph();
             GenerateSavetoolbar();
             GenerateNodeToolbar();
-            //GenerateMiniMap();
             _graphView.LoadTypeData();
         }
 
@@ -60,7 +58,6 @@ namespace BehaviourTreeEditor
         private void GenerateGraph()
         {
             _graphView = new BTGraphView(this) { name = "Behaviour Tree Editor" };
-            contextField = new ObjectField { objectType = typeof(Context) };
             _graphView.StretchToParentSize();
             rootVisualElement.Add(_graphView);
         }
@@ -81,7 +78,7 @@ namespace BehaviourTreeEditor
             toolbar.Add(new Button(() => RequestDataOperation(true)) { text = "Save Data" });
             toolbar.Add(new Button(() => RequestDataOperation(false)) { text = "Load Data" });
             toolbar.Add(new Button(() => GenerateBehaviourTree()) { text = "Generate Behaviour Tree" });
-            toolbar.Add(contextField);
+            toolbar.Add(_graphView.contextField);
 
             rootVisualElement.Add(toolbar);
         }
@@ -121,7 +118,7 @@ namespace BehaviourTreeEditor
             rootVisualElement.Add(toolbar);
         }
 
-#endregion
+        #endregion
 
         // Save/Load function
         private void RequestDataOperation(bool save)
@@ -137,12 +134,16 @@ namespace BehaviourTreeEditor
             if (save)
             {
                 saveUtility.SaveGraph(_fileName);
+                Debug.Log("Saving graph as: " + _fileName + "...");
             }
             else
             {
                 saveUtility.LoadGraph(_fileName);
+                Debug.Log("Loading graph " + _fileName + "...");
             }
         }
+
+        #region BehaviourTree Generation
 
         // Generates initialized topnode
         private void GenerateBehaviourTree()
@@ -151,11 +152,16 @@ namespace BehaviourTreeEditor
 
             nodeStack = new Stack<AbstractNode>();
 
+            BehaviourTree finishedTree = ScriptableObject.CreateInstance<BehaviourTree>();
+
             // Create rest of nodes here
             if (ConvertEditorNode(GetTopNode()) != null)
             {
-                InitializeNodes(GetTopNode());
+                finishedTree.topNode = InitializeNodes(GetTopNode()) as Composite;
+                finishedTree.context = _graphView.contextField.value as Context;
             }
+
+            GraphSaveUtility.GetInstance(_graphView).SaveNode(_fileName + "BehaviourTree", finishedTree);
 
             Debug.Log("I have been generated");
         }
@@ -223,8 +229,7 @@ namespace BehaviourTreeEditor
 
                     case NodeTypes.Behaviour:
                         // Construct node
-                        //node.actionInstance.Construct((Context)contextField.value);
-                        node.actionInstance.context = (Context)contextField.value;
+                        node.actionInstance.context = (Context)_graphView.contextField.value;
 
                         return node.actionInstance;
                     default:
@@ -258,5 +263,6 @@ namespace BehaviourTreeEditor
 
             return tempNode;
         }
+        #endregion
     }
 }
