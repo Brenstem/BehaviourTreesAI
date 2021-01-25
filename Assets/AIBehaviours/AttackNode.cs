@@ -8,7 +8,9 @@ public class AttackNode : Action
 
     public override void Construct()
     {
-        hitBox = context.owner.GetComponentInChildren<HitBoxController>();
+        //måste lista ut hur vi ska göra för att hämta saker som hitboxes på ett smidigt sätt
+        //alla hitboxes har en ID som man letar efter 
+        //hitBox = context.owner.GetComponentInChildren<HitBoxController>();
         _constructed = true;
     }
 
@@ -16,24 +18,29 @@ public class AttackNode : Action
     {
         if (_constructed)
         {
+            hitBox = context.owner.GetComponentInChildren<HitBoxController>();
             if (hitBox.wasActive && !hitBox.isActive)
             {
-                return NodeStates.SUCCESS;
+                NodeState = NodeStates.SUCCESS;
+                return NodeState;
             }
             else if (hitBox.isActive)
             {
-                return NodeStates.RUNNING;
+                NodeState = NodeStates.RUNNING;
+                return NodeState;
             }
             else
             {
                 hitBox.ExposeHitBox();
-                return NodeStates.RUNNING;
+                NodeState = NodeStates.RUNNING;
+                return NodeState;
             }
         }
         else
         {
             Debug.LogError("Node not constructed!");
-            return NodeStates.FAILURE;
+            NodeState = NodeStates.FAILURE;
+            return NodeState;
         }
     }
 }

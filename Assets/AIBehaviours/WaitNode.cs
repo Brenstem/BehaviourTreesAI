@@ -10,7 +10,6 @@ public class WaitNode : Action
     public override void Construct()
     {
         _constructed = true;
-        //skulle vara bättre för garbage colection om man skapar en timer som man resetar, men runtime är inte satt när construct körs, man kanske vill ha en typ start funktion man kan kalla?
         timer = new Timer(-1f);
     }
 
@@ -22,27 +21,33 @@ public class WaitNode : Action
             if (timer.Done)
             {
                 timer.Reset(runTime);
-                //context.owner.agent.SetDestination(context.owner.transform.position);
-                return NodeStates.RUNNING;
+
+                context.owner.agent.SetDestination(context.owner.transform.position);
+
+                NodeState = NodeStates.RUNNING;
+                return NodeState;
             }
 
             timer.DecrementTimer(Time.deltaTime);
 
             //timern som kördes är nu klar
-            if(timer.Done)
+            if (timer.Done)
             {
-                return NodeStates.SUCCESS;
+                NodeState = NodeStates.SUCCESS;
+                return NodeState;
             }
             //timern som körs är inte än klar
             else
             {
-                return NodeStates.RUNNING;
+                NodeState = NodeStates.RUNNING;
+                return NodeState;
             }
         }
         else
         {
             Debug.LogError("Node not constructed!");
-            return NodeStates.FAILURE;
+            NodeState = NodeStates.FAILURE;
+            return NodeState;
         }
     }
 }
