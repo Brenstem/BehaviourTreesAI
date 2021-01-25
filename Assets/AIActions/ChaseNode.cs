@@ -9,7 +9,7 @@ public class ChaseNode : Action
     NavMeshAgent agent;
 
     public override void Construct()
-    {
+    {
         playerTransform = context.player.transform;
         _constructed = true;
     }
@@ -17,7 +17,7 @@ public class ChaseNode : Action
     public override NodeStates Evaluate()
     {
         if (_constructed)
-        {
+        {
             agent = context.owner.agent;
 
             float distance = Vector3.Distance(playerTransform.position, agent.transform.position);
@@ -26,7 +26,7 @@ public class ChaseNode : Action
             {
                 agent.isStopped = false;
                 agent.SetDestination(playerTransform.position);
-                return NodeStates.RUNNING;
+                return NodeStates.SUCCESS;
             }
             else
             {
