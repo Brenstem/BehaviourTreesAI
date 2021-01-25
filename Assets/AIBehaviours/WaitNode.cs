@@ -5,22 +5,13 @@ using UnityEngine;
 public class WaitNode : Action
 {
     private Timer timer;
-    private float runTime = 0.5f;
+    [SerializeField] private float runTime = 0.5f;
 
-    public override void Construct(Context blackboard)
+    public override void Construct()
     {
-        this.context = blackboard;
         _constructed = true;
         //skulle vara bättre för garbage colection om man skapar en timer som man resetar, men runtime är inte satt när construct körs, man kanske vill ha en typ start funktion man kan kalla?
         timer = new Timer(-1f);
-    }
-
-    public override void AddProperties(string[] names)
-    {
-        foreach (var name in names)
-        {
-            runTime = context.nodeData.Get<float>(name);
-        }
     }
 
     public override NodeStates Evaluate()

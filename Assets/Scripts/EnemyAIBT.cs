@@ -6,100 +6,99 @@ using UnityEngine;
 public class EnemyAIBT : ScriptableObject
 {
     public Selector topNode;
+    public Context blackboard;
 
-    [HideInInspector] public Context blackboard;
+    //private bool _generated;
 
-    private bool _generated;
+    //private void OnEnable()
+    //{
+    //    //måste ha för att ScriptableObject
+    //    _generated = false;
 
-    private void OnEnable()
-    {
-        //måste ha för att ScriptableObject
-        _generated = false;
+    //    // Debug.Log(topNode);
+    //}
 
-        // Debug.Log(topNode);
-    }
+    //public void SetTopNode(Selector topNode)
+    //{
+    //    this.topNode = topNode;
+    //}
 
-    public void SetTopNode(Selector topNode)
-    {
-        this.topNode = topNode;
-    }
+    //public void ConstructBehaviourTree()
+    //{
+    //    Debug.Log(_generated);
 
-    public void ConstructBehaviourTree()
-    {
-        Debug.Log(_generated);
+    //    if (!_generated)
+    //    {
+    //        RangeNode chaseRangeNode = ScriptableObject.CreateInstance<RangeNode>();
+    //        chaseRangeNode.Construct();
+    //        chaseRangeNode.AddProperties(new string[] { "aggroRange" });
 
-        if (!_generated)
-        {
-            RangeNode chaseRangeNode = ScriptableObject.CreateInstance<RangeNode>();
-            chaseRangeNode.Construct(blackboard);
-            chaseRangeNode.AddProperties(new string[] { "aggroRange" });
+    //        ChaseNode chaseNode = ScriptableObject.CreateInstance<ChaseNode>();
+    //        chaseNode.Construct();
 
-            ChaseNode chaseNode = ScriptableObject.CreateInstance<ChaseNode>();
-            chaseNode.Construct(blackboard);
+    //        RangeNode attackRangeNode = ScriptableObject.CreateInstance<RangeNode>();
+    //        attackRangeNode.Construct();
+    //        attackRangeNode.AddProperties(new string[] { "attackRange" });
 
-            RangeNode attackRangeNode = ScriptableObject.CreateInstance<RangeNode>();
-            attackRangeNode.Construct(blackboard);
-            attackRangeNode.AddProperties(new string[] { "attackRange" });
+    //        WaitNode attackStartupNode = CreateInstance<WaitNode>();
+    //        attackStartupNode.Construct();
+    //        attackStartupNode.AddProperties(new string[] { "attackStartupTime" });
 
-            WaitNode attackStartupNode = CreateInstance<WaitNode>();
-            attackStartupNode.Construct(blackboard);
-            attackStartupNode.AddProperties(new string[] { "attackStartupTime" });
+    //        AttackNode attackNode = CreateInstance<AttackNode>();
+    //        attackNode.Construct();
 
-            AttackNode attackNode = CreateInstance<AttackNode>();
-            attackNode.Construct(blackboard);
-
-            WaitNode attackEndLagNode = CreateInstance<WaitNode>();
-            attackEndLagNode.Construct(blackboard);
-            attackEndLagNode.AddProperties(new string[] { "attackEndLagTime" });
-
-
-            ConcurrentNode attackSequence = ScriptableObject.CreateInstance<ConcurrentNode>();
-            attackSequence.Construct(new List<AbstractNode> { attackRangeNode, attackStartupNode, attackNode, attackEndLagNode });
-
-            Sequence chaseSequence = ScriptableObject.CreateInstance<Sequence>();
-            chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
-
-            IdleNode idleNode = ScriptableObject.CreateInstance<IdleNode>();
-            idleNode.Construct(blackboard);
-
-            topNode = ScriptableObject.CreateInstance<Selector>();
-            topNode.Construct(new List<AbstractNode> { attackSequence, chaseSequence, idleNode });
-
-            _generated = true;
-
-            Debug.Log("BT generated");
-        }
-    }
-
-    public void TestConstruct()
-    {
-        if (!_generated)
-        {
-            RangeNode attackRangeNode = ScriptableObject.CreateInstance<RangeNode>();
-            attackRangeNode.Construct(blackboard);
-            attackRangeNode.AddProperties(new string[] { "attackRange" });
-
-            AttackNode attackNode = CreateInstance<AttackNode>();
-            attackNode.Construct(blackboard);
-
-            WaitNode waitNode = CreateInstance<WaitNode>();
-            waitNode.Construct(blackboard);
-            waitNode.AddProperties(new string[] { "attackStartupTime" });
+    //        WaitNode attackEndLagNode = CreateInstance<WaitNode>();
+    //        attackEndLagNode.Construct();
+    //        attackEndLagNode.AddProperties(new string[] { "attackEndLagTime" });
 
 
-            ConcurrentNode attackSequence = ScriptableObject.CreateInstance<ConcurrentNode>();
-            attackSequence.Construct(new List<AbstractNode> { attackRangeNode, attackNode, waitNode });
+    //        ConcurrentNode attackSequence = ScriptableObject.CreateInstance<ConcurrentNode>();
+    //        attackSequence.Construct(new List<AbstractNode> { attackRangeNode, attackStartupNode, attackNode, attackEndLagNode });
 
-            IdleNode idleNode = ScriptableObject.CreateInstance<IdleNode>();
-            idleNode.Construct(blackboard);
+    //        Sequence chaseSequence = ScriptableObject.CreateInstance<Sequence>();
+    //        chaseSequence.Construct(new List<AbstractNode> { chaseRangeNode, chaseNode });
+
+    //        IdleNode idleNode = ScriptableObject.CreateInstance<IdleNode>();
+    //        idleNode.Construct();
+
+    //        topNode = ScriptableObject.CreateInstance<Selector>();
+    //        topNode.Construct(new List<AbstractNode> { attackSequence, chaseSequence, idleNode });
+
+    //        _generated = true;
+
+    //        Debug.Log("BT generated");
+    //    }
+    //}
+
+    //public void TestConstruct()
+    //{
+    //    if (!_generated)
+    //    {
+    //        RangeNode attackRangeNode = ScriptableObject.CreateInstance<RangeNode>();
+    //        attackRangeNode.Construct();
+    //        attackRangeNode.AddProperties(new string[] { "attackRange" });
+
+    //        AttackNode attackNode = CreateInstance<AttackNode>();
+    //        attackNode.Construct();
+
+    //        WaitNode waitNode = CreateInstance<WaitNode>();
+    //        waitNode.Construct();
+    //        waitNode.AddProperties(new string[] { "attackStartupTime" });
 
 
-            topNode = ScriptableObject.CreateInstance<Selector>();
-            topNode.Construct(new List<AbstractNode> { attackSequence, idleNode });
+    //        ConcurrentNode attackSequence = ScriptableObject.CreateInstance<ConcurrentNode>();
+    //        attackSequence.Construct(new List<AbstractNode> { attackRangeNode, attackNode, waitNode });
 
-            _generated = true;
+    //        IdleNode idleNode = ScriptableObject.CreateInstance<IdleNode>();
+    //        idleNode.Construct();
 
-            Debug.Log("BT generated");
-        }
-    }
+
+    //        topNode = ScriptableObject.CreateInstance<Selector>();
+    //        topNode.Construct(new List<AbstractNode> { attackSequence, idleNode });
+
+    //        _generated = true;
+
+    //        Debug.Log("BT generated");
+    //    }
+    //}
 }

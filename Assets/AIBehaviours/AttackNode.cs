@@ -6,10 +6,9 @@ public class AttackNode : Action
 {
     HitBoxController hitBox;
 
-    public override void Construct(Context blackboard)
+    public override void Construct()
     {
-        context = blackboard;
-        hitBox = blackboard.localData.thisAI.GetComponentInChildren<HitBoxController>();
+        hitBox = context.owner.GetComponentInChildren<HitBoxController>();
         _constructed = true;
     }
 
