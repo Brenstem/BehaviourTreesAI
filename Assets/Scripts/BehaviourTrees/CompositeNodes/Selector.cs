@@ -13,19 +13,19 @@ public class Selector : Composite
                 switch (node.Evaluate())
                 {
                     case NodeStates.RUNNING:
-                        _nodeState = NodeStates.RUNNING;
-                        return _nodeState;
+                        NodeState = NodeStates.RUNNING;
+                        return NodeState;
                     case NodeStates.SUCCESS:
-                        _nodeState = NodeStates.SUCCESS;
-                        return _nodeState;
+                        NodeState = NodeStates.SUCCESS;
+                        return NodeState;
                     case NodeStates.FAILURE:
                         break;
                     default:
                         break;
                 }
             }
-            _nodeState = NodeStates.FAILURE;
-            return _nodeState;
+            NodeState = NodeStates.FAILURE;
+            return NodeState;
         }
         else
         {

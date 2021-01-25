@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e14480b28aead7a4c9dfe3cb5c4409b3, type: 3}
-  m_Name: AlexTestBehaviourTree
+  m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
+  m_Name: RangeNode55e07f75-3be3-4e80-bf67-ba1c99961aea
   m_EditorClassIdentifier: 
-  topNode: {fileID: 11400000, guid: af92e2d24014ef5408c89dace1c17dbf, type: 2}
-  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
+  context: {fileID: 0}
+  range: 7

@@ -37,23 +37,23 @@ public class ConcurrentNode : Composite
             {
                 case NodeStates.RUNNING:
                     runningNodeIndex = i;
-                    _nodeState = NodeStates.RUNNING;
-                    return _nodeState;
+                    NodeState = NodeStates.RUNNING;
+                    return NodeState;
 
                 case NodeStates.SUCCESS:
                     break;
 
                 case NodeStates.FAILURE:
                     runningNodeIndex = -1;
-                    _nodeState = NodeStates.FAILURE;
-                    return _nodeState;
+                    NodeState = NodeStates.FAILURE;
+                    return NodeState;
 
                 default:
                     break;
             }
         }
         runningNodeIndex = -1;
-        _nodeState = NodeStates.SUCCESS;
-        return _nodeState;
+        NodeState = NodeStates.SUCCESS;
+        return NodeState;
     }
 }

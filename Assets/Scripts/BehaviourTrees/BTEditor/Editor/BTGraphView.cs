@@ -107,7 +107,7 @@ namespace BehaviourTreeEditor
                     templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + DECORATOR_TEMPLATE_PATH, typeof(TextAsset));
                     typeData.decoratorNodes.Add(behaviourName);
                     break;
-                case NodeTypes.Behaviour:
+                case NodeTypes.Action:
                     templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + ACTION_TEMPLATE_PATH, typeof(TextAsset));
                     typeData.behaviourNodes.Add(behaviourName);
                     break;
@@ -196,9 +196,8 @@ namespace BehaviourTreeEditor
             node.titleContainer.Add(oldTitleButton); // Add back minixmize button in title container after adding title input field
 
             // Node state element
-            EnumField nodeStateField = new EnumField();
-            nodeStateField.Init(node.compositeInstance.NodeState, false);
-            node.mainContainer.Add(nodeStateField);
+            Label nodeStateLabel = new Label { name = "node-state-label", text = node.compositeInstance.NodeState.ToString() };
+            node.titleContainer.Add(nodeStateLabel);
 
             // Instantiate add port button
             Button button = new Button(() => { AddPort(node); });
@@ -254,8 +253,8 @@ namespace BehaviourTreeEditor
                 case NodeTypes.Decorator:
                     node = GenerateDecoratorNode(nodeTitle, nodeName, position, isTopNode, instance);
                     break;
-                case NodeTypes.Behaviour:
-                    node = GenerateBehaviourNode(nodeTitle, nodeName, position, isTopNode, instance);
+                case NodeTypes.Action:
+                    node = GenerateActionNode(nodeTitle, nodeName, position, isTopNode, instance);
                     break;
                 default:
                     break;
@@ -302,11 +301,9 @@ namespace BehaviourTreeEditor
             // Input port
             node.inputContainer.Add(GeneratePort(node, Direction.Input));
 
-            // TODO lägg till detta på ett bra sätt
             // Node state element
-            TextElement nodeStateField = new TextElement();
-            // nodeStateField.text = ;
-            node.mainContainer.Add(nodeStateField);
+            Label nodeStateLabel = new Label { name = "node-state-label", text = node.compositeInstance.NodeState.ToString() };
+            node.titleContainer.Add(nodeStateLabel);
 
             // Add port button
             Button button = new Button(() => { AddPort(node); });
@@ -328,14 +325,14 @@ namespace BehaviourTreeEditor
         }
 
         // Generate behaviour node
-        private BTEditorNode GenerateBehaviourNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
+        private BTEditorNode GenerateActionNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = new BTEditorNode
             {
                 title = nodeTitle,
                 nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
-                nodeType = NodeTypes.Behaviour,
+                nodeType = NodeTypes.Action,
                 topNode = isTopNode
             };
 
@@ -373,8 +370,8 @@ namespace BehaviourTreeEditor
             node.mainContainer.Add(objectField);
 
             // Node state element
-            EnumField nodeStateField = new EnumField { value = node.actionInstance.NodeState };
-            node.mainContainer.Add(nodeStateField);
+            Label nodeStateLabel = new Label { name = "node-state-label", text = node.actionInstance.NodeState.ToString() };
+            node.titleContainer.Add(nodeStateLabel);
 
             node.RefreshExpandedState();
             node.RefreshPorts();
@@ -431,8 +428,8 @@ namespace BehaviourTreeEditor
             node.mainContainer.Add(objectField);
 
             // Node state element
-            EnumField nodeStateField = new EnumField { value = node.decoratorInstance.NodeState };
-            node.mainContainer.Add(nodeStateField);
+            Label nodeStateLabel = new Label { name = "node-state-label", text = node.decoratorInstance.NodeState.ToString() };
+            node.titleContainer.Add(nodeStateLabel);
 
             node.RefreshExpandedState();
             node.RefreshPorts();

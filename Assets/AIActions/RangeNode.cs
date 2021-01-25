@@ -21,7 +21,8 @@ public class RangeNode : Action
         {
             float distance = Vector3.Distance(context.owner.transform.position, targetTransform.position);
 
-            return distance <= range ? NodeStates.SUCCESS : NodeStates.FAILURE;
+            NodeState = distance <= range ? NodeStates.SUCCESS : NodeStates.FAILURE;
+            return NodeState;
         }
         else
         {

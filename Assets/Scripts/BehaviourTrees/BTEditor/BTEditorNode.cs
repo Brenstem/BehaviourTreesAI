@@ -21,5 +21,5 @@ namespace BehaviourTreeEditor
         public NodeTypes nodeType;
     }
 
-    public enum NodeTypes { Composite, Decorator, Behaviour }
+    public enum NodeTypes { Composite, Decorator, Action }
 }

@@ -22,6 +22,35 @@ namespace BehaviourTreeEditor
 
         private Stack<AbstractNode> nodeStack;
 
+        private void Update()
+        {
+            if (Application.isPlaying)
+            {
+                RequestDataOperation(false);
+
+                // Update node state labels in editor
+                foreach (BTEditorNode node in _graphView.nodes.ToList())
+                {
+                    Label nodeStateLabel = node.titleContainer.Q<Label>("node-state-label");
+
+                    switch (node.nodeType)
+                    {
+                        case NodeTypes.Composite:
+                            nodeStateLabel.text = node.compositeInstance.NodeState.ToString();
+                            break;
+                        case NodeTypes.Decorator:
+                            nodeStateLabel.text = node.decoratorInstance.NodeState.ToString();
+                            break;
+                        case NodeTypes.Action:
+                            nodeStateLabel.text = node.actionInstance.NodeState.ToString();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
         #region Editor window generation
 
         [MenuItem("BTUtils/BTEditor")]
@@ -101,7 +130,7 @@ namespace BehaviourTreeEditor
             ToolbarMenu menu = new ToolbarMenu();
             menu.text = "Create New Behaviour";
 
-            menu.menu.AppendAction("New Behaviour", x => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Behaviour); });
+            menu.menu.AppendAction("New Behaviour", x => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Action); });
             menu.menu.AppendAction("New Composite", x => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Composite); });
             menu.menu.AppendAction("New Decorator", x => { _graphView.CreateNewNode(_newBehaviourName, NodeTypes.Decorator); });
 
@@ -119,29 +148,6 @@ namespace BehaviourTreeEditor
         }
 
         #endregion
-
-        // Save/Load function
-        private void RequestDataOperation(bool save)
-        {
-            if (string.IsNullOrEmpty(_fileName) || _fileName.Contains("/"))
-            {
-                EditorUtility.DisplayDialog("Invalid file name!", "Please enter a valid filename, " +
-                    "name should not contain special characters such as /", "Ok");
-            }
-
-            GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
-
-            if (save)
-            {
-                saveUtility.SaveGraph(_fileName);
-                Debug.Log("Saving graph as: " + _fileName + "...");
-            }
-            else
-            {
-                saveUtility.LoadGraph(_fileName);
-                Debug.Log("Loading graph " + _fileName + "...");
-            }
-        }
 
         #region BehaviourTree Generation
 
@@ -227,7 +233,7 @@ namespace BehaviourTreeEditor
 
                         return node.decoratorInstance;
 
-                    case NodeTypes.Behaviour:
+                    case NodeTypes.Action:
                         // Construct node
                         node.actionInstance.context = (Context)_graphView.contextField.value;
 
@@ -254,7 +260,7 @@ namespace BehaviourTreeEditor
                     tempNode = CreateInstance(node.nodeName) as Decorator;
                     break;
 
-                case NodeTypes.Behaviour:
+                case NodeTypes.Action:
                     tempNode = CreateInstance(node.nodeName) as Action;
                     break;
                 default:
@@ -264,5 +270,28 @@ namespace BehaviourTreeEditor
             return tempNode;
         }
         #endregion
+
+        // Save/Load function
+        private void RequestDataOperation(bool save)
+        {
+            if (string.IsNullOrEmpty(_fileName) || _fileName.Contains("/"))
+            {
+                EditorUtility.DisplayDialog("Invalid file name!", "Please enter a valid filename, " +
+                    "name should not contain special characters such as /", "Ok");
+            }
+
+            GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
+
+            if (save)
+            {
+                saveUtility.SaveGraph(_fileName);
+                Debug.Log("Saving graph as: " + _fileName + "...");
+            }
+            else
+            {
+                saveUtility.LoadGraph(_fileName);
+                Debug.Log("Loading graph " + _fileName + "...");
+            }
+        }
     }
 }

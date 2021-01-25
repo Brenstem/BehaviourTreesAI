@@ -6,11 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public abstract class AbstractNode : ScriptableObject
 {
-    protected NodeStates _nodeState;
+    public NodeStates NodeState { get; protected set; }
 
     protected bool _constructed = false;
-
-    public NodeStates NodeState { get { return _nodeState; } }
 
     /// <summary>
     /// This is the update method of your behaviour

@@ -20,14 +20,14 @@ public class Sequence : Composite
                     case NodeStates.SUCCESS:
                         break;
                     case NodeStates.FAILURE:
-                        _nodeState = NodeStates.FAILURE;
-                        return _nodeState;
+                        NodeState = NodeStates.FAILURE;
+                        return NodeState;
                     default:
                         break;
                 }
             }
-            _nodeState = isAnyNodeRunning ? NodeStates.RUNNING : NodeStates.SUCCESS;
-            return _nodeState;
+            NodeState = isAnyNodeRunning ? NodeStates.RUNNING : NodeStates.SUCCESS;
+            return NodeState;
         }
         else
         {

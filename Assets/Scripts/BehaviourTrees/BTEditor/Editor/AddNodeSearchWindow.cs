@@ -49,7 +49,7 @@ namespace BehaviourTreeEditor
             {
                 tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
                 {
-                    userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Behaviour },
+                    userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Action },
                     level = 2
                 });
             }

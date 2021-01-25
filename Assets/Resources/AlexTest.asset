@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: alextest
+  m_Name: AlexTest
   m_EditorClassIdentifier: 
   nodeLinks:
   - BaseNodeGuid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
