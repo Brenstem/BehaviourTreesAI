@@ -17,11 +17,13 @@ public class DebugNode : Action
         {
             Debug.Log(debugText);
 
-            return NodeStates.SUCCESS;
+            NodeState = NodeStates.SUCCESS;
+            return NodeState;
         }
         else
         {
-            return NodeStates.FAILURE;
+            NodeState = NodeStates.FAILURE;
+            return NodeState;
         }
     }
 }

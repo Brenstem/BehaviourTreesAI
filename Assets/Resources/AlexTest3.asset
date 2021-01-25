@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: alextest3
+  m_Name: AlexTest3
   m_EditorClassIdentifier: 
   nodeLinks:
   - BaseNodeGuid: 9b237198-5ce1-4a2e-9b36-c22258f74f71
@@ -24,7 +24,7 @@ MonoBehaviour:
     nodeName: DebugNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 2a01da6b995f41342ae0d16d7ebd343a, type: 2}
+    actionInstance: {fileID: 0}
     Guid: 092e193d-53d1-4c67-9e43-282c07573e5d
     Position: {x: 484, y: 262}
     nodeType: 2
@@ -33,14 +33,14 @@ MonoBehaviour:
     nodeName: IdleNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: be64e3907b18eab4eb0e9cfd36b04945, type: 2}
+    actionInstance: {fileID: 0}
     Guid: 718c29ad-cec7-420e-8c01-00f7d075a785
     Position: {x: 486, y: 156}
     nodeType: 2
     topNode: 0
   - nodeTitle: 12341234
     nodeName: Selector
-    compositeInstance: {fileID: 11400000, guid: 4bf6b3c07bbf1554a9782a547c805b63, type: 2}
+    compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
     Guid: 9b237198-5ce1-4a2e-9b36-c22258f74f71

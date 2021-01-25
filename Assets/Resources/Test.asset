@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: temp
+  m_Name: Test
   m_EditorClassIdentifier: 
   nodeLinks:
+  - BaseNodeGuid: 3e999387-6499-4341-90ec-f6d56372e145
+    PortName: 0
+    TargetNodeGuid: 69bae977-7dd2-47c9-a98b-8232aaf65625
   - BaseNodeGuid: 69bae977-7dd2-47c9-a98b-8232aaf65625
     PortName: 0
     TargetNodeGuid: 55e07f75-3be3-4e80-bf67-ba1c99961aea
   - BaseNodeGuid: 69bae977-7dd2-47c9-a98b-8232aaf65625
     PortName: 1
     TargetNodeGuid: 9742b8a4-3daa-479e-ba8b-13bd3c359d8d
-  - BaseNodeGuid: 3e999387-6499-4341-90ec-f6d56372e145
-    PortName: 0
-    TargetNodeGuid: 69bae977-7dd2-47c9-a98b-8232aaf65625
   nodeData:
   - nodeTitle: Sequence
     nodeName: Sequence
@@ -32,6 +32,15 @@ MonoBehaviour:
     Position: {x: 404, y: 190}
     nodeType: 0
     topNode: 0
+  - nodeTitle: Top Node
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: 7c832fc802e22b64bad082b68ef49810, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 3e999387-6499-4341-90ec-f6d56372e145
+    Position: {x: -17, y: 195}
+    nodeType: 0
+    topNode: 1
   - nodeTitle: RangeNode
     nodeName: RangeNode
     compositeInstance: {fileID: 0}
@@ -50,13 +59,4 @@ MonoBehaviour:
     Position: {x: 824, y: 261}
     nodeType: 2
     topNode: 0
-  - nodeTitle: Top Node
-    nodeName: Selector
-    compositeInstance: {fileID: 11400000, guid: 7c832fc802e22b64bad082b68ef49810, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: 3e999387-6499-4341-90ec-f6d56372e145
-    Position: {x: -9, y: 200}
-    nodeType: 0
-    topNode: 1
   context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

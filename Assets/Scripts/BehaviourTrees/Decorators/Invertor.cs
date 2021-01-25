@@ -11,19 +11,19 @@ public class Invertor : Decorator
             switch (node.Evaluate())
             {
                 case NodeStates.RUNNING:
-                    _nodeState = NodeStates.RUNNING;
+                    NodeState = NodeStates.RUNNING;
                     break;
                 case NodeStates.SUCCESS:
-                    _nodeState = NodeStates.FAILURE;
+                    NodeState = NodeStates.FAILURE;
                     break;
                 case NodeStates.FAILURE:
-                    _nodeState = NodeStates.RUNNING;
+                    NodeState = NodeStates.RUNNING;
                     break;
                 default:
                     break;
             }
 
-            return _nodeState;
+            return NodeState;
         }
         else
         {

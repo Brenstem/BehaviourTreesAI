@@ -184,7 +184,7 @@ namespace BehaviourTreeEditor
                         tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode, nodeData.decoratorInstance);
                         tempNode.GUID = nodeData.Guid;
                         break;
-                    case NodeTypes.Behaviour:
+                    case NodeTypes.Action:
                         tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode, nodeData.actionInstance);
                         tempNode.GUID = nodeData.Guid;
                         break;
