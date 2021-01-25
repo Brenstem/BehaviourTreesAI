@@ -12,6 +12,7 @@ public class GoToPositionNode : Action
     NavMeshAgent agent;
     public override void Construct()
     {
+        //targetPosition = (Vector3)relativeTargetPosition + new Vector3(context.owner.transform.position.x, 0, context.owner.transform.position.z);
         targetPosition = (Vector3)relativeTargetPosition + context.owner.transform.position;
         _constructed = true;
     }

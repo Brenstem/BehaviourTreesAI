@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 251894acd0aae954484651c67cd1c92e, type: 3}
-  m_Name: GoToPositionNode92b288d3-da29-4f5f-9003-fb16abe63fe5
+  m_Script: {fileID: 11500000, guid: cf76a4276415e5348a310ba4c7dff3bd, type: 3}
+  m_Name: ChaseNode49a0d2f6-7969-43c1-8c0b-2414c5ac3cbe
   m_EditorClassIdentifier: 
-  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
-  relativeTargetPosition: {x: -5, y: 0}
+  context: {fileID: 0}
