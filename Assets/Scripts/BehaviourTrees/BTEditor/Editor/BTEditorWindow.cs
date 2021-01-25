@@ -167,7 +167,7 @@ namespace BehaviourTreeEditor
                 finishedTree.context = _graphView.contextField.value as Context;
             }
 
-            GraphSaveUtility.GetInstance(_graphView).SaveNode(_fileName + "BehaviourTree", finishedTree);
+            GraphSaveUtility.GetInstance(_graphView).SaveNode(_fileName + "BehaviourTree", finishedTree, _fileName);
 
             Debug.Log("I have been generated");
         }
@@ -196,7 +196,7 @@ namespace BehaviourTreeEditor
             if (ConvertEditorNode(node) != null)
             {
                 // Recursively initialize children and add them to stack
-                foreach (var child in saveUtility.GetChildNodes(node.GUID))
+                foreach (var child in saveUtility.GetChildNodes(node.GUID, _fileName))
                 {
                     nodeStack.Push(InitializeNodes(child));
                 }
@@ -205,7 +205,7 @@ namespace BehaviourTreeEditor
                 switch (node.nodeType)
                 {
                     case NodeTypes.Composite:
-                        List<BTEditorNode> childEditorNodes = saveUtility.GetChildNodes(node.GUID);
+                        List<BTEditorNode> childEditorNodes = saveUtility.GetChildNodes(node.GUID, _fileName);
                         List<AbstractNode> childNodes = new List<AbstractNode>();
 
                         // loop for the amount of children and pop them from the stack into list of nodes to be used for constructing
