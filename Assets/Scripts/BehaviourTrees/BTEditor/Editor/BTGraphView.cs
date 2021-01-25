@@ -69,12 +69,15 @@ namespace BehaviourTreeEditor
         {
             NodeTypeData typeData = ScriptableObject.CreateInstance<NodeTypeData>();
 
-            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
-                AssetDatabase.CreateFolder("Assets", "Resources");
+            if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees"))
+                AssetDatabase.CreateFolder("Assets", "BehaviourTrees");
 
-            if (!File.Exists("Assets/Resources/TypeData.asset"))
+            if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees/Resources"))
+                AssetDatabase.CreateFolder("Assets/BehaviourTrees", "Resources");
+
+            if (!File.Exists("Assets/BehaviourTrees/Resources/TypeData.asset"))
             {
-                AssetDatabase.CreateAsset(typeData, $"Assets/Resources/TypeData.asset");
+                AssetDatabase.CreateAsset(typeData, $"Assets/BehaviourTrees/Resources/TypeData.asset");
                 AssetDatabase.SaveAssets();
             }
         }

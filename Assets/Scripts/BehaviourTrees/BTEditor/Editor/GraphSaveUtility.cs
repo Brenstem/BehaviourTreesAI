@@ -45,20 +45,27 @@ namespace BehaviourTreeEditor
             BTDataContainer btContainer = ScriptableObject.CreateInstance<BTDataContainer>();
 
             // Save nodes to container
-            if (!SaveNodes(btContainer)) return;
+            if (!SaveNodes(btContainer, fileName)) return;
 
             btContainer.context = _targetGraphView.contextField.value as Context;
 
             // Put savefile in Assets/BTResources
-            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
-                AssetDatabase.CreateFolder("Assets", "Resources");
+            if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees")) 
+            {
+                AssetDatabase.CreateFolder("Assets", "BehaviourTrees");
+            }
 
-            AssetDatabase.CreateAsset(btContainer, $"Assets/Resources/{tempFileName}.asset");
+            if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees/Resources"))
+            {
+                AssetDatabase.CreateFolder("Assets/BehaviourTrees", "Resources");
+            }
+
+            AssetDatabase.CreateAsset(btContainer, $"Assets/BehaviourTrees/Resources/{tempFileName}.asset");
             AssetDatabase.SaveAssets();
         }
 
         // Saves nodes
-        private bool SaveNodes(BTDataContainer btContainer)
+        private bool SaveNodes(BTDataContainer btContainer, string fileName)
         {
             // If there are no connections then display error
             if (!edges.Any())
@@ -97,11 +104,11 @@ namespace BehaviourTreeEditor
                 };
 
                 if (node.compositeInstance != null)
-                    temp.compositeInstance = (Composite)SaveNode(node.title + node.GUID, node.compositeInstance);
+                    temp.compositeInstance = (Composite)SaveNode(node.title + node.GUID, node.compositeInstance, fileName);
                 else if (node.decoratorInstance != null)
-                    temp.decoratorInstance = (Decorator)SaveNode(node.title + node.GUID, node.decoratorInstance);
+                    temp.decoratorInstance = (Decorator)SaveNode(node.title + node.GUID, node.decoratorInstance, fileName);
                 else if (node.actionInstance != null)
-                    temp.actionInstance = (Action)SaveNode(node.title + node.GUID, node.actionInstance);
+                    temp.actionInstance = (Action)SaveNode(node.title + node.GUID, node.actionInstance, fileName);
 
                 btContainer.nodeData.Add(temp);
             }
@@ -116,6 +123,7 @@ namespace BehaviourTreeEditor
         public void LoadGraph(string fileName)
         {
             // Load data based on filename
+            //_containerCache = (BTDataContainer)AssetDatabase.LoadAssetAtPath($"Assets/Resources/SaveData/{ fileName }", typeof(BTDataContainer));
             _containerCache = Resources.Load<BTDataContainer>(fileName);
 
             if (_containerCache == null)
@@ -221,11 +229,11 @@ namespace BehaviourTreeEditor
         /// </summary>
         /// <param name="nodeGUID"></param>
         /// <returns></returns>
-        public List<BTEditorNode> GetChildNodes(string nodeGUID)
+        public List<BTEditorNode> GetChildNodes(string nodeGUID, string fileName)
         {
             // Update cache to contain current nodes
-            SaveGraph("temp");
-            _containerCache = Resources.Load<BTDataContainer>("temp");
+            SaveGraph(fileName);
+            _containerCache = Resources.Load<BTDataContainer>(fileName);
 
             List<NodeLinkData> connections = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeGUID).ToList(); // Get connections from active container cache
             List<BTEditorNode> childNodes = new List<BTEditorNode>();
@@ -243,19 +251,22 @@ namespace BehaviourTreeEditor
             return childNodes;
         }
 
-        //TODO kanske inte behöver göra såhär, kanske räcker med en system.serializeable tag, kan vara värt att tästa 
         // Saves object with filename in path (Default is Assets/Resources)
-        public ScriptableObject SaveNode(string fileName, ScriptableObject obj, string path = "Assets/Resources")
+        public ScriptableObject SaveNode(string fileName, ScriptableObject obj, string path)
         {
-
-            if (!AssetDatabase.IsValidFolder(path)) 
+            if (!AssetDatabase.IsValidFolder($"Assets/BehaviourTrees"))
             {
-                AssetDatabase.CreateFolder("Assets", "Resources"); // TODO fix createfolder to create folder in the correct place
+                AssetDatabase.CreateFolder("Assets", "BehaviourTrees");
+            }
+
+            if (!AssetDatabase.IsValidFolder($"Assets/BehaviourTrees/{ path }")) 
+            {
+                AssetDatabase.CreateFolder($"Assets/BehaviourTrees", path);
             }
 
             if (AssetDatabase.GetAssetPath(obj) == "" || AssetDatabase.GetAssetPath(obj) == null)
             {
-                AssetDatabase.CreateAsset(obj, $"{ path }/{ fileName }.asset");
+                AssetDatabase.CreateAsset(obj, $"Assets/BehaviourTrees/{ path }/{ fileName }.asset");
                 AssetDatabase.SaveAssets();
             }
 

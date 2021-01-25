@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: TypeData
   m_EditorClassIdentifier: 
   behaviourNodes:
-  - DebugNode
   - ChaseNode
+  - DebugNode
   - HealthNode
   - IdleNode
   - RangeNode
-  - DebugNode
   - AttackNode
   - WaitNode
   compositeNodes:
-  - Selector
   - Sequence
-  - ConcurrentNode
+  - Composite
+  - Concurrent
   decoratorNodes:
   - Invertor
