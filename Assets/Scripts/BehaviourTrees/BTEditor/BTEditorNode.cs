@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor;
 
 
 namespace BehaviourTreeEditor
@@ -12,7 +13,9 @@ namespace BehaviourTreeEditor
     public class BTEditorNode : Node
     {
         public string nodeName;
-        public AbstractNode node;
+        public Composite compositeInstance;
+        public Decorator decoratorInstance;
+        public Action actionInstance;
         public string GUID;
         public bool topNode = false;
         public NodeTypes nodeType;

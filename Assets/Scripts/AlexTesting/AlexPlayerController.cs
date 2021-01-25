@@ -128,7 +128,7 @@ public class PlayerIdleState : State<AlexPlayerController>
 {
     public override void EnterState(AlexPlayerController owner)
     {
-        Debug.Log("idle");
+        //Debug.Log("idle");
         //Debug.Break();
     }
 
@@ -168,7 +168,7 @@ public class PlayerRunningState : State<AlexPlayerController>
 {
     public override void EnterState(AlexPlayerController owner)
     {
-        Debug.Log("shmoovin");
+        //Debug.Log("shmoovin");
         //owner.animator.SetBool("Running", true);
     }
 
@@ -229,7 +229,7 @@ public class PlayerJumpingState : State<AlexPlayerController>
 
     public override void EnterState(AlexPlayerController owner)
     {
-        Debug.Log("jumbi");
+        //Debug.Log("jumbi");
         jumpTimer = new Timer(owner.jumpTime);
     }
 

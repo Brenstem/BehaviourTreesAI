@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: temp
+  m_Name: alextest
   m_EditorClassIdentifier: 
   nodeLinks:
   - BaseNodeGuid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
@@ -53,6 +53,15 @@ MonoBehaviour:
     Position: {x: 928, y: 30}
     nodeType: 2
     topNode: 0
+  - nodeTitle: Top Node
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: af92e2d24014ef5408c89dace1c17dbf, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
+    Position: {x: 70, y: 146}
+    nodeType: 0
+    topNode: 1
   - nodeTitle: IdleNode
     nodeName: IdleNode
     compositeInstance: {fileID: 0}
@@ -62,13 +71,4 @@ MonoBehaviour:
     Position: {x: 401, y: 257}
     nodeType: 2
     topNode: 0
-  - nodeTitle: Top Node
-    nodeName: Selector
-    compositeInstance: {fileID: 11400000, guid: af92e2d24014ef5408c89dace1c17dbf, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
-    Position: {x: 42, y: 150}
-    nodeType: 0
-    topNode: 1
   context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

@@ -47,7 +47,7 @@ namespace BehaviourTreeEditor
             // Save nodes to container
             if (!SaveNodes(btContainer)) return;
 
-            SaveExposedProperties(btContainer);
+            btContainer.context = _targetGraphView.contextField.value as Context;
 
             // Put savefile in Assets/BTResources
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
@@ -55,12 +55,6 @@ namespace BehaviourTreeEditor
 
             AssetDatabase.CreateAsset(btContainer, $"Assets/Resources/{tempFileName}.asset");
             AssetDatabase.SaveAssets();
-        }
-
-        // Saves exposed blackboard properties
-        private void SaveExposedProperties(BTDataContainer btContainer)
-        {
-            btContainer.exposedProperties.AddRange(_targetGraphView.exposedProperties);
         }
 
         // Saves nodes
@@ -92,7 +86,7 @@ namespace BehaviourTreeEditor
             // Save individual node data
             foreach (BTEditorNode node in nodes)
             {
-                btContainer.nodeData.Add(new NodeData
+                NodeData temp = new NodeData 
                 {
                     nodeTitle = node.title,
                     nodeName = node.nodeName,
@@ -100,8 +94,16 @@ namespace BehaviourTreeEditor
                     Position = node.GetPosition().position,
                     nodeType = (int)node.nodeType,
                     topNode = node.topNode
-                });
+                };
 
+                if (node.compositeInstance != null)
+                    temp.compositeInstance = (Composite)SaveNode(node.title + node.GUID, node.compositeInstance);
+                else if (node.decoratorInstance != null)
+                    temp.decoratorInstance = (Decorator)SaveNode(node.title + node.GUID, node.decoratorInstance);
+                else if (node.actionInstance != null)
+                    temp.actionInstance = (Action)SaveNode(node.title + node.GUID, node.actionInstance);
+
+                btContainer.nodeData.Add(temp);
             }
 
             return true;
@@ -125,21 +127,9 @@ namespace BehaviourTreeEditor
             ClearGraph();
             CreateNodes();
             ConnectNodes();
-            CreateExposedProperties();
+            _targetGraphView.contextField.value = _containerCache.context;
         }
 
-        // Generate exposed blackboardproperties from savedata
-        private void CreateExposedProperties()
-        {
-            // Clear current blackboard
-            _targetGraphView.ClearBlackBoardAndExposedProperties();
-
-            // Add properties from data
-            foreach (ExposedProperty exposedProperty in _containerCache.exposedProperties)
-            {
-                _targetGraphView.exposedProperties.Add(exposedProperty);
-            }
-        }
 
         // Connect nodes based on save data
         private void ConnectNodes()
@@ -161,7 +151,6 @@ namespace BehaviourTreeEditor
             }
         }
 
-
         // Link nodes visually in graph based on save data
         private void LinkNodes(Port output, Port input)
         {
@@ -180,11 +169,28 @@ namespace BehaviourTreeEditor
         // Generate nodes based on save data
         private void CreateNodes()
         {
+            BTEditorNode tempNode = null;
+
             foreach (NodeData nodeData in _containerCache.nodeData)
             {
                 // Generate node based on node data. We pass node position later so we can use zerovector while loading
-                BTEditorNode tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode);
-                tempNode.GUID = nodeData.Guid;
+                switch ((NodeTypes) nodeData.nodeType)
+                {
+                    case NodeTypes.Composite:
+                        tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode, nodeData.compositeInstance);
+                        tempNode.GUID = nodeData.Guid;
+                        break;
+                    case NodeTypes.Decorator:
+                        tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode, nodeData.decoratorInstance);
+                        tempNode.GUID = nodeData.Guid;
+                        break;
+                    case NodeTypes.Behaviour:
+                        tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode, nodeData.actionInstance);
+                        tempNode.GUID = nodeData.Guid;
+                        break;
+                    default:
+                        break;
+                }
 
                 // Add ports to node based on node data. If it's a decorator node the port will be generated automatically so theres no need to add ports
                 if (tempNode.nodeType != NodeTypes.Decorator)
@@ -235,6 +241,25 @@ namespace BehaviourTreeEditor
             }
 
             return childNodes;
+        }
+
+        //TODO kanske inte behöver göra såhär, kanske räcker med en system.serializeable tag, kan vara värt att tästa 
+        // Saves object with filename in path (Default is Assets/Resources)
+        public ScriptableObject SaveNode(string fileName, ScriptableObject obj, string path = "Assets/Resources")
+        {
+
+            if (!AssetDatabase.IsValidFolder(path)) 
+            {
+                AssetDatabase.CreateFolder("Assets", "Resources"); // TODO fix createfolder to create folder in the correct place
+            }
+
+            if (AssetDatabase.GetAssetPath(obj) == "" || AssetDatabase.GetAssetPath(obj) == null)
+            {
+                AssetDatabase.CreateAsset(obj, $"{ path }/{ fileName }.asset");
+                AssetDatabase.SaveAssets();
+            }
+
+            return obj;
         }
     }
 }

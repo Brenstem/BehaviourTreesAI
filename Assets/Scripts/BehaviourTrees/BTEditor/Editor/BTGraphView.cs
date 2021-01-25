@@ -7,6 +7,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEditor;
 using System.IO;
+using UnityEditor.UIElements;
 
 namespace BehaviourTreeEditor
 {
@@ -16,12 +17,10 @@ namespace BehaviourTreeEditor
     public class BTGraphView : GraphView
     {
         public readonly Vector2 defaultNodeSize = new Vector2(200, 200);
-
         public AddNodeSearchWindow _addNodeSearchWindow;
-        public Blackboard Blackboard;
         public List<ExposedProperty> exposedProperties = new List<ExposedProperty>();
-
         public NodeTypeData typeData;
+        public ObjectField contextField;
 
         #region GraphViewInitialization
         // Initialize graphview with manipulater presets
@@ -33,6 +32,7 @@ namespace BehaviourTreeEditor
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
 
+            contextField = new ObjectField { objectType = typeof(Context) };
             AddElement(GenerateEntryPointNode("Top Node"));
             AddNodeSearchWindow(editorWindow);
         }
@@ -45,6 +45,9 @@ namespace BehaviourTreeEditor
             nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), _addNodeSearchWindow);
         }
 
+        #endregion
+
+        #region TypeData
         /// <summary>
         /// Loads type data object from resources folder
         /// </summary>
@@ -58,7 +61,7 @@ namespace BehaviourTreeEditor
                 return;
             }
         }
-        
+
         /// <summary>
         /// Save type data as NodeTypeData scriptable object in resources folder
         /// </summary>
@@ -75,70 +78,14 @@ namespace BehaviourTreeEditor
                 AssetDatabase.SaveAssets();
             }
         }
-
-        public void ClearBlackBoardAndExposedProperties()
-        {
-            exposedProperties.Clear();
-            Blackboard.Clear();
-        }
-
-        /// <summary>
-        /// Adds property to graph blackboard
-        /// </summary>
-        /// <param name="exposedProperty"></param>
-        public void AddPropertyToBlackBoard(ExposedProperty exposedProperty)
-        {
-            string localPropertyName = exposedProperty.PropertyName;
-            string localPropertyValue = exposedProperty.PropertyValue;
-
-            // Check for duplicate names and add a (1) tag to the end of the name if it's a duplicate
-            while (exposedProperties.Any(x => x.PropertyName == localPropertyName))
-                localPropertyName = $"{localPropertyName}(1)";
-
-            ExposedProperty property = new ExposedProperty();
-
-            property.PropertyName = localPropertyName;
-            property.PropertyValue = localPropertyValue;
-
-            exposedProperties.Add(property);
-
-            // Create a visual element containing all necessary stuff for blackboard field
-            VisualElement container = new VisualElement();
-            BlackboardField blackboardField = new BlackboardField { text = property.PropertyName, typeText = "string property" };
-            container.Add(blackboardField);
-
-            // Property value text input
-            TextField propertyValueTextField = new TextField("Value: ")
-            {
-                value = localPropertyValue
-            };
-
-            // Register change callback for property value
-            propertyValueTextField.RegisterValueChangedCallback(evt =>
-            {
-                // Get index for property in list which matches the relevant property name
-                int changingPropertyIndex = exposedProperties.FindIndex(x => x.PropertyName == property.PropertyName);
-                // Change property value to new value
-                exposedProperties[changingPropertyIndex].PropertyValue = evt.newValue;
-            });
-
-            BlackboardRow blackBoardValueRow = new BlackboardRow(blackboardField, propertyValueTextField);
-            container.Add(blackBoardValueRow);
-
-            Blackboard.Add(container);
-        }
         #endregion
 
-        #region Node Generation
-
-        private string _behaviourFolder = "Assets/AIBehaviours/";
-        private string _templateTextFilePath = "TemplateTextFile.txt";
-
-        private const string BEHAVIOUR_TEMPLATE_PATH = "BehaviourTemplate.txt";
+        #region Node Script Generation
+        private const string ACTION_TEMPLATE_PATH = "ActionTemplate.txt";
         private const string COMPOSITE_TEMPLATE_PATH = "CompositeTemplate.txt";
         private const string DECORATOR_TEMPLATE_PATH = "DecoratorTemplate.txt";
         private const string TEMPLATE_FOLDER_PATH = "Assets/Scripts/BehaviourTrees/BTEditor/ScriptTemplates/";
-        private const string BEHAVIOUR_CLASS_NAME = "#CLASS_NAME_HERE#";
+        private const string ACTION_CLASS_NAME = "#CLASS_NAME_HERE#";
         
         /// <summary>
         /// Creates new node script in the AIBehaviours folder based on template classes
@@ -161,7 +108,7 @@ namespace BehaviourTreeEditor
                     typeData.decoratorNodes.Add(behaviourName);
                     break;
                 case NodeTypes.Behaviour:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + BEHAVIOUR_TEMPLATE_PATH, typeof(TextAsset));
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + ACTION_TEMPLATE_PATH, typeof(TextAsset));
                     typeData.behaviourNodes.Add(behaviourName);
                     break;
             }
@@ -175,7 +122,7 @@ namespace BehaviourTreeEditor
             if (templateTextFile != null)
             {
                 content = templateTextFile.text;
-                content = content.Replace(BEHAVIOUR_CLASS_NAME, behaviourName);
+                content = content.Replace(ACTION_CLASS_NAME, behaviourName);
             }
             else
             {
@@ -224,6 +171,7 @@ namespace BehaviourTreeEditor
             {
                 title = nodeName,
                 nodeName = "Selector",
+                compositeInstance = (Composite)ScriptableObject.CreateInstance("Selector"),
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Composite,
                 topNode = true,
@@ -247,10 +195,21 @@ namespace BehaviourTreeEditor
             node.titleContainer.Add(textField);
             node.titleContainer.Add(oldTitleButton); // Add back minixmize button in title container after adding title input field
 
+            // Node state element
+            EnumField nodeStateField = new EnumField();
+            nodeStateField.Init(node.compositeInstance.NodeState, false);
+            node.mainContainer.Add(nodeStateField);
+
             // Instantiate add port button
             Button button = new Button(() => { AddPort(node); });
             button.text = "New Child Behaviour";
             node.titleContainer.Add(button);
+
+            // Instance field
+            ObjectField objectField = new ObjectField();
+            objectField.objectType = typeof(ScriptableObject);
+            objectField.value = node.compositeInstance;
+            node.mainContainer.Add(objectField);
 
             AddPort(node);
             AddPort(node);
@@ -267,15 +226,14 @@ namespace BehaviourTreeEditor
             return node;
         }
 
-
         /// <summary>
         /// Creates node and adds it to the editor window
         /// </summary>
         /// <param name="nodename"></param>
         /// <param name="type"></param>
-        public void CreateNode(string nodeTitle, string nodename, NodeTypes type, Vector2 position, bool isTopNode = false)
+        public void CreateNode(string nodeTitle, string nodename, NodeTypes type, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
-            AddElement(GenerateNode(nodeTitle, nodename, type, position, isTopNode));
+            AddElement(GenerateNode(nodeTitle, nodename, type, position, isTopNode, instance));
         }
 
         /// <summary>
@@ -284,20 +242,20 @@ namespace BehaviourTreeEditor
         /// <param name="nodeTitle"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public BTEditorNode GenerateNode(string nodeTitle, string nodeName, NodeTypes type, Vector2 position, bool isTopNode = false)
+        public BTEditorNode GenerateNode(string nodeTitle, string nodeName, NodeTypes type, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = null;
 
             switch (type)
             {
                 case NodeTypes.Composite:
-                    node = GenerateCompositeNode(nodeTitle, nodeName, position, isTopNode);
+                    node = GenerateCompositeNode(nodeTitle, nodeName, position, isTopNode, instance);
                     break;
                 case NodeTypes.Decorator:
-                    node = GenerateDecoratorNode(nodeTitle, nodeName, position, isTopNode);
+                    node = GenerateDecoratorNode(nodeTitle, nodeName, position, isTopNode, instance);
                     break;
                 case NodeTypes.Behaviour:
-                    node = GenerateBehaviourNode(nodeTitle, nodeName, position, isTopNode);
+                    node = GenerateBehaviourNode(nodeTitle, nodeName, position, isTopNode, instance);
                     break;
                 default:
                     break;
@@ -306,16 +264,22 @@ namespace BehaviourTreeEditor
         }
 
         // Generate composite type node
-        private BTEditorNode GenerateCompositeNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateCompositeNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = name,
-                nodeName = name,  
+                title = nodeTitle,
+                nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Composite,
                 topNode = isTopNode
             };
+
+            // Create new instance if not loading from already existing behaviour tree
+            if (instance != null)
+                node.compositeInstance = instance as Composite;
+            else
+                node.compositeInstance = ScriptableObject.CreateInstance(name) as Composite;
 
             // Stash and remove old title and minimize button elements
             Label oldTitleLabel = node.titleContainer.Q<Label>("title-label");
@@ -328,7 +292,7 @@ namespace BehaviourTreeEditor
             TextField textField = new TextField
             {
                 name = string.Empty,
-                value = name
+                value = node.title
             };
 
             textField.RegisterValueChangedCallback(evt => node.title = evt.newValue);
@@ -338,10 +302,22 @@ namespace BehaviourTreeEditor
             // Input port
             node.inputContainer.Add(GeneratePort(node, Direction.Input));
 
+            // TODO lägg till detta på ett bra sätt
+            // Node state element
+            TextElement nodeStateField = new TextElement();
+            // nodeStateField.text = ;
+            node.mainContainer.Add(nodeStateField);
+
             // Add port button
             Button button = new Button(() => { AddPort(node); });
             button.text = "New Child Behaviour";
             node.titleContainer.Add(button);
+
+            // Object field for behaviour instance
+            ObjectField objectField = new ObjectField();
+            objectField.objectType = typeof(AbstractNode);
+            objectField.value = node.compositeInstance;
+            node.mainContainer.Add(objectField);
 
             node.RefreshExpandedState();
             node.RefreshPorts();
@@ -352,16 +328,22 @@ namespace BehaviourTreeEditor
         }
 
         // Generate behaviour node
-        private BTEditorNode GenerateBehaviourNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateBehaviourNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = name,
+                title = nodeTitle,
                 nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Behaviour,
                 topNode = isTopNode
             };
+
+            // Create new instance if not loading from already existing behaviour tree
+            if (instance != null)
+                node.actionInstance = instance as Action;
+            else
+                node.actionInstance = ScriptableObject.CreateInstance(name) as Action;
 
             // Stash and remove old title and minimize button elements
             Label oldTitleLabel = node.titleContainer.Q<Label>("title-label");
@@ -374,7 +356,7 @@ namespace BehaviourTreeEditor
             TextField textField = new TextField
             {
                 name = string.Empty,
-                value = name
+                value = node.title
             };
 
             textField.RegisterValueChangedCallback(evt => node.title = evt.newValue);
@@ -383,6 +365,16 @@ namespace BehaviourTreeEditor
 
             // Input port
             node.inputContainer.Add(GeneratePort(node, Direction.Input));
+
+            // Object field for behaviour instance
+            ObjectField objectField = new ObjectField();
+            objectField.objectType = typeof(ScriptableObject);
+            objectField.value = node.actionInstance;
+            node.mainContainer.Add(objectField);
+
+            // Node state element
+            EnumField nodeStateField = new EnumField { value = node.actionInstance.NodeState };
+            node.mainContainer.Add(nodeStateField);
 
             node.RefreshExpandedState();
             node.RefreshPorts();
@@ -393,16 +385,22 @@ namespace BehaviourTreeEditor
         }
 
         // Generate decorator node
-        private BTEditorNode GenerateDecoratorNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false)
+        private BTEditorNode GenerateDecoratorNode(string nodeTitle, string name, Vector2 position, bool isTopNode = false, AbstractNode instance = null)
         {
             BTEditorNode node = new BTEditorNode
             {
-                title = name,
+                title = nodeTitle,
                 nodeName = name,
                 GUID = System.Guid.NewGuid().ToString(),
                 nodeType = NodeTypes.Decorator,
                 topNode = isTopNode
             };
+
+            // Create new instance if not loading from already existing behaviour tree
+            if (instance != null)
+                node.decoratorInstance = instance as Decorator;
+            else
+                node.decoratorInstance = ScriptableObject.CreateInstance(name) as Decorator;
 
             // Stash and remove old title and minimize button elements
             Label oldTitleLabel = node.titleContainer.Q<Label>("title-label");
@@ -415,7 +413,7 @@ namespace BehaviourTreeEditor
             TextField textField = new TextField
             {
                 name = string.Empty,
-                value = name
+                value = node.title
             };
 
             textField.RegisterValueChangedCallback(evt => node.title = evt.newValue);
@@ -425,6 +423,16 @@ namespace BehaviourTreeEditor
             // Input/Output port
             node.inputContainer.Add(GeneratePort(node, Direction.Input, Port.Capacity.Multi));
             node.outputContainer.Add(GeneratePort(node, Direction.Output, Port.Capacity.Multi));
+
+            // Object field for behaviour instance
+            ObjectField objectField = new ObjectField();
+            objectField.objectType = typeof(ScriptableObject);
+            objectField.value = node.decoratorInstance;
+            node.mainContainer.Add(objectField);
+
+            // Node state element
+            EnumField nodeStateField = new EnumField { value = node.decoratorInstance.NodeState };
+            node.mainContainer.Add(nodeStateField);
 
             node.RefreshExpandedState();
             node.RefreshPorts();

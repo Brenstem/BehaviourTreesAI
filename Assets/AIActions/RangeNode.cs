@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class RangeNode : Action
 {
-    Transform targetTransform;
-    float range;
+    [SerializeField] float range;
 
-    public override void Construct(Context blackboard)
+    private Transform targetTransform;
+
+    public override void Construct()
     {
-        this.context = blackboard;
-        targetTransform = blackboard.globalData.player.transform;
+        targetTransform = context.player.transform;
 
         _constructed = true;
-    }
-
-    public override void AddProperties(string[] names)
-    {
-        foreach (var name in names)
-        {
-            range = context.nodeData.Get<float>(name);
-        }
     }
 
     public override NodeStates Evaluate()

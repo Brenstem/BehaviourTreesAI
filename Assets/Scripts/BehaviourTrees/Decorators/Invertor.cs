@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invertor : DecoratorNode
+public class Invertor : Decorator
 {
     public override NodeStates Evaluate()
     {

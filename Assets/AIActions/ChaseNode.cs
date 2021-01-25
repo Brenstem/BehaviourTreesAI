@@ -5,15 +5,12 @@ using UnityEngine.AI;
 
 public class ChaseNode : Action
 {
-    //Context blackboard;
     Transform playerTransform;
     NavMeshAgent agent;
 
-    public override void Construct(Context blackboard)
+    public override void Construct()
     {
-        this.context = blackboard;
-        // playerTransform = blackboard.globalData.player.transform;
-        // agent = blackboard.owner.agent;
+        playerTransform = context.player.transform;
         _constructed = true;
     }
 
@@ -42,17 +39,5 @@ public class ChaseNode : Action
             Debug.LogError("Node not constructed!");
             return NodeStates.FAILURE;
         }
-    }
-}
-
-public class ChaseNodeParameters
-{
-    public Transform target;
-    public NavMeshAgent agent;
-
-    public ChaseNodeParameters(Transform target, NavMeshAgent agent)
-    {
-        this.target = target;
-        this.agent = agent;
     }
 }

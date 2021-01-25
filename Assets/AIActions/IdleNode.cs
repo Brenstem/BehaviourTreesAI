@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class IdleNode : Action
 {
-    public override void Construct(Context blackboard)
+    public override void Construct()
     {
-        context = blackboard;
         _constructed = true;
     }
 
@@ -14,7 +13,6 @@ public class IdleNode : Action
     {
         if (_constructed)
         {
-            Debug.Log("NOT MEME!!!");
             return NodeStates.SUCCESS;
         }
         else
@@ -23,9 +21,4 @@ public class IdleNode : Action
             return NodeStates.FAILURE;
         }
     }
-}
-
-public class IdleNodeParameters
-{
-
 }

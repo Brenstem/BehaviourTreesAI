@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class DecoratorNode : AbstractNode
+public abstract class Decorator : AbstractNode
 {
-    protected AbstractNode node;
+    public AbstractNode node;
 
     public virtual void Construct(AbstractNode node)
     {
