@@ -6,6 +6,11 @@ public class ConcurrentNode : Composite
 {
     int runningNodeIndex = -1;
 
+    private void OnDisable()
+    {
+        runningNodeIndex = -1;
+    }
+
     public override NodeStates Evaluate()
     {
         if (_constructed)

@@ -38,7 +38,8 @@ public class HitBoxController : MonoBehaviour
             if (debug)
                 showHitBox = true;
 
-            Collider[] hits = Physics.OverlapBox(transform.position, hitBoxExtents, Quaternion.identity, targetLayer);
+            //delar på 2 för Physics.OverlapBox vill ha "halfExtents" men Gizmos.DrawWireCube vill ha "size" ¯\_(ツ)_/¯
+            Collider[] hits = Physics.OverlapBox(transform.position, hitBoxExtents/2, Quaternion.identity, targetLayer);
 
             foreach (Collider col in hits)
             {
