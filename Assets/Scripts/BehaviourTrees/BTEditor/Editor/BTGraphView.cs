@@ -226,7 +226,6 @@ namespace BehaviourTreeEditor
             return node;
         }
 
-
         /// <summary>
         /// Creates node and adds it to the editor window
         /// </summary>
