@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConcurrentNode : Composite
+public class Concurrent : Composite
 {
     int runningNodeIndex = -1;
 

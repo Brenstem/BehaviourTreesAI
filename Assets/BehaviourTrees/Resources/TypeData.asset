@@ -22,7 +22,7 @@ MonoBehaviour:
   - WaitNode
   compositeNodes:
   - Sequence
-  - Composite
+  - Selector
   - Concurrent
   decoratorNodes:
   - Invertor

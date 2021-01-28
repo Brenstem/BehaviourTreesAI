@@ -1,9 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleNode : Action
+public class ShootNode : Action
 {
+    DemoWeaponScript weapon;
     public override void Construct()
     {
         _constructed = true;
@@ -13,8 +14,12 @@ public class IdleNode : Action
     {
         if (_constructed)
         {
-            Debug.Log("idle");
-            return NodeStates.SUCCESS;
+            weapon = context.owner.GetComponentInChildren<DemoWeaponScript>();
+
+            weapon.FireWeapon();
+
+            NodeState = NodeStates.SUCCESS;
+            return NodeState;
         }
         else
         {
