@@ -6,6 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public abstract class AbstractNode : ScriptableObject
 {
+    public Context context;
+
     public NodeStates NodeState { get; protected set; }
 
     protected bool _constructed = false;

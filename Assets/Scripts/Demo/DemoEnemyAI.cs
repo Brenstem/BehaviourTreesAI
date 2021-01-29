@@ -11,15 +11,15 @@ public class DemoEnemyAI : BaseAI
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
 
-        behaviorTree.context.Initialize();
-        behaviorTree.context.owner = this;
-        behaviorTree.ConstructBehaviourTree();
+        behaviourTree.context.Initialize();
+        behaviourTree.context.owner = this;
+        behaviourTree.ConstructBehaviourTree();
     }
 
     private void Update()
     {
-        behaviorTree.context.owner = this;
-        behaviorTree.topNode.Evaluate();
+        behaviourTree.context.owner = this;
+        behaviourTree.topNode.Evaluate();
     }
 
     private void OnDrawGizmos()

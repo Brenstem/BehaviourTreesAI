@@ -13,55 +13,46 @@ MonoBehaviour:
   m_Name: AlexTest
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: 35b84291-70ba-4973-92fa-800353a01094
-    PortName: 0
-    TargetNodeGuid: 09bd1da8-75c7-4062-b918-f00f9c0a0859
-  - BaseNodeGuid: 35b84291-70ba-4973-92fa-800353a01094
-    PortName: 1
-    TargetNodeGuid: dc34f0c8-cde4-49eb-a597-880a452acc5e
-  - BaseNodeGuid: 35b84291-70ba-4973-92fa-800353a01094
-    PortName: 2
-    TargetNodeGuid: 285e8a41-2ef7-4ae0-88e1-eae02dfcfc83
-  - BaseNodeGuid: 35b84291-70ba-4973-92fa-800353a01094
-    PortName: 3
-    TargetNodeGuid: 894a37be-3797-4327-b7d1-1d2abe142d35
   - BaseNodeGuid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
     PortName: 0
     TargetNodeGuid: df060248-2855-493b-b70f-038ece7e814c
   - BaseNodeGuid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
     PortName: 1
     TargetNodeGuid: 49a0d2f6-7969-43c1-8c0b-2414c5ac3cbe
-  - BaseNodeGuid: 4bf59324-a41e-4057-9e77-08d9f8d2faa4
-    PortName: 0
-    TargetNodeGuid: 64e34d0d-d598-464c-a2c3-4e74054c6422
-  - BaseNodeGuid: 4bf59324-a41e-4057-9e77-08d9f8d2faa4
-    PortName: 1
-    TargetNodeGuid: 01564b94-e219-4c00-8c92-b8f2dc589c71
-  - BaseNodeGuid: 4bf59324-a41e-4057-9e77-08d9f8d2faa4
-    PortName: 2
-    TargetNodeGuid: 92b288d3-da29-4f5f-9003-fb16abe63fe5
-  - BaseNodeGuid: 4bf59324-a41e-4057-9e77-08d9f8d2faa4
-    PortName: 3
-    TargetNodeGuid: 9113016f-441e-4c7d-aa19-f1c91c6633e9
-  - BaseNodeGuid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
-    PortName: 1
-    TargetNodeGuid: 35b84291-70ba-4973-92fa-800353a01094
   - BaseNodeGuid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
     PortName: 0
+    TargetNodeGuid: 7a9add47-9325-4d57-a195-4b7da9c13fed
+  - BaseNodeGuid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
+    PortName: 1
     TargetNodeGuid: ba87d0a8-b1cf-4140-91b5-69bf931cf128
   - BaseNodeGuid: 93ce8e52-9183-4ade-a74a-1ee60842a6f3
     PortName: 2
-    TargetNodeGuid: 4bf59324-a41e-4057-9e77-08d9f8d2faa4
+    TargetNodeGuid: 3f4dff7b-028c-49cb-a2ed-c2f5a89c4ac6
+  - BaseNodeGuid: 7a9add47-9325-4d57-a195-4b7da9c13fed
+    PortName: 0
+    TargetNodeGuid: 09bd1da8-75c7-4062-b918-f00f9c0a0859
+  - BaseNodeGuid: 7a9add47-9325-4d57-a195-4b7da9c13fed
+    PortName: 1
+    TargetNodeGuid: dc34f0c8-cde4-49eb-a597-880a452acc5e
+  - BaseNodeGuid: 7a9add47-9325-4d57-a195-4b7da9c13fed
+    PortName: 2
+    TargetNodeGuid: 285e8a41-2ef7-4ae0-88e1-eae02dfcfc83
+  - BaseNodeGuid: 7a9add47-9325-4d57-a195-4b7da9c13fed
+    PortName: 3
+    TargetNodeGuid: 894a37be-3797-4327-b7d1-1d2abe142d35
+  - BaseNodeGuid: 3f4dff7b-028c-49cb-a2ed-c2f5a89c4ac6
+    PortName: 0
+    TargetNodeGuid: 64e34d0d-d598-464c-a2c3-4e74054c6422
+  - BaseNodeGuid: 3f4dff7b-028c-49cb-a2ed-c2f5a89c4ac6
+    PortName: 1
+    TargetNodeGuid: 01564b94-e219-4c00-8c92-b8f2dc589c71
+  - BaseNodeGuid: 3f4dff7b-028c-49cb-a2ed-c2f5a89c4ac6
+    PortName: 2
+    TargetNodeGuid: 92b288d3-da29-4f5f-9003-fb16abe63fe5
+  - BaseNodeGuid: 3f4dff7b-028c-49cb-a2ed-c2f5a89c4ac6
+    PortName: 3
+    TargetNodeGuid: 9113016f-441e-4c7d-aa19-f1c91c6633e9
   nodeData:
-  - nodeTitle: ConcurrentNode
-    nodeName: ConcurrentNode
-    compositeInstance: {fileID: 11400000, guid: d50d37e4362fe084b9f6f065ce1ed85e, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: 35b84291-70ba-4973-92fa-800353a01094
-    Position: {x: 419, y: -111}
-    nodeType: 0
-    topNode: 0
   - nodeTitle: AttackNode
     nodeName: AttackNode
     compositeInstance: {fileID: 0}
@@ -161,15 +152,6 @@ MonoBehaviour:
     Position: {x: 420, y: 196}
     nodeType: 0
     topNode: 0
-  - nodeTitle: ConcurrentNode
-    nodeName: ConcurrentNode
-    compositeInstance: {fileID: 11400000, guid: e3381ae4061e86647a83ea45a6cb9c9f, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: 4bf59324-a41e-4057-9e77-08d9f8d2faa4
-    Position: {x: 423, y: 478}
-    nodeType: 0
-    topNode: 0
   - nodeTitle: Top Node
     nodeName: Selector
     compositeInstance: {fileID: 11400000, guid: bd9b3b9a5cd7003429db39c8faa367e6, type: 2}
@@ -179,4 +161,22 @@ MonoBehaviour:
     Position: {x: 0, y: 0}
     nodeType: 0
     topNode: 1
+  - nodeTitle: Concurrent
+    nodeName: Concurrent
+    compositeInstance: {fileID: 11400000, guid: 58de3bf18e76b1b4ea7034a1e33bbc64, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 7a9add47-9325-4d57-a195-4b7da9c13fed
+    Position: {x: 455, y: -110}
+    nodeType: 0
+    topNode: 0
+  - nodeTitle: Concurrent
+    nodeName: Concurrent
+    compositeInstance: {fileID: 11400000, guid: 7ea1fb3d83d90564dba04015452487da, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 3f4dff7b-028c-49cb-a2ed-c2f5a89c4ac6
+    Position: {x: 456, y: 383}
+    nodeType: 0
+    topNode: 0
   context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

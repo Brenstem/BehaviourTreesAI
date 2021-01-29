@@ -25,8 +25,8 @@ public class AlexEnemyAI1 : BaseAI
     
     private void Update()
     {
-        behaviorTree.context.owner = this;
-        behaviorTree.topNode.Evaluate();
+        behaviourTree.context.owner = this;
+        behaviourTree.topNode.Evaluate();
     }
 
     private void OnDrawGizmos()

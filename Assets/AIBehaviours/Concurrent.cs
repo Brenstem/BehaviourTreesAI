@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Concurrent : Composite
 {
-    int runningNodeIndex = -1;
+    private Dictionary<BaseAI, int> runningAIDictionary = new Dictionary<BaseAI, int>();
 
-    private void OnDisable()
-    {
-        runningNodeIndex = -1;
-    }
+    private BaseAI currentOwner;
 
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
+            currentOwner = context.owner;
+
             //if a node returned running last evaluate, we start evaluating from that node
-            if (runningNodeIndex >= 0)
+            if (runningAIDictionary.ContainsKey(currentOwner))
             {
-                return EvaluateFromIndex(runningNodeIndex);
+                return EvaluateFromIndex(runningAIDictionary[currentOwner]);
             }
             else
             {
@@ -41,23 +40,27 @@ public class Concurrent : Composite
             switch (node.Evaluate())
             {
                 case NodeStates.RUNNING:
-                    runningNodeIndex = i;
                     NodeState = NodeStates.RUNNING;
+
+                    if (!runningAIDictionary.ContainsKey(currentOwner)) // If behaviour returns running and owner is not already in list of running AIs add current owner to that list
+                        runningAIDictionary.Add(currentOwner, i);
+
                     return NodeState;
 
                 case NodeStates.SUCCESS:
+                    if (runningAIDictionary.ContainsKey(currentOwner)) // If behaviour returns success remove owner from running AI list and keep evaluating behaviours
+                        runningAIDictionary.Remove(currentOwner);
                     break;
 
                 case NodeStates.FAILURE:
-                    runningNodeIndex = -1;
+                    if (runningAIDictionary.ContainsKey(currentOwner)) // If behaviour returns fail remove owner from running AI list and stop evaluating behaviours. 
+                        runningAIDictionary.Remove(currentOwner);
+
                     NodeState = NodeStates.FAILURE;
                     return NodeState;
-
-                default:
-                    break;
             }
         }
-        runningNodeIndex = -1;
+
         NodeState = NodeStates.SUCCESS;
         return NodeState;
     }
