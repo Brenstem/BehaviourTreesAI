@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Concurrent : Composite
 {
-    private Dictionary<BaseAI, int> runningAIDictionary = new Dictionary<BaseAI, int>();
+    int currentRunningNodeIndex = -1;
 
-    private BaseAI currentOwner;
+    //reset currentRunningNodeIndex every time we exit play mode
+    private void OnDisable()
+    {
+        currentRunningNodeIndex = -1;
+    }
 
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
-            currentOwner = context.owner;
-
             //if a node returned running last evaluate, we start evaluating from that node
-            if (runningAIDictionary.ContainsKey(currentOwner))
+            if (currentRunningNodeIndex > 0)
             {
-                return EvaluateFromIndex(runningAIDictionary[currentOwner]);
+                return EvaluateFromIndex(currentRunningNodeIndex);
             }
             else
             {
@@ -39,28 +41,24 @@ public class Concurrent : Composite
 
             switch (node.Evaluate())
             {
+                //if a node returns running set currentRunningNodeIndex to that nodes index in the child list
                 case NodeStates.RUNNING:
+                    currentRunningNodeIndex = i;
                     NodeState = NodeStates.RUNNING;
-
-                    if (!runningAIDictionary.ContainsKey(currentOwner)) // If behaviour returns running and owner is not already in list of running AIs add current owner to that list
-                        runningAIDictionary.Add(currentOwner, i);
-
                     return NodeState;
 
                 case NodeStates.SUCCESS:
-                    if (runningAIDictionary.ContainsKey(currentOwner)) // If behaviour returns success remove owner from running AI list and keep evaluating behaviours
-                        runningAIDictionary.Remove(currentOwner);
                     break;
 
+                //if a node returns failure reset currentRunningNodeIndex
                 case NodeStates.FAILURE:
-                    if (runningAIDictionary.ContainsKey(currentOwner)) // If behaviour returns fail remove owner from running AI list and stop evaluating behaviours. 
-                        runningAIDictionary.Remove(currentOwner);
-
+                    currentRunningNodeIndex = -1;
                     NodeState = NodeStates.FAILURE;
                     return NodeState;
             }
         }
-
+        //if all nodes returns success reset currentRunningNodeIndex
+        currentRunningNodeIndex = -1;
         NodeState = NodeStates.SUCCESS;
         return NodeState;
     }

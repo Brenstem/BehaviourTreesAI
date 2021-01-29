@@ -12,7 +12,7 @@ public class AlexEnemyAI : BaseAI
 
     private void Update()
     {
-        btInstance.topNodeInstance.Evaluate();
+        behaviourTreeInstance.topNodeInstance.Evaluate();
     }
 
     private void OnDrawGizmos()

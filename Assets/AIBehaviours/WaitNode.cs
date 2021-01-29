@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WaitNode : Action
 {
     private Timer timer;
     [SerializeField] private float runTime = 0.5f;
 
+    NavMeshAgent agent;
+    Transform ownerTransform;
+
     public override void Construct()
     {
         _constructed = true;
         timer = new Timer(-1f);
+        agent = context.owner.agent;
+        ownerTransform = context.owner.transform;
     }
 
     public override NodeStates Evaluate()
@@ -22,7 +28,7 @@ public class WaitNode : Action
             {
                 timer.Reset(runTime);
 
-                context.owner.agent.SetDestination(context.owner.transform.position);
+                agent.SetDestination(ownerTransform.position);
 
                 NodeState = NodeStates.RUNNING;
                 return NodeState;

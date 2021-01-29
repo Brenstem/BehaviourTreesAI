@@ -21,5 +21,5 @@ public abstract class AbstractNode : ScriptableObject
 
 public enum NodeStates
 {
-    RUNNING, SUCCESS, FAILURE, 
+    FAILURE, RUNNING, SUCCESS,  
 }

@@ -12,51 +12,56 @@ public class BehaviourTree : ScriptableObject
 
     public void ConstructBehaviourTree()
     {
-        topNodeInstance = Instantiate(topNode);
-        constructStack.Push(topNodeInstance);
+        topNodeInstance = (Composite)InitializeNodes(topNode);
 
-        while (constructStack.Count > 0)
-        {
-            AbstractNode currentNode = constructStack.Pop();
 
-            if (currentNode.GetType().IsSubclassOf(typeof(Composite)))
-            {
-                Composite compositeNode = (Composite)currentNode;
 
-                if (compositeNode.nodes.Count == 0)
-                {
-                    Debug.Log("wat");
-                }
+        //topNodeInstance = Instantiate(topNode);
+        //constructStack.Push(topNodeInstance);
 
-                for (int i = 0; i < compositeNode.nodes.Count; i++)
-                {
-                    compositeNode.nodes[i] = Instantiate(compositeNode.nodes[i]);
-                    constructStack.Push(compositeNode.nodes[i]);
-                }
+        //while (constructStack.Count > 0)
+        //{
+        //    AbstractNode currentNode = constructStack.Pop();
 
-                compositeNode.Construct(compositeNode.nodes);
-                compositeNode.context = context;
-            }
-            else if (currentNode.GetType().IsSubclassOf(typeof(Decorator)))
-            {
-                Decorator decoratorNode = (Decorator)currentNode;
-                decoratorNode.Construct(Instantiate(decoratorNode.node));
-                constructStack.Push(decoratorNode.node);
-                decoratorNode.context = context;
-            }
-            else
-            {
-                Action actionNode = (Action)currentNode;
-                actionNode.context = context;
-                actionNode.Construct();
-            }
-        }
+        //    if (currentNode.GetType().IsSubclassOf(typeof(Composite)))
+        //    {
+        //        Composite compositeNode = (Composite)currentNode;
+
+        //        if (compositeNode.nodes.Count == 0)
+        //        {
+        //            Debug.Log("wat");
+        //        }
+
+        //        for (int i = 0; i < compositeNode.nodes.Count; i++)
+        //        {
+        //            compositeNode.nodes[i] = Instantiate(compositeNode.nodes[i]);
+        //            constructStack.Push(compositeNode.nodes[i]);
+        //        }
+
+        //        compositeNode.Construct(compositeNode.nodes);
+        //        compositeNode.context = context;
+        //    }
+        //    else if (currentNode.GetType().IsSubclassOf(typeof(Decorator)))
+        //    {
+        //        Decorator decoratorNode = (Decorator)currentNode;
+        //        decoratorNode.Construct(Instantiate(decoratorNode.node));
+        //        constructStack.Push(decoratorNode.node);
+        //        decoratorNode.context = context;
+        //    }
+        //    else
+        //    {
+        //        Action actionNode = (Action)currentNode;
+        //        actionNode.context = context;
+        //        actionNode.Construct();
+        //    }
+        //}
     }
 
     Stack<AbstractNode> constructStack = new Stack<AbstractNode>();
 
     private AbstractNode InitializeNodes(AbstractNode node)
     {
+        // Run this for all of the nodes chilldren
         if (node.GetType().IsSubclassOf(typeof(Composite)))
         {
             Composite temp = (Composite)node;
@@ -73,17 +78,22 @@ public class BehaviourTree : ScriptableObject
             constructStack.Push(InitializeNodes(temp.node));
         }
 
-        // Instantiate nodes
+
+        // Instantiate the node
         if (node.GetType().IsSubclassOf(typeof(Composite)))
         {
-            List<AbstractNode> childNodes = new List<AbstractNode>();
-
             Composite temp = (Composite)node;
+
+            List<AbstractNode> childNodes = new List<AbstractNode>();
 
             for (int i = 0; i < temp.nodes.Count; i++)
             {
                 childNodes.Add(constructStack.Pop());
             }
+
+            childNodes.Reverse();
+
+            temp = Instantiate(temp);
 
             temp.context = context;
             temp.Construct(childNodes);
@@ -94,14 +104,18 @@ public class BehaviourTree : ScriptableObject
         {
             Decorator temp = (Decorator)node;
 
+            AbstractNode child = constructStack.Pop();
+
+            temp = Instantiate(temp);
+
             temp.context = context;
-            temp.Construct(Instantiate(temp.node));
+            temp.Construct(child);
 
             return temp;
         }
         else if (node.GetType().IsSubclassOf(typeof(Action)))
         {
-            Action temp = (Action)node;
+            Action temp = Instantiate((Action)node);
 
             temp.context = context;
             temp.Construct();

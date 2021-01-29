@@ -10,17 +10,17 @@ public abstract class BaseAI : MonoBehaviour
 
     [SerializeField] protected BehaviourTree behaviourTree;
 
-    [SerializeField] protected BehaviourTree btInstance;
+    [SerializeField] protected BehaviourTree behaviourTreeInstance;
 
     protected void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
 
-        btInstance = Instantiate(behaviourTree);
-        btInstance.context.Initialize();
-        btInstance.context.owner = this;
-        btInstance.ConstructBehaviourTree();
+        behaviourTreeInstance = Instantiate(behaviourTree);
+        behaviourTreeInstance.context.Initialize();
+        behaviourTreeInstance.context.owner = this;
+        behaviourTreeInstance.ConstructBehaviourTree();
     }
 
 }

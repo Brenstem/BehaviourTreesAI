@@ -14,12 +14,14 @@ public class IdleNode : Action
         if (_constructed)
         {
             Debug.Log("idle");
-            return NodeStates.SUCCESS;
+            NodeState = NodeStates.SUCCESS;
+            return NodeState;
         }
         else
         {
             Debug.LogError("Node not constructed!");
-            return NodeStates.FAILURE;
+            NodeState = NodeStates.FAILURE;
+            return NodeState;
         }
     }
 }
