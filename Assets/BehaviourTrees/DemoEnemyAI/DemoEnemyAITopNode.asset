@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: SelectorTopNode
+  m_Name: DemoEnemyAITopNode
   m_EditorClassIdentifier: 
+  context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
+  _constructed: 1
   nodes:
-  - {fileID: 11400000, guid: d50d37e4362fe084b9f6f065ce1ed85e, type: 2}
-  - {fileID: 11400000, guid: d2210e65a24af384e8c0e20c50639e74, type: 2}
-  - {fileID: 11400000, guid: e3381ae4061e86647a83ea45a6cb9c9f, type: 2}
+  - {fileID: 11400000, guid: c0f22cf4307071443ba925555b10d011, type: 2}
+  - {fileID: 11400000, guid: 83baf8d0c9172cf4994484a5a93733df, type: 2}
+  - {fileID: 11400000, guid: ff514527494c24647aacf60194494833, type: 2}

@@ -222,7 +222,7 @@ namespace BehaviourTreeEditor
 
                         if (node.topNode) // If topnode then save with the name of the behaviourtree
                         {
-                            string fileName = node.nodeName + "TopNode";
+                            string fileName = _fileName + "TopNode";
 
                             AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(node.compositeInstance), fileName);
                         }

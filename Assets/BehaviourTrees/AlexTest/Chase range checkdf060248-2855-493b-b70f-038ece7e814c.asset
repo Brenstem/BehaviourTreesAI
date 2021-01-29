@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
   m_Name: Chase range checkdf060248-2855-493b-b70f-038ece7e814c
   m_EditorClassIdentifier: 
-  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
-  range: 7
+  context: {fileID: 0}
+  _constructed: 0
+  range: 0

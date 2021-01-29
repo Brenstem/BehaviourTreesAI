@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: BurstShootNodeef9fc191-1a66-44fe-9329-45313cb2f9bb
   m_EditorClassIdentifier: 
   context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
+  _constructed: 0
   timeBetweenShots: 1
   shots: 3
+  rotationSpeed: 4

@@ -429,7 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5092a51dab363764c87bad32bb103b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviorTree: {fileID: 11400000, guid: 6653845ad78cd064e840e7bd10d49bc1, type: 2}
+  behaviourTree: {fileID: 11400000, guid: 6653845ad78cd064e840e7bd10d49bc1, type: 2}
+  behaviourTreeInstance: {fileID: 0}
 --- !u!195 &772894678
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -444,8 +445,8 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_StoppingDistance: 0.1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
@@ -1015,7 +1016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5092a51dab363764c87bad32bb103b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviorTree: {fileID: 0}
+  behaviourTree: {fileID: 0}
+  behaviourTreeInstance: {fileID: 0}
 --- !u!195 &1273504034
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topNode: {fileID: 11400000, guid: 9eca616f6776c144080ac24fc8c34f7d, type: 2}
   context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
+  topNodeInstance: {fileID: 0}

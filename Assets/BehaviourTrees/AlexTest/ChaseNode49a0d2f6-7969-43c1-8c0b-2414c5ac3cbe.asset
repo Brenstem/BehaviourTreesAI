@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ChaseNode49a0d2f6-7969-43c1-8c0b-2414c5ac3cbe
   m_EditorClassIdentifier: 
   context: {fileID: 0}
+  _constructed: 0

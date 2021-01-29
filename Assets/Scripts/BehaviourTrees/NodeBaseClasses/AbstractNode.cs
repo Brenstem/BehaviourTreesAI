@@ -10,7 +10,7 @@ public abstract class AbstractNode : ScriptableObject
 
     public NodeStates NodeState { get; protected set; }
 
-    protected bool _constructed = false;
+    [SerializeField] protected bool _constructed = false;
 
     /// <summary>
     /// This is the update method of your behaviour

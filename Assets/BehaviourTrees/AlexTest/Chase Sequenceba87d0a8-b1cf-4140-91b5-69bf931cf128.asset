@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
   m_Name: Chase Sequenceba87d0a8-b1cf-4140-91b5-69bf931cf128
   m_EditorClassIdentifier: 
+  context: {fileID: 0}
+  _constructed: 0
   nodes: []

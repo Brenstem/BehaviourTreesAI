@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb02a489cd20df346abf89fdd80d8c12, type: 3}
-  m_Name: WaitNode3dfaf50b-1f09-4d5a-b143-50e84d37ea23
+  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
+  m_Name: AlexTestTopNode
   m_EditorClassIdentifier: 
   context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
-  runTime: 1
+  _constructed: 1
+  nodes:
+  - {fileID: 11400000, guid: 58de3bf18e76b1b4ea7034a1e33bbc64, type: 2}
+  - {fileID: 11400000, guid: d2210e65a24af384e8c0e20c50639e74, type: 2}
+  - {fileID: 11400000, guid: 7ea1fb3d83d90564dba04015452487da, type: 2}

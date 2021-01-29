@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: Top Node4f79dd0b-3d48-43c8-8cda-2c81a78d3fe3
+  m_Script: {fileID: 11500000, guid: 4be1a04bf39db3d469b2a92279150958, type: 3}
+  m_Name: WaitAndRotateNode2fdab24d-5837-448a-9f83-de9e94ea73ee
   m_EditorClassIdentifier: 
-  nodes: []
+  context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
+  _constructed: 0
+  runTime: 0.5
+  rotationSpeed: 5

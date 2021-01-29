@@ -22,24 +22,6 @@ MonoBehaviour:
   - BaseNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
     PortName: 2
     TargetNodeGuid: f6a1eb1f-e21c-4eb1-929c-bd0cb1aa7bef
-  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
-    PortName: 0
-    TargetNodeGuid: 61eb1f67-71e1-44ef-8c4b-aed573aa35ad
-  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
-    PortName: 2
-    TargetNodeGuid: ef9fc191-1a66-44fe-9329-45313cb2f9bb
-  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
-    PortName: 1
-    TargetNodeGuid: 841efdd8-58fa-469e-a2a9-4d1c5e220a98
-  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
-    PortName: 2
-    TargetNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
-  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
-    PortName: 1
-    TargetNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
-  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
-    PortName: 2
-    TargetNodeGuid: 0d231a1a-367c-489b-a247-178d1e49328c
   - BaseNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
     PortName: 0
     TargetNodeGuid: e43c6539-224f-4f0c-a348-2656fb927f27
@@ -49,6 +31,24 @@ MonoBehaviour:
   - BaseNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
     PortName: 2
     TargetNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 2
+    TargetNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 1
+    TargetNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 2
+    TargetNodeGuid: 0d231a1a-367c-489b-a247-178d1e49328c
+  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
+    PortName: 2
+    TargetNodeGuid: 2fdab24d-5837-448a-9f83-de9e94ea73ee
+  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
+    PortName: 0
+    TargetNodeGuid: ef9fc191-1a66-44fe-9329-45313cb2f9bb
+  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
+    PortName: 1
+    TargetNodeGuid: 47ec7b49-ad7a-488b-8764-953b20edd241
   nodeData:
   - nodeTitle: ChaseSequence
     nodeName: Sequence
@@ -86,24 +86,6 @@ MonoBehaviour:
     Position: {x: 1044, y: 368}
     nodeType: 2
     topNode: 0
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 1e05631b7b8cec9448cb3e6efdd43469, type: 2}
-    Guid: f08aca69-8bec-484b-a11a-732b4868cfc3
-    Position: {x: 1044, y: 268}
-    nodeType: 2
-    topNode: 0
-  - nodeTitle: Concurrent
-    nodeName: Concurrent
-    compositeInstance: {fileID: 11400000, guid: 031c420b024b1d84c97ef3cd6b2a3d43, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: f1cdd342-6798-44ff-96e9-2e02472915ba
-    Position: {x: 1047, y: 93}
-    nodeType: 0
-    topNode: 0
   - nodeTitle: BurstShootNode
     nodeName: BurstShootNode
     compositeInstance: {fileID: 0}
@@ -113,24 +95,6 @@ MonoBehaviour:
     Position: {x: 1591, y: 116}
     nodeType: 2
     topNode: 0
-  - nodeTitle: WaitNode
-    nodeName: WaitNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: b236dcbbc9ac9844ea5af7d2b3cf80b2, type: 2}
-    Guid: 841efdd8-58fa-469e-a2a9-4d1c5e220a98
-    Position: {x: 1590, y: 217}
-    nodeType: 2
-    topNode: 0
-  - nodeTitle: WaitNode
-    nodeName: WaitNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 911c7c2e222bf7c4385228a5b06ab8c9, type: 2}
-    Guid: 61eb1f67-71e1-44ef-8c4b-aed573aa35ad
-    Position: {x: 1593, y: 22}
-    nodeType: 2
-    topNode: 0
   - nodeTitle: CanSeeNode
     nodeName: CanSeeNode
     compositeInstance: {fileID: 0}
@@ -138,6 +102,24 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: c75d119dd1f030b469ad19ab4846a60f, type: 2}
     Guid: 15d4dc7b-a64b-4e4a-aed4-bd3064fde2bb
     Position: {x: 1046, y: -18}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: ShootConcurrent
+    nodeName: Concurrent
+    compositeInstance: {fileID: 11400000, guid: c0f22cf4307071443ba925555b10d011, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
+    Position: {x: 542, y: 90}
+    nodeType: 0
+    topNode: 0
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 1e05631b7b8cec9448cb3e6efdd43469, type: 2}
+    Guid: f08aca69-8bec-484b-a11a-732b4868cfc3
+    Position: {x: 1044, y: 268}
     nodeType: 2
     topNode: 0
   - nodeTitle: RangeNode
@@ -158,13 +140,31 @@ MonoBehaviour:
     Position: {x: 0, y: 0}
     nodeType: 0
     topNode: 1
+  - nodeTitle: WaitAndRotateNode
+    nodeName: WaitAndRotateNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c3a22b026a1e4ad40b4a3d37e1c2834f, type: 2}
+    Guid: 2fdab24d-5837-448a-9f83-de9e94ea73ee
+    Position: {x: 1590, y: 22}
+    nodeType: 2
+    topNode: 0
   - nodeTitle: Concurrent
     nodeName: Concurrent
-    compositeInstance: {fileID: 11400000, guid: c0f22cf4307071443ba925555b10d011, type: 2}
+    compositeInstance: {fileID: 11400000, guid: 031c420b024b1d84c97ef3cd6b2a3d43, type: 2}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
-    Guid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
-    Position: {x: 542, y: 90}
+    Guid: f1cdd342-6798-44ff-96e9-2e02472915ba
+    Position: {x: 1047, y: 93}
     nodeType: 0
+    topNode: 0
+  - nodeTitle: WaitAndRotateNode
+    nodeName: WaitAndRotateNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 3dd08759e9772634fbd33d21c00ae8a5, type: 2}
+    Guid: 47ec7b49-ad7a-488b-8764-953b20edd241
+    Position: {x: 1591, y: 210}
+    nodeType: 2
     topNode: 0
   context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}

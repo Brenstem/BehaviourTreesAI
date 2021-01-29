@@ -20,6 +20,11 @@ MonoBehaviour:
   - RangeNode
   - AttackNode
   - WaitNode
+  - BurstShootNode
+  - CanSeeNode
+  - GoToPositionNode
+  - ShootNode
+  - WaitAndRotateNode
   compositeNodes:
   - Sequence
   - Selector

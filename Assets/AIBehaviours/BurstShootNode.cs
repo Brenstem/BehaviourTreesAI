@@ -6,21 +6,30 @@ public class BurstShootNode : Action
 {
     [SerializeField] private float timeBetweenShots = 0.1f;
     [SerializeField] private int shots = 1;
-    private int shotsFired;
+    [SerializeField] private float rotationSpeed = 0.5f;
+
+    private int _shotsFired;
 
     DemoWeaponScript weapon;
     private Timer timer;
+    Transform ownerTransform;
+    Transform playerTransform;
 
     public override void Construct()
     {
         timer = new Timer(-1f);
         _constructed = true;
+        ownerTransform = context.owner.transform;
+        playerTransform = context.player.transform;
     }
 
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
+            Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
+
+            ownerTransform.rotation = Quaternion.Slerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
 
             //TODO denna är konstig fixa den så den funkar
             timer.DecrementTimer(Time.deltaTime);
@@ -30,9 +39,9 @@ public class BurstShootNode : Action
                 weapon = context.owner.GetComponentInChildren<DemoWeaponScript>();
                 weapon.FireWeapon();
 
-                shotsFired++;
+                _shotsFired++;
 
-                if (shotsFired < shots)
+                if (_shotsFired < shots)
                 {
                     timer.Reset(timeBetweenShots);
 
@@ -41,7 +50,7 @@ public class BurstShootNode : Action
                 }
                 else
                 {
-                    shotsFired = 0;
+                    _shotsFired = 0;
                     Debug.Log("done fire");
                     NodeState = NodeStates.SUCCESS;
                     return NodeState;

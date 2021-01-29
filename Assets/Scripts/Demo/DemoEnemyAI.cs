@@ -5,21 +5,9 @@ using UnityEngine.AI;
 
 public class DemoEnemyAI : BaseAI
 {
-
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        health = GetComponent<Health>();
-
-        behaviourTree.context.Initialize();
-        behaviourTree.context.owner = this;
-        behaviourTree.ConstructBehaviourTree();
-    }
-
     private void Update()
     {
-        behaviourTree.context.owner = this;
-        behaviourTree.topNode.Evaluate();
+        behaviourTreeInstance.topNodeInstance.Evaluate();
     }
 
     private void OnDrawGizmos()
