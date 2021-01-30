@@ -33,6 +33,7 @@ namespace BehaviourTreeEditor
             this.AddManipulator(new RectangleSelector());
 
             contextField = new ObjectField { objectType = typeof(Context) };
+
             AddElement(GenerateEntryPointNode("Top Node"));
             AddNodeSearchWindow(editorWindow);
         }
@@ -44,7 +45,6 @@ namespace BehaviourTreeEditor
             _addNodeSearchWindow.Init(editorWindow, this);
             nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), _addNodeSearchWindow);
         }
-
         #endregion
 
         #region TypeData

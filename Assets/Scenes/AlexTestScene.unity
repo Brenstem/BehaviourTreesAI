@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b023c64d190384294622a94fba4740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourTree: {fileID: 11400000, guid: 78232d5c893d0e34e9060e7d45e41669, type: 2}
+  behaviourTree: {fileID: 11400000, guid: 5c5041c3427f411438c6308178e0e4c7, type: 2}
   behaviourTreeInstance: {fileID: 0}
 --- !u!136 &293495304
 CapsuleCollider:
@@ -742,7 +742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1626134713
 MonoBehaviour:
   m_ObjectHideFlags: 0

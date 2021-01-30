@@ -7,54 +7,13 @@ public class BehaviourTree : ScriptableObject
 {
     public Composite topNode;
     public Context context;
-
     public Composite topNodeInstance;
+
+    public BTDataContainer btData;
 
     public void ConstructBehaviourTree()
     {
         topNodeInstance = (Composite)InitializeNodes(topNode);
-
-
-
-        //topNodeInstance = Instantiate(topNode);
-        //constructStack.Push(topNodeInstance);
-
-        //while (constructStack.Count > 0)
-        //{
-        //    AbstractNode currentNode = constructStack.Pop();
-
-        //    if (currentNode.GetType().IsSubclassOf(typeof(Composite)))
-        //    {
-        //        Composite compositeNode = (Composite)currentNode;
-
-        //        if (compositeNode.nodes.Count == 0)
-        //        {
-        //            Debug.Log("wat");
-        //        }
-
-        //        for (int i = 0; i < compositeNode.nodes.Count; i++)
-        //        {
-        //            compositeNode.nodes[i] = Instantiate(compositeNode.nodes[i]);
-        //            constructStack.Push(compositeNode.nodes[i]);
-        //        }
-
-        //        compositeNode.Construct(compositeNode.nodes);
-        //        compositeNode.context = context;
-        //    }
-        //    else if (currentNode.GetType().IsSubclassOf(typeof(Decorator)))
-        //    {
-        //        Decorator decoratorNode = (Decorator)currentNode;
-        //        decoratorNode.Construct(Instantiate(decoratorNode.node));
-        //        constructStack.Push(decoratorNode.node);
-        //        decoratorNode.context = context;
-        //    }
-        //    else
-        //    {
-        //        Action actionNode = (Action)currentNode;
-        //        actionNode.context = context;
-        //        actionNode.Construct();
-        //    }
-        //}
     }
 
     Stack<AbstractNode> constructStack = new Stack<AbstractNode>();
@@ -77,7 +36,6 @@ public class BehaviourTree : ScriptableObject
 
             constructStack.Push(InitializeNodes(temp.node));
         }
-
 
         // Instantiate the node
         if (node.GetType().IsSubclassOf(typeof(Composite)))

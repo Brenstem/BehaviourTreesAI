@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
+  m_Name: DaneTestTopNode
+  m_EditorClassIdentifier: 
+  context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
+  _constructed: 1
+  nodes:
+  - {fileID: 11400000, guid: 1bbd51e10f0091040998ee2192976405, type: 2}
+  - {fileID: 11400000, guid: a2558060bfef7f544986941d39148b00, type: 2}

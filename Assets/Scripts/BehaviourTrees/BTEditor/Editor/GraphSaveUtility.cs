@@ -64,6 +64,31 @@ namespace BehaviourTreeEditor
             AssetDatabase.SaveAssets();
         }
 
+        public void SaveGraph(BTDataContainer containerCache)
+        {
+            // Generate data container
+            BTDataContainer btContainer = ScriptableObject.CreateInstance<BTDataContainer>();
+
+            // Save nodes to container
+            if (!SaveNodes(btContainer, containerCache.name)) return;
+
+            btContainer.context = _targetGraphView.contextField.value as Context;
+
+            // Put savefile in Assets/BTResources
+            if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees"))
+            {
+                AssetDatabase.CreateFolder("Assets", "BehaviourTrees");
+            }
+
+            if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees/Resources"))
+            {
+                AssetDatabase.CreateFolder("Assets/BehaviourTrees", "Resources");
+            }
+
+            AssetDatabase.CreateAsset(btContainer, $"Assets/BehaviourTrees/Resources/{containerCache.name}.asset");
+            AssetDatabase.SaveAssets();
+        }
+
         // Saves nodes
         private bool SaveNodes(BTDataContainer btContainer, string fileName)
         {
@@ -123,8 +148,26 @@ namespace BehaviourTreeEditor
         public void LoadGraph(string fileName)
         {
             // Load data based on filename
-            //_containerCache = (BTDataContainer)AssetDatabase.LoadAssetAtPath($"Assets/Resources/SaveData/{ fileName }", typeof(BTDataContainer));
             _containerCache = Resources.Load<BTDataContainer>(fileName);
+
+            BTEditorWindow.SetFileLoadFieldValue(_containerCache);
+
+            if (_containerCache == null)
+            {
+                EditorUtility.DisplayDialog("File Not Found", "Given file does not exist :(", "Ok");
+                return;
+            }
+
+            ClearGraph();
+            CreateNodes();
+            ConnectNodes();
+            _targetGraphView.contextField.value = _containerCache.context;
+        }
+
+        public void LoadGraph(BTDataContainer containerCache)
+        {
+            // Load data based on filename
+            _containerCache = containerCache;
 
             if (_containerCache == null)
             {

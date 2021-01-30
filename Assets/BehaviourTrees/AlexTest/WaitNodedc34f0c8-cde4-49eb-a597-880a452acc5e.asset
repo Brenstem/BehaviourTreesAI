@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7c25d3ab9dd494dbbdf1cceb02225d, type: 3}
-  m_Name: EnemyAIBT
+  m_Script: {fileID: 11500000, guid: cb02a489cd20df346abf89fdd80d8c12, type: 3}
+  m_Name: WaitNodedc34f0c8-cde4-49eb-a597-880a452acc5e
   m_EditorClassIdentifier: 
-  topNode: {fileID: 11400000, guid: 2f477527a127b9d408638d5e8e2c429c, type: 2}
-  blackboard: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
+  context: {fileID: 0}
+  _constructed: 0
+  runTime: 0.5
