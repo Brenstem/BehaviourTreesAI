@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: DebugNodeb78df157-5dc1-4186-9856-c040b4aefed3
   m_EditorClassIdentifier: 
   context: {fileID: 0}
-  debugText: Debog
+  _constructed: 0
+  debugText: In Range

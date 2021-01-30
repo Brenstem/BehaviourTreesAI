@@ -21,6 +21,7 @@ public class BurstShootNode : Action
         _constructed = true;
         ownerTransform = context.owner.transform;
         playerTransform = context.player.transform;
+        weapon = context.owner.GetComponentInChildren<DemoWeaponScript>();
     }
 
     public override NodeStates Evaluate()
@@ -36,7 +37,6 @@ public class BurstShootNode : Action
 
             if (timer.Done)
             {
-                weapon = context.owner.GetComponentInChildren<DemoWeaponScript>();
                 weapon.FireWeapon();
 
                 _shotsFired++;
@@ -51,7 +51,6 @@ public class BurstShootNode : Action
                 else
                 {
                     _shotsFired = 0;
-                    Debug.Log("done fire");
                     NodeState = NodeStates.SUCCESS;
                     return NodeState;
                 }

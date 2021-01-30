@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: CanSeeNode07bac9ad-7d53-444f-b843-0f1a9ccf9190
   m_EditorClassIdentifier: 
   context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
+  _constructed: 0
   targetLayers:
     serializedVersion: 2
     m_Bits: 768
-  range: 7
+  range: 10

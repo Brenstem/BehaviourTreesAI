@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class IdleNode : Action
 {
+    string ownerName;
     public override void Construct()
     {
+        ownerName = context.owner.name;
         _constructed = true;
     }
 
@@ -13,7 +15,7 @@ public class IdleNode : Action
     {
         if (_constructed)
         {
-            Debug.Log("idle");
+            Debug.Log("idle" + ownerName);
             NodeState = NodeStates.SUCCESS;
             return NodeState;
         }

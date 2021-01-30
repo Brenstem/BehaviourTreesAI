@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HealthNode : Action
 {
+    [SerializeField] float threshold;
     private Health aiHealth;
-    private float threshold;
 
     public override void Construct()
     {

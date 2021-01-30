@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
   m_Name: RangeNodef08aca69-8bec-484b-a11a-732b4868cfc3
   m_EditorClassIdentifier: 
-  context: {fileID: 0}
-  range: 7
+  context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
+  _constructed: 0
+  range: 10

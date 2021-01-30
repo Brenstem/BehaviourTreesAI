@@ -7,6 +7,8 @@ public class DemoProjectile : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float lifetime;
     Timer lifeTimer;
+    public float damage { private get; set; }
+
     void Start()
     {
         GetComponent<Rigidbody>().velocity = transform.forward * speed;
@@ -25,14 +27,9 @@ public class DemoProjectile : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
-            else if (other.CompareTag("Enemy"))
+            else if (other.CompareTag("Enemy") || other.tag == "Player")
             {
-                print("hit Enemy");
-                Destroy(this.gameObject);
-            }
-            else if (other.tag == "Player")
-            {
-                print(other.CompareTag("Player"));
+                other.GetComponent<Health>().Damage(damage);
                 Destroy(this.gameObject);
             }
         }
