@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: DaneTuff
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: 8df01d0b-3c1b-41e8-ae92-58fdded5bf44
+    PortName: 0
+    TargetNodeGuid: 63eb4f83-a9b8-4213-b4d0-4b1535865ad2
+  - BaseNodeGuid: 63eb4f83-a9b8-4213-b4d0-4b1535865ad2
+    PortName: 0
+    TargetNodeGuid: 96a4e632-d860-4998-879e-c1eb45674fb7
+  - BaseNodeGuid: 63eb4f83-a9b8-4213-b4d0-4b1535865ad2
+    PortName: 1
+    TargetNodeGuid: 6a4d0986-2c0f-4362-98f8-1be05d7b71fd
+  - BaseNodeGuid: 8df01d0b-3c1b-41e8-ae92-58fdded5bf44
+    PortName: 1
+    TargetNodeGuid: 9fc96643-595c-4c52-b1f6-fcbdc10c5d63
+  nodeData:
+  - nodeTitle: Top Node
+    nodeName: Selector
+    topNode: 1
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 79938e61d0fc5634e80c93f5627127dd, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 8df01d0b-3c1b-41e8-ae92-58fdded5bf44
+    Position: {x: 100, y: 200}
+  - nodeTitle: Sequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: f6ec13d286ee72a4399b5bc9ce8f1a22, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 63eb4f83-a9b8-4213-b4d0-4b1535865ad2
+    Position: {x: 452, y: 107}
+  - nodeTitle: ChaseNode
+    nodeName: ChaseNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 27b1401aeecc3c5419346129de612ed1, type: 2}
+    GUID: 6a4d0986-2c0f-4362-98f8-1be05d7b71fd
+    Position: {x: 819, y: 164}
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 0c5f8a7e806f40d4681ebac2ffde3f15, type: 2}
+    GUID: 96a4e632-d860-4998-879e-c1eb45674fb7
+    Position: {x: 800, y: 57}
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 1b30243057de0334bbfd432ccc14716d, type: 2}
+    GUID: 9fc96643-595c-4c52-b1f6-fcbdc10c5d63
+    Position: {x: 471, y: 269}
+  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

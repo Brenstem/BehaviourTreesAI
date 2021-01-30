@@ -5,14 +5,9 @@ using UnityEngine.AI;
 
 public class AlexEnemyAI : BaseAI
 {
-    private new void Awake()
-    {
-        base.Awake();
-    }
-
     private void Update()
     {
-        behaviourTreeInstance.topNodeInstance.Evaluate();
+        behaviourTree.topNodeInstance.Evaluate();
     }
 
     private void OnDrawGizmos()

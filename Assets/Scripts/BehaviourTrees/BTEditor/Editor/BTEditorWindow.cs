@@ -125,7 +125,6 @@ namespace BehaviourTreeEditor
 
             toolbar.Add(new Button(() => RequestDataOperation(true)) { text = "Save Data" });
             toolbar.Add(new Button(() => RequestDataOperation(false)) { text = "Load Data" });
-            toolbar.Add(new Button(() => GenerateBehaviourTree()) { text = "Generate Behaviour Tree" });
             toolbar.Add(fileLoadField);
 
             rootVisualElement.Add(toolbar);
@@ -152,11 +151,11 @@ namespace BehaviourTreeEditor
 
         private void UpdateCurrentBT(GameObject gameObject)
         {
-            Debug.Log("Getting bt instance " + gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance().btData);
+            Debug.Log("Getting bt instance " + gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance());
+
             if (gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance() != null)
             {
-                currentBehaviourTree = gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance();
-                fileLoadField.value = gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance().btData;
+                GraphSaveUtility.GetInstance(_graphView).LoadGraph(gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance());
             }
         }
 
@@ -195,141 +194,6 @@ namespace BehaviourTreeEditor
             rootVisualElement.Add(toolbar);
         }
 
-        #endregion
-
-        #region BehaviourTree Generation
-
-        // Generates initialized topnode
-        private void GenerateBehaviourTree()
-        {
-            Debug.Log("Generating...");
-
-            GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
-
-            nodeStack = new Stack<AbstractNode>();
-
-            BehaviourTree finishedTree = ScriptableObject.CreateInstance<BehaviourTree>();
-
-            // Create rest of nodes here
-            if (ConvertEditorNode(GetTopNode()) != null)
-            {
-                finishedTree.topNode = InitializeNodes(GetTopNode()) as Composite;
-                finishedTree.context = _graphView.contextField.value as Context;
-
-                if (fileLoadField.value == null)
-                {
-                    finishedTree.btData = Resources.Load<BTDataContainer>(_fileName);
-                }
-                else
-                {
-                    finishedTree.btData = (BTDataContainer)fileLoadField.value;
-                }
-            }
-
-            saveUtility.SaveNode(_fileName + "BehaviourTree", finishedTree, _fileName);
-
-            Debug.Log("I have been generated");
-        }
-
-        // Get current topnode
-        private BTEditorNode GetTopNode()
-        {
-            foreach (var node in _graphView.nodes.ToList())
-            {
-                BTEditorNode temp = (BTEditorNode)node;
-
-                if (temp.topNode)
-                {
-                    return temp;
-                }
-            }
-            return null;
-        }
-
-        // Initialize all nodes recursively
-        private AbstractNode InitializeNodes(BTEditorNode node)
-        {
-            // Get save utility to use for getting child nodes
-            GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
-
-            if (ConvertEditorNode(node) != null)
-            {
-                // Recursively initialize children and add them to stack
-                foreach (var child in saveUtility.GetChildNodes(node.GUID, _fileName))
-                {
-                    nodeStack.Push(InitializeNodes(child));
-                }
-
-                // Construct nodes based on node type
-                switch (node.nodeType)
-                {
-                    case NodeTypes.Composite:
-                        List<BTEditorNode> childEditorNodes = saveUtility.GetChildNodes(node.GUID, _fileName);
-                        List<AbstractNode> childNodes = new List<AbstractNode>();
-
-                        // loop for the amount of children and pop them from the stack into list of nodes to be used for constructing
-                        for (int i = 0; i < childEditorNodes.Count; i++)
-                        {
-                            childNodes.Add(nodeStack.Pop());
-                        }
-
-                        // Reverse list since nodes are popped in reverse order
-                        childNodes.Reverse();
-
-                        node.compositeInstance.Construct(childNodes);
-                        node.compositeInstance.context = (Context)_graphView.contextField.value;
-
-                        if (node.topNode) // If topnode then save with the name of the behaviourtree
-                        {
-                            string fileName = _fileName + "TopNode";
-
-                            AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(node.compositeInstance), fileName);
-                        }
-                        return node.compositeInstance;
-
-                    case NodeTypes.Decorator:
-                        // Construct node
-                        node.decoratorInstance.Construct(nodeStack.Pop());
-                        node.decoratorInstance.context = (Context)_graphView.contextField.value;
-
-                        return node.decoratorInstance;
-
-                    case NodeTypes.Action:
-                        // Construct node
-                        node.actionInstance.context = (Context)_graphView.contextField.value;
-
-                        return node.actionInstance;
-                    default:
-                        break;
-                }
-            }
-            return null;
-        }
-
-        // Converts editor node to behaviournode
-        private AbstractNode ConvertEditorNode(BTEditorNode node)
-        {
-            AbstractNode tempNode = null;
-
-            switch (node.nodeType)
-            {
-                case NodeTypes.Composite:
-                    tempNode = CreateInstance(node.nodeName) as Composite;
-                    break;
-
-                case NodeTypes.Decorator:
-                    tempNode = CreateInstance(node.nodeName) as Decorator;
-                    break;
-
-                case NodeTypes.Action:
-                    tempNode = CreateInstance(node.nodeName) as Action;
-                    break;
-                default:
-                    break;
-            }
-
-            return tempNode;
-        }
         #endregion
 
         // Save/Load function

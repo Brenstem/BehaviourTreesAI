@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b023c64d190384294622a94fba4740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourTree: {fileID: 11400000, guid: 5c5041c3427f411438c6308178e0e4c7, type: 2}
+  behaviourTree: {fileID: 0}
   behaviourTreeInstance: {fileID: 0}
 --- !u!136 &293495304
 CapsuleCollider:

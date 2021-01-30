@@ -7,7 +7,7 @@ public class DemoEnemyAI : BaseAI
 {
     private void Update()
     {
-        behaviourTreeInstance.topNodeInstance.Evaluate();
+        // behaviourTreeInstance.topNodeInstance.Evaluate();
     }
 
     private void OnDrawGizmos()

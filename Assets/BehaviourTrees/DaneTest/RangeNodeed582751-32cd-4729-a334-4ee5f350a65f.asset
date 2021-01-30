@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
-  m_Name: Sequence32c03e56-e7f1-46f2-b364-2c9206ba2e70
+  m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
+  m_Name: RangeNodeed582751-32cd-4729-a334-4ee5f350a65f
   m_EditorClassIdentifier: 
   context: {fileID: 0}
   _constructed: 0
-  nodes: []
+  range: 7

@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf76a4276415e5348a310ba4c7dff3bd, type: 3}
-  m_Name: ChaseNode8983d993-c6dc-4543-8d29-048d69adf986
+  m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
+  m_Name: RangeNode96a4e632-d860-4998-879e-c1eb45674fb7
   m_EditorClassIdentifier: 
   context: {fileID: 0}
   _constructed: 0
+  range: 0
