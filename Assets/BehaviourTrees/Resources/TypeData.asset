@@ -20,9 +20,14 @@ MonoBehaviour:
   - RangeNode
   - AttackNode
   - WaitNode
+  - BurstShootNode
+  - CanSeeNode
+  - GoToPositionNode
+  - ShootNode
+  - WaitAndRotateNode
   compositeNodes:
   - Sequence
-  - Composite
+  - Selector
   - Concurrent
   decoratorNodes:
   - Invertor

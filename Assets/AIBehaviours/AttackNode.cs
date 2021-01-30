@@ -8,9 +8,9 @@ public class AttackNode : Action
 
     public override void Construct()
     {
-        //måste lista ut hur vi ska göra för att hämta saker som hitboxes på ett smidigt sätt
+        //TODO måste lista ut hur vi ska göra för att hämta saker som hitboxes på ett smidigt sätt
         //alla hitboxes har en ID som man letar efter 
-        //hitBox = context.owner.GetComponentInChildren<HitBoxController>();
+        hitBox = context.owner.GetComponentInChildren<HitBoxController>();
         _constructed = true;
     }
 
@@ -18,7 +18,6 @@ public class AttackNode : Action
     {
         if (_constructed)
         {
-            hitBox = context.owner.GetComponentInChildren<HitBoxController>();
             if (hitBox.wasActive && !hitBox.isActive)
             {
                 NodeState = NodeStates.SUCCESS;

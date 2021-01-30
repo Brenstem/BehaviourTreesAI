@@ -218,10 +218,11 @@ namespace BehaviourTreeEditor
                         childNodes.Reverse();
 
                         node.compositeInstance.Construct(childNodes);
+                        node.compositeInstance.context = (Context)_graphView.contextField.value;
 
                         if (node.topNode) // If topnode then save with the name of the behaviourtree
                         {
-                            string fileName = node.nodeName + "TopNode";
+                            string fileName = _fileName + "TopNode";
 
                             AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(node.compositeInstance), fileName);
                         }
@@ -230,6 +231,7 @@ namespace BehaviourTreeEditor
                     case NodeTypes.Decorator:
                         // Construct node
                         node.decoratorInstance.Construct(nodeStack.Pop());
+                        node.decoratorInstance.context = (Context)_graphView.contextField.value;
 
                         return node.decoratorInstance;
 

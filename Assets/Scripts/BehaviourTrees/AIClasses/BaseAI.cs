@@ -8,12 +8,19 @@ public abstract class BaseAI : MonoBehaviour
     public NavMeshAgent agent { get; protected set; }
     public Health health { get; protected set; }
 
-    [SerializeField] protected BehaviourTree behaviorTree;
+    [SerializeField] protected BehaviourTree behaviourTree;
 
-    private void Awake()
+    [SerializeField] protected BehaviourTree behaviourTreeInstance;
+
+    protected void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
+
+        behaviourTreeInstance = Instantiate(behaviourTree);
+        behaviourTreeInstance.context.Initialize();
+        behaviourTreeInstance.context.owner = this;
+        behaviourTreeInstance.ConstructBehaviourTree();
     }
 
 }

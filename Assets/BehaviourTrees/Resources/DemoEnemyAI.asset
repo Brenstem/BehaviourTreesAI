@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: DemoEnemyAI
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
+    PortName: 0
+    TargetNodeGuid: f08aca69-8bec-484b-a11a-732b4868cfc3
+  - BaseNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
+    PortName: 1
+    TargetNodeGuid: 07bac9ad-7d53-444f-b843-0f1a9ccf9190
+  - BaseNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
+    PortName: 2
+    TargetNodeGuid: f6a1eb1f-e21c-4eb1-929c-bd0cb1aa7bef
+  - BaseNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
+    PortName: 0
+    TargetNodeGuid: e43c6539-224f-4f0c-a348-2656fb927f27
+  - BaseNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
+    PortName: 1
+    TargetNodeGuid: 15d4dc7b-a64b-4e4a-aed4-bd3064fde2bb
+  - BaseNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
+    PortName: 2
+    TargetNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 2
+    TargetNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 1
+    TargetNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 2
+    TargetNodeGuid: 0d231a1a-367c-489b-a247-178d1e49328c
+  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
+    PortName: 2
+    TargetNodeGuid: 2fdab24d-5837-448a-9f83-de9e94ea73ee
+  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
+    PortName: 0
+    TargetNodeGuid: ef9fc191-1a66-44fe-9329-45313cb2f9bb
+  - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
+    PortName: 1
+    TargetNodeGuid: 47ec7b49-ad7a-488b-8764-953b20edd241
+  nodeData:
+  - nodeTitle: ChaseSequence
+    nodeName: Sequence
+    compositeInstance: {fileID: 11400000, guid: 83baf8d0c9172cf4994484a5a93733df, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: bda904ae-5da4-450c-bad4-ee89ca9ad146
+    Position: {x: 540, y: 343}
+    nodeType: 0
+    topNode: 0
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: ff514527494c24647aacf60194494833, type: 2}
+    Guid: 0d231a1a-367c-489b-a247-178d1e49328c
+    Position: {x: 541, y: 559}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: ChaseNode
+    nodeName: ChaseNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 0169d085eff95c049af26a7c0cb8544a, type: 2}
+    Guid: f6a1eb1f-e21c-4eb1-929c-bd0cb1aa7bef
+    Position: {x: 1045, y: 464}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: CanSeeNode
+    nodeName: CanSeeNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 25b1a5683deddd940a3aeddf9945532d, type: 2}
+    Guid: 07bac9ad-7d53-444f-b843-0f1a9ccf9190
+    Position: {x: 1044, y: 368}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: BurstShootNode
+    nodeName: BurstShootNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: daa5577748b35044d812d883dcc706b4, type: 2}
+    Guid: ef9fc191-1a66-44fe-9329-45313cb2f9bb
+    Position: {x: 1591, y: 116}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: CanSeeNode
+    nodeName: CanSeeNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c75d119dd1f030b469ad19ab4846a60f, type: 2}
+    Guid: 15d4dc7b-a64b-4e4a-aed4-bd3064fde2bb
+    Position: {x: 1046, y: -18}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: ShootConcurrent
+    nodeName: Concurrent
+    compositeInstance: {fileID: 11400000, guid: c0f22cf4307071443ba925555b10d011, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
+    Position: {x: 542, y: 90}
+    nodeType: 0
+    topNode: 0
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 1e05631b7b8cec9448cb3e6efdd43469, type: 2}
+    Guid: f08aca69-8bec-484b-a11a-732b4868cfc3
+    Position: {x: 1044, y: 268}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 2682ce3f37c1e0a468ba9093413e8e37, type: 2}
+    Guid: e43c6539-224f-4f0c-a348-2656fb927f27
+    Position: {x: 1043, y: -118}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: Top Node
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: 9eca616f6776c144080ac24fc8c34f7d, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    Position: {x: 0, y: 0}
+    nodeType: 0
+    topNode: 1
+  - nodeTitle: WaitAndRotateNode
+    nodeName: WaitAndRotateNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c3a22b026a1e4ad40b4a3d37e1c2834f, type: 2}
+    Guid: 2fdab24d-5837-448a-9f83-de9e94ea73ee
+    Position: {x: 1590, y: 22}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: Concurrent
+    nodeName: Concurrent
+    compositeInstance: {fileID: 11400000, guid: 031c420b024b1d84c97ef3cd6b2a3d43, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: f1cdd342-6798-44ff-96e9-2e02472915ba
+    Position: {x: 1047, y: 93}
+    nodeType: 0
+    topNode: 0
+  - nodeTitle: WaitAndRotateNode
+    nodeName: WaitAndRotateNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 3dd08759e9772634fbd33d21c00ae8a5, type: 2}
+    Guid: 47ec7b49-ad7a-488b-8764-953b20edd241
+    Position: {x: 1591, y: 210}
+    nodeType: 2
+    topNode: 0
+  context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}

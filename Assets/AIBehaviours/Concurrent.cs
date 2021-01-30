@@ -1,0 +1,65 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Concurrent : Composite
+{
+    int currentRunningNodeIndex = -1;
+
+    //reset currentRunningNodeIndex every time we exit play mode
+    private void OnDisable()
+    {
+        currentRunningNodeIndex = -1;
+    }
+
+    public override NodeStates Evaluate()
+    {
+        if (_constructed)
+        {
+            //if a node returned running last evaluate, we start evaluating from that node
+            if (currentRunningNodeIndex > 0)
+            {
+                return EvaluateFromIndex(currentRunningNodeIndex);
+            }
+            else
+            {
+                return EvaluateFromIndex(0);
+            }
+        }
+        else
+        {
+            Debug.LogError("Node not constructed!");
+            return NodeStates.FAILURE;
+        }
+    }
+
+    private NodeStates EvaluateFromIndex(int startingIndex)
+    {
+        for (int i = startingIndex; i < nodes.Count; i++)
+        {
+            AbstractNode node = nodes[i];
+
+            switch (node.Evaluate())
+            {
+                //if a node returns running set currentRunningNodeIndex to that nodes index in the child list
+                case NodeStates.RUNNING:
+                    currentRunningNodeIndex = i;
+                    NodeState = NodeStates.RUNNING;
+                    return NodeState;
+
+                case NodeStates.SUCCESS:
+                    break;
+
+                //if a node returns failure reset currentRunningNodeIndex
+                case NodeStates.FAILURE:
+                    currentRunningNodeIndex = -1;
+                    NodeState = NodeStates.FAILURE;
+                    return NodeState;
+            }
+        }
+        //if all nodes returns success reset currentRunningNodeIndex
+        currentRunningNodeIndex = -1;
+        NodeState = NodeStates.SUCCESS;
+        return NodeState;
+    }
+}

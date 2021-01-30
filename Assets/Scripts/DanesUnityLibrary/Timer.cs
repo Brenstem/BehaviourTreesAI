@@ -14,6 +14,7 @@ public class Timer
     {
         startTime = time;
         currentTime = startTime;
+        this.eventCallback = eventCallback;
     }
 
     public void DecrementTimer(float decrement)

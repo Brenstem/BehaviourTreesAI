@@ -97,6 +97,8 @@ namespace BehaviourTreeEditor
         /// <param name="type"></param>
         public void CreateNewNode(string behaviourName, NodeTypes type)
         {
+            SaveTypeData();
+
             TextAsset templateTextFile = null;
 
             // Loads different template based on node type and adds behaviour name to corresponding node list

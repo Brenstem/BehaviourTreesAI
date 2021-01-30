@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: AlexDemo
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: 64c7ba6c-0f78-4577-8a72-96936cb19a29
+    PortName: 0
+    TargetNodeGuid: 7cc8f30f-1a7f-417e-af80-096fa2de081a
+  - BaseNodeGuid: 64c7ba6c-0f78-4577-8a72-96936cb19a29
+    PortName: 1
+    TargetNodeGuid: b78df157-5dc1-4186-9856-c040b4aefed3
+  - BaseNodeGuid: 0083c324-94c9-4fad-a47c-273b2603aba7
+    PortName: 0
+    TargetNodeGuid: 64c7ba6c-0f78-4577-8a72-96936cb19a29
+  - BaseNodeGuid: 0083c324-94c9-4fad-a47c-273b2603aba7
+    PortName: 1
+    TargetNodeGuid: f7aaeb20-1034-4a37-bf55-ee3ccbb9afef
+  nodeData:
+  - nodeTitle: Sequence
+    nodeName: Sequence
+    compositeInstance: {fileID: 11400000, guid: 83256f9bfeb7bae4d91c94e9e32221da, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 64c7ba6c-0f78-4577-8a72-96936cb19a29
+    Position: {x: 466, y: 109}
+    nodeType: 0
+    topNode: 0
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 9728319b47b77ac48801c5080bab93c3, type: 2}
+    Guid: f7aaeb20-1034-4a37-bf55-ee3ccbb9afef
+    Position: {x: 464, y: 287}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: Top Node
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: 07cb4a3477847624d82ccd4746140ecd, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 0083c324-94c9-4fad-a47c-273b2603aba7
+    Position: {x: 0, y: 0}
+    nodeType: 0
+    topNode: 1
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 53033ef03355b6743ba923b3f37e890f, type: 2}
+    Guid: 7cc8f30f-1a7f-417e-af80-096fa2de081a
+    Position: {x: 997, y: 51}
+    nodeType: 2
+    topNode: 0
+  - nodeTitle: DebugNode
+    nodeName: DebugNode
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 945def50ce077a64190ebb01b891e35d, type: 2}
+    Guid: b78df157-5dc1-4186-9856-c040b4aefed3
+    Position: {x: 998, y: 176}
+    nodeType: 2
+    topNode: 0
+  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

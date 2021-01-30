@@ -6,9 +6,11 @@ using UnityEngine;
 [System.Serializable]
 public abstract class AbstractNode : ScriptableObject
 {
+    public Context context;
+
     public NodeStates NodeState { get; protected set; }
 
-    protected bool _constructed = false;
+    [SerializeField] protected bool _constructed = false;
 
     /// <summary>
     /// This is the update method of your behaviour
@@ -19,5 +21,5 @@ public abstract class AbstractNode : ScriptableObject
 
 public enum NodeStates
 {
-    RUNNING, SUCCESS, FAILURE, 
+    FAILURE, RUNNING, SUCCESS,  
 }
