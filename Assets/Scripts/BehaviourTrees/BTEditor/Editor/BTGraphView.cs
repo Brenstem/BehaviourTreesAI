@@ -74,10 +74,6 @@ namespace BehaviourTreeEditor
 
                     NodeTypeData.NodePathData pathData = new NodeTypeData.NodePathData();
 
-                    for (int i = 0; i < typeData.paths.Contains(,); i++)
-                    {
-
-                    }
                     pathData.path = attribute.menuPath.Split('/');
                     pathData.name = attribute.nodeName;
 

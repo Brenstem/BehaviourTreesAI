@@ -44,25 +44,25 @@ namespace BehaviourTreeEditor
 
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Create Nodes"), 0));
 
-            // Loop through all pathdata in the typedata object
-            for (int i = 0; i < _graphView.typeData.paths.Count; i++)
-            {
-                for (int ii = 0; ii < _graphView.typeData.paths[i].path.Length; ii++) // Loop through the path stringarray and create a submenu for each entry
-                {
-                    tree.Add(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1));
+            //// Loop through all pathdata in the typedata object
+            //for (int i = 0; i < _graphView.typeData.paths.Count; i++)
+            //{
+            //    for (int ii = 0; ii < _graphView.typeData.paths[i].path.Length; ii++) // Loop through the path stringarray and create a submenu for each entry
+            //    {
+            //        tree.Add(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1));
 
-                    Debug.Log(tree.Contains(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1)));
+            //        Debug.Log(tree.Contains(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1)));
 
-                    if (ii == _graphView.typeData.paths[i].path.Length-1) // Add the searchtreeentry with corresponding data from typedata on the final iteration
-                    {
-                        tree.Add(new SearchTreeEntry(new GUIContent(_graphView.typeData.paths[i].name, _indentationIcon))
-                        {
-                            userData = new BTEditorNode() { nodeName = _graphView.typeData.paths[i].name, nodeType = _graphView.typeData.paths[i].nodeType },
-                            level = ii + 2
-                        });
-                    }
-                }
-            }
+            //        if (ii == _graphView.typeData.paths[i].path.Length-1) // Add the searchtreeentry with corresponding data from typedata on the final iteration
+            //        {
+            //            tree.Add(new SearchTreeEntry(new GUIContent(_graphView.typeData.paths[i].name, _indentationIcon))
+            //            {
+            //                userData = new BTEditorNode() { nodeName = _graphView.typeData.paths[i].name, nodeType = _graphView.typeData.paths[i].nodeType },
+            //                level = ii + 2
+            //            });
+            //        }
+            //    }
+            //}
 
 
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
