@@ -64,6 +64,31 @@ namespace BehaviourTreeEditor
             AssetDatabase.SaveAssets();
         }
 
+        public void SaveGraph(BTDataContainer containerCache)
+        {
+            // Generate data container
+            BTDataContainer btContainer = ScriptableObject.CreateInstance<BTDataContainer>();
+
+            // Save nodes to container
+            if (!SaveNodes(btContainer, containerCache.name)) return;
+
+            btContainer.context = _targetGraphView.contextField.value as Context;
+
+            // Put savefile in Assets/BTResources
+            if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees"))
+            {
+                AssetDatabase.CreateFolder("Assets", "BehaviourTrees");
+            }
+
+            if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees/Resources"))
+            {
+                AssetDatabase.CreateFolder("Assets/BehaviourTrees", "Resources");
+            }
+
+            AssetDatabase.CreateAsset(btContainer, $"Assets/BehaviourTrees/Resources/{containerCache.name}.asset");
+            AssetDatabase.SaveAssets();
+        }
+
         // Saves nodes
         private bool SaveNodes(BTDataContainer btContainer, string fileName)
         {
@@ -97,7 +122,7 @@ namespace BehaviourTreeEditor
                 {
                     nodeTitle = node.title,
                     nodeName = node.nodeName,
-                    Guid = node.GUID,
+                    GUID = node.GUID,
                     Position = node.GetPosition().position,
                     nodeType = (int)node.nodeType,
                     topNode = node.topNode
@@ -123,8 +148,26 @@ namespace BehaviourTreeEditor
         public void LoadGraph(string fileName)
         {
             // Load data based on filename
-            //_containerCache = (BTDataContainer)AssetDatabase.LoadAssetAtPath($"Assets/Resources/SaveData/{ fileName }", typeof(BTDataContainer));
             _containerCache = Resources.Load<BTDataContainer>(fileName);
+
+            BTEditorWindow.SetFileLoadFieldValue(_containerCache);
+
+            if (_containerCache == null)
+            {
+                EditorUtility.DisplayDialog("File Not Found", "Given file does not exist :(", "Ok");
+                return;
+            }
+
+            ClearGraph();
+            CreateNodes();
+            ConnectNodes();
+            _targetGraphView.contextField.value = _containerCache.context;
+        }
+
+        public void LoadGraph(BTDataContainer containerCache)
+        {
+            // Load data based on filename
+            _containerCache = containerCache;
 
             if (_containerCache == null)
             {
@@ -153,7 +196,7 @@ namespace BehaviourTreeEditor
                     Node targetNode = nodes.First(x => x.GUID == targetNodeGuid);
                     LinkNodes(nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
 
-                    targetNode.SetPosition(new Rect(_containerCache.nodeData.First(x => x.Guid == targetNodeGuid).Position,
+                    targetNode.SetPosition(new Rect(_containerCache.nodeData.First(x => x.GUID == targetNodeGuid).Position,
                         _targetGraphView.defaultNodeSize));
                 }
             }
@@ -186,15 +229,15 @@ namespace BehaviourTreeEditor
                 {
                     case NodeTypes.Composite:
                         tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode, nodeData.compositeInstance);
-                        tempNode.GUID = nodeData.Guid;
+                        tempNode.GUID = nodeData.GUID;
                         break;
                     case NodeTypes.Decorator:
                         tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode, nodeData.decoratorInstance);
-                        tempNode.GUID = nodeData.Guid;
+                        tempNode.GUID = nodeData.GUID;
                         break;
                     case NodeTypes.Action:
                         tempNode = _targetGraphView.GenerateNode(nodeData.nodeTitle, nodeData.nodeName, (NodeTypes)nodeData.nodeType, Vector2.zero, nodeData.topNode, nodeData.actionInstance);
-                        tempNode.GUID = nodeData.Guid;
+                        tempNode.GUID = nodeData.GUID;
                         break;
                     default:
                         break;
@@ -203,7 +246,7 @@ namespace BehaviourTreeEditor
                 // Add ports to node based on node data. If it's a decorator node the port will be generated automatically so theres no need to add ports
                 if (tempNode.nodeType != NodeTypes.Decorator)
                 {
-                    List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
+                    List<NodeLinkData> nodePorts = _containerCache.nodeLinks.Where(x => x.BaseNodeGuid == nodeData.GUID).ToList();
                     nodePorts.ForEach(x => _targetGraphView.AddPort(tempNode, x.PortName));
                 }
 

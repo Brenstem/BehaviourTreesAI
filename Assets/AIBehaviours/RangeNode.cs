@@ -9,7 +9,6 @@ public class RangeNode : Action
     private Transform targetTransform;
     private Transform ownerTransform;
 
-
     public override void Construct()
     {
         targetTransform = context.player.transform;

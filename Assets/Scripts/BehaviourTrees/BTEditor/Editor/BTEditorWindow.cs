@@ -20,13 +20,22 @@ namespace BehaviourTreeEditor
         private string _newBehaviourName = "New Behaviour Name";
         public static EditorWindow window;
 
+        private BehaviourTree currentBehaviourTree;
+        private static ObjectField fileLoadField;
+
         private Stack<AbstractNode> nodeStack;
+
+        private bool attemptedFileLoad = false;
 
         private void Update()
         {
             if (Application.isPlaying)
             {
-                RequestDataOperation(false);
+                if (fileLoadField.value == null && !attemptedFileLoad)
+                {
+                    RequestDataOperation(false);
+                    attemptedFileLoad = true;
+                }
 
                 // Update node state labels in editor
                 foreach (BTEditorNode node in _graphView.nodes.ToList())
@@ -51,6 +60,11 @@ namespace BehaviourTreeEditor
             }
         }
 
+        public static void SetFileLoadFieldValue(BTDataContainer btContainer)
+        {
+            fileLoadField.value = btContainer;
+        }
+
         #region Editor window generation
 
         [MenuItem("BTUtils/BTEditor")]
@@ -58,14 +72,24 @@ namespace BehaviourTreeEditor
         {
             window = GetWindow<BTEditorWindow>("Behaviour Tree Editor");
             window.minSize = new Vector2(600, 400);
+
         }
 
         private void OnEnable()
         {
             GenerateGraph();
             GenerateSavetoolbar();
+            GenerateReferenceToolbar();
             GenerateNodeToolbar();
             _graphView.LoadTypeData();
+            attemptedFileLoad = false;
+        }
+
+        private void OnDisable()
+        {
+            _graphView.SaveTypeData();
+            rootVisualElement.Remove(_graphView);
+            attemptedFileLoad = false;
         }
 
         // TODO Doesnt work atm :)) 
@@ -77,16 +101,11 @@ namespace BehaviourTreeEditor
             _graphView.Add(minimap);
         }
 
-        private void OnDisable()
-        {
-            _graphView.SaveTypeData();
-            rootVisualElement.Remove(_graphView);
-        }
-
         // Generate graph view to be displayed on top of window
         private void GenerateGraph()
         {
             _graphView = new BTGraphView(this) { name = "Behaviour Tree Editor" };
+            fileLoadField = new ObjectField { objectType = typeof(BTDataContainer) };
             _graphView.StretchToParentSize();
             rootVisualElement.Add(_graphView);
         }
@@ -106,10 +125,38 @@ namespace BehaviourTreeEditor
 
             toolbar.Add(new Button(() => RequestDataOperation(true)) { text = "Save Data" });
             toolbar.Add(new Button(() => RequestDataOperation(false)) { text = "Load Data" });
-            toolbar.Add(new Button(() => GenerateBehaviourTree()) { text = "Generate Behaviour Tree" });
+            toolbar.Add(fileLoadField);
+
+            rootVisualElement.Add(toolbar);
+        }
+
+        private void GenerateReferenceToolbar()
+        {
+            Toolbar toolbar = new Toolbar();
+
+            ObjectField btDebugField = new ObjectField { objectType = typeof(GameObject) };
+            btDebugField.label = "Debug Gameobject: ";
+            btDebugField.labelElement.style.color = Color.black;
+            btDebugField.SetValueWithoutNotify(currentBehaviourTree);
+            btDebugField.MarkDirtyRepaint();
+            btDebugField.RegisterValueChangedCallback(evt => { if (Application.isPlaying) UpdateCurrentBT((GameObject)evt.newValue); });
+            toolbar.Add(btDebugField);
+
+            _graphView.contextField.label = "Context: ";
+            _graphView.contextField.labelElement.style.color = Color.black;
             toolbar.Add(_graphView.contextField);
 
             rootVisualElement.Add(toolbar);
+        }
+
+        private void UpdateCurrentBT(GameObject gameObject)
+        {
+            Debug.Log("Getting bt instance " + gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance());
+
+            if (gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance() != null)
+            {
+                GraphSaveUtility.GetInstance(_graphView).LoadGraph(gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance());
+            }
         }
 
         // Generate node creation toolbar
@@ -149,150 +196,46 @@ namespace BehaviourTreeEditor
 
         #endregion
 
-        #region BehaviourTree Generation
-
-        // Generates initialized topnode
-        private void GenerateBehaviourTree()
-        {
-            Debug.Log("Generating...");
-
-            nodeStack = new Stack<AbstractNode>();
-
-            BehaviourTree finishedTree = ScriptableObject.CreateInstance<BehaviourTree>();
-
-            // Create rest of nodes here
-            if (ConvertEditorNode(GetTopNode()) != null)
-            {
-                finishedTree.topNode = InitializeNodes(GetTopNode()) as Composite;
-                finishedTree.context = _graphView.contextField.value as Context;
-            }
-
-            GraphSaveUtility.GetInstance(_graphView).SaveNode(_fileName + "BehaviourTree", finishedTree, _fileName);
-
-            Debug.Log("I have been generated");
-        }
-
-        // Get current topnode
-        private BTEditorNode GetTopNode()
-        {
-            foreach (var node in _graphView.nodes.ToList())
-            {
-                BTEditorNode temp = (BTEditorNode)node;
-
-                if (temp.topNode)
-                {
-                    return temp;
-                }
-            }
-            return null;
-        }
-
-        // Initialize all nodes recursively
-        private AbstractNode InitializeNodes(BTEditorNode node)
-        {
-            // Get save utility to use for getting child nodes
-            GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
-
-            if (ConvertEditorNode(node) != null)
-            {
-                // Recursively initialize children and add them to stack
-                foreach (var child in saveUtility.GetChildNodes(node.GUID, _fileName))
-                {
-                    nodeStack.Push(InitializeNodes(child));
-                }
-
-                // Construct nodes based on node type
-                switch (node.nodeType)
-                {
-                    case NodeTypes.Composite:
-                        List<BTEditorNode> childEditorNodes = saveUtility.GetChildNodes(node.GUID, _fileName);
-                        List<AbstractNode> childNodes = new List<AbstractNode>();
-
-                        // loop for the amount of children and pop them from the stack into list of nodes to be used for constructing
-                        for (int i = 0; i < childEditorNodes.Count; i++)
-                        {
-                            childNodes.Add(nodeStack.Pop());
-                        }
-
-                        // Reverse list since nodes are popped in reverse order
-                        childNodes.Reverse();
-
-                        node.compositeInstance.Construct(childNodes);
-                        node.compositeInstance.context = (Context)_graphView.contextField.value;
-
-                        if (node.topNode) // If topnode then save with the name of the behaviourtree
-                        {
-                            string fileName = _fileName + "TopNode";
-
-                            AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(node.compositeInstance), fileName);
-                        }
-                        return node.compositeInstance;
-
-                    case NodeTypes.Decorator:
-                        // Construct node
-                        node.decoratorInstance.Construct(nodeStack.Pop());
-                        node.decoratorInstance.context = (Context)_graphView.contextField.value;
-
-                        return node.decoratorInstance;
-
-                    case NodeTypes.Action:
-                        // Construct node
-                        node.actionInstance.context = (Context)_graphView.contextField.value;
-
-                        return node.actionInstance;
-                    default:
-                        break;
-                }
-            }
-            return null;
-        }
-
-        // Converts editor node to behaviournode
-        private AbstractNode ConvertEditorNode(BTEditorNode node)
-        {
-            AbstractNode tempNode = null;
-
-            switch (node.nodeType)
-            {
-                case NodeTypes.Composite:
-                    tempNode = CreateInstance(node.nodeName) as Composite;
-                    break;
-
-                case NodeTypes.Decorator:
-                    tempNode = CreateInstance(node.nodeName) as Decorator;
-                    break;
-
-                case NodeTypes.Action:
-                    tempNode = CreateInstance(node.nodeName) as Action;
-                    break;
-                default:
-                    break;
-            }
-
-            return tempNode;
-        }
-        #endregion
-
         // Save/Load function
         private void RequestDataOperation(bool save)
         {
             if (string.IsNullOrEmpty(_fileName) || _fileName.Contains("/"))
             {
-                EditorUtility.DisplayDialog("Invalid file name!", "Please enter a valid filename, " +
+                if (fileLoadField.value == null)
+                {
+                    EditorUtility.DisplayDialog("Invalid file name!", "Please enter a valid filename, " +
                     "name should not contain special characters such as /", "Ok");
+                }
             }
 
             GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
 
             if (save)
             {
-                saveUtility.SaveGraph(_fileName);
-                Debug.Log("Saving graph as: " + _fileName + "...");
+                if (fileLoadField.value == null)
+                {
+                    saveUtility.SaveGraph(_fileName);
+                    Debug.Log("Saving graph " + _fileName + "...");
+                }
+                else
+                {
+                    saveUtility.SaveGraph((BTDataContainer)fileLoadField.value);
+                    Debug.Log("Saving graph to: " + fileLoadField.value.name + "...");
+                    fileLoadField.value = null;
+                }
             }
             else
             {
-                saveUtility.LoadGraph(_fileName);
-                Debug.Log("Loading graph " + _fileName + "...");
+                if (fileLoadField.value == null)
+                {
+                    saveUtility.LoadGraph(_fileName);
+                    Debug.Log("Loading graph: " + _fileName + "...");
+                }
+                else
+                {
+                    saveUtility.LoadGraph((BTDataContainer)fileLoadField.value);
+                    Debug.Log("Loading graph from: " + fileLoadField.value.name + "...");
+                }
             }
         }
     }

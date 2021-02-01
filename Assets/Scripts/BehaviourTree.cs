@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BehaviourTreeEditor;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviorTrees/EnemyAIBT", order = 0)]
 public class BehaviourTree : ScriptableObject
@@ -8,180 +10,116 @@ public class BehaviourTree : ScriptableObject
     public Composite topNode;
     public Context context;
 
+
     public Composite topNodeInstance;
+
+    public BTDataContainer btData;
+    public BTDataContainer btDataInstance;
 
     public void ConstructBehaviourTree()
     {
-        topNodeInstance = (Composite)InitializeNodes(topNode);
+        btDataInstance = Instantiate(btData);
 
-
-
-        //topNodeInstance = Instantiate(topNode);
-        //constructStack.Push(topNodeInstance);
-
-        //while (constructStack.Count > 0)
-        //{
-        //    AbstractNode currentNode = constructStack.Pop();
-
-        //    if (currentNode.GetType().IsSubclassOf(typeof(Composite)))
-        //    {
-        //        Composite compositeNode = (Composite)currentNode;
-
-        //        if (compositeNode.nodes.Count == 0)
-        //        {
-        //            Debug.Log("wat");
-        //        }
-
-        //        for (int i = 0; i < compositeNode.nodes.Count; i++)
-        //        {
-        //            compositeNode.nodes[i] = Instantiate(compositeNode.nodes[i]);
-        //            constructStack.Push(compositeNode.nodes[i]);
-        //        }
-
-        //        compositeNode.Construct(compositeNode.nodes);
-        //        compositeNode.context = context;
-        //    }
-        //    else if (currentNode.GetType().IsSubclassOf(typeof(Decorator)))
-        //    {
-        //        Decorator decoratorNode = (Decorator)currentNode;
-        //        decoratorNode.Construct(Instantiate(decoratorNode.node));
-        //        constructStack.Push(decoratorNode.node);
-        //        decoratorNode.context = context;
-        //    }
-        //    else
-        //    {
-        //        Action actionNode = (Action)currentNode;
-        //        actionNode.context = context;
-        //        actionNode.Construct();
-        //    }
-        //}
+        topNodeInstance = InitializeNodes(GetTopNode()).compositeInstance;
     }
 
-    Stack<AbstractNode> constructStack = new Stack<AbstractNode>();
+    Stack<NodeData> nodeStack = new Stack<NodeData>();
 
-    private AbstractNode InitializeNodes(AbstractNode node)
+    private NodeData InitializeNodes(NodeData node)
     {
-        // Run this for all of the nodes chilldren
-        if (node.GetType().IsSubclassOf(typeof(Composite)))
+        foreach (var child in GetChildNodes(node.GUID))
         {
-            Composite temp = (Composite)node;
-
-            foreach (var child in temp.nodes)
-            {
-                constructStack.Push(InitializeNodes(child));
-            }
-        }
-        else if (node.GetType().IsSubclassOf(typeof(Decorator)))
-        {
-            Decorator temp = (Decorator)node;
-
-            constructStack.Push(InitializeNodes(temp.node));
+            nodeStack.Push(InitializeNodes(child));
         }
 
-
-        // Instantiate the node
-        if (node.GetType().IsSubclassOf(typeof(Composite)))
+        switch ((NodeTypes)node.nodeType)
         {
-            Composite temp = (Composite)node;
+            case NodeTypes.Composite:
+                Composite compositeDuplicate = Instantiate(node.compositeInstance);
+                List<NodeData> childDataNodes = GetChildNodes(node.GUID);
+                List<AbstractNode> childNodes = new List<AbstractNode>();
 
-            List<AbstractNode> childNodes = new List<AbstractNode>();
+                for (int i = 0; i < childDataNodes.Count; i++)
+                {
+                    childNodes.Add(GetNodeInstance(nodeStack.Pop()));
+                }
 
-            for (int i = 0; i < temp.nodes.Count; i++)
-            {
-                childNodes.Add(constructStack.Pop());
-            }
+                childNodes.Reverse();
 
-            childNodes.Reverse();
+                compositeDuplicate.context = btData.context;
+                compositeDuplicate.Construct(childNodes);
 
-            temp = Instantiate(temp);
+                node.compositeInstance = compositeDuplicate;
 
-            temp.context = context;
-            temp.Construct(childNodes);
+                return node;
 
-            return temp;
-        }
-        else if (node.GetType().IsSubclassOf(typeof(Decorator)))
-        {
-            Decorator temp = (Decorator)node;
+            case NodeTypes.Decorator:
+                Decorator decoratorDuplicate = Instantiate(node.decoratorInstance);
 
-            AbstractNode child = constructStack.Pop();
+                decoratorDuplicate.context = btData.context;
+                decoratorDuplicate.Construct(GetNodeInstance(nodeStack.Pop()));
 
-            temp = Instantiate(temp);
+                node.decoratorInstance = decoratorDuplicate;
+                return node;
+            case NodeTypes.Action:
+                Action actionDuplicate = Instantiate(node.actionInstance);
 
-            temp.context = context;
-            temp.Construct(child);
+                actionDuplicate.context = btData.context;
+                actionDuplicate.Construct();
 
-            return temp;
-        }
-        else if (node.GetType().IsSubclassOf(typeof(Action)))
-        {
-            Action temp = Instantiate((Action)node);
-
-            temp.context = context;
-            temp.Construct();
-
-            return temp;
+                node.actionInstance = actionDuplicate;
+                return node;
+            default:
+                break;
         }
 
         return null;
     }
 
-    //private AbstractNode InitializeNodes(BTEditorNode node)
-    //{
-    //    // Get save utility to use for getting child nodes
-    //    GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(_graphView);
+    private AbstractNode GetNodeInstance(NodeData node)
+    {
+        switch ((NodeTypes)node.nodeType)
+        {
+            case NodeTypes.Composite:
+                return node.compositeInstance;
+            case NodeTypes.Decorator:
+                return node.decoratorInstance;
+            case NodeTypes.Action:
+                return node.actionInstance;
+            default:
+                return null;
+        }
+    }
 
-    //    if (ConvertEditorNode(node) != null)
-    //    {
-    //        // Recursively initialize children and add them to stack
-    //        foreach (var child in saveUtility.GetChildNodes(node.GUID, _fileName))
-    //        {
-    //            nodeStack.Push(InitializeNodes(child));
-    //        }
+    private NodeData GetTopNode()
+    {
+        foreach (var node in btDataInstance.nodeData)
+        {
+            if (node.topNode)
+            {
+                return node;
+            }
+        }
 
-    //        // Construct nodes based on node type
-    //        switch (node.nodeType)
-    //        {
-    //            case NodeTypes.Composite:
-    //                List<BTEditorNode> childEditorNodes = saveUtility.GetChildNodes(node.GUID, _fileName);
-    //                List<AbstractNode> childNodes = new List<AbstractNode>();
+        Debug.LogError("Couldn't find top node");
+        return null;
+    }
 
-    //                // loop for the amount of children and pop them from the stack into list of nodes to be used for constructing
-    //                for (int i = 0; i < childEditorNodes.Count; i++)
-    //                {
-    //                    childNodes.Add(nodeStack.Pop());
-    //                }
+    public List<NodeData> GetChildNodes(string nodeGUID)
+    {
+        List<NodeLinkData> connections = btDataInstance.nodeLinks.Where(linkData => linkData.BaseNodeGuid == nodeGUID).ToList(); // Get connections from active container cache
+        List<NodeData> childNodes = new List<NodeData>();
 
-    //                // Reverse list since nodes are popped in reverse order
-    //                childNodes.Reverse();
+        // Loop through connections for a given node and find its child nodes via GUID matching
+        for (int i = 0; i < connections.Count; i++)
+        {
+            string targetNodeGUID = connections[i].TargetNodeGuid;
 
-    //                node.compositeInstance.Construct(childNodes);
-    //                node.compositeInstance.context = (Context)_graphView.contextField.value;
+            NodeData targetNode = btDataInstance.nodeData.First(nodeData => nodeData.GUID == targetNodeGUID);
 
-    //                if (node.topNode) // If topnode then save with the name of the behaviourtree
-    //                {
-    //                    string fileName = node.nodeName + "TopNode";
+            childNodes.Add(targetNode);
+        }
 
-    //                    AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(node.compositeInstance), fileName);
-    //                }
-    //                return node.compositeInstance;
-
-    //            case NodeTypes.Decorator:
-    //                // Construct node
-    //                node.decoratorInstance.Construct(nodeStack.Pop());
-    //                node.decoratorInstance.context = (Context)_graphView.contextField.value;
-
-    //                return node.decoratorInstance;
-
-    //            case NodeTypes.Action:
-    //                // Construct node
-    //                node.actionInstance.context = (Context)_graphView.contextField.value;
-
-    //                return node.actionInstance;
-    //            default:
-    //                break;
-    //        }
-    //    }
-    //    return null;
-    //}
+        return childNodes;
+    }
 }

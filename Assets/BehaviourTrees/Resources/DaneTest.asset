@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: DaneTest
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: 7b74aec3-065e-452b-a304-c5268176068f
+    PortName: 0
+    TargetNodeGuid: ed582751-32cd-4729-a334-4ee5f350a65f
+  - BaseNodeGuid: 7b74aec3-065e-452b-a304-c5268176068f
+    PortName: 1
+    TargetNodeGuid: 5838f0b6-ce98-489e-9805-69501f4e95f2
+  - BaseNodeGuid: 38ce4815-ec5f-42dc-b03b-e1aefbfbff12
+    PortName: 0
+    TargetNodeGuid: 7b74aec3-065e-452b-a304-c5268176068f
+  nodeData:
+  - nodeTitle: Sequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 471d6f37b0dd5354fa5185dde18141a2, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 7b74aec3-065e-452b-a304-c5268176068f
+    Position: {x: 403, y: 197}
+  - nodeTitle: ChaseNode
+    nodeName: ChaseNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: ccbea23e865e47349aed4b582e677f40, type: 2}
+    GUID: 5838f0b6-ce98-489e-9805-69501f4e95f2
+    Position: {x: 859, y: 273}
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: df1f240162c62504e93a871e3d79cc93, type: 2}
+    GUID: ed582751-32cd-4729-a334-4ee5f350a65f
+    Position: {x: 858, y: 152}
+  - nodeTitle: Top Node
+    nodeName: Selector
+    topNode: 1
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 6a9c4ebe1d21eb342a3dfcafe0143346, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 38ce4815-ec5f-42dc-b03b-e1aefbfbff12
+    Position: {x: 0, y: 0}
+  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}

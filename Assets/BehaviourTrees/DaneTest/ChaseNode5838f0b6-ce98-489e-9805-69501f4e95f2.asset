@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7c25d3ab9dd494dbbdf1cceb02225d, type: 3}
-  m_Name: EnemyAIBT
+  m_Script: {fileID: 11500000, guid: cf76a4276415e5348a310ba4c7dff3bd, type: 3}
+  m_Name: ChaseNode5838f0b6-ce98-489e-9805-69501f4e95f2
   m_EditorClassIdentifier: 
-  topNode: {fileID: 11400000, guid: 2f477527a127b9d408638d5e8e2c429c, type: 2}
-  blackboard: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
+  context: {fileID: 0}
+  _constructed: 0

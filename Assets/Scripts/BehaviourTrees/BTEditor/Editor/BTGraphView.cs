@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using System.IO;
 using UnityEditor.UIElements;
+using System.Reflection;
 
 namespace BehaviourTreeEditor
 {
@@ -33,6 +34,7 @@ namespace BehaviourTreeEditor
             this.AddManipulator(new RectangleSelector());
 
             contextField = new ObjectField { objectType = typeof(Context) };
+
             AddElement(GenerateEntryPointNode("Top Node"));
             AddNodeSearchWindow(editorWindow);
         }
@@ -44,7 +46,6 @@ namespace BehaviourTreeEditor
             _addNodeSearchWindow.Init(editorWindow, this);
             nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), _addNodeSearchWindow);
         }
-
         #endregion
 
         #region TypeData
@@ -53,12 +54,44 @@ namespace BehaviourTreeEditor
         /// </summary>
         public void LoadTypeData()
         {
+            Debug.Log("loading typedata");
+
             typeData = Resources.Load("TypeData") as NodeTypeData;
 
             if (typeData == null)
             {
                 EditorUtility.DisplayDialog("No typedata object found", "The type data object could not be found in the resources folder", "ok");
                 return;
+            }
+
+            foreach (Type type in typeof(AbstractNode).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(AbstractNode))))
+            {
+                object[] attributes = type.GetCustomAttributes(typeof(AddNodeMenu), false);
+
+                if (attributes.Length > 0)
+                {
+                    AddNodeMenu attribute = attributes[0] as AddNodeMenu;
+
+                    NodeTypeData.NodePathData pathData = new NodeTypeData.NodePathData();
+
+                    pathData.path = attribute.menuPath.Split('/');
+                    pathData.name = attribute.nodeName;
+
+                    if (type.IsSubclassOf(typeof(Action)))
+                    {
+                        pathData.nodeType = NodeTypes.Action;
+                    }
+                    else if(type.IsSubclassOf(typeof(Composite)))
+                    {
+                        pathData.nodeType = NodeTypes.Composite;
+                    }
+                    else if(type.IsSubclassOf(typeof(Decorator)))
+                    {
+                        pathData.nodeType = NodeTypes.Decorator;
+                    }
+
+                    typeData.paths.Add(pathData);
+                }
             }
         }
 
