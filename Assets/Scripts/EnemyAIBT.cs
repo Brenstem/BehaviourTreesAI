@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyAIBT : ScriptableObject
 {
     public Selector topNode;
-    public Context blackboard;
+    public GlobalData blackboard;
 
     //private bool _generated;
 

@@ -33,7 +33,7 @@ namespace BehaviourTreeEditor
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
 
-            contextField = new ObjectField { objectType = typeof(Context) };
+            contextField = new ObjectField { objectType = typeof(GlobalData) };
 
             AddElement(GenerateEntryPointNode("Top Node"));
             AddNodeSearchWindow(editorWindow);

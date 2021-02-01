@@ -22,7 +22,7 @@ public class IdleNode : Action
         else
         {
             Debug.LogError("Node not constructed!");
-            NodeState = NodeStates.FAILURE;
+            NodeState = NodeStates.FAILURE; 
             return NodeState;
         }
     }

@@ -47,7 +47,7 @@ namespace BehaviourTreeEditor
             // Save nodes to container
             if (!SaveNodes(btContainer, fileName)) return;
 
-            btContainer.context = _targetGraphView.contextField.value as Context;
+            btContainer.globalData = _targetGraphView.contextField.value as GlobalData;
 
             // Put savefile in Assets/BTResources
             if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees")) 
@@ -72,7 +72,7 @@ namespace BehaviourTreeEditor
             // Save nodes to container
             if (!SaveNodes(btContainer, containerCache.name)) return;
 
-            btContainer.context = _targetGraphView.contextField.value as Context;
+            btContainer.globalData = _targetGraphView.contextField.value as GlobalData;
 
             // Put savefile in Assets/BTResources
             if (!AssetDatabase.IsValidFolder("Assets/BehaviourTrees"))
@@ -161,7 +161,7 @@ namespace BehaviourTreeEditor
             ClearGraph();
             CreateNodes();
             ConnectNodes();
-            _targetGraphView.contextField.value = _containerCache.context;
+            _targetGraphView.contextField.value = _containerCache.globalData;
         }
 
         public void LoadGraph(BTDataContainer containerCache)
@@ -178,7 +178,7 @@ namespace BehaviourTreeEditor
             ClearGraph();
             CreateNodes();
             ConnectNodes();
-            _targetGraphView.contextField.value = _containerCache.context;
+            _targetGraphView.contextField.value = _containerCache.globalData;
         }
 
 

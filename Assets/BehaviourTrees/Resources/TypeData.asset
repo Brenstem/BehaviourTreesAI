@@ -25,6 +25,7 @@ MonoBehaviour:
   - GoToPositionNode
   - ShootNode
   - WaitAndRotateNode
+  - SeekCoverNode
   compositeNodes:
   - Sequence
   - Selector

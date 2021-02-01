@@ -8,9 +8,11 @@ public class DemoEnemyAI : BaseAI
     [SerializeField] float fakeVisionRange;
     [SerializeField] float fakeShootRange;
 
+    public BlackBoardProperty<Vector3> positionToGoToProperty { get; private set; } = new BlackBoardProperty<Vector3>("positionToGoTo", Vector3.zero);
+
     private void Update()
     {
-        // behaviourTreeInstance.topNodeInstance.Evaluate();
+        behaviourTree.topNodeInstance.Evaluate();
     }
 
     private void OnDrawGizmos()

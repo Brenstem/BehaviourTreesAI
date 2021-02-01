@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class GoToPositionNode : Action
 {
-    [SerializeField] bool setPositionManualy;
+    //[SerializeField] bool setPositionManualy;
     [SerializeField] Vector2 relativeTargetPosition;
 
     Vector3 targetPosition;
@@ -15,8 +15,8 @@ public class GoToPositionNode : Action
     {
         //if (setPositionManualy)
             targetPosition = (Vector3)relativeTargetPosition + context.owner.transform.position;
-        _constructed = true;
         agent = context.owner.agent;
+        _constructed = true;
     }
 
     public override NodeStates Evaluate()
@@ -24,7 +24,8 @@ public class GoToPositionNode : Action
         if (_constructed)
         {
             //if (!setPositionManualy)
-            //    targetPosition = context.positionToGoTo;
+            //    targetPosition = Vector3.zero;
+            //    //targetPosition = context.positionToGoTo;
 
             float distance = Vector3.Distance(targetPosition, agent.transform.position);
             if (distance >= agent.stoppingDistance)

@@ -21,7 +21,7 @@ public class BurstShootNode : Action
         timer = new Timer(-1f);
         _constructed = true;
         ownerTransform = context.owner.transform;
-        playerTransform = context.player.transform;
+        playerTransform = context.globalData.player.transform;
         weapon = context.owner.GetComponentInChildren<DemoWeaponScript>();
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 using BehaviourTreeEditor;
 using System.Linq;
 
+
+//TODO detta borde inte vara ett ScriptableObject
 [CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviorTrees/EnemyAIBT", order = 0)]
 public class BehaviourTree : ScriptableObject
 {
@@ -16,14 +18,26 @@ public class BehaviourTree : ScriptableObject
     public BTDataContainer btData;
     public BTDataContainer btDataInstance;
 
-    public void ConstructBehaviourTree()
+    Stack<NodeData> nodeStack = new Stack<NodeData>();
+
+
+    public void ConstructBehaviourTree(BaseAI owner)
     {
         btDataInstance = Instantiate(btData);
 
+        CreateNewContext(owner);
+
         topNodeInstance = InitializeNodes(GetTopNode()).compositeInstance;
     }
+    void CreateNewContext(BaseAI owner)
+    {
+        context = new Context();
+        context.globalData = btData.globalData;
+        context.localData = new LocalData();
+        context.globalData.Initialize();
+        context.owner = owner;
+    }
 
-    Stack<NodeData> nodeStack = new Stack<NodeData>();
 
     private NodeData InitializeNodes(NodeData node)
     {
@@ -46,7 +60,7 @@ public class BehaviourTree : ScriptableObject
 
                 childNodes.Reverse();
 
-                compositeDuplicate.context = btData.context;
+                compositeDuplicate.context = context;
                 compositeDuplicate.Construct(childNodes);
 
                 node.compositeInstance = compositeDuplicate;
@@ -56,7 +70,7 @@ public class BehaviourTree : ScriptableObject
             case NodeTypes.Decorator:
                 Decorator decoratorDuplicate = Instantiate(node.decoratorInstance);
 
-                decoratorDuplicate.context = btData.context;
+                decoratorDuplicate.context = context;
                 decoratorDuplicate.Construct(GetNodeInstance(nodeStack.Pop()));
 
                 node.decoratorInstance = decoratorDuplicate;
@@ -64,7 +78,7 @@ public class BehaviourTree : ScriptableObject
             case NodeTypes.Action:
                 Action actionDuplicate = Instantiate(node.actionInstance);
 
-                actionDuplicate.context = btData.context;
+                actionDuplicate.context = context;
                 actionDuplicate.Construct();
 
                 node.actionInstance = actionDuplicate;

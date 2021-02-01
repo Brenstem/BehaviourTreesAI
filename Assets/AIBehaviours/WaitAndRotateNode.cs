@@ -19,7 +19,7 @@ public class WaitAndRotateNode : Action
         timer = new Timer(-1f);
         agent = context.owner.agent;
         ownerTransform = context.owner.transform;
-        playerTransform = context.player.transform;
+        playerTransform = context.globalData.player.transform;
     }
 
     public override NodeStates Evaluate()

@@ -12,7 +12,7 @@ public class CanSeeNode : Action
 
     public override void Construct()
     {
-        target = context.player.transform;
+        target = context.globalData.player.transform;
         ownerTransform = context.owner.transform;
         _constructed = true;
     }

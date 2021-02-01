@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
-  m_Name: RangeNode0a9129db-3cd4-46ab-84f1-76e09a693038
+  m_Script: {fileID: 11500000, guid: a9879966925a97e4682273a47a168976, type: 3}
+  m_Name: IdleNode0deea809-8237-4c07-bba3-bbbb53da6ecb
   m_EditorClassIdentifier: 
-  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
+  context: {fileID: 0}
   _constructed: 0
-  range: 10
