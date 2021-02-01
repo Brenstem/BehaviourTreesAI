@@ -31,15 +31,6 @@ MonoBehaviour:
   - BaseNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
     PortName: 2
     TargetNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
-  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
-    PortName: 2
-    TargetNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
-  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
-    PortName: 1
-    TargetNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
-  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
-    PortName: 2
-    TargetNodeGuid: 0d231a1a-367c-489b-a247-178d1e49328c
   - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
     PortName: 2
     TargetNodeGuid: 2fdab24d-5837-448a-9f83-de9e94ea73ee
@@ -49,6 +40,15 @@ MonoBehaviour:
   - BaseNodeGuid: f1cdd342-6798-44ff-96e9-2e02472915ba
     PortName: 1
     TargetNodeGuid: 47ec7b49-ad7a-488b-8764-953b20edd241
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 2
+    TargetNodeGuid: 7a7bcbce-61c4-4eb6-8314-1c82068bc656
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 1
+    TargetNodeGuid: bda904ae-5da4-450c-bad4-ee89ca9ad146
+  - BaseNodeGuid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    PortName: 2
+    TargetNodeGuid: 0d231a1a-367c-489b-a247-178d1e49328c
   nodeData:
   - nodeTitle: ChaseSequence
     nodeName: Sequence
@@ -131,15 +131,6 @@ MonoBehaviour:
     Position: {x: 1043, y: -118}
     nodeType: 2
     topNode: 0
-  - nodeTitle: Top Node
-    nodeName: Selector
-    compositeInstance: {fileID: 11400000, guid: 9eca616f6776c144080ac24fc8c34f7d, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
-    Position: {x: 0, y: 0}
-    nodeType: 0
-    topNode: 1
   - nodeTitle: WaitAndRotateNode
     nodeName: WaitAndRotateNode
     compositeInstance: {fileID: 0}
@@ -167,4 +158,13 @@ MonoBehaviour:
     Position: {x: 1591, y: 210}
     nodeType: 2
     topNode: 0
+  - nodeTitle: Top Node
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: 9eca616f6776c144080ac24fc8c34f7d, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 5ceb04ec-07d0-4c9a-bf96-50c7fb9c5203
+    Position: {x: 0, y: 0}
+    nodeType: 0
+    topNode: 1
   context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}

@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
-  m_Name: RangeNodee43c6539-224f-4f0c-a348-2656fb927f27
+  m_Script: {fileID: 11500000, guid: 0e24e53f372260e4c829c63fa298d6b5, type: 3}
+  m_Name: CanSeeNode1ba253e9-a6a1-4319-b19f-894ee6ff76dd
   m_EditorClassIdentifier: 
-  context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
+  context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
   _constructed: 0
-  range: 4
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  range: 10

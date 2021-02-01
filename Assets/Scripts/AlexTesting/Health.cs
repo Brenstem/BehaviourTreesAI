@@ -44,11 +44,13 @@ public class Health : MonoBehaviour
 
             currentHealth -= damageVal;
 
-            if(hurtParticle != null)
+            if (hurtParticle != null)
                 Instantiate(hurtParticle, transform.position, transform.rotation);
 
             if (healthbar != null)
                 healthbar.value = currentHealth;
+                //healthbar.value = currentHealth -= damageVal;
+                //healthbar.value = currentHealth/startingHealth;
 
             if (currentHealth <= 0)
                 Die();

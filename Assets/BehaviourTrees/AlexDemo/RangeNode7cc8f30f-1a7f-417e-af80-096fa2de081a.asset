@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: RangeNode7cc8f30f-1a7f-417e-af80-096fa2de081a
   m_EditorClassIdentifier: 
   context: {fileID: 0}
-  range: 7
+  _constructed: 0
+  range: 10

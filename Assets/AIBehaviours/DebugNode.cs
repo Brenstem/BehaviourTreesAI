@@ -5,9 +5,12 @@ using UnityEngine;
 public class DebugNode : Action
 {
     [SerializeField] private string debugText;
+    string ownerName;
+
 
     public override void Construct()
     {
+        ownerName = context.owner.name;
         _constructed = true;
     }
 
@@ -15,7 +18,7 @@ public class DebugNode : Action
     {
         if (_constructed)
         {
-            Debug.Log(debugText);
+            Debug.Log(debugText + ownerName);
 
             NodeState = NodeStates.SUCCESS;
             return NodeState;

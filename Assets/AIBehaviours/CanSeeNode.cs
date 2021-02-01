@@ -8,10 +8,12 @@ public class CanSeeNode : Action
     [SerializeField] float range;
 
     Transform target;
+    Transform ownerTransform;
 
     public override void Construct()
     {
         target = context.player.transform;
+        ownerTransform = context.owner.transform;
         _constructed = true;
     }
 
@@ -21,7 +23,7 @@ public class CanSeeNode : Action
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(context.owner.transform.position, target.position - context.owner.transform.position, out hit, range, targetLayers))
+            if (Physics.Raycast(ownerTransform.position, target.position - ownerTransform.position, out hit, range, targetLayers))
             {
                 if (hit.collider.gameObject.CompareTag(target.gameObject.tag))
                 {

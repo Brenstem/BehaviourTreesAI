@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   context: {fileID: 11400000, guid: e6f47931bb4730c4f9dca5ef454ff8fd, type: 2}
   _constructed: 0
-  timeBetweenShots: 1
+  timeBetweenShots: 0.1
   shots: 3
   rotationSpeed: 4
