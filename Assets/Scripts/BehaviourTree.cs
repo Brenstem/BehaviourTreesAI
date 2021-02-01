@@ -14,7 +14,7 @@ public class BehaviourTree : ScriptableObject
     {
         topNodeInstance = (Composite)InitializeNodes(topNode);
 
-
+        //context.localData = new LocalData
 
         //topNodeInstance = Instantiate(topNode);
         //constructStack.Push(topNodeInstance);

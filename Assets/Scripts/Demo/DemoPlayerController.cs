@@ -8,12 +8,23 @@ public class DemoPlayerController : MonoBehaviour
     [SerializeField] LayerMask environmentLayerMask;
     [SerializeField] float rotationSpeed;
 
+    [SerializeField] float debugRadius;
+    [SerializeField] GameObject debugObject;
+    [SerializeField] LayerMask coverLayers;
+    [SerializeField] LayerMask debugLayermask;
+
 
     DemoWeaponScript weapon;
     NavMeshAgent agent;
     Camera mainCamera;
 
     IEnumerator rotationCorutine;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, debugRadius);
+    }
 
     private void Awake()
     {
@@ -47,6 +58,36 @@ public class DemoPlayerController : MonoBehaviour
                 StopCoroutine(rotationCorutine);
                 rotationCorutine = FaceDirection((new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position).normalized);
                 StartCoroutine(rotationCorutine);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Collider[] coverPositions = Physics.OverlapSphere(transform.position, debugRadius, coverLayers);
+            if (coverPositions.Length > 0)
+            {
+                Vector3 currentBestCoverPosition = Vector3.positiveInfinity;
+
+                foreach (Collider cover in coverPositions)
+                {
+                    RaycastHit hit;
+                    Physics.Raycast(cover.transform.position, debugObject.transform.position - cover.transform.position, out hit, Mathf.Infinity, debugLayermask);
+
+                    if (hit.collider.gameObject != debugObject)
+                    {
+                        if (Vector3.Distance(transform.position, currentBestCoverPosition) > Vector3.Distance(transform.position, cover.transform.position))
+                        {
+                            currentBestCoverPosition = cover.transform.position;
+                        }
+                    }
+                    if (currentBestCoverPosition.magnitude < Vector3.positiveInfinity.magnitude)
+                        agent.SetDestination(currentBestCoverPosition);
+                    else
+                        print("no good cover available");
+                }
+            }
+            else
+            {
+                print("no cover in sight");
             }
         }
     }

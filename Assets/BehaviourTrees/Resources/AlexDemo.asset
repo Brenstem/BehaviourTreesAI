@@ -13,18 +13,9 @@ MonoBehaviour:
   m_Name: AlexDemo
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: 64c7ba6c-0f78-4577-8a72-96936cb19a29
-    PortName: 0
-    TargetNodeGuid: 7cc8f30f-1a7f-417e-af80-096fa2de081a
-  - BaseNodeGuid: 64c7ba6c-0f78-4577-8a72-96936cb19a29
-    PortName: 1
-    TargetNodeGuid: b78df157-5dc1-4186-9856-c040b4aefed3
   - BaseNodeGuid: 0083c324-94c9-4fad-a47c-273b2603aba7
     PortName: 0
     TargetNodeGuid: cf3a7f58-52dd-414c-b9ba-dcc97b3edc37
-  - BaseNodeGuid: 0083c324-94c9-4fad-a47c-273b2603aba7
-    PortName: 2
-    TargetNodeGuid: 64c7ba6c-0f78-4577-8a72-96936cb19a29
   - BaseNodeGuid: 0083c324-94c9-4fad-a47c-273b2603aba7
     PortName: 1
     TargetNodeGuid: f7aaeb20-1034-4a37-bf55-ee3ccbb9afef
@@ -36,44 +27,8 @@ MonoBehaviour:
     TargetNodeGuid: 1ba253e9-a6a1-4319-b19f-894ee6ff76dd
   - BaseNodeGuid: cf3a7f58-52dd-414c-b9ba-dcc97b3edc37
     PortName: 2
-    TargetNodeGuid: b37ad20c-4527-4776-93ff-feaa5a98518e
+    TargetNodeGuid: 1b3ceed6-7667-48dd-a53e-a90bd9e4da6f
   nodeData:
-  - nodeTitle: Sequence
-    nodeName: Sequence
-    compositeInstance: {fileID: 11400000, guid: 83256f9bfeb7bae4d91c94e9e32221da, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: 64c7ba6c-0f78-4577-8a72-96936cb19a29
-    Position: {x: 470, y: 193}
-    nodeType: 0
-    topNode: 0
-  - nodeTitle: Top Node
-    nodeName: Selector
-    compositeInstance: {fileID: 11400000, guid: 07cb4a3477847624d82ccd4746140ecd, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    Guid: 0083c324-94c9-4fad-a47c-273b2603aba7
-    Position: {x: 95, y: 165}
-    nodeType: 0
-    topNode: 1
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 53033ef03355b6743ba923b3f37e890f, type: 2}
-    Guid: 7cc8f30f-1a7f-417e-af80-096fa2de081a
-    Position: {x: 991, y: 156}
-    nodeType: 2
-    topNode: 0
-  - nodeTitle: DebugNode
-    nodeName: DebugNode
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 945def50ce077a64190ebb01b891e35d, type: 2}
-    Guid: b78df157-5dc1-4186-9856-c040b4aefed3
-    Position: {x: 992, y: 281}
-    nodeType: 2
-    topNode: 0
   - nodeTitle: IdleNode
     nodeName: IdleNode
     compositeInstance: {fileID: 0}
@@ -83,13 +38,22 @@ MonoBehaviour:
     Position: {x: 468, y: 369}
     nodeType: 2
     topNode: 0
+  - nodeTitle: Top Node
+    nodeName: Selector
+    compositeInstance: {fileID: 11400000, guid: 07cb4a3477847624d82ccd4746140ecd, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    Guid: 0083c324-94c9-4fad-a47c-273b2603aba7
+    Position: {x: 0, y: 0}
+    nodeType: 0
+    topNode: 1
   - nodeTitle: RangeNode
     nodeName: RangeNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 11400000, guid: 3922d0624396b754eba0cbf1cacc7b00, type: 2}
     Guid: 0a9129db-3cd4-46ab-84f1-76e09a693038
-    Position: {x: 988, y: -220}
+    Position: {x: 974, y: -31}
     nodeType: 2
     topNode: 0
   - nodeTitle: CanSeeNode
@@ -98,7 +62,7 @@ MonoBehaviour:
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 11400000, guid: e58f5bec57fc85d4188675c93debe5fd, type: 2}
     Guid: 1ba253e9-a6a1-4319-b19f-894ee6ff76dd
-    Position: {x: 990, y: -106}
+    Position: {x: 976, y: 83}
     nodeType: 2
     topNode: 0
   - nodeTitle: Sequence
@@ -107,16 +71,16 @@ MonoBehaviour:
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
     Guid: cf3a7f58-52dd-414c-b9ba-dcc97b3edc37
-    Position: {x: 485, y: -88}
+    Position: {x: 471, y: 101}
     nodeType: 0
     topNode: 0
-  - nodeTitle: DebugNode
-    nodeName: DebugNode
+  - nodeTitle: SeekCoverNode
+    nodeName: SeekCoverNode
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 7490c698714762e4fa2e88ee1558e33e, type: 2}
-    Guid: b37ad20c-4527-4776-93ff-feaa5a98518e
-    Position: {x: 990, y: 8}
+    actionInstance: {fileID: 11400000, guid: d213c2f7bac40d547871d3d20543aa89, type: 2}
+    Guid: 1b3ceed6-7667-48dd-a53e-a90bd9e4da6f
+    Position: {x: 1032, y: 212}
     nodeType: 2
     topNode: 0
   context: {fileID: 11400000, guid: d493a69dceec2f64d8557cb4917d965c, type: 2}
