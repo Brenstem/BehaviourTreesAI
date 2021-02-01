@@ -10,7 +10,7 @@ public class ChaseNode : Action
 
     public override void Construct()
     {
-        playerTransform = context.player.transform;
+        playerTransform = context.globalData.player.transform;
         agent = context.owner.agent;
         _constructed = true;
     }

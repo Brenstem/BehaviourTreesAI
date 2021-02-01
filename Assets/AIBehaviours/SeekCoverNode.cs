@@ -15,7 +15,7 @@ public class SeekCoverNode : Action
 
     public override void Construct()
     {
-        playerTransform = context.player.transform;
+        playerTransform = context.globalData.player.transform;
         ownerTransform = context.owner.transform;
         agent = context.owner.agent;
         _constructed = true;
@@ -46,6 +46,8 @@ public class SeekCoverNode : Action
                 if (currentBestCoverPosition.magnitude < Vector3.positiveInfinity.magnitude)
                 {
                     agent.SetDestination(currentBestCoverPosition);
+
+                    //TODO fixa så detta är 2 noder, där en är go to position eller ngt idk 
 
                     //context.localData.Set<>
 

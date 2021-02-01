@@ -1258,11 +1258,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1912067586118816347, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586118816347, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497750, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1314,7 +1314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497752, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: fakeVisionRange
@@ -1328,6 +1328,10 @@ PrefabInstance:
       propertyPath: behaviourTree
       value: 
       objectReference: {fileID: 11400000, guid: 7ad78aa31a1bba54c9f17b6d9b5f1698, type: 2}
+    - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
+      propertyPath: btGenerationData
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497754, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_ObstacleAvoidanceType
       value: 0
@@ -1343,11 +1347,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1912067586118816347, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586118816347, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497750, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1399,7 +1403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497752, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: fakeVisionRange
@@ -1413,6 +1417,10 @@ PrefabInstance:
       propertyPath: behaviourTree
       value: 
       objectReference: {fileID: 11400000, guid: 7ad78aa31a1bba54c9f17b6d9b5f1698, type: 2}
+    - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
+      propertyPath: btGenerationData
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497754, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_ObstacleAvoidanceType
       value: 0
@@ -1877,6 +1885,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
+      propertyPath: btGenerationData
+      value: 
+      objectReference: {fileID: 11400000, guid: cc6f00448a134de4eaa3eef2e3f2e182, type: 2}
     - target: {fileID: 1912067586810497754, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_ObstacleAvoidanceType
       value: 0

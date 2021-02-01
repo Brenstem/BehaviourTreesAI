@@ -11,7 +11,7 @@ public class RangeNode : Action
 
     public override void Construct()
     {
-        targetTransform = context.player.transform;
+        targetTransform = context.globalData.player.transform;
         ownerTransform = context.owner.transform;
 
         _constructed = true;

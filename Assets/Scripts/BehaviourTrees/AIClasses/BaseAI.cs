@@ -25,11 +25,8 @@ public abstract class BaseAI : MonoBehaviour
         behaviourTree = new BehaviourTree();
 
         behaviourTree.btData = btGenerationData;
-        behaviourTree.context = btGenerationData.context;
 
-        behaviourTree.context.Initialize();
-        behaviourTree.context.owner = this;
-        behaviourTree.ConstructBehaviourTree();
+        behaviourTree.ConstructBehaviourTree(this);
     }
 
 }
