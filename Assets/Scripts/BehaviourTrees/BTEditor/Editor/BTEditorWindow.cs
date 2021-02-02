@@ -72,7 +72,6 @@ namespace BehaviourTreeEditor
         {
             window = GetWindow<BTEditorWindow>("Behaviour Tree Editor");
             window.minSize = new Vector2(600, 400);
-
         }
 
         private void OnEnable()

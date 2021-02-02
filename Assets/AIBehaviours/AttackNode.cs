@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[AddNodeMenu("Actions/Attacks/meme1/meme2", "AttackNode")]
+[AddNodeMenu("Actions/Attacks", "AttackNode")]
 public class AttackNode : Action
 {
     HitBoxController hitBox;

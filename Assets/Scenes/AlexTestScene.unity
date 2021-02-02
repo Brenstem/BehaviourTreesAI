@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b023c64d190384294622a94fba4740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btGenerationData: {fileID: 11400000, guid: f29132abb4ade4f4899bdce490a90cc5, type: 2}
+  btGenerationData: {fileID: 11400000, guid: 79c782c6f823a04449d58547763698b2, type: 2}
 --- !u!136 &293495304
 CapsuleCollider:
   m_ObjectHideFlags: 0

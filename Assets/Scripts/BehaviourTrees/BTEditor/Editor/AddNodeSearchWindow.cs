@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace BehaviourTreeEditor
@@ -41,29 +41,31 @@ namespace BehaviourTreeEditor
             // SearchTreeGroupEntry functions as an submenu accessor 
             // SearchTreeEntry functions as a selectable item that should spawn a node corresponding to its type
             List<SearchTreeEntry> tree = new List<SearchTreeEntry>();
+            List<string> existingFolders = new List<string>();
 
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Create Nodes"), 0));
 
-            //// Loop through all pathdata in the typedata object
-            //for (int i = 0; i < _graphView.typeData.paths.Count; i++)
-            //{
-            //    for (int ii = 0; ii < _graphView.typeData.paths[i].path.Length; ii++) // Loop through the path stringarray and create a submenu for each entry
-            //    {
-            //        tree.Add(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1));
+            // Loop through all pathdata in the typedata object
+            for (int i = 0; i < _graphView.typeData.paths.Count; i++)
+            {
+                for (int ii = 0; ii < _graphView.typeData.paths[i].path.Length; ii++) // Loop through the path stringarray and create a submenu for each entry
+                {
+                    if (!existingFolders.Contains(_graphView.typeData.paths[i].path[ii]))
+                    {
+                        tree.Add(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1));
+                        existingFolders.Add(_graphView.typeData.paths[i].path[ii]);
+                    }
 
-            //        Debug.Log(tree.Contains(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1)));
-
-            //        if (ii == _graphView.typeData.paths[i].path.Length-1) // Add the searchtreeentry with corresponding data from typedata on the final iteration
-            //        {
-            //            tree.Add(new SearchTreeEntry(new GUIContent(_graphView.typeData.paths[i].name, _indentationIcon))
-            //            {
-            //                userData = new BTEditorNode() { nodeName = _graphView.typeData.paths[i].name, nodeType = _graphView.typeData.paths[i].nodeType },
-            //                level = ii + 2
-            //            });
-            //        }
-            //    }
-            //}
-
+                    if (ii == _graphView.typeData.paths[i].path.Length - 1) // Add the searchtreeentry with corresponding data from typedata on the final iteration
+                    {
+                        tree.Add(new SearchTreeEntry(new GUIContent(_graphView.typeData.paths[i].name, _indentationIcon))
+                        {
+                            userData = new BTEditorNode() { nodeName = _graphView.typeData.paths[i].name, nodeType = _graphView.typeData.paths[i].nodeType },
+                            level = ii + 2
+                        });
+                    }
+                }
+            }
 
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
 
