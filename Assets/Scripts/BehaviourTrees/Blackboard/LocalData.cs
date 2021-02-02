@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalData 
+public class LocalData
 {
     private Dictionary<string, object> variables = new Dictionary<string, object>();
 
@@ -13,10 +13,10 @@ public class LocalData
         {
             return (T)variables[key];
         }
-        else 
+        else
         {
             Debug.LogError("Key " + key + " does not contain a value");
-            return default(T); 
+            return default(T);
         }
     }
 
@@ -33,6 +33,25 @@ public class LocalData
     public void Set<T>(BlackBoardProperty<T> property, T value)
     {
         variables[property.Name] = value;
+    }
+
+    public void Set<T>(string key, T value)
+    {
+        if (variables.ContainsKey(key))
+        {
+            if (variables[key].GetType() == typeof(T))
+            {
+                variables[key] = value;
+            }
+            else
+            {
+                Debug.LogError("Key " + key + " is not of type " + typeof(T));
+            }
+        }
+        else
+        {
+            Debug.LogError("Key " + key + " does not contain a value");
+        }
     }
 
     public void Add<T>(BlackBoardProperty<T> property)

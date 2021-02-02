@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0aa0b15537f9c24fa55c8015d3721ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 33
   invulnerable: 0
   healthbar: {fileID: 1359105933}
   hurtParticle: {fileID: 0}
@@ -1256,6 +1256,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1912067585117252225, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1912067586118816347, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1318,11 +1322,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: fakeVisionRange
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: fakeShootRange
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: behaviourTree
@@ -1345,6 +1349,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1912067585117252225, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1912067586118816347, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1407,11 +1415,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: fakeVisionRange
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: fakeShootRange
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: behaviourTree
@@ -1809,6 +1817,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1912067585117252225, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1912067586118816347, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1871,11 +1883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: fakeVisionRange
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: fakeShootRange
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: behaviourTree
@@ -1888,7 +1900,7 @@ PrefabInstance:
     - target: {fileID: 1912067586810497753, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: btGenerationData
       value: 
-      objectReference: {fileID: 11400000, guid: cc6f00448a134de4eaa3eef2e3f2e182, type: 2}
+      objectReference: {fileID: 11400000, guid: 9b50ffe1f99122e4ab7be94c0526c373, type: 2}
     - target: {fileID: 1912067586810497754, guid: 0fe973bffc6737f4597cbcd0444da78d, type: 3}
       propertyPath: m_ObstacleAvoidanceType
       value: 0
