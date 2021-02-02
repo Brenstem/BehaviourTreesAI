@@ -25,18 +25,10 @@ namespace BehaviourTreeEditor
 
         private Stack<AbstractNode> nodeStack;
 
-        private bool attemptedFileLoad = false;
-
         private void Update()
         {
             if (Application.isPlaying)
             {
-                if (fileLoadField.value == null && !attemptedFileLoad)
-                {
-                    RequestDataOperation(false);
-                    attemptedFileLoad = true;
-                }
-
                 // Update node state labels in editor
                 foreach (BTEditorNode node in _graphView.nodes.ToList())
                 {
@@ -81,14 +73,12 @@ namespace BehaviourTreeEditor
             GenerateReferenceToolbar();
             GenerateNodeToolbar();
             _graphView.LoadTypeData();
-            attemptedFileLoad = false;
         }
 
         private void OnDisable()
         {
             _graphView.SaveTypeData();
             rootVisualElement.Remove(_graphView);
-            attemptedFileLoad = false;
         }
 
         // TODO Doesnt work atm :)) 
