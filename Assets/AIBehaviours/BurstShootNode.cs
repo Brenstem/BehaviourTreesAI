@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[AddNodeMenu("Actions/Attack/segt", "BurstShootNode")]
+[AddNodeMenu("Actions/Attacks", "BurstShootNode")]
 public class BurstShootNode : Action
 {
     [SerializeField] private float timeBetweenShots = 0.1f;

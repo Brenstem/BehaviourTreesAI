@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace BehaviourTreeEditor
 {
     public class NodeTypeData : ScriptableObject
     {
+        public Dictionary<string[], NodePathData> paths2 = new Dictionary<string[], NodePathData>();
+
         public List<NodePathData> paths = new List<NodePathData>();
 
         public List<string> behaviourNodes = new List<string>();
