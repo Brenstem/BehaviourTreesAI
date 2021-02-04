@@ -11,7 +11,9 @@ public abstract class BaseAI : MonoBehaviour
     protected BehaviourTree behaviourTree;
 
     [SerializeField] protected BTDataContainer btGenerationData;
-    
+
+    [HideInInspector] public Animator animator;
+
     public BTDataContainer GetBehaviourTreeInstance()
     {
         return behaviourTree.btDataInstance;
@@ -21,12 +23,14 @@ public abstract class BaseAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
+        animator = GetComponentInChildren<Animator>();
 
         behaviourTree = new BehaviourTree();
 
         behaviourTree.btData = btGenerationData;
 
         behaviourTree.ConstructBehaviourTree(this);
+
     }
 
 }

@@ -21,7 +21,7 @@ public class DemoEnemyAI : BaseAI
     {
         behaviourTree.topNodeInstance.Evaluate();
 
-        print(behaviourTree.context.localData.Get<Vector3>(positionToGoToProperty));
+        animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
     }
 
     private void OnDrawGizmos()
