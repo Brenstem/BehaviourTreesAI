@@ -15,4 +15,4 @@ MonoBehaviour:
   _constructed: 0
   timeBetweenShots: 0.1
   shots: 3
-  rotationSpeed: 0.2
+  rotationSpeed: 4

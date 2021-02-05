@@ -10,6 +10,10 @@ public class Mine : MonoBehaviour
     [SerializeField] float triggerDelayTime;
     [SerializeField] float explosionDelayTime;
     [SerializeField] float damage;
+    [SerializeField] Material defaultMaterial;
+    [SerializeField] Material activeMaterial;
+
+    [SerializeField] MeshRenderer light;
 
     int myLayer;
 
@@ -34,6 +38,7 @@ public class Mine : MonoBehaviour
 
     IEnumerator TriggerDelay()
     {
+        light.material = activeMaterial;
         yield return new WaitForSeconds(triggerDelayTime);
         Explode();
     }

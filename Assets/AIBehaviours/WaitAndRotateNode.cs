@@ -31,6 +31,8 @@ public class WaitAndRotateNode : Action
 
             ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
 
+            //ownerTransform.rotation = Quaternion.RotateTowards(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
+
             //ownerTransform.rotation = Quaternion.Euler(Vector3.RotateTowards(ownerTransform.forward, playerTransform.position - ownerTransform.position, rotationSpeed, 0));
             //ownerTransform.rotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position, Vector3.up);
 
