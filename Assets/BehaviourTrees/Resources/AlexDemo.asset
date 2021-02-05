@@ -28,16 +28,10 @@ MonoBehaviour:
   - BaseNodeGuid: 474f17dd-f4b4-42af-bc41-0e59dca16afc
     PortName: 1
     TargetNodeGuid: 0deea809-8237-4c07-bba3-bbbb53da6ecb
+  - BaseNodeGuid: 3a9cdb50-b156-4997-b382-0955a1a4b292
+    PortName: 3
+    TargetNodeGuid: 52976769-6bc1-47f9-bd94-bf96378fd336
   nodeData:
-  - nodeTitle: CanSeeNode
-    nodeName: CanSeeNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 186e65d590a0ba54f87d2744f68e8d98, type: 2}
-    GUID: 71606b42-ac49-48cd-87dc-3841e5d58dd3
-    Position: {x: 1100, y: 95}
   - nodeTitle: Sequence
     nodeName: Sequence
     topNode: 0
@@ -47,33 +41,6 @@ MonoBehaviour:
     actionInstance: {fileID: 0}
     GUID: 3a9cdb50-b156-4997-b382-0955a1a4b292
     Position: {x: 626, y: 82}
-  - nodeTitle: SeekCoverNode
-    nodeName: SeekCoverNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: ccc52b0f3baa1ad4f917eebbd160d8a3, type: 2}
-    GUID: 53b25387-4826-4ade-bf8a-0ead9f973e7b
-    Position: {x: 1097, y: 198}
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 9d777af551487f4418e24eb32237238b, type: 2}
-    GUID: 57f84427-bfc5-4340-91cb-0a67ced4a8c1
-    Position: {x: 1107, y: -21}
-  - nodeTitle: IdleNode
-    nodeName: IdleNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: abbfaf2a11f65e64796c7227278e3893, type: 2}
-    GUID: 0deea809-8237-4c07-bba3-bbbb53da6ecb
-    Position: {x: 611, y: 293}
   - nodeTitle: Top Node
     nodeName: Selector
     topNode: 1
@@ -82,5 +49,50 @@ MonoBehaviour:
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 0}
     GUID: 474f17dd-f4b4-42af-bc41-0e59dca16afc
-    Position: {x: 0, y: 0}
+    Position: {x: 57, y: 197}
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: abbfaf2a11f65e64796c7227278e3893, type: 2}
+    GUID: 0deea809-8237-4c07-bba3-bbbb53da6ecb
+    Position: {x: 627, y: 357}
+  - nodeTitle: CanSeeNode
+    nodeName: CanSeeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 186e65d590a0ba54f87d2744f68e8d98, type: 2}
+    GUID: 71606b42-ac49-48cd-87dc-3841e5d58dd3
+    Position: {x: 1179, y: 49}
+  - nodeTitle: SeekCoverNode
+    nodeName: SeekCoverNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: ccc52b0f3baa1ad4f917eebbd160d8a3, type: 2}
+    GUID: 53b25387-4826-4ade-bf8a-0ead9f973e7b
+    Position: {x: 1176, y: 152}
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 9d777af551487f4418e24eb32237238b, type: 2}
+    GUID: 57f84427-bfc5-4340-91cb-0a67ced4a8c1
+    Position: {x: 1186, y: -67}
+  - nodeTitle: GoToPositionNode
+    nodeName: GoToPositionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 0447eb19cf1733f4c88225c33e3ec2cb, type: 2}
+    GUID: 52976769-6bc1-47f9-bd94-bf96378fd336
+    Position: {x: 1176, y: 263}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}

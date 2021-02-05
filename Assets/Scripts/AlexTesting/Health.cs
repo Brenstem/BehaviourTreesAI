@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private float startingHealth;
     [SerializeField] public float currentHealth { get; private set; }
+    [SerializeField] public float percentageHealth { get { return currentHealth / startingHealth; } }
     [SerializeField] public bool invulnerable;
     [SerializeField] private Slider healthbar;
 
@@ -49,8 +50,6 @@ public class Health : MonoBehaviour
 
             if (healthbar != null)
                 healthbar.value = currentHealth;
-                //healthbar.value = currentHealth -= damageVal;
-                //healthbar.value = currentHealth/startingHealth;
 
             if (currentHealth <= 0)
                 Die();

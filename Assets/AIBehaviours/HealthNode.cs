@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthNode : Action
 {
-    [SerializeField] float threshold;
+    [SerializeField] float percentageThreshold;
     private Health aiHealth;
 
     public override void Construct()
@@ -18,7 +18,7 @@ public class HealthNode : Action
     {
         if (_constructed)
         {
-            return aiHealth.currentHealth <= threshold ? NodeStates.SUCCESS : NodeStates.FAILURE;
+            return aiHealth.percentageHealth <= percentageThreshold ? NodeStates.SUCCESS : NodeStates.FAILURE;
         }
         else
         {

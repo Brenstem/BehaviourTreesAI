@@ -5,16 +5,16 @@ using UnityEngine.AI;
 
 public class GoToPositionNode : Action
 {
-    //[SerializeField] bool setPositionManualy;
-    [SerializeField] Vector2 relativeTargetPosition;
+    [SerializeField] bool setPositionManualy;
+    [SerializeField] Vector3 relativeTargetPosition;
 
     Vector3 targetPosition;
     NavMeshAgent agent;
 
     public override void Construct()
     {
-        //if (setPositionManualy)
-            targetPosition = (Vector3)relativeTargetPosition + context.owner.transform.position;
+        if (setPositionManualy)
+            targetPosition = relativeTargetPosition + context.owner.transform.position;
         agent = context.owner.agent;
         _constructed = true;
     }
@@ -23,9 +23,8 @@ public class GoToPositionNode : Action
     {
         if (_constructed)
         {
-            //if (!setPositionManualy)
-            //    targetPosition = Vector3.zero;
-            //    //targetPosition = context.positionToGoTo;
+            if (!setPositionManualy)
+                targetPosition = context.localData.Get<Vector3>("positionToGoTo");
 
             float distance = Vector3.Distance(targetPosition, agent.transform.position);
             if (distance >= agent.stoppingDistance)

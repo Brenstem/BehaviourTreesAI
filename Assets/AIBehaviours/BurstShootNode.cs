@@ -16,6 +16,8 @@ public class BurstShootNode : Action
     Transform ownerTransform;
     Transform playerTransform;
 
+    Animator animator;
+
     public override void Construct()
     {
         timer = new Timer(-1f);
@@ -23,12 +25,15 @@ public class BurstShootNode : Action
         ownerTransform = context.owner.transform;
         playerTransform = context.globalData.player.transform;
         weapon = context.owner.GetComponentInChildren<DemoWeaponScript>();
+        animator = context.owner.animator;
     }
 
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
+            animator.SetTrigger("Shooting");
+
             Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
 
             ownerTransform.rotation = Quaternion.Slerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);

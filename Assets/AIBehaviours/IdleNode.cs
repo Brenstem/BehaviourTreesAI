@@ -15,7 +15,7 @@ public class IdleNode : Action
     {
         if (_constructed)
         {
-            Debug.Log("idle" + ownerName);
+            //Debug.Log("idle" + ownerName);
             NodeState = NodeStates.SUCCESS;
             return NodeState;
         }

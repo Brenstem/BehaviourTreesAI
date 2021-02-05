@@ -11,13 +11,11 @@ public class SeekCoverNode : Action
 
     Transform playerTransform;
     Transform ownerTransform;
-    NavMeshAgent agent;
 
     public override void Construct()
     {
         playerTransform = context.globalData.player.transform;
         ownerTransform = context.owner.transform;
-        agent = context.owner.agent;
         _constructed = true;
     }
 
@@ -45,12 +43,7 @@ public class SeekCoverNode : Action
                 }
                 if (currentBestCoverPosition.magnitude < Vector3.positiveInfinity.magnitude)
                 {
-                    agent.SetDestination(currentBestCoverPosition);
-
-                    //TODO fixa så detta är 2 noder, där en är go to position eller ngt idk 
-
-                    //context.localData.Set<>
-
+                    context.localData.Set<Vector3>("positionToGoTo", currentBestCoverPosition);
                     NodeState = NodeStates.SUCCESS;
                     return NodeState;
                 }
