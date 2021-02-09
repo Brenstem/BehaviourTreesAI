@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
 
         Vector3 targetPosition = target.transform.position + offset;
 
-        transform.position = targetPosition;
+        //transform.position = targetPosition;
 
         //if (Vector3.Distance(targetPosition, transform.position) > dampeningRange)
         //{
@@ -36,6 +36,7 @@ public class CameraController : MonoBehaviour
         //    transform.position = targetPosition;
         //}
 
-        //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref zeroVector, smoothTime);
+
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref zeroVector, smoothTime);
     }
 }

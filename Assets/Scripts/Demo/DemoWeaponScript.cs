@@ -13,4 +13,10 @@ public class DemoWeaponScript : MonoBehaviour
         instance.tag = this.tag;
         instance.GetComponent<DemoProjectile>().damage = damage;
     }
+    public void FireWeapon(Quaternion parentRotation)
+    {
+        GameObject instance = Instantiate(projectile, firePosition.position, parentRotation);
+        instance.tag = this.tag;
+        instance.GetComponent<DemoProjectile>().damage = damage;
+    }
 }

@@ -22,6 +22,8 @@ public class DemoEnemyAI : BaseAI
         behaviourTree.topNodeInstance.Evaluate();
 
         animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
+
+        Debug.DrawRay(transform.position, transform.forward * 200, Color.green);
     }
 
     private void OnDrawGizmos()

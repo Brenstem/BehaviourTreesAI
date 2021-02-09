@@ -36,14 +36,14 @@ public class BurstShootNode : Action
 
             Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
 
-            ownerTransform.rotation = Quaternion.Slerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
+            ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
 
             //TODO denna är konstig fixa den så den funkar
             timer.DecrementTimer(Time.deltaTime);
 
             if (timer.Done)
             {
-                weapon.FireWeapon();
+                weapon.FireWeapon(ownerTransform.rotation);
 
                 _shotsFired++;
 
