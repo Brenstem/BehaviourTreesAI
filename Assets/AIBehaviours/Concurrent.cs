@@ -76,8 +76,6 @@ public class Concurrent : Composite
 
     private void Reset(InterruptEventArgs args)
     {
-        Debug.Log("Interrupted");
-
         if (args.id == context.id)
         {
             currentRunningNodeIndex = -1;
