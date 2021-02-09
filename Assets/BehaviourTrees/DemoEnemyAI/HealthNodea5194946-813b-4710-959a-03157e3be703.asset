@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HealthNodea5194946-813b-4710-959a-03157e3be703
   m_EditorClassIdentifier: 
   _constructed: 0
-  percentageThreshold: 0.4
+  percentageThreshold: 0.7

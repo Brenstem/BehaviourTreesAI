@@ -20,10 +20,7 @@ namespace BehaviourTreeEditor
         private string _newBehaviourName = "New Behaviour Name";
         public static EditorWindow window;
 
-        private BehaviourTree currentBehaviourTree;
         private static ObjectField fileLoadField;
-
-        private Stack<AbstractNode> nodeStack;
 
         private void Update()
         {
@@ -126,7 +123,6 @@ namespace BehaviourTreeEditor
             ObjectField btDebugField = new ObjectField { objectType = typeof(GameObject) };
             btDebugField.label = "Debug Gameobject: ";
             btDebugField.labelElement.style.color = Color.black;
-            btDebugField.SetValueWithoutNotify(currentBehaviourTree);
             btDebugField.MarkDirtyRepaint();
             btDebugField.RegisterValueChangedCallback(evt => { if (Application.isPlaying) UpdateCurrentBT((GameObject)evt.newValue); });
             toolbar.Add(btDebugField);
@@ -140,11 +136,11 @@ namespace BehaviourTreeEditor
 
         private void UpdateCurrentBT(GameObject gameObject)
         {
-            Debug.Log("Getting bt instance " + gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance());
+            Debug.Log("Getting bt instance " + gameObject.GetComponent<BaseAI>().GetBehaviourTreeDataInstance());
 
-            if (gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance() != null)
+            if (gameObject.GetComponent<BaseAI>().GetBehaviourTreeDataInstance() != null)
             {
-                GraphSaveUtility.GetInstance(_graphView).LoadGraph(gameObject.GetComponent<BaseAI>().GetBehaviourTreeInstance());
+                GraphSaveUtility.GetInstance(_graphView).LoadGraph(gameObject.GetComponent<BaseAI>().GetBehaviourTreeDataInstance());
             }
         }
 

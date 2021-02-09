@@ -29,7 +29,6 @@ public class GoToPositionNode : Action
             float distance = Vector3.Distance(targetPosition, agent.transform.position);
             if (distance >= agent.stoppingDistance)
             {
-                Debug.Log(distance);
                 agent.isStopped = false;
                 agent.SetDestination(targetPosition);
                 NodeState = NodeStates.RUNNING;
