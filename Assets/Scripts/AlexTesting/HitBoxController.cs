@@ -7,7 +7,6 @@ public class HitBoxController : MonoBehaviour
 {
     [Header("Hitbox Settings")]
     [SerializeField] private float damage;
-    [SerializeField] private Debuffs debuff;
     [SerializeField] private float lifeTime;
     [SerializeField] private Vector3 hitBoxExtents;
     [SerializeField] private LayerMask targetLayer;
@@ -45,7 +44,7 @@ public class HitBoxController : MonoBehaviour
             {
                 if (col.GetComponent<Health>() == true)
                 {
-                    col.GetComponent<Health>().Damage(damage, debuff);
+                    col.GetComponent<Health>().Damage(damage);
                     doneDamage = true;
                 }
             }

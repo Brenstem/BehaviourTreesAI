@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Concurrent : Composite
 {
+    [SerializeField] private bool interruptable = true;
+
     int currentRunningNodeIndex = -1;
 
     //reset currentRunningNodeIndex every time we exit play mode
     private void OnDisable()
     {
         currentRunningNodeIndex = -1;
+    }
+
+    public override void Construct(List<AbstractNode> nodes)
+    {
+        base.Construct(nodes);
+
+        if (interruptable)
+            Action.InterruptEvent += Reset;
     }
 
     public override NodeStates Evaluate()
@@ -61,5 +71,16 @@ public class Concurrent : Composite
         currentRunningNodeIndex = -1;
         NodeState = NodeStates.SUCCESS;
         return NodeState;
+    }
+
+
+    private void Reset(InterruptEventArgs args)
+    {
+        Debug.Log("Interrupted");
+
+        if (args.id == context.id)
+        {
+            currentRunningNodeIndex = -1;
+        }
     }
 }

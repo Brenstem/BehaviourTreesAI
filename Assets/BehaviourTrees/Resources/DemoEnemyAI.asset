@@ -13,15 +13,6 @@ MonoBehaviour:
   m_Name: DemoEnemyAI
   m_EditorClassIdentifier: 
   nodeLinks:
-  - BaseNodeGuid: bf479915-e668-42b6-9864-d92a589f88e8
-    PortName: 1
-    TargetNodeGuid: f954e4be-682c-4afd-a99c-dd387af2f50b
-  - BaseNodeGuid: bf479915-e668-42b6-9864-d92a589f88e8
-    PortName: 0
-    TargetNodeGuid: 15a2a0cc-f584-4593-8043-c981ded97a8a
-  - BaseNodeGuid: bf479915-e668-42b6-9864-d92a589f88e8
-    PortName: 2
-    TargetNodeGuid: 48122109-63d5-4e47-b983-9b8097e76c3c
   - BaseNodeGuid: 52088637-b589-436e-88fd-996069d402a4
     PortName: 0
     TargetNodeGuid: a5194946-813b-4710-959a-03157e3be703
@@ -50,17 +41,26 @@ MonoBehaviour:
     PortName: 2
     TargetNodeGuid: 304da783-125c-430b-8285-8e10dd4d8c8e
   - BaseNodeGuid: 4a3e0f00-ff58-423d-acb6-38671b497f31
-    PortName: 2
-    TargetNodeGuid: 52088637-b589-436e-88fd-996069d402a4
-  - BaseNodeGuid: 4a3e0f00-ff58-423d-acb6-38671b497f31
-    PortName: 3
+    PortName: 1
     TargetNodeGuid: 1c930c43-8fe6-4b32-8f3f-e24f4e47854f
   - BaseNodeGuid: 4a3e0f00-ff58-423d-acb6-38671b497f31
-    PortName: 1
+    PortName: 0
+    TargetNodeGuid: 52088637-b589-436e-88fd-996069d402a4
+  - BaseNodeGuid: 4a3e0f00-ff58-423d-acb6-38671b497f31
+    PortName: 2
     TargetNodeGuid: 9bb91ab6-011a-4351-9fd7-8e661b4261e7
   - BaseNodeGuid: 4a3e0f00-ff58-423d-acb6-38671b497f31
-    PortName: 0
+    PortName: 3
     TargetNodeGuid: 3f6549a3-d838-4342-b628-8906991cea2a
+  - BaseNodeGuid: bf479915-e668-42b6-9864-d92a589f88e8
+    PortName: 1
+    TargetNodeGuid: f954e4be-682c-4afd-a99c-dd387af2f50b
+  - BaseNodeGuid: bf479915-e668-42b6-9864-d92a589f88e8
+    PortName: 0
+    TargetNodeGuid: 15a2a0cc-f584-4593-8043-c981ded97a8a
+  - BaseNodeGuid: bf479915-e668-42b6-9864-d92a589f88e8
+    PortName: 2
+    TargetNodeGuid: 48122109-63d5-4e47-b983-9b8097e76c3c
   nodeData:
   - nodeTitle: SeekCoverNode
     nodeName: SeekCoverNode
@@ -107,15 +107,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: f3de3bac5b58d2745ad3b366c3cf71f4, type: 2}
     GUID: 48122109-63d5-4e47-b983-9b8097e76c3c
     Position: {x: 1551, y: 121}
-  - nodeTitle: Shoot
-    nodeName: Concurrent
-    topNode: 0
-    nodeType: 0
-    compositeInstance: {fileID: 11400000, guid: 1b41a939c2b327a4f842f4b8d6dc3125, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    GUID: bf479915-e668-42b6-9864-d92a589f88e8
-    Position: {x: 992, y: -21}
   - nodeTitle: BurstShootNode
     nodeName: BurstShootNode
     topNode: 0
@@ -134,24 +125,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: 3d44868932dba864f83354adfc86a6fd, type: 2}
     GUID: f954e4be-682c-4afd-a99c-dd387af2f50b
     Position: {x: 1550, y: -71}
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 13e11ef25df625244bbfe5a48b956978, type: 2}
-    GUID: 9b317ec0-88e7-48c1-9d43-26e9c71790c8
-    Position: {x: 991, y: -210}
-  - nodeTitle: CanSeeNode
-    nodeName: CanSeeNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: df179105f6eef124c96899c84d1f081c, type: 2}
-    GUID: 63305d9a-89ba-4b2b-8191-c376f53b8195
-    Position: {x: 989, y: 527}
   - nodeTitle: ChaseNode
     nodeName: ChaseNode
     topNode: 0
@@ -215,4 +188,31 @@ MonoBehaviour:
     actionInstance: {fileID: 0}
     GUID: 4a3e0f00-ff58-423d-acb6-38671b497f31
     Position: {x: 0, y: 0}
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 13e11ef25df625244bbfe5a48b956978, type: 2}
+    GUID: 9b317ec0-88e7-48c1-9d43-26e9c71790c8
+    Position: {x: 991, y: -210}
+  - nodeTitle: CanSeeNode
+    nodeName: CanSeeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: df179105f6eef124c96899c84d1f081c, type: 2}
+    GUID: 63305d9a-89ba-4b2b-8191-c376f53b8195
+    Position: {x: 989, y: 527}
+  - nodeTitle: Shoot
+    nodeName: Concurrent
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 23697bcc3aa1a2443a9d12afc02b225e, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: bf479915-e668-42b6-9864-d92a589f88e8
+    Position: {x: 992, y: -21}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}
