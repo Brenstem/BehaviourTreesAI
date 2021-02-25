@@ -35,4 +35,14 @@ public class Sequence : Composite
             return NodeStates.FAILURE;
         }
     }
+
+    protected override void CalculateEmotionalFactors()
+    {
+        float rVal;
+
+        foreach (var node in nodes)
+        {
+
+        }
+    }
 }

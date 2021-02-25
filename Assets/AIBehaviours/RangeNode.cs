@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangeNode : Action
 {
+    [Header("Node variables")]
     [SerializeField] float range;
 
     private Transform targetTransform;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CanSeeNode : Action
 {
+    [Header("Node variables")]
     [SerializeField] LayerMask targetLayers;
     [SerializeField] float range;
 

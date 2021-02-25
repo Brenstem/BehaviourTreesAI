@@ -6,6 +6,7 @@ public class Context
 {
     public GlobalData globalData;
     public LocalData localData;
+    public EmotionalData emotionalData;
     public BaseAI owner;
     public string id;
 }

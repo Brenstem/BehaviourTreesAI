@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class Action : AbstractNode
 {
+    [Header("Emotional values")]
+    [SerializeField] public float riskValue;
+    [SerializeField] public Vector2 timeInterval;
+    [SerializeField] public float planValue;
+
     public static event Interrupt InterruptEvent;
 
     public delegate void Interrupt(InterruptEventArgs args);
@@ -24,5 +29,6 @@ public class InterruptEventArgs
     {
         this.id = id;
     }
+
     public string id { get; }
 }

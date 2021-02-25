@@ -5,11 +5,14 @@ using UnityEngine;
 
 public abstract class AbstractNode : ScriptableObject
 {
-    public Context context;
-
     public NodeStates NodeState { get; protected set; }
 
-    [SerializeField] protected bool _constructed = false;
+    protected bool _constructed = false;
+    protected float probability;
+
+    public Context context;
+
+
 
     /// <summary>
     /// This is the update method of your behaviour

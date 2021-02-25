@@ -30,6 +30,7 @@ public class BehaviourTree
         context = new Context();
         context.globalData = btData.globalData;
         context.localData = new LocalData();
+        context.emotionalData = new EmotionalData(1, 1, 1, 1, 1);
         context.globalData.Initialize();
         context.owner = owner;
         context.id = System.Guid.NewGuid().ToString();
