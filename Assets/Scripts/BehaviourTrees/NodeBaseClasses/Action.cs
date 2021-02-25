@@ -4,12 +4,15 @@ using UnityEngine;
 
 public abstract class Action : AbstractNode
 {
-    [Header("Emotional values")]
-    [SerializeField] public float riskValue;
-    [SerializeField] public Vector2 timeInterval;
-    [SerializeField] public float planValue;
+    //[Header("Emotional values")]
 
     public static event Interrupt InterruptEvent;
+
+    [SerializeField] protected float riskValue;
+    [SerializeField] protected float minTimeValue;
+    [SerializeField] protected float maxTimeValue;
+    [SerializeField] protected float planValue;
+
 
     public delegate void Interrupt(InterruptEventArgs args);
 
@@ -21,6 +24,23 @@ public abstract class Action : AbstractNode
     public abstract void Construct();
 
     public virtual void AddProperties(string[] names) { }
+
+    public override float GetRiskValue() 
+    {
+        return riskValue;
+    }
+    public override float GetMinTimeValue()
+    {
+        return minTimeValue;
+    }
+    public override float GetMaxTimeValue()
+    {
+        return maxTimeValue;
+    }
+    public override float GetPlanValue()
+    {
+        return planValue;
+    }
 }
 
 public class InterruptEventArgs

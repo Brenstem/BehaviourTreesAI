@@ -36,13 +36,30 @@ public class Sequence : Composite
         }
     }
 
-    protected override void CalculateEmotionalFactors()
+    protected override void CalculatePlanValue()
     {
-        float rVal;
-
-        foreach (var node in nodes)
+        foreach (AbstractNode node in nodes)
         {
+            planValue +=  node.GetPlanValue();
+        }
+    }
 
+    protected override void CalculateRiskValue()
+    {
+        float risk = 1;
+        foreach (AbstractNode node in nodes)
+        {
+            risk *= (1 - node.GetRiskValue());
+        }
+        riskValue = 1 - risk;
+    }
+
+    protected override void CalculateTimeInterval()
+    {
+        foreach (AbstractNode node in nodes)
+        {
+            minTimeValue += node.GetMinTimeValue();
+            maxTimeValue += node.GetMaxTimeValue();
         }
     }
 }

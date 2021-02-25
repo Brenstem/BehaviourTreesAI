@@ -33,4 +33,34 @@ public class Selector : Composite
             return NodeStates.FAILURE;
         }
     }
+
+    protected override void CalculatePlanValue()
+    {
+        foreach (AbstractNode node in nodes)
+        {
+            planValue += node.GetPlanValue();
+        }
+        planValue = planValue / nodes.Count;
+    }
+
+    protected override void CalculateRiskValue()
+    {
+        foreach (AbstractNode node in nodes)
+        {
+            riskValue += node.GetRiskValue();
+        }
+        riskValue = riskValue / nodes.Count;
+    }
+
+    protected override void CalculateTimeInterval()
+    {
+        foreach (AbstractNode node in nodes)
+        {
+            if (minTimeValue > node.GetMinTimeValue())
+                minTimeValue = node.GetMinTimeValue();
+            
+            if (maxTimeValue < node.GetMaxTimeValue())
+                maxTimeValue = node.GetMaxTimeValue();
+        }
+    }
 }
