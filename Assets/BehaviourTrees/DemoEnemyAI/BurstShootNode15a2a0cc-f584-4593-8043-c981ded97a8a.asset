@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BurstShootNode15a2a0cc-f584-4593-8043-c981ded97a8a
   m_EditorClassIdentifier: 
   _constructed: 0
-  timeBetweenShots: 0.1
-  shots: 5000
-  rotationSpeed: 0.5
+  timeBetweenShots: 0.15
+  shots: 3
+  rotationSpeed: 4

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WaitAndRotateNode48122109-63d5-4e47-b983-9b8097e76c3c
   m_EditorClassIdentifier: 
   _constructed: 0
-  runTime: 0.5
-  rotationSpeed: 0.5
+  runTime: 0.2
+  rotationSpeed: 7

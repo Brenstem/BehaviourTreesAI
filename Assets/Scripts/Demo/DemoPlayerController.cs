@@ -8,22 +8,19 @@ public class DemoPlayerController : MonoBehaviour
     [SerializeField] LayerMask environmentLayerMask;
     [SerializeField] float rotationSpeed;
 
-    [SerializeField] float debugRadius;
-    [SerializeField] GameObject debugObject;
-    [SerializeField] LayerMask coverLayers;
-    [SerializeField] LayerMask debugLayermask;
-
+    //[SerializeField] float debugRadius;
+    //[SerializeField] GameObject debugObject;
 
     DemoWeaponScript weapon;
     NavMeshAgent agent;
     Camera mainCamera;
 
-    IEnumerator rotationCorutine;
+    //IEnumerator rotationCorutine;
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, debugRadius);
+        //Gizmos.DrawWireSphere(transform.position, debugRadius);
     }
 
     private void Awake()
@@ -31,16 +28,26 @@ public class DemoPlayerController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         mainCamera = Camera.main;
         weapon = GetComponentInChildren<DemoWeaponScript>();
-        rotationCorutine = FaceDirection(transform.forward);
+        //rotationCorutine = FaceDirection(transform.forward);
+
+        agent.updateRotation = false;
     }
 
     void Update()
     {
+        RaycastHit hit;
+
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+        
+        Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask);
+
+        transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
+            //RaycastHit hit;
 
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+            //Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 
             if (Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask))
             {
@@ -49,59 +56,31 @@ public class DemoPlayerController : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            RaycastHit hit;
+            weapon.FireWeapon();
 
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+            //RaycastHit hit;
 
-            if (Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask))
-            {
-                StopCoroutine(rotationCorutine);
-                rotationCorutine = FaceDirection((new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position).normalized);
-                StartCoroutine(rotationCorutine);
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Collider[] coverPositions = Physics.OverlapSphere(transform.position, debugRadius, coverLayers);
-            if (coverPositions.Length > 0)
-            {
-                Vector3 currentBestCoverPosition = Vector3.positiveInfinity;
+            //Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 
-                foreach (Collider cover in coverPositions)
-                {
-                    RaycastHit hit;
-                    Physics.Raycast(cover.transform.position, debugObject.transform.position - cover.transform.position, out hit, Mathf.Infinity, debugLayermask);
-
-                    if (hit.collider.gameObject != debugObject)
-                    {
-                        if (Vector3.Distance(transform.position, currentBestCoverPosition) > Vector3.Distance(transform.position, cover.transform.position))
-                        {
-                            currentBestCoverPosition = cover.transform.position;
-                        }
-                    }
-                    if (currentBestCoverPosition.magnitude < Vector3.positiveInfinity.magnitude)
-                        agent.SetDestination(currentBestCoverPosition);
-                    else
-                        print("no good cover available");
-                }
-            }
-            else
-            {
-                print("no cover in sight");
-            }
+            //if (Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask))
+            //{
+            //    StopCoroutine(rotationCorutine);
+            //    rotationCorutine = FaceDirection((new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position).normalized);
+            //    StartCoroutine(rotationCorutine);
+            //}
         }
     }
 
-    // wack 
-    private IEnumerator FaceDirection(Vector3 targetDirection)
-    {
-        while (Vector3.Angle(transform.forward, targetDirection) > 5)
-        {
-            Quaternion lookAtRotation = Quaternion.LookRotation(targetDirection);
-            transform.rotation = Quaternion.Lerp(transform.rotation.normalized, lookAtRotation.normalized, Time.time * rotationSpeed);
+    //// wack 
+    //private IEnumerator FaceDirection(Vector3 targetDirection)
+    //{
+    //    while (Vector3.Angle(transform.forward, targetDirection) > 5)
+    //    {
+    //        Quaternion lookAtRotation = Quaternion.LookRotation(targetDirection);
+    //        transform.rotation = Quaternion.Lerp(transform.rotation.normalized, lookAtRotation.normalized, Time.time * rotationSpeed);
 
-            yield return new WaitForEndOfFrame();
-        }
-        weapon.FireWeapon();
-    }
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //    weapon.FireWeapon();
+    //}
 }
