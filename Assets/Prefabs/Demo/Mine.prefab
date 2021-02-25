@@ -11,7 +11,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 1.38
   m_Center: {x: 0, y: 0.0023243362, z: 0}
 --- !u!114 &8045934808323684389
 MonoBehaviour:
@@ -25,14 +25,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b0243a72223c04f863d4cb334acca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explotionRadius: 3.67
+  explosionVFX: {fileID: 6691042760147776411, guid: 80c086e29a149db4380f6c3c60ba1632, type: 3}
+  explosionRadius: 4
   triggerLayers:
     serializedVersion: 2
     m_Bits: 1536
   damageLayers:
     serializedVersion: 2
     m_Bits: 1536
-  triggerDelayTime: 1
+  triggerDelayTime: 2
   explosionDelayTime: 0.1
   damage: 30
   defaultMaterial: {fileID: 2100000, guid: 9d0795e6591321844bf8627f04808852, type: 2}

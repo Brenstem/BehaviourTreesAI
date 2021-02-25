@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    [SerializeField] float explotionRadius;
+    [SerializeField] GameObject explosionVFX;
+    [SerializeField] float explosionRadius;
     [SerializeField] LayerMask triggerLayers;
     [SerializeField] LayerMask damageLayers;
     [SerializeField] float triggerDelayTime;
@@ -25,7 +26,7 @@ public class Mine : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explotionRadius);
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,7 +52,9 @@ public class Mine : MonoBehaviour
 
     public void Explode()
     {
-        Collider[] hitTargets = Physics.OverlapSphere(transform.position, explotionRadius, damageLayers | 1 << myLayer);
+        Instantiate(explosionVFX, transform.position, Quaternion.Euler(-90, 0, 0));
+
+        Collider[] hitTargets = Physics.OverlapSphere(transform.position, explosionRadius, damageLayers | 1 << myLayer);
         foreach (Collider target in hitTargets)
         {
             if (target.gameObject.layer == myLayer)

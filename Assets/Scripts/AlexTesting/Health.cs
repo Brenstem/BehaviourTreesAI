@@ -4,17 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Debuffs 
-{
-    none,
-    slow, 
-}
-
 public class Health : MonoBehaviour
 {
-    public delegate void OnDamaged(Debuffs debuff);
-    public event OnDamaged TookDamage;
-
     [SerializeField] private float startingHealth;
     [SerializeField] public float currentHealth { get; private set; }
     [SerializeField] public float percentageHealth { get { return currentHealth / startingHealth; } }
@@ -37,11 +28,18 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void Damage(float damageVal, Debuffs debuff = Debuffs.none)
+    public void Damage(float damageVal)
     {
         if (!invulnerable)
         {
-            TookDamage?.Invoke(debuff);
+            Debug.Log("Damage");
+
+            if (GetComponent<BaseAI>() != null)
+            {
+                Debug.Log("Event raised");
+
+                Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+            }
 
             currentHealth -= damageVal;
 

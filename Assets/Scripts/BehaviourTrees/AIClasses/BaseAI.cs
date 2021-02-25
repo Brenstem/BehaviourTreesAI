@@ -14,7 +14,12 @@ public abstract class BaseAI : MonoBehaviour
 
     [HideInInspector] public Animator animator;
 
-    public BTDataContainer GetBehaviourTreeInstance()
+    public BehaviourTree GetBehaviourTreeInstance()
+    {
+        return behaviourTree;
+    }
+
+    public BTDataContainer GetBehaviourTreeDataInstance()
     {
         return behaviourTree.btDataInstance;
     }

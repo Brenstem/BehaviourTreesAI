@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _constructed: 0
   timeBetweenShots: 0.1
-  shots: 3
-  rotationSpeed: 4
+  shots: 5000
+  rotationSpeed: 0.5

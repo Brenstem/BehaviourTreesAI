@@ -4,14 +4,10 @@ using UnityEngine;
 using BehaviourTreeEditor;
 using System.Linq;
 
-
-//TODO detta borde inte vara ett ScriptableObject
-[CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviorTrees/EnemyAIBT", order = 0)]
-public class BehaviourTree : ScriptableObject
+public class BehaviourTree
 {
     public Composite topNode;
     public Context context;
-
 
     public Composite topNodeInstance;
 
@@ -20,15 +16,15 @@ public class BehaviourTree : ScriptableObject
 
     Stack<NodeData> nodeStack = new Stack<NodeData>();
 
-
     public void ConstructBehaviourTree(BaseAI owner)
     {
-        btDataInstance = Instantiate(btData);
+        btDataInstance = ScriptableObject.Instantiate(btData);
 
         CreateNewContext(owner);
 
         topNodeInstance = InitializeNodes(GetTopNode()).compositeInstance;
     }
+
     void CreateNewContext(BaseAI owner)
     {
         context = new Context();
@@ -36,8 +32,8 @@ public class BehaviourTree : ScriptableObject
         context.localData = new LocalData();
         context.globalData.Initialize();
         context.owner = owner;
+        context.id = System.Guid.NewGuid().ToString();
     }
-
 
     private NodeData InitializeNodes(NodeData node)
     {
@@ -49,7 +45,7 @@ public class BehaviourTree : ScriptableObject
         switch ((NodeTypes)node.nodeType)
         {
             case NodeTypes.Composite:
-                Composite compositeDuplicate = Instantiate(node.compositeInstance);
+                Composite compositeDuplicate = ScriptableObject.Instantiate(node.compositeInstance);
                 List<NodeData> childDataNodes = GetChildNodes(node.GUID);
                 List<AbstractNode> childNodes = new List<AbstractNode>();
 
@@ -68,7 +64,7 @@ public class BehaviourTree : ScriptableObject
                 return node;
 
             case NodeTypes.Decorator:
-                Decorator decoratorDuplicate = Instantiate(node.decoratorInstance);
+                Decorator decoratorDuplicate = ScriptableObject.Instantiate(node.decoratorInstance);
 
                 decoratorDuplicate.context = context;
                 decoratorDuplicate.Construct(GetNodeInstance(nodeStack.Pop()));
@@ -76,7 +72,7 @@ public class BehaviourTree : ScriptableObject
                 node.decoratorInstance = decoratorDuplicate;
                 return node;
             case NodeTypes.Action:
-                Action actionDuplicate = Instantiate(node.actionInstance);
+                Action actionDuplicate = ScriptableObject.Instantiate(node.actionInstance);
 
                 actionDuplicate.context = context;
                 actionDuplicate.Construct();
