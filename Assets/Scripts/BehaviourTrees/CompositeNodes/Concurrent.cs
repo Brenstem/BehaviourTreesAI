@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Concurrent : Composite
 {
-    //TODO gör så denna funkar med emotionall värden
-
     [SerializeField] private bool interruptable = true;
 
     int currentRunningNodeIndex = -1;

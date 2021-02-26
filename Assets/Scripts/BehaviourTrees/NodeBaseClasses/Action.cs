@@ -29,14 +29,17 @@ public abstract class Action : AbstractNode
     {
         return riskValue;
     }
+
     public override float GetMinTimeValue()
     {
         return minTimeValue;
     }
+
     public override float GetMaxTimeValue()
     {
         return maxTimeValue;
     }
+
     public override float GetPlanValue()
     {
         return planValue;

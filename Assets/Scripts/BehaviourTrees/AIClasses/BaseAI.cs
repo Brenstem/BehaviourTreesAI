@@ -11,6 +11,7 @@ public abstract class BaseAI : MonoBehaviour
     protected BehaviourTree behaviourTree;
 
     [SerializeField] protected BTDataContainer btGenerationData;
+    public EmotionalData emotionalData;
 
     [HideInInspector] public Animator animator;
 

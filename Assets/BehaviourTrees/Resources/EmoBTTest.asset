@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: EmoBTTest
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: aca14003-77b6-4c9e-af19-edd2c6afa709
+    PortName: 0
+    TargetNodeGuid: 811fef6d-42cf-419c-83f1-d12156a10acd
+  - BaseNodeGuid: aca14003-77b6-4c9e-af19-edd2c6afa709
+    PortName: 1
+    TargetNodeGuid: 99ba53e7-b5fe-4338-961e-a6526aadccf3
+  - BaseNodeGuid: 78119baa-d2f8-4f24-bf69-e53cbebb80fc
+    PortName: 0
+    TargetNodeGuid: aca14003-77b6-4c9e-af19-edd2c6afa709
+  - BaseNodeGuid: aca14003-77b6-4c9e-af19-edd2c6afa709
+    PortName: 2
+    TargetNodeGuid: 4cda8e50-31f8-42bc-9879-eba86a5bc5ae
+  - BaseNodeGuid: aca14003-77b6-4c9e-af19-edd2c6afa709
+    PortName: 3
+    TargetNodeGuid: 1a7de496-0806-47b9-b717-dabb0e7e3ebb
+  - BaseNodeGuid: aca14003-77b6-4c9e-af19-edd2c6afa709
+    PortName: 4
+    TargetNodeGuid: 23a968ae-3709-41cf-8358-a41f9d5964b4
+  nodeData:
+  - nodeTitle: EmotionalSelector
+    nodeName: EmotionalSelector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 13861e07122ecb04a8e021c18eee9e57, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: aca14003-77b6-4c9e-af19-edd2c6afa709
+    Position: {x: 306, y: 162}
+  - nodeTitle: Top Node
+    nodeName: Selector
+    topNode: 1
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 06c1bee3de8edc14f9797b4770a3438b, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 78119baa-d2f8-4f24-bf69-e53cbebb80fc
+    Position: {x: 0, y: 0}
+  - nodeTitle: DebugNode
+    nodeName: DebugNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: aa58d3add27780e4983a84c747708b52, type: 2}
+    GUID: 811fef6d-42cf-419c-83f1-d12156a10acd
+    Position: {x: 875, y: -83}
+  - nodeTitle: DebugNode
+    nodeName: DebugNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 965a1e5fe626bc7489d893c91e10a388, type: 2}
+    GUID: 4cda8e50-31f8-42bc-9879-eba86a5bc5ae
+    Position: {x: 883, y: 124}
+  - nodeTitle: DebugNode
+    nodeName: DebugNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: a1282e41b54277940a848f0a4883a6b3, type: 2}
+    GUID: 99ba53e7-b5fe-4338-961e-a6526aadccf3
+    Position: {x: 882, y: 16}
+  - nodeTitle: DebugNode
+    nodeName: DebugNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 961f311799fa6204085296c7cb90b878, type: 2}
+    GUID: 1a7de496-0806-47b9-b717-dabb0e7e3ebb
+    Position: {x: 907, y: 232}
+  - nodeTitle: DebugNode
+    nodeName: DebugNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 96d84e2b03bc8da4d8441ffb3842a5a9, type: 2}
+    GUID: 23a968ae-3709-41cf-8358-a41f9d5964b4
+    Position: {x: 909, y: 338}
+  globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}
