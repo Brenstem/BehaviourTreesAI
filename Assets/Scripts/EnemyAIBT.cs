@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviorTrees/EnemyAIBT", order = 0)]
+[CreateAssetMenu(fileName = "EnemyAIBT", menuName = "BehaviourTrees/EnemyAIBT", order = 0)]
 public class EnemyAIBT : ScriptableObject
 {
     public Selector topNode;

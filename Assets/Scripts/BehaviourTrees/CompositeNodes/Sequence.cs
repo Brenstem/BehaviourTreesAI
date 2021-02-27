@@ -35,4 +35,31 @@ public class Sequence : Composite
             return NodeStates.FAILURE;
         }
     }
+
+    protected override void CalculatePlanValue()
+    {
+        foreach (AbstractNode node in nodes)
+        {
+            planValue +=  node.GetPlanValue();
+        }
+    }
+
+    protected override void CalculateRiskValue()
+    {
+        float risk = 1;
+        foreach (AbstractNode node in nodes)
+        {
+            risk *= (1 - node.GetRiskValue());
+        }
+        riskValue = 1 - risk;
+    }
+
+    protected override void CalculateTimeInterval()
+    {
+        foreach (AbstractNode node in nodes)
+        {
+            minTimeValue += node.GetMinTimeValue();
+            maxTimeValue += node.GetMaxTimeValue();
+        }
+    }
 }

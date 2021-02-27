@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class #CLASS_NAME_HERE# : Action
 {
+    [Header("Node variables")]
+
     public override void Construct()
     {
         _constructed = true;

@@ -5,20 +5,26 @@ using UnityEngine;
 
 public abstract class AbstractNode : ScriptableObject
 {
-    public Context context;
-
     public NodeStates NodeState { get; protected set; }
 
-    [SerializeField] protected bool _constructed = false;
+    protected bool _constructed = false;
+
+    public Context context;
+
 
     /// <summary>
     /// This is the update method of your behaviour
     /// </summary>
     /// <returns></returns>
     public abstract NodeStates Evaluate();
+
+    public abstract float GetRiskValue();
+    public abstract float GetPlanValue();
+    public abstract float GetMinTimeValue();
+    public abstract float GetMaxTimeValue();
 }
 
 public enum NodeStates
 {
-    FAILURE, RUNNING, SUCCESS,  
+    FAILURE, RUNNING, SUCCESS,
 }
