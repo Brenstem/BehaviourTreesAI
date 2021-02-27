@@ -1926,6 +1926,10 @@ PrefabInstance:
       propertyPath: btGenerationData
       value: 
       objectReference: {fileID: 11400000, guid: f32623bc5f18cad4ba17066381652979, type: 2}
+    - target: {fileID: 5370362433262129372, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: emotionalData
+      value: 
+      objectReference: {fileID: 11400000, guid: 74611865d5574d74a975c72c422a51f7, type: 2}
     - target: {fileID: 5370362433262129373, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Name
       value: 'New Enemy '
