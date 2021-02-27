@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[AddNodeMenu("Actions/Movement", "WaitAndRotateNode")]
 public class WaitAndRotateNode : Action
 {
     private Timer timer;

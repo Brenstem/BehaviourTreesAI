@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[AddNodeMenu("Actions/Movement", "SeekCoverNode")]
 public class SeekCoverNode : Action
 {
     [SerializeField] float coverVsisionRadius;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Actions/Conditions", "RangeNode")]
 public class RangeNode : Action
 {
     [Header("Node variables")]

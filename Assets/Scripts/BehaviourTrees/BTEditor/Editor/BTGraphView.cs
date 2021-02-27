@@ -64,6 +64,7 @@ namespace BehaviourTreeEditor
                 return;
             }
 
+            // TODO not getting all menus? or not adding the to the lists in AddNodeSearchMenu
             foreach (Type type in typeof(AbstractNode).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(AbstractNode))))
             {
                 object[] attributes = type.GetCustomAttributes(typeof(AddNodeMenu), false);

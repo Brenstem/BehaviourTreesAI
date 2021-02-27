@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Actions/Debug", "DebugNode")]
 public class DebugNode : Action
 {
     [SerializeField] private string debugText;

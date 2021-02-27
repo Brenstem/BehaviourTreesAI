@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[AddNodeMenu("Actions/Movement", "WaitNode")]
 public class WaitNode : Action
 {
     private Timer timer;

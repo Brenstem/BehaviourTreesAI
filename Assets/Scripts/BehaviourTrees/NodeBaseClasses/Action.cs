@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class Action : AbstractNode
 {
-    //[Header("Emotional values")]
-
     public static event Interrupt InterruptEvent;
 
     [SerializeField] protected float riskValue;

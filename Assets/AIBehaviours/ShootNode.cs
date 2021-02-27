@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Actions/Attacks", "ShootNode")]
 public class ShootNode : Action
 {
     DemoWeaponScript weapon;

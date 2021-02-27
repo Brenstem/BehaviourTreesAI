@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Actions/asdfasdf", "IdleNode")]
 public class IdleNode : Action
 {
     string ownerName;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Actions/Conditions", "HealthNode")]
 public class HealthNode : Action
 {
     [SerializeField] float percentageThreshold;

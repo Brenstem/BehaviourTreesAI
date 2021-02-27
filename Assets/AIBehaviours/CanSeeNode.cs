@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Actions/Conditions", "CanSeeNode")]
 public class CanSeeNode : Action
 {
     [Header("Node variables")]

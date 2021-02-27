@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[AddNodeMenu("Actions/Movement", "ChaseNode")]
 public class ChaseNode : Action
 {
     Transform playerTransform;
