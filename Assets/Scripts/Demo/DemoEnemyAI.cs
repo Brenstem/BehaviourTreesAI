@@ -7,6 +7,7 @@ public class DemoEnemyAI : BaseAI
 {
     [SerializeField] float fakeVisionRange;
     [SerializeField] float fakeShootRange;
+    [SerializeField] GameObject grenade;
 
     public BlackBoardProperty<Vector3> positionToGoToProperty { get; private set; } = new BlackBoardProperty<Vector3>("positionToGoTo", Vector3.zero);
 
