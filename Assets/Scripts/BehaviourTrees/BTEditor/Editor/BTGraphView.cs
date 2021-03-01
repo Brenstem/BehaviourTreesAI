@@ -91,9 +91,12 @@ namespace BehaviourTreeEditor
                         pathData.nodeType = NodeTypes.Decorator;
                     }
 
+                    typeData.pathData = new Tree<NodeTypeData.NodePathData>(pathData);
+
+
+
                     typeData.paths.Add(pathData);
                 }
-
             }
         }
 

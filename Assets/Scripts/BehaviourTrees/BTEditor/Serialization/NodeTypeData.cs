@@ -10,6 +10,8 @@ namespace BehaviourTreeEditor
     {
         public List<NodePathData> paths = new List<NodePathData>();
 
+        public Tree<NodePathData> pathData;
+
         public List<string> behaviourNodes = new List<string>();
         public List<string> compositeNodes = new List<string>();
         public List<string> decoratorNodes = new List<string>();
