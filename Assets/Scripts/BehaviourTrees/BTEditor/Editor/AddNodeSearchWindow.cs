@@ -43,6 +43,8 @@ namespace BehaviourTreeEditor
             List<SearchTreeEntry> tree = new List<SearchTreeEntry>();
             List<string> existingFolders = new List<string>();
 
+            _graphView.typeData.SortPaths();
+
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Create Nodes"), 0));
 
             // Loop through all pathdata in the typedata object
@@ -50,7 +52,7 @@ namespace BehaviourTreeEditor
             {
                 for (int ii = 0; ii < _graphView.typeData.paths[i].path.Length; ii++) // Loop through the path stringarray and create a submenu for each entry
                 {
-                    if (!existingFolders.Contains(_graphView.typeData.paths[i].path[ii]))
+                    if (!existingFolders.Contains(_graphView.typeData.paths[i].path[ii])) // If a path does not exist create it
                     {
                         tree.Add(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1));
                         existingFolders.Add(_graphView.typeData.paths[i].path[ii]);

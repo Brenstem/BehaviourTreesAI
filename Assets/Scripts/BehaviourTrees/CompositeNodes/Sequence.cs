@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Composite", "Sequence")]
 public class Sequence : Composite
 {
     public override NodeStates Evaluate()

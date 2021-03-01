@@ -64,7 +64,7 @@ namespace BehaviourTreeEditor
                 return;
             }
 
-            // TODO not getting all menus? or not adding the to the lists in AddNodeSearchMenu
+            // TODO need to sort typedata.paths array for proper menu creation
             foreach (Type type in typeof(AbstractNode).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(AbstractNode))))
             {
                 object[] attributes = type.GetCustomAttributes(typeof(AddNodeMenu), false);
@@ -93,6 +93,7 @@ namespace BehaviourTreeEditor
 
                     typeData.paths.Add(pathData);
                 }
+
             }
         }
 
