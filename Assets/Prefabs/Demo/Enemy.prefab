@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btGenerationData: {fileID: 11400000, guid: 9b50ffe1f99122e4ab7be94c0526c373, type: 2}
+  emotionalData: {fileID: 0}
   animator: {fileID: 0}
   fakeVisionRange: 12
   fakeShootRange: 7

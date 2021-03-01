@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 8ce4e0d0ce9a3bd409bc1f72bbd2902b, type: 2}
+--- !u!4 &126229788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+  m_PrefabInstance: {fileID: 5768648757333227760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &153909696
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &382639549
 AudioListener:
   m_ObjectHideFlags: 0
@@ -254,6 +259,36 @@ MonoBehaviour:
   target: {fileID: 1067887045}
   smoothTime: 0.2
   dampeningRange: 0
+--- !u!1 &787439972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787439973}
+  m_Layer: 10
+  m_Name: GrenadeSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &787439973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787439972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.44, z: 0.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 126229788}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792102361
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mine
       objectReference: {fileID: 0}
+    - target: {fileID: 4037061640481609633, guid: c4d0564c27c8087458f8dedc4e997590, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4d0564c27c8087458f8dedc4e997590, type: 3}
 --- !u!1 &1374822141
@@ -976,7 +1015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1855521777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1106,10 @@ PrefabInstance:
     - target: {fileID: 890798394044705432, guid: 671c19714492bc84cbd26b8ba14b7131, type: 3}
       propertyPath: m_Name
       value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 890798394044705432, guid: 671c19714492bc84cbd26b8ba14b7131, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 890798394044705436, guid: 671c19714492bc84cbd26b8ba14b7131, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1306,7 +1349,7 @@ PrefabInstance:
     - target: {fileID: 5370362433262129372, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: btGenerationData
       value: 
-      objectReference: {fileID: 11400000, guid: f32623bc5f18cad4ba17066381652979, type: 2}
+      objectReference: {fileID: 11400000, guid: cc6f00448a134de4eaa3eef2e3f2e182, type: 2}
     - target: {fileID: 5370362433262129372, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: emotionalData
       value: 

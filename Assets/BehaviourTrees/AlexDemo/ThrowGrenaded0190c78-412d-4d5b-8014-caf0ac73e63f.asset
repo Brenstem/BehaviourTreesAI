@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
-  m_Name: RangeNode160e1bda-f311-468f-b39e-bed964d68b5f
+  m_Script: {fileID: 11500000, guid: bc5c1c46baa05b044a69baeeb2ce6186, type: 3}
+  m_Name: ThrowGrenaded0190c78-412d-4d5b-8014-caf0ac73e63f
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  range: 10
+  grenadePrefab: {fileID: 890798394044705432, guid: 671c19714492bc84cbd26b8ba14b7131, type: 3}
+  throwPowerBase: 10
+  throwPowerVariance: 3
+  throwAngleBase: 40
+  throwAngleVariance: 5

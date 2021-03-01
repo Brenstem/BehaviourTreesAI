@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890798394044705432}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.06, y: 1.74, z: -3.614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &890798394044705437
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -133,7 +133,3 @@ MonoBehaviour:
   triggerDelayTime: 3
   explosionDelayTime: 0.1
   damage: 40
-  throwPowerBase: 1
-  throwPowerVariance: 0
-  throwAngleBase: 40
-  throwAngleVariance: 0

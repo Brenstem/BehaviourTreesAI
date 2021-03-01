@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class boom : Explosive
+public class Grenade : Explosive
 {
-    [SerializeField] float throwPowerBase;
-    [SerializeField] float throwPowerVariance;
-    [SerializeField] float throwAngleBase;
-    [SerializeField] float throwAngleVariance;
-
-
     Rigidbody rigidbody;
 
     protected override void Awake()
@@ -17,20 +11,17 @@ public class boom : Explosive
         myLayer = this.gameObject.layer;
         rigidbody = GetComponent<Rigidbody>();
 
-        //TODO make this good
-        Vector3 throwVector = transform.forward;
-
-        throwVector = Quaternion.AngleAxis(throwAngleBase, -transform.right) * throwVector;
-
-        throwVector = throwVector.normalized * throwPowerBase;
-
-        Throw(throwVector);
-
         StartCoroutine(TriggerDelay());
     }
 
-    public void Throw(Vector3 throwVector)
+    public void Throw(float angle, float power)
     {
+        Vector3 throwVector = transform.forward;
+
+        throwVector = Quaternion.AngleAxis(angle, -transform.right) * throwVector;
+
+        throwVector = throwVector.normalized * power;
+
         rigidbody.velocity = throwVector;
     }
 
