@@ -69,6 +69,16 @@ namespace BehaviourTreeEditor
                 }
             }
 
+            /*
+            actions/attack1
+            actions/attack2
+            Actions/shoot/shoot1
+            actions/shoot/shoot2
+            actions/shoot/shootmore/shoot3
+            composite/selector
+            composite/meme/sequence
+             */
+
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
 
             foreach (var name in _graphView.typeData.behaviourNodes)

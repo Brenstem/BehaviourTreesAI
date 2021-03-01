@@ -14,7 +14,6 @@ namespace BehaviourTreeEditor
         public List<string> compositeNodes = new List<string>();
         public List<string> decoratorNodes = new List<string>();
 
-
         public void SortPaths()
         {
             List<string> existingPaths = new List<string>();
@@ -29,11 +28,13 @@ namespace BehaviourTreeEditor
                     }
                     else
                     {
-                        while (paths[i].path[0] != paths[i-1].path[0])
+                        int j = i;
+                        while (paths[j].path[0] != paths[j - 1].path[0])
                         {
-                            Swap<NodePathData>(paths, i, i - 1);
+                            Swap<NodePathData>(paths, j, j - 1);
+                            j--;
 
-                            if (paths[i - 1].path[0] == paths[i - 2].path[0])
+                            if (paths[j].path[0] == paths[j - 1].path[0])
                             {
                                 break;
                             }
