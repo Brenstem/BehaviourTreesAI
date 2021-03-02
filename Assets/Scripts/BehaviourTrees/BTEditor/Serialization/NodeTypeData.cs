@@ -44,11 +44,6 @@ namespace BehaviourTreeEditor
                     }
                 }
             }
-
-            for (int i = 0; i < paths.Count; i++)
-            {
-                Debug.Log(paths[i].path[0]);
-            }
         }
 
         private void Swap<T>(List<T> list, int firstIndex, int secondIndex)

@@ -45,32 +45,70 @@ namespace BehaviourTreeEditor
 
             _graphView.typeData.SortPaths();
 
+            
+            Stack<Tree<NodeTypeData.NodePathData>> nodeStack = new Stack<Tree<NodeTypeData.NodePathData>>();
+
+            //sköter topnoden separat för den ska inte vara en mapp på samma sätt 
+            for (int i = 0; i < _graphView.typeData.pathData.ChildCount; i++)
+            {
+                nodeStack.Push(_graphView.typeData.pathData.GetChild(i));
+            }
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Create Nodes"), 0));
 
-
-
-
-            // Loop through all pathdata in the typedata object
-            for (int i = 0; i < _graphView.typeData.paths.Count; i++)
+            Tree<NodeTypeData.NodePathData> currentNode;
+            while (nodeStack.Count > 0)
             {
-                for (int ii = 0; ii < _graphView.typeData.paths[i].path.Length; ii++) // Loop through the path stringarray and create a submenu for each entry
-                {
-                    if (!existingFolders.Contains(_graphView.typeData.paths[i].path[ii])) // If a path does not exist create it
-                    {
-                        tree.Add(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1));
-                        existingFolders.Add(_graphView.typeData.paths[i].path[ii]);
-                    }
+                currentNode = nodeStack.Pop();
 
-                    if (ii == _graphView.typeData.paths[i].path.Length - 1) // Add the searchtreeentry with corresponding data from typedata on the final iteration
+                for (int i = 0; i < currentNode.ChildCount; i++) //push all child nodes to stack
+                {
+                    nodeStack.Push(currentNode.GetChild(i));
+                }
+                
+                if (currentNode.GetValue().nodeName == null) //if true this node is a folder
+                {
+                    tree.Add(new SearchTreeGroupEntry(new GUIContent(currentNode.GetValue().pathName), currentNode.layer));
+                }
+                else //else this node is a BT node
+                {
+                    tree.Add(new SearchTreeEntry(new GUIContent(currentNode.GetValue().nodeName, _indentationIcon))
                     {
-                        tree.Add(new SearchTreeEntry(new GUIContent(_graphView.typeData.paths[i].nodeName, _indentationIcon))
-                        {
-                            userData = new BTEditorNode() { nodeName = _graphView.typeData.paths[i].nodeName, nodeType = _graphView.typeData.paths[i].nodeType },
-                            level = ii + 2
-                        });
-                    }
+                        userData = new BTEditorNode() { nodeName = currentNode.GetValue().nodeName, nodeType = currentNode.GetValue().nodeType },
+                        level = currentNode.layer
+                    });
                 }
             }
+
+
+            if (false)
+            {
+
+                //OLD DO NOT USE!
+                // Loop through all pathdata in the typedata object
+                for (int i = 0; i < _graphView.typeData.paths.Count; i++)
+                {
+                    for (int ii = 0; ii < _graphView.typeData.paths[i].path.Length; ii++) // Loop through the path stringarray and create a submenu for each entry
+                    {
+                        if (!existingFolders.Contains(_graphView.typeData.paths[i].path[ii])) // If a path does not exist create it
+                        {
+                            tree.Add(new SearchTreeGroupEntry(new GUIContent(_graphView.typeData.paths[i].path[ii]), ii + 1));
+                            existingFolders.Add(_graphView.typeData.paths[i].path[ii]);
+                        }
+
+                        if (ii == _graphView.typeData.paths[i].path.Length - 1) // Add the searchtreeentry with corresponding data from typedata on the final iteration
+                        {
+                            tree.Add(new SearchTreeEntry(new GUIContent(_graphView.typeData.paths[i].nodeName, _indentationIcon))
+                            {
+                                userData = new BTEditorNode() { nodeName = _graphView.typeData.paths[i].nodeName, nodeType = _graphView.typeData.paths[i].nodeType },
+                                level = ii + 2
+                            });
+                        }
+                    }
+                }
+
+
+            }
+
 
             /*
             actions/attack1
@@ -83,38 +121,38 @@ namespace BehaviourTreeEditor
              */
 
 
-            tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
+            //tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
 
-            foreach (var name in _graphView.typeData.behaviourNodes)
-            {
-                tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
-                {
-                    userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Action },
-                    level = 2
-                });
-            }
+            //foreach (var name in _graphView.typeData.behaviourNodes)
+            //{
+            //    tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
+            //    {
+            //        userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Action },
+            //        level = 2
+            //    });
+            //}
 
-            tree.Add(new SearchTreeGroupEntry(new GUIContent("Composite Nodes"), 1));
+            //tree.Add(new SearchTreeGroupEntry(new GUIContent("Composite Nodes"), 1));
 
-            foreach (var name in _graphView.typeData.compositeNodes)
-            {
-                tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
-                {
-                    userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Composite },
-                    level = 2
-                });
-            }
+            //foreach (var name in _graphView.typeData.compositeNodes)
+            //{
+            //    tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
+            //    {
+            //        userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Composite },
+            //        level = 2
+            //    });
+            //}
 
-            tree.Add(new SearchTreeGroupEntry(new GUIContent("Decorator Nodes"), 1));
+            //tree.Add(new SearchTreeGroupEntry(new GUIContent("Decorator Nodes"), 1));
 
-            foreach (var name in _graphView.typeData.decoratorNodes)
-            {
-                tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
-                {
-                    userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Decorator },
-                    level = 2
-                });
-            }
+            //foreach (var name in _graphView.typeData.decoratorNodes)
+            //{
+            //    tree.Add(new SearchTreeEntry(new GUIContent(name, _indentationIcon))
+            //    {
+            //        userData = new BTEditorNode() { nodeName = name, nodeType = NodeTypes.Decorator },
+            //        level = 2
+            //    });
+            //}
 
             return tree;
         }

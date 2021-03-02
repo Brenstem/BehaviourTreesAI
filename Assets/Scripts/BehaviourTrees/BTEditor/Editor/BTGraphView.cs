@@ -83,7 +83,7 @@ namespace BehaviourTreeEditor
 
                     pathQueue.Enqueue(attribute.nodeName);
 
-
+                    //OLD
                     pathData.path = attribute.menuPath.Split('/');
                     pathData.nodeName = attribute.nodeName;
 
@@ -91,23 +91,19 @@ namespace BehaviourTreeEditor
                     {
                         pathData.nodeType = NodeTypes.Action;
                     }
-                    else if(type.IsSubclassOf(typeof(Composite)))
+                    else if (type.IsSubclassOf(typeof(Composite)))
                     {
                         pathData.nodeType = NodeTypes.Composite;
                     }
-                    else if(type.IsSubclassOf(typeof(Decorator)))
+                    else if (type.IsSubclassOf(typeof(Decorator)))
                     {
                         pathData.nodeType = NodeTypes.Decorator;
                     }
 
                     currentNode = typeData.pathData;
 
-                    int x = 0;
-                    int x2 = 0;
-
                     while (pathQueue.Count > 0)
                     {
-                        x++;
                         string currentFolderName = pathQueue.Dequeue();
                         bool folderExists = false;
 
@@ -121,29 +117,18 @@ namespace BehaviourTreeEditor
                             }
                         }
 
-                        if (!folderExists)
+                        if (pathQueue.Count == 0)//if this was the last path destination, give it BT data
                         {
-                            if (pathQueue.Count > 0)
-                            {
-                                currentNode = currentNode.AddChild(new Tree<NodeTypeData.NodePathData>(new NodeTypeData.NodePathData { pathName = currentFolderName }));
-                            }
-                            else
-                            {
-                                currentNode.AddChild(new Tree<NodeTypeData.NodePathData>(
-                                    new NodeTypeData.NodePathData { pathName = currentFolderName, nodeName = pathData.nodeName, nodeType = pathData.nodeType }, currentNode));
-                            }
+                            currentNode.AddChild(new Tree<NodeTypeData.NodePathData>( 
+                                new NodeTypeData.NodePathData { pathName = currentFolderName, nodeName = pathData.nodeName, nodeType = pathData.nodeType }, currentNode));
                         }
-                        else
+                        else if (!folderExists) //if the existing path was not found, (and this is not the last path destination) create a new path     
                         {
-                            currentNode = new Tree<NodeTypeData.NodePathData>( new NodeTypeData.NodePathData { pathName = currentFolderName, nodeName = pathData.nodeName, nodeType = pathData.nodeType });
-                        }
-
-                        if (x > 100)
-                        {
-                            break;
+                            currentNode = currentNode.AddChild(new Tree<NodeTypeData.NodePathData>(new NodeTypeData.NodePathData { pathName = currentFolderName }));
                         }
                     }
 
+                    //OLD
                     typeData.paths.Add(pathData);
                 }
             }
@@ -176,7 +161,7 @@ namespace BehaviourTreeEditor
         private const string DECORATOR_TEMPLATE_PATH = "DecoratorTemplate.txt";
         private const string TEMPLATE_FOLDER_PATH = "Assets/Scripts/BehaviourTrees/BTEditor/ScriptTemplates/";
         private const string ACTION_CLASS_NAME = "#CLASS_NAME_HERE#";
-        
+
         /// <summary>
         /// Creates new node script in the AIBehaviours folder based on template classes
         /// </summary>
@@ -224,7 +209,7 @@ namespace BehaviourTreeEditor
             // If no folder for behaviours create the folder
             if (!AssetDatabase.IsValidFolder("Assets/AIBehaviours"))
                 AssetDatabase.CreateFolder("Assets", "AIBehaviours");
- 
+
             // Use streamwriter to create a new .cs file with the correct name in the behaviours folder
             using (StreamWriter sw = new StreamWriter(string.Format(Application.dataPath + $"/AIBehaviours/{behaviourName}.cs", new object[] { behaviourName.Replace(" ", "") })))
             {
@@ -533,7 +518,7 @@ namespace BehaviourTreeEditor
         #endregion
 
         #region Port Generation
-        
+
         /// <summary>
         /// Adds a port to a target node
         /// </summary>
@@ -590,7 +575,7 @@ namespace BehaviourTreeEditor
             IEnumerable<Edge> targetEdge = edges.ToList().Where(x => x.output.portName == portToRemove.portName && x.output.node == portToRemove.node);
 
             // If no edges got added to the list only remove port
-            if (!targetEdge.Any()) 
+            if (!targetEdge.Any())
             {
                 targetNode.outputContainer.Remove(portToRemove);
             }
