@@ -172,10 +172,6 @@ namespace BehaviourTreeEditor
             button.text = "Add existing node";
             toolbar.Add(button);
 
-            button = new Button(() => { _graphView.TestPrintBehaviourLists(); });
-            button.text = "test print node lists";
-            toolbar.Add(button);
-
             rootVisualElement.Add(toolbar);
         }
 

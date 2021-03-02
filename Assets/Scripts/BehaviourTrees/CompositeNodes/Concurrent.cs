@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Composite", "Concurrent")]
 public class Concurrent : Composite
 {
     [SerializeField] private bool interruptable = true;

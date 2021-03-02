@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddNodeMenu("Decorators", "Invertor")]
 public class Invertor : Decorator
 {
     public override NodeStates Evaluate()
