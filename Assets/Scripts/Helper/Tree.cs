@@ -6,7 +6,9 @@ public class Tree<T>
 {
     private T value;
     private List<Tree<T>> children;
-    private T parent;
+    public int ChildCount { get { return children.Count; } }
+    private Tree<T> parent;
+    public int layer = 0;
 
     public Tree(T value, List<Tree<T>> children = null)
     {
@@ -19,10 +21,15 @@ public class Tree<T>
         else
         {
             this.children = children;
+
+            for (int i = 0; i < children.Count; i++)
+            {
+                children[i].layer = this.layer + 1;
+            }
         }
     }
 
-    public Tree(T value, T parent, List<Tree<T>> children = null)
+    public Tree(T value, Tree<T> parent, List<Tree<T>> children = null)
     {
         this.value = value;
         this.parent = parent;
@@ -34,6 +41,11 @@ public class Tree<T>
         else
         {
             this.children = children;
+
+            for (int i = 0; i < children.Count; i++)
+            {
+                children[i].layer = this.layer + 1;
+            }
         }
     }
 
@@ -42,15 +54,19 @@ public class Tree<T>
         return value;
     }
 
-    public void AddChild(Tree<T> value)
+    public Tree<T> AddChild(Tree<T> child)
     {
-        children.Add(value);
+        child.layer = this.layer + 1;
+        children.Add(child);
+
+        return child;
     }
 
     public void AddChildren(List<Tree<T>> children)
     {
         foreach (var child in children)
         {
+            child.layer = this.layer + 1;
             this.children.Add(child);
         }
     }
@@ -90,7 +106,7 @@ public class Tree<T>
         }
     }
 
-    public T GetParent()
+    public Tree<T> GetParent()
     {
         return parent;
     }

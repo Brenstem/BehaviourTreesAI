@@ -47,6 +47,9 @@ namespace BehaviourTreeEditor
 
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Create Nodes"), 0));
 
+
+
+
             // Loop through all pathdata in the typedata object
             for (int i = 0; i < _graphView.typeData.paths.Count; i++)
             {
@@ -60,9 +63,9 @@ namespace BehaviourTreeEditor
 
                     if (ii == _graphView.typeData.paths[i].path.Length - 1) // Add the searchtreeentry with corresponding data from typedata on the final iteration
                     {
-                        tree.Add(new SearchTreeEntry(new GUIContent(_graphView.typeData.paths[i].name, _indentationIcon))
+                        tree.Add(new SearchTreeEntry(new GUIContent(_graphView.typeData.paths[i].nodeName, _indentationIcon))
                         {
-                            userData = new BTEditorNode() { nodeName = _graphView.typeData.paths[i].name, nodeType = _graphView.typeData.paths[i].nodeType },
+                            userData = new BTEditorNode() { nodeName = _graphView.typeData.paths[i].nodeName, nodeType = _graphView.typeData.paths[i].nodeType },
                             level = ii + 2
                         });
                     }
@@ -78,6 +81,7 @@ namespace BehaviourTreeEditor
             composite/selector
             composite/meme/sequence
              */
+
 
             tree.Add(new SearchTreeGroupEntry(new GUIContent("Behaviour Nodes"), 1));
 

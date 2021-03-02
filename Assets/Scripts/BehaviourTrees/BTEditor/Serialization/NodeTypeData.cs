@@ -66,7 +66,9 @@ namespace BehaviourTreeEditor
         public struct NodePathData 
         {
             public string[] path;
-            public string name;
+
+            public string pathName;
+            public string nodeName;
             public NodeTypes nodeType;
 
             public void Print()
@@ -76,7 +78,7 @@ namespace BehaviourTreeEditor
                     Debug.Log("Path " + i + ": " + path[i]);
                 }
 
-                Debug.Log("Name: " + name);
+                Debug.Log("Name: " + nodeName);
                 Debug.Log("");
             }
         }

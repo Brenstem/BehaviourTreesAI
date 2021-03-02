@@ -64,6 +64,10 @@ namespace BehaviourTreeEditor
                 return;
             }
 
+            typeData.pathData = new Tree<NodeTypeData.NodePathData>(new NodeTypeData.NodePathData());
+
+            Tree<NodeTypeData.NodePathData> currentNode;
+
             // TODO need to sort typedata.paths array for proper menu creation
             foreach (Type type in typeof(AbstractNode).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(AbstractNode))))
             {
@@ -75,8 +79,13 @@ namespace BehaviourTreeEditor
 
                     NodeTypeData.NodePathData pathData = new NodeTypeData.NodePathData();
 
+                    Queue<string> pathQueue = new Queue<string>(attribute.menuPath.Split('/'));
+
+                    pathQueue.Enqueue(attribute.nodeName);
+
+
                     pathData.path = attribute.menuPath.Split('/');
-                    pathData.name = attribute.nodeName;
+                    pathData.nodeName = attribute.nodeName;
 
                     if (type.IsSubclassOf(typeof(Action)))
                     {
@@ -91,9 +100,49 @@ namespace BehaviourTreeEditor
                         pathData.nodeType = NodeTypes.Decorator;
                     }
 
-                    typeData.pathData = new Tree<NodeTypeData.NodePathData>(pathData);
+                    currentNode = typeData.pathData;
 
+                    int x = 0;
+                    int x2 = 0;
 
+                    while (pathQueue.Count > 0)
+                    {
+                        x++;
+                        string currentFolderName = pathQueue.Dequeue();
+                        bool folderExists = false;
+
+                        for (int i = 0; i < currentNode.ChildCount; i++)
+                        {
+                            if (currentNode.GetChild(i).GetValue().pathName == currentFolderName)
+                            {
+                                currentNode = currentNode.GetChild(i);
+                                folderExists = true;
+                                break;
+                            }
+                        }
+
+                        if (!folderExists)
+                        {
+                            if (pathQueue.Count > 0)
+                            {
+                                currentNode = currentNode.AddChild(new Tree<NodeTypeData.NodePathData>(new NodeTypeData.NodePathData { pathName = currentFolderName }));
+                            }
+                            else
+                            {
+                                currentNode.AddChild(new Tree<NodeTypeData.NodePathData>(
+                                    new NodeTypeData.NodePathData { pathName = currentFolderName, nodeName = pathData.nodeName, nodeType = pathData.nodeType }, currentNode));
+                            }
+                        }
+                        else
+                        {
+                            currentNode = new Tree<NodeTypeData.NodePathData>( new NodeTypeData.NodePathData { pathName = currentFolderName, nodeName = pathData.nodeName, nodeType = pathData.nodeType });
+                        }
+
+                        if (x > 100)
+                        {
+                            break;
+                        }
+                    }
 
                     typeData.paths.Add(pathData);
                 }
