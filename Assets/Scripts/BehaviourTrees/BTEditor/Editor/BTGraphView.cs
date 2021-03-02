@@ -50,7 +50,7 @@ namespace BehaviourTreeEditor
 
         #region TypeData
         /// <summary>
-        /// Loads type data object from resources folder
+        /// Loads type data object from resources folder and populates with AddNodeMenu attribute data
         /// </summary>
         public void LoadTypeData()
         {
@@ -68,45 +68,44 @@ namespace BehaviourTreeEditor
 
             Tree<NodeTypeData.NodePathData> currentNode;
 
-            // TODO need to sort typedata.paths array for proper menu creation
-            foreach (Type type in typeof(AbstractNode).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(AbstractNode))))
+            foreach (Type type in typeof(AbstractNode).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(AbstractNode)))) // Load all subclasses of abstractnode from assembly
             {
-                object[] attributes = type.GetCustomAttributes(typeof(AddNodeMenu), false);
+                object[] attributes = type.GetCustomAttributes(typeof(AddNodeMenu), false); // Get attributes from subclass
 
                 if (attributes.Length > 0)
                 {
                     AddNodeMenu attribute = attributes[0] as AddNodeMenu;
 
-                    NodeTypeData.NodePathData pathData = new NodeTypeData.NodePathData();
-
-                    Queue<string> pathQueue = new Queue<string>(attribute.menuPath.Split('/'));
-
+                    // Push path and nodename into queue to be added to typedata tree
+                    Queue<string> pathQueue = new Queue<string>(attribute.menuPath.Split('/')); 
                     pathQueue.Enqueue(attribute.nodeName);
 
-                    //OLD
-                    pathData.path = attribute.menuPath.Split('/');
-                    pathData.nodeName = attribute.nodeName;
+                    // Get name and nodetype from attribute
+                    string nodeName = attribute.nodeName;
+                    NodeTypes nodeType;
 
+                    // Set nodetype depending on class inheritence of the attributed class
                     if (type.IsSubclassOf(typeof(Action)))
                     {
-                        pathData.nodeType = NodeTypes.Action;
+                        nodeType = NodeTypes.Action;
                     }
                     else if (type.IsSubclassOf(typeof(Composite)))
                     {
-                        pathData.nodeType = NodeTypes.Composite;
+                        nodeType = NodeTypes.Composite;
                     }
-                    else if (type.IsSubclassOf(typeof(Decorator)))
+                    else
                     {
-                        pathData.nodeType = NodeTypes.Decorator;
+                        nodeType = NodeTypes.Decorator;
                     }
 
                     currentNode = typeData.pathData;
 
-                    while (pathQueue.Count > 0)
+                    while (pathQueue.Count > 0) // Loop until queue is empty
                     {
-                        string currentFolderName = pathQueue.Dequeue();
+                        string currentFolderName = pathQueue.Dequeue(); // Get name of folder to be added
                         bool folderExists = false;
 
+                        // If current node has no children it is a behaviour 
                         for (int i = 0; i < currentNode.ChildCount; i++)
                         {
                             if (currentNode.GetChild(i).GetValue().pathName == currentFolderName)
@@ -117,19 +116,16 @@ namespace BehaviourTreeEditor
                             }
                         }
 
-                        if (pathQueue.Count == 0)//if this was the last path destination, give it BT data
+                        if (pathQueue.Count == 0) // if this was the last path destination, give it node data
                         {
                             currentNode.AddChild(new Tree<NodeTypeData.NodePathData>( 
-                                new NodeTypeData.NodePathData { pathName = currentFolderName, nodeName = pathData.nodeName, nodeType = pathData.nodeType }, currentNode));
+                                new NodeTypeData.NodePathData { pathName = currentFolderName, nodeName = nodeName, nodeType = nodeType }, currentNode));
                         }
-                        else if (!folderExists) //if the existing path was not found, (and this is not the last path destination) create a new path     
+                        else if (!folderExists) // if the existing path was not found, (and this is not the last path destination) create a new folder
                         {
                             currentNode = currentNode.AddChild(new Tree<NodeTypeData.NodePathData>(new NodeTypeData.NodePathData { pathName = currentFolderName }));
                         }
                     }
-
-                    //OLD
-                    typeData.paths.Add(pathData);
                 }
             }
         }
@@ -173,23 +169,6 @@ namespace BehaviourTreeEditor
 
             TextAsset templateTextFile = null;
 
-            // Loads different template based on node type and adds behaviour name to corresponding node list
-            switch (type)
-            {
-                case NodeTypes.Composite:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + COMPOSITE_TEMPLATE_PATH, typeof(TextAsset));
-                    typeData.compositeNodes.Add(behaviourName);
-                    break;
-                case NodeTypes.Decorator:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + DECORATOR_TEMPLATE_PATH, typeof(TextAsset));
-                    typeData.decoratorNodes.Add(behaviourName);
-                    break;
-                case NodeTypes.Action:
-                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + ACTION_TEMPLATE_PATH, typeof(TextAsset));
-                    typeData.behaviourNodes.Add(behaviourName);
-                    break;
-            }
-
             string content = "";
 
             // Avoid potential incorrect naming
@@ -216,27 +195,6 @@ namespace BehaviourTreeEditor
                 sw.Write(content);
             }
         }
-
-        public void TestPrintBehaviourLists()
-        {
-            Debug.Log(typeData.behaviourNodes.Count);
-
-            foreach (string name in typeData.behaviourNodes)
-            {
-                Debug.Log("Behaviour: " + name);
-            }
-
-            foreach (string name in typeData.compositeNodes)
-            {
-                Debug.Log("Composite: " + name);
-            }
-
-            foreach (string name in typeData.decoratorNodes)
-            {
-                Debug.Log("Decorator: " + name);
-            }
-        }
-
         #endregion
 
         #region Node Creation
