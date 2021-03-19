@@ -12,7 +12,7 @@ public class ThrowGrenade : Action
     [SerializeField] float throwPowerVariance;
     [SerializeField] float throwAngleBase;
     [SerializeField] float throwAngleVariance;
-    
+
     Transform spawnPosition;
 
 
