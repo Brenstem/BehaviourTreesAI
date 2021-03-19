@@ -19,7 +19,7 @@ public class DebugNode : Action
     {
         if (_constructed)
         {
-            Debug.Log(debugText + ownerName);
+            Debug.Log(debugText + " " + ownerName);
 
             NodeState = NodeStates.SUCCESS;
             return NodeState;

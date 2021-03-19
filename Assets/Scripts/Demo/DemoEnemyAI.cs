@@ -15,7 +15,9 @@ public class DemoEnemyAI : BaseAI
         base.Awake();
 
         behaviourTree.context.localData.Add<Vector3>(positionToGoToProperty);
+        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("TookDamage", false); });
     }
+
 
     private void Update()
     {
