@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 251894acd0aae954484651c67cd1c92e, type: 3}
-  m_Name: GoToPositionNode5a14ac1d-5fe3-4523-9722-b70da1fe241c
+  m_Name: GoToPositionNode23c7f594-964d-4196-9273-7a99a8acbde2
   m_EditorClassIdentifier: 
-  riskValue: 5
-  minTimeValue: 5
-  maxTimeValue: 10
-  planValue: 1
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
   setPositionManually: 0
   relativeTargetPosition: {x: 0, y: 0, z: 0}
-  blackboardPositionName: positionToGoTo
+  blackboardPositionName: LastKnownPlayerPosition

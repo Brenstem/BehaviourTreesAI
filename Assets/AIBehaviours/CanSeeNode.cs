@@ -29,7 +29,7 @@ public class CanSeeNode : Action
             {
                 if (hit.collider.gameObject.CompareTag(target.gameObject.tag))
                 {
-                    context.localData.Set<Vector3>("LastKnownPlayerPosition", Vector3.zero);
+                    context.localData.Set<Vector3>("LastKnownPlayerPosition", hit.collider.gameObject.transform.position);
 
                     NodeState = NodeStates.SUCCESS;
                     return NodeState;

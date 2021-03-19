@@ -18,3 +18,4 @@ MonoBehaviour:
   planValue: 1
   setPositionManually: 0
   relativeTargetPosition: {x: 0, y: 0, z: 0}
+  blackboardPositionName: positionToGoTo
