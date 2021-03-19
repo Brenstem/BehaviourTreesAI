@@ -169,6 +169,21 @@ namespace BehaviourTreeEditor
 
             TextAsset templateTextFile = null;
 
+            switch (type)
+            {
+                case NodeTypes.Composite:
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + COMPOSITE_TEMPLATE_PATH, typeof(TextAsset));
+                    break;
+                case NodeTypes.Decorator:
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + DECORATOR_TEMPLATE_PATH, typeof(TextAsset));
+                    break;
+                case NodeTypes.Action:
+                    templateTextFile = (TextAsset)AssetDatabase.LoadAssetAtPath(TEMPLATE_FOLDER_PATH + ACTION_TEMPLATE_PATH, typeof(TextAsset));
+                    break;
+                default:
+                    break;
+            }
+
             string content = "";
 
             // Avoid potential incorrect naming

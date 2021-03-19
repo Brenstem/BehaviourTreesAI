@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [AddNodeMenu("Actions/Movement", "SeekCoverNode")]
 public class SeekCoverNode : Action
 {
-    [SerializeField] float coverVsisionRadius;
+    [SerializeField] float coverVisionRadius;
     [SerializeField] LayerMask coverLayerMask;
     [SerializeField] LayerMask visibilityLayerMask;
 
@@ -24,7 +24,7 @@ public class SeekCoverNode : Action
     {
         if (_constructed)
         {
-            Collider[] coverPositions = Physics.OverlapSphere(ownerTransform.position, coverVsisionRadius, coverLayerMask);
+            Collider[] coverPositions = Physics.OverlapSphere(ownerTransform.position, coverVisionRadius, coverLayerMask);
             if (coverPositions.Length > 0)
             {
                 Vector3 currentBestCoverPosition = Vector3.positiveInfinity;

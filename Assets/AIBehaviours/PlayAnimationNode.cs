@@ -2,28 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[AddNodeMenu("Actions/Conditions", "ConditionCheckNode")]
-public class ConditionCheckNode : Action
+[AddNodeMenu("Actions/Animations", "PlayAnimationNode")]
+public class PlayAnimationNode : Action
 {
     [Header("Node variables")]
-    [SerializeField] private string conditionToCheck;
+    [SerializeField] private string animVarName;
+    [SerializeField] private bool animBoolValue;
+
+    private Animator animator;
 
     public override void Construct()
     {
         _constructed = true;
+        animator = context.owner.GetComponentInChildren<Animator>();
     }
 
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
-            if (context.localData.Get<bool>(conditionToCheck))
+            if (animator != null)
             {
-                context.localData.Set<bool>(conditionToCheck, !context.localData.Get<bool>(conditionToCheck));
-                NodeState = NodeStates.SUCCESS;
+                animator.SetBool(animVarName, true);
             }
             else
+            {
                 NodeState = NodeStates.FAILURE;
+            }
 
             return NodeState;
         }
