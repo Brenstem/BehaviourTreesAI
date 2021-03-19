@@ -16,8 +16,9 @@ public class DemoEnemyAI : BaseAI
 
         behaviourTree.context.localData.Add<Vector3>(positionToGoToProperty);
         behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("TookDamage", false); });
+        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("Aggroed", false); });
+        behaviourTree.context.localData.Add<Vector3>(() => { return new BlackBoardProperty<Vector3>("LastKnownPlayerPosition", Vector3.zero); });
     }
-
 
     private void Update()
     {

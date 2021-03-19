@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5c1c46baa05b044a69baeeb2ce6186, type: 3}
+  m_Name: ThrowGrenaded6eca6ea-0eaa-4090-8189-789d6e66962b
+  m_EditorClassIdentifier: 
+  riskValue: 9
+  minTimeValue: 3
+  maxTimeValue: 5
+  planValue: 2
+  grenadePrefab: {fileID: 890798394044705432, guid: 671c19714492bc84cbd26b8ba14b7131, type: 3}
+  throwPowerBase: 10
+  throwPowerVariance: 3
+  throwAngleBase: 40
+  throwAngleVariance: 5

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[AddNodeMenu("Actions/Conditions", "ConditionCheckNode")]
-public class ConditionCheckNode : Action
+[AddNodeMenu("Actions/Conditions", "SetConditionNode")]
+public class SetConditionNode : Action
 {
     [Header("Node variables")]
-    [SerializeField] private string conditionToCheck;
-    [SerializeField] private bool reset;
+    [SerializeField] private string conditionToSet;
+    [SerializeField] private bool value;
 
     public override void Construct()
     {
@@ -18,12 +18,8 @@ public class ConditionCheckNode : Action
     {
         if (_constructed)
         {
-            if (context.localData.Get<bool>(conditionToCheck))
+            if (context.localData.Set<bool>(conditionToSet, value))
             {
-                if (reset)
-                {
-                    context.localData.Set<bool>(conditionToCheck, !context.localData.Get<bool>(conditionToCheck));
-                }
                 NodeState = NodeStates.SUCCESS;
             }
             else

@@ -26,4 +26,4 @@ MonoBehaviour:
   timeWeight: 1
   timeSpan: 1
   eOptWeight: 0
-  distribution: 0.9
+  distribution: 0.6

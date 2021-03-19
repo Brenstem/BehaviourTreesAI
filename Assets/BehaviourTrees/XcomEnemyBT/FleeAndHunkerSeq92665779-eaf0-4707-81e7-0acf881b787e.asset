@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e24e53f372260e4c829c63fa298d6b5, type: 3}
-  m_Name: CanSeeNodea1f81484-cf3e-4df2-8042-29b2fabdc733
+  m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
+  m_Name: FleeAndHunkerSeq92665779-eaf0-4707-81e7-0acf881b787e
   m_EditorClassIdentifier: 
-  riskValue: 0
-  minTimeValue: 0
-  maxTimeValue: 0
-  planValue: 0
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 768
-  range: 50
+  nodes: []

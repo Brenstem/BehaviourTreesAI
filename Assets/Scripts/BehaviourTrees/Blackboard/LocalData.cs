@@ -35,22 +35,25 @@ public class LocalData
         variables[property.Name] = value;
     }
 
-    public void Set<T>(string key, T value)
+    public bool Set<T>(string key, T value)
     {
         if (variables.ContainsKey(key))
         {
             if (variables[key].GetType() == typeof(T))
             {
                 variables[key] = value;
+                return true;
             }
             else
             {
                 Debug.LogError("Key " + key + " is not of type " + typeof(T));
+                return false;
             }
         }
         else
         {
             Debug.LogError("Key " + key + " does not contain a value");
+            return false;
         }
     }
 
