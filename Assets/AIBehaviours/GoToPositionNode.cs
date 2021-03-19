@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [AddNodeMenu("Actions/Movement", "GoToPositionNode")]
 public class GoToPositionNode : Action
 {
-    [SerializeField] bool setPositionManualy;
+    [SerializeField] bool setPositionManually;
     [SerializeField] Vector3 relativeTargetPosition;
 
     Vector3 targetPosition;
@@ -14,7 +14,7 @@ public class GoToPositionNode : Action
 
     public override void Construct()
     {
-        if (setPositionManualy)
+        if (setPositionManually)
             targetPosition = relativeTargetPosition + context.owner.transform.position;
         agent = context.owner.agent;
         _constructed = true;
@@ -24,7 +24,7 @@ public class GoToPositionNode : Action
     {
         if (_constructed)
         {
-            if (!setPositionManualy)
+            if (!setPositionManually)
                 targetPosition = context.localData.Get<Vector3>("positionToGoTo");
 
             float distance = Vector3.Distance(targetPosition, agent.transform.position);

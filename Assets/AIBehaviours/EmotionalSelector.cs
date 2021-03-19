@@ -18,7 +18,6 @@ public class EmotionalSelector : Composite
     private float[] nodeWeights;
     private float[] nodeProbabilities;
 
-
     public override void Construct(List<AbstractNode> nodes)
     {
         this.nodes = nodes;
@@ -44,6 +43,7 @@ public class EmotionalSelector : Composite
             {
                 if (random < nodeProbabilities[i])
                 {
+                    Debug.Log(nodes[i] + " " + nodeProbabilities[i]);
                     NodeState = nodes[i].Evaluate();
                     break;
                 }
@@ -61,7 +61,6 @@ public class EmotionalSelector : Composite
             return NodeStates.FAILURE;
         }
     }
-
 
     // Set emotional values based on emotions
     // happiness, anger, anxiety, exhaustion, sadness
