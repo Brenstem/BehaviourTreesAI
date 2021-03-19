@@ -32,13 +32,12 @@ public class Health : MonoBehaviour
     {
         if (!invulnerable)
         {
-            Debug.Log("Damage");
-
             if (GetComponent<BaseAI>() != null)
             {
-                Debug.Log("Event raised");
+                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+                GetComponent<DemoEnemyAI>().GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
 
-                Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+                Debug.Log(GetComponent<DemoEnemyAI>().GetBehaviourTreeInstance().context.localData.Get<bool>("TookDamage"));
             }
 
             currentHealth -= damageVal;

@@ -2,55 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mine : MonoBehaviour
+public class Mine : Explosive
 {
-    [SerializeField] GameObject explosionVFX;
-    [SerializeField] float explosionRadius;
-    [SerializeField] LayerMask triggerLayers;
-    [SerializeField] LayerMask damageLayers;
-    [SerializeField] float triggerDelayTime;
-    [SerializeField] float explosionDelayTime;
-    [SerializeField] float damage;
+    [SerializeField] protected LayerMask triggerLayers;
     [SerializeField] Material defaultMaterial;
     [SerializeField] Material activeMaterial;
 
     [SerializeField] MeshRenderer light;
 
-    int myLayer;
-
-    private void Awake()
-    {
-        myLayer = this.gameObject.layer;
-    }
-
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (triggerLayers == (triggerLayers | 1 << other.gameObject.layer))
         {
             StartCoroutine(TriggerDelay());
         }
     }
-
-    IEnumerator TriggerDelay()
+    protected override IEnumerator TriggerDelay()
     {
         light.material = activeMaterial;
         yield return new WaitForSeconds(triggerDelayTime);
         Explode();
     }
 
-    public IEnumerator ExplosionDelay()
-    {
-        yield return new WaitForSeconds(explosionDelayTime);
-        Explode();
-    }
-
-    public void Explode()
+    public override void Explode()
     {
         Instantiate(explosionVFX, transform.position, Quaternion.Euler(-90, 0, 0));
 
@@ -59,7 +39,7 @@ public class Mine : MonoBehaviour
         {
             if (target.gameObject.layer == myLayer)
             {
-                target.GetComponent<Mine>().StartCoroutine(target.GetComponent<Mine>().ExplosionDelay());
+                target.GetComponent<Explosive>().StartCoroutine(target.GetComponent<Explosive>().ExplosionDelay());
             }
             else
             {
