@@ -31,22 +31,40 @@ namespace BehaviourTreeEditor
                 {
                     Label nodeStateLabel = node.titleContainer.Q<Label>("node-state-label");
 
+
                     switch (node.nodeType)
                     {
                         case NodeTypes.Composite:
                             nodeStateLabel.text = node.compositeInstance.NodeState.ToString();
+                            node.styleSheets.Add(UpdateStyleSheet(node.compositeInstance.NodeState));
                             break;
                         case NodeTypes.Decorator:
                             nodeStateLabel.text = node.decoratorInstance.NodeState.ToString();
+                            node.styleSheets.Add(UpdateStyleSheet(node.decoratorInstance.NodeState));
                             break;
                         case NodeTypes.Action:
                             nodeStateLabel.text = node.actionInstance.NodeState.ToString();
+                            node.styleSheets.Add(UpdateStyleSheet(node.actionInstance.NodeState));
                             break;
                         default:
                             break;
                     }
                 }
             }
+        }
+
+        private StyleSheet UpdateStyleSheet(NodeStates nodestate)
+        {
+            switch (nodestate)
+            {
+                case NodeStates.FAILURE:
+                    return Resources.Load<StyleSheet>("NodeFailure");
+                case NodeStates.RUNNING:
+                    return Resources.Load<StyleSheet>("NodeRunning");
+                case NodeStates.SUCCESS:
+                    return Resources.Load<StyleSheet>("NodeSuccess");
+            }
+            return null;
         }
 
         public static void SetFileLoadFieldValue(BTDataContainer btContainer)
