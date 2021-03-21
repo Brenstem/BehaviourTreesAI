@@ -10,8 +10,6 @@ public class DemoEnemyAI : BaseAI
 
     public BlackBoardProperty<Vector3> positionToGoToProperty { get; private set; } = new BlackBoardProperty<Vector3>("positionToGoTo", Vector3.zero);
 
-    private Timer fireCooldown;
-
 
     private new void Awake()
     {
@@ -21,16 +19,11 @@ public class DemoEnemyAI : BaseAI
         behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("TookDamage", false); });
         behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("Aggroed", false); });
         behaviourTree.context.localData.Add<Vector3>(() => { return new BlackBoardProperty<Vector3>("LastKnownPlayerPosition", Vector3.zero); });
-        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("CanFire", true); });
-        behaviourTree.context.localData.Add<Action>(() => { return new BlackBoardProperty<Action>("CurrentRunningNode", null); });
-
-        fireCooldown = new Timer(0f, () => { SetFireTimer(); });
     }
 
     private void Update()
     {
         animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
-        fireCooldown.DecrementTimer(Time.deltaTime);
 
         Debug.DrawRay(transform.position, transform.forward * 200, Color.green);
     }
@@ -46,11 +39,5 @@ public class DemoEnemyAI : BaseAI
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, fakeShootRange);
-    }
-
-    private void SetFireTimer()
-    {
-        behaviourTree.context.localData.Set<bool>("CanFire", true);
-        fireCooldown.Reset();
     }
 }
