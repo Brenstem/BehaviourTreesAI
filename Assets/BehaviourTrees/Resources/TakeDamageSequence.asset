@@ -21,7 +21,28 @@ MonoBehaviour:
     TargetNodeGuid: 7615ec7e-1419-486a-80e6-17e84c78395f
   - BaseNodeGuid: a71bd1b8-d527-4d35-9345-02b7e1c441dd
     PortName: 1
-    TargetNodeGuid: 0ff4cd01-e658-4ed6-b162-b0b430488399
+    TargetNodeGuid: 3d510e1a-4a96-4259-9218-a8190f39b730
+  - BaseNodeGuid: 8e714e30-3ae7-48ae-8f35-231b842c24dc
+    PortName: 0
+    TargetNodeGuid: ef32d739-06dd-4d9a-9cf4-a19c7f900080
+  - BaseNodeGuid: 8e714e30-3ae7-48ae-8f35-231b842c24dc
+    PortName: 1
+    TargetNodeGuid: 0a4625c7-08c4-41cb-b969-5a78d94b0e95
+  - BaseNodeGuid: 997c2d23-9059-4ad9-8342-083f2b5a4276
+    PortName: 0
+    TargetNodeGuid: 953c79fc-a972-4616-8c58-e1dfe4805c1a
+  - BaseNodeGuid: 997c2d23-9059-4ad9-8342-083f2b5a4276
+    PortName: 1
+    TargetNodeGuid: 2eca2d96-5bba-4317-81a7-5bf9b545d10c
+  - BaseNodeGuid: 997c2d23-9059-4ad9-8342-083f2b5a4276
+    PortName: 2
+    TargetNodeGuid: 0e6ce0c9-b83d-41e9-a566-ed846946e6e7
+  - BaseNodeGuid: 3d510e1a-4a96-4259-9218-a8190f39b730
+    PortName: 0
+    TargetNodeGuid: 997c2d23-9059-4ad9-8342-083f2b5a4276
+  - BaseNodeGuid: 3d510e1a-4a96-4259-9218-a8190f39b730
+    PortName: 1
+    TargetNodeGuid: 8e714e30-3ae7-48ae-8f35-231b842c24dc
   nodeData:
   - nodeTitle: Top Node
     nodeName: Selector
@@ -49,14 +70,77 @@ MonoBehaviour:
     decoratorInstance: {fileID: 0}
     actionInstance: {fileID: 11400000, guid: 986bb57b88c1ab248a8009820eee43b4, type: 2}
     GUID: 7615ec7e-1419-486a-80e6-17e84c78395f
-    Position: {x: 961, y: 157}
-  - nodeTitle: DebugNode
-    nodeName: DebugNode
+    Position: {x: 957, y: 27}
+  - nodeTitle: EmotionalSelector
+    nodeName: EmotionalSelector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: c0332188b5339b44ea9cbbe7cb20bfd6, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 3d510e1a-4a96-4259-9218-a8190f39b730
+    Position: {x: 974, y: 283}
+  - nodeTitle: GoToPositionNode
+    nodeName: GoToPositionNode
     topNode: 0
     nodeType: 2
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 59f563748419a904586a0d600b80735f, type: 2}
-    GUID: 0ff4cd01-e658-4ed6-b162-b0b430488399
-    Position: {x: 982, y: 283}
+    actionInstance: {fileID: 11400000, guid: bc6e6390b19095b469ed5db9d79f6d04, type: 2}
+    GUID: 2eca2d96-5bba-4317-81a7-5bf9b545d10c
+    Position: {x: 2052, y: 148}
+  - nodeTitle: PlayAnimationNode
+    nodeName: PlayAnimationNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 20a366ee81cb78545ae16d9bcd1c9b61, type: 2}
+    GUID: 0e6ce0c9-b83d-41e9-a566-ed846946e6e7
+    Position: {x: 2058, y: 242}
+  - nodeTitle: SeekCoverNode
+    nodeName: SeekCoverNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 38f39b7125fb89b42a621995abae93f0, type: 2}
+    GUID: 953c79fc-a972-4616-8c58-e1dfe4805c1a
+    Position: {x: 2053, y: 53}
+  - nodeTitle: HunkerSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 040b3329b85b048419ef56d7d4a36302, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 997c2d23-9059-4ad9-8342-083f2b5a4276
+    Position: {x: 1486, y: 166}
+  - nodeTitle: SeekCoverNode
+    nodeName: SeekCoverNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 52f7e587024997049b452a16e4280ac5, type: 2}
+    GUID: ef32d739-06dd-4d9a-9cf4-a19c7f900080
+    Position: {x: 1884, y: 354}
+  - nodeTitle: GoToPositionNode
+    nodeName: GoToPositionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 82de5842bcb2ec94caed7a8be248397f, type: 2}
+    GUID: 0a4625c7-08c4-41cb-b969-5a78d94b0e95
+    Position: {x: 1882, y: 458}
+  - nodeTitle: FleeSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 330f44135b5aeaa4d86037ca3e21c6b1, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 8e714e30-3ae7-48ae-8f35-231b842c24dc
+    Position: {x: 1495, y: 347}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}

@@ -32,7 +32,7 @@ public class BurstShootNode : Action
     {
         if (_constructed)
         {
-            animator.SetTrigger("Shooting");
+            animator.SetTrigger("BurstShoot");
 
             Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
 
@@ -52,20 +52,19 @@ public class BurstShootNode : Action
                     timer.Reset(timeBetweenShots);
 
                     NodeState = NodeStates.RUNNING;
-                    return NodeState;
                 }
                 else
                 {
                     _shotsFired = 0;
                     NodeState = NodeStates.SUCCESS;
-                    return NodeState;
                 }
             }
             else
             {
-                NodeState = NodeStates.RUNNING;
-                return NodeState;
+                Debug.Log("Cant fire yet");
+                NodeState = NodeStates.FAILURE;
             }
+
 
             ////ingen timer körs, skapa en ny timer som börjar köras
             //if (timer.Done)
@@ -95,6 +94,8 @@ public class BurstShootNode : Action
             //    NodeState = NodeStates.RUNNING;
             //    return NodeState;
             //}
+
+            return NodeState;
         }
         else
         {

@@ -6,15 +6,16 @@ using UnityEngine.AI;
 [AddNodeMenu("Actions/Movement", "GoToPositionNode")]
 public class GoToPositionNode : Action
 {
-    [SerializeField] bool setPositionManualy;
+    [SerializeField] bool setPositionManually;
     [SerializeField] Vector3 relativeTargetPosition;
+    [SerializeField] string blackboardPositionName;
 
     Vector3 targetPosition;
     NavMeshAgent agent;
 
     public override void Construct()
     {
-        if (setPositionManualy)
+        if (setPositionManually)
             targetPosition = relativeTargetPosition + context.owner.transform.position;
         agent = context.owner.agent;
         _constructed = true;
@@ -24,8 +25,8 @@ public class GoToPositionNode : Action
     {
         if (_constructed)
         {
-            if (!setPositionManualy)
-                targetPosition = context.localData.Get<Vector3>("positionToGoTo");
+            if (!setPositionManually)
+                targetPosition = context.localData.Get<Vector3>(blackboardPositionName);
 
             float distance = Vector3.Distance(targetPosition, agent.transform.position);
             if (distance >= agent.stoppingDistance)

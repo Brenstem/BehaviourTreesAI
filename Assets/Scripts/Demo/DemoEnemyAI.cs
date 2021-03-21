@@ -10,22 +10,27 @@ public class DemoEnemyAI : BaseAI
 
     public BlackBoardProperty<Vector3> positionToGoToProperty { get; private set; } = new BlackBoardProperty<Vector3>("positionToGoTo", Vector3.zero);
 
+
     private new void Awake()
     {
         base.Awake();
 
         behaviourTree.context.localData.Add<Vector3>(positionToGoToProperty);
         behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("TookDamage", false); });
+        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("Aggroed", false); });
+        behaviourTree.context.localData.Add<Vector3>(() => { return new BlackBoardProperty<Vector3>("LastKnownPlayerPosition", Vector3.zero); });
     }
-
 
     private void Update()
     {
-        behaviourTree.topNodeInstance.Evaluate();
-
         animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
 
         Debug.DrawRay(transform.position, transform.forward * 200, Color.green);
+    }
+
+    private void FixedUpdate()
+    {
+        behaviourTree.topNodeInstance.Evaluate();
     }
 
     private void OnDrawGizmos()

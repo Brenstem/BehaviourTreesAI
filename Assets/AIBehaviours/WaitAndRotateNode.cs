@@ -41,7 +41,6 @@ public class WaitAndRotateNode : Action
             if (timer.Done)
             {
                 timer.Reset(runTime);
-
                 agent.SetDestination(ownerTransform.position);
 
                 NodeState = NodeStates.RUNNING;

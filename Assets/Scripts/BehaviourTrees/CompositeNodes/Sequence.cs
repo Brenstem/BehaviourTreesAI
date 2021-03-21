@@ -5,30 +5,37 @@ using UnityEngine;
 [AddNodeMenu("Composite", "Sequence")]
 public class Sequence : Composite
 {
+    [SerializeField] private bool interruptable = true;
+
+    int currentRunningNodeIndex = -1;
+
+    //reset currentRunningNodeIndex every time we exit play mode
+    private void OnDisable()
+    {
+        currentRunningNodeIndex = -1;
+    }
+
+    public override void Construct(List<AbstractNode> nodes)
+    {
+        base.Construct(nodes);
+
+        if (interruptable)
+            Action.InterruptEvent += Reset;
+    }
+
     public override NodeStates Evaluate()
     {
         if (_constructed)
         {
-            bool isAnyNodeRunning = false;
-
-            foreach (AbstractNode node in nodes)
+            //if a node returned running last evaluate, we start evaluating from that node
+            if (currentRunningNodeIndex > 0)
             {
-                switch (node.Evaluate())
-                {
-                    case NodeStates.RUNNING:
-                        isAnyNodeRunning = true;
-                        break;
-                    case NodeStates.SUCCESS:
-                        break;
-                    case NodeStates.FAILURE:
-                        NodeState = NodeStates.FAILURE;
-                        return NodeState;
-                    default:
-                        break;
-                }
+                return EvaluateFromIndex(currentRunningNodeIndex);
             }
-            NodeState = isAnyNodeRunning ? NodeStates.RUNNING : NodeStates.SUCCESS;
-            return NodeState;
+            else
+            {
+                return EvaluateFromIndex(0);
+            }
         }
         else
         {
@@ -37,6 +44,44 @@ public class Sequence : Composite
         }
     }
 
+    private NodeStates EvaluateFromIndex(int startingIndex)
+    {
+        for (int i = startingIndex; i < nodes.Count; i++)
+        {
+            AbstractNode node = nodes[i];
+
+            switch (node.Evaluate())
+            {
+                //if a node returns running set currentRunningNodeIndex to that nodes index in the child list
+                case NodeStates.RUNNING:
+                    currentRunningNodeIndex = i;
+                    NodeState = NodeStates.RUNNING;
+                    return NodeState;
+
+                case NodeStates.SUCCESS:
+                    break;
+
+                //if a node returns failure reset currentRunningNodeIndex
+                case NodeStates.FAILURE:
+                    currentRunningNodeIndex = -1;
+                    NodeState = NodeStates.FAILURE;
+                    return NodeState;
+            }
+        }
+        //if all nodes returns success reset currentRunningNodeIndex
+        currentRunningNodeIndex = -1;
+        NodeState = NodeStates.SUCCESS;
+        return NodeState;
+    }
+
+
+    private void Reset(InterruptEventArgs args)
+    {
+        if (args.id == context.id)
+        {
+            currentRunningNodeIndex = -1;
+        }
+    }
     protected override void CalculatePlanValue()
     {
         foreach (AbstractNode node in nodes)

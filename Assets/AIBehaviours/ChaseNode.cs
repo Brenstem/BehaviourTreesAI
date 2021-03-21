@@ -25,7 +25,7 @@ public class ChaseNode : Action
             if (distance >= agent.stoppingDistance)
             {
                 agent.isStopped = false;
-                agent.SetDestination(playerTransform.position);
+                agent.SetDestination(context.localData.Get<Vector3>("LastKnownPlayerPosition"));
                 return NodeStates.SUCCESS;
             }
             else
