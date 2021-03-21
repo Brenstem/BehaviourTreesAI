@@ -27,7 +27,6 @@ public class GoToPositionNode : Action
         {
             if (!setPositionManually)
                 targetPosition = context.localData.Get<Vector3>(blackboardPositionName);
-                //targetPosition = context.localData.Get<Vector3>("positionToGoTo");
 
             float distance = Vector3.Distance(targetPosition, agent.transform.position);
             if (distance >= agent.stoppingDistance)
