@@ -32,40 +32,40 @@ public class BurstShootNode : Action
     {
         if (_constructed)
         {
-            animator.SetTrigger("Shooting");
+                animator.SetTrigger("BurstShoot");
+                context.localData.Set<bool>("CanFire", false);
 
-            Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
+                Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
 
-            ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
+                ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
 
-            //TODO denna är konstig fixa den så den funkar
-            timer.DecrementTimer(Time.deltaTime);
+                //TODO denna är konstig fixa den så den funkar
+                timer.DecrementTimer(Time.deltaTime);
 
-            if (timer.Done)
-            {
-                weapon.FireWeapon(ownerTransform.rotation);
-
-                _shotsFired++;
-
-                if (_shotsFired < shots)
+                if (timer.Done)
                 {
-                    timer.Reset(timeBetweenShots);
+                    weapon.FireWeapon(ownerTransform.rotation);
 
-                    NodeState = NodeStates.RUNNING;
-                    return NodeState;
+                    _shotsFired++;
+
+                    if (_shotsFired < shots)
+                    {
+                        timer.Reset(timeBetweenShots);
+
+                        NodeState = NodeStates.RUNNING;
+                    }
+                    else
+                    {
+                        _shotsFired = 0;
+                        NodeState = NodeStates.SUCCESS;
+                    }
                 }
                 else
                 {
-                    _shotsFired = 0;
-                    NodeState = NodeStates.SUCCESS;
-                    return NodeState;
+                    Debug.Log("Cant fire yet");
+                    NodeState = NodeStates.FAILURE;
                 }
-            }
-            else
-            {
-                NodeState = NodeStates.RUNNING;
-                return NodeState;
-            }
+
 
             ////ingen timer körs, skapa en ny timer som börjar köras
             //if (timer.Done)
@@ -95,6 +95,8 @@ public class BurstShootNode : Action
             //    NodeState = NodeStates.RUNNING;
             //    return NodeState;
             //}
+
+            return NodeState;
         }
         else
         {

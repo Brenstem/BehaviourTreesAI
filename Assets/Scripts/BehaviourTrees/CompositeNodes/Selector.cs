@@ -9,6 +9,26 @@ public class Selector : Composite
     {
         if (_constructed)
         {
+            if (context.localData.Get<Action>("CurrentRunningNode") != null)
+            {
+                Action currentAction = context.localData.Get<Action>("CurrentRunningNode");
+
+                switch (currentAction.Evaluate())
+                {
+                    case NodeStates.FAILURE:
+                        context.localData.Set<Action>("CurrentRunningNode", null);
+                        break;
+                    case NodeStates.RUNNING:
+                        NodeState = NodeStates.RUNNING;
+                        break;
+                    case NodeStates.SUCCESS:
+                        context.localData.Set<Action>("CurrentRunningNode", null);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             foreach (AbstractNode node in nodes)
             {
                 switch (node.Evaluate())

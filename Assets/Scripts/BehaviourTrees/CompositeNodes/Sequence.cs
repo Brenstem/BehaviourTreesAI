@@ -17,6 +17,7 @@ public class Sequence : Composite
                 {
                     case NodeStates.RUNNING:
                         isAnyNodeRunning = true;
+                        context.localData.Set<Action>("CurrentRunningNode", (Action)node);
                         break;
                     case NodeStates.SUCCESS:
                         break;
