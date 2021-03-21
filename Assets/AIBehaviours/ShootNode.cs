@@ -18,8 +18,8 @@ public class ShootNode : Action
             weapon = context.owner.GetComponentInChildren<DemoWeaponScript>();
 
             weapon.FireWeapon();
-
             NodeState = NodeStates.SUCCESS;
+
             return NodeState;
         }
         else

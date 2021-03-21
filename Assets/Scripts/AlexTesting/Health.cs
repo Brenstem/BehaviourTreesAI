@@ -16,8 +16,12 @@ public class Health : MonoBehaviour
 
     [HideInInspector] public bool isDead;
 
+    private DemoEnemyAI aiInstance;
+
     void Start()
     {
+        aiInstance = GetComponent<DemoEnemyAI>();
+
         isDead = false;
         currentHealth = startingHealth;
 
@@ -35,9 +39,9 @@ public class Health : MonoBehaviour
             if (GetComponent<BaseAI>() != null)
             {
                 //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
-                GetComponent<DemoEnemyAI>().GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
+                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
 
-                Debug.Log(GetComponent<DemoEnemyAI>().GetBehaviourTreeInstance().context.localData.Get<bool>("TookDamage"));
+                aiInstance.animator.SetTrigger("Hurt");
             }
 
             currentHealth -= damageVal;
@@ -62,7 +66,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            aiInstance.animator.SetBool("Dead", true);
         }
     }
 }
