@@ -162,7 +162,7 @@ MonoBehaviour:
     TargetNodeGuid: 66763cc8-dbed-4bc3-a532-9c115d5e6d9a
   - BaseNodeGuid: 91b42021-77fb-4781-a176-721a465db672
     PortName: 0
-    TargetNodeGuid: 23c7f594-964d-4196-9273-7a99a8acbde2
+    TargetNodeGuid: 3f0ed094-ccd1-489c-ab3e-3dd71dabe01c
   nodeData:
   - nodeTitle: CheckIfTookDamageSeq
     nodeName: Sequence
@@ -614,13 +614,13 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: 46fe63f7b893cad4e9988e23287377ba, type: 2}
     GUID: 4e8f5318-8188-4d91-9e31-c6fdd9781d05
     Position: {x: 1615, y: 377}
-  - nodeTitle: GoToPositionNode
-    nodeName: GoToPositionNode
+  - nodeTitle: ChaseNode
+    nodeName: ChaseNode
     topNode: 0
     nodeType: 2
     compositeInstance: {fileID: 0}
     decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 21a04d695a9d9674b868f6dc1dbdf685, type: 2}
-    GUID: 23c7f594-964d-4196-9273-7a99a8acbde2
-    Position: {x: 1124, y: 1031}
+    actionInstance: {fileID: 11400000, guid: 9e684d4484985d342bde4f69668f9614, type: 2}
+    GUID: 3f0ed094-ccd1-489c-ab3e-3dd71dabe01c
+    Position: {x: 1102, y: 1003}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}

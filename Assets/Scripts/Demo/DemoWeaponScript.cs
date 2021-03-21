@@ -15,8 +15,8 @@ public class DemoWeaponScript : MonoBehaviour
         GameObject instance = Instantiate(projectile, firePosition.position, firePosition.rotation);
         instance.tag = this.tag;
         instance.GetComponent<DemoProjectile>().damage = damage;
-
-        owner.animator.SetTrigger("Shoot");
+        if(owner != null)
+            owner.animator.SetTrigger("Shoot");
     }
 
     public void FireWeapon(Quaternion parentRotation)
@@ -24,6 +24,7 @@ public class DemoWeaponScript : MonoBehaviour
         GameObject instance = Instantiate(projectile, firePosition.position, parentRotation);
         instance.tag = this.tag;
         instance.GetComponent<DemoProjectile>().damage = damage;
-        owner.animator.SetTrigger("Shoot");
+        if(owner != null)
+            owner.animator.SetTrigger("Shoot");
     }
 }

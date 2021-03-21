@@ -6,6 +6,8 @@ using UnityEngine;
 [AddNodeMenu("Composite", "EmotionalSelector")]
 public class EmotionalSelector : Composite
 {
+    [SerializeField] private bool interruptable = true;
+
     private float eRisk;
     private float ePlan;
     private float eTime;
@@ -18,6 +20,15 @@ public class EmotionalSelector : Composite
     private float[] nodeWeights;
     private float[] nodeProbabilities;
 
+
+    private AbstractNode currentlyRunningNode;
+
+    //reset currentRunningNodeIndex every time we exit play mode
+    private void OnDisable()
+    {
+        currentlyRunningNode = null;
+    }
+
     public override void Construct(List<AbstractNode> nodes)
     {
         this.nodes = nodes;
@@ -28,6 +39,9 @@ public class EmotionalSelector : Composite
         nodeWeights = new float[nodes.Count];
         nodeProbabilities = new float[nodes.Count];
 
+        if (interruptable)
+            Action.InterruptEvent += Reset;
+
         _constructed = true;
     }
 
@@ -35,25 +49,52 @@ public class EmotionalSelector : Composite
     {
         if (_constructed)
         {
-            CalculateProbabilities();
-
-            float random = UnityEngine.Random.Range(0f, 1f);
-
-            for (int i = 0; i < nodeProbabilities.Length; i++)
+            if (currentlyRunningNode != null)
             {
-                if (random < nodeProbabilities[i])
+                switch (currentlyRunningNode.Evaluate())
                 {
-                    Debug.Log(nodes[i] + " " + nodeProbabilities[i]);
-                    NodeState = nodes[i].Evaluate();
-                    break;
-                }
-                else
-                {
-                    random -= nodeProbabilities[i];
-                }
-            }
+                    case NodeStates.RUNNING:
+                        NodeState = NodeStates.RUNNING;
+                        break;
 
-            return NodeState;
+                    //if a node returns success reset currentlyRunningNode
+                    case NodeStates.SUCCESS:
+                        currentlyRunningNode = null;
+                        NodeState = NodeStates.SUCCESS;
+                        break;
+
+
+                    //if a node returns failure reset currentlyRunningNode
+                    case NodeStates.FAILURE:
+                        currentlyRunningNode = null;
+                        NodeState = NodeStates.FAILURE;
+                        break;
+                }
+                return NodeState;
+            }
+            else
+            {
+                CalculateProbabilities();
+
+                float random = UnityEngine.Random.Range(0f, 1f);
+
+                for (int i = 0; i < nodeProbabilities.Length; i++)
+                {
+                    if (random < nodeProbabilities[i])
+                    {
+                        Debug.Log(nodes[i] + " " + nodeProbabilities[i]);
+                        NodeState = nodes[i].Evaluate();
+                        if (NodeState == NodeStates.RUNNING)
+                            currentlyRunningNode = nodes[i];
+                        break;
+                    }
+                    else
+                    {
+                        random -= nodeProbabilities[i];
+                    }
+                }
+                return NodeState;
+            }
         }
         else
         {
@@ -61,6 +102,15 @@ public class EmotionalSelector : Composite
             return NodeStates.FAILURE;
         }
     }
+
+    private void Reset(InterruptEventArgs args)
+    {
+        if (args.id == context.id)
+        {
+            currentlyRunningNode = null;
+        }
+    }
+
 
     // Set emotional values based on emotions
     // happiness, anger, anxiety, exhaustion, sadness
@@ -79,7 +129,7 @@ public class EmotionalSelector : Composite
         CalculateEmotionalFactors();
         CalculateWeights();
 
-        float remainder = 1; 
+        float remainder = 1;
 
         for (int i = 0; i < nodes.Count; i++)
         {

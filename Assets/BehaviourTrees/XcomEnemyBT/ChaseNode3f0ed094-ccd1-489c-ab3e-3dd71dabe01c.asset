@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f2e210032321f43ab79381cfffe78b, type: 3}
-  m_Name: IfTookDamage3f691bcd-68b7-47b1-bc22-1da37ba27e80
+  m_Script: {fileID: 11500000, guid: cf76a4276415e5348a310ba4c7dff3bd, type: 3}
+  m_Name: ChaseNode3f0ed094-ccd1-489c-ab3e-3dd71dabe01c
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  conditionToCheck: TookDamage
-  reset: 1
