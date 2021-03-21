@@ -22,6 +22,10 @@ namespace BehaviourTreeEditor
 
         private static ObjectField fileLoadField;
 
+        private StyleSheet successStyleSheet;
+        private StyleSheet failureStyleSheet;
+        private StyleSheet runningStyleSheet;
+
         private void Update()
         {
             if (Application.isPlaying)
@@ -58,11 +62,11 @@ namespace BehaviourTreeEditor
             switch (nodestate)
             {
                 case NodeStates.FAILURE:
-                    return Resources.Load<StyleSheet>("NodeFailure");
+                    return failureStyleSheet;
                 case NodeStates.RUNNING:
-                    return Resources.Load<StyleSheet>("NodeRunning");
+                    return runningStyleSheet;
                 case NodeStates.SUCCESS:
-                    return Resources.Load<StyleSheet>("NodeSuccess");
+                    return successStyleSheet;
             }
             return null;
         }
@@ -88,6 +92,10 @@ namespace BehaviourTreeEditor
             GenerateReferenceToolbar();
             GenerateNodeToolbar();
             _graphView.LoadTypeData();
+
+            successStyleSheet = Resources.Load<StyleSheet>("NodeSuccess");
+            failureStyleSheet = Resources.Load<StyleSheet>("NodeFailure");
+            runningStyleSheet = Resources.Load<StyleSheet>("NodeRunning");
         }
 
         private void OnDisable()
