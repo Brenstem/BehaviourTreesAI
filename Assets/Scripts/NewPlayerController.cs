@@ -6,60 +6,54 @@ using UnityEngine.AI;
 public class NewPlayerController : MonoBehaviour
 {
     [SerializeField] LayerMask environmentLayerMask;
-    [SerializeField] float rotationSpeed;
-
-    //[SerializeField] float debugRadius;
-    //[SerializeField] GameObject debugObject;
+    [SerializeField] float movementSpeed;
+    [SerializeField] float shootCooldown;
 
     DemoWeaponScript weapon;
-    NavMeshAgent agent;
     Camera mainCamera;
+    Animator animator;
+    Rigidbody rigidbody;
+
+    bool canShoot = true;
 
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
         mainCamera = Camera.main;
         weapon = GetComponentInChildren<DemoWeaponScript>();
-        //rotationCorutine = FaceDirection(transform.forward);
 
-        //agent.updateRotation = false;
+        animator = GetComponentInChildren<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void FixedUpdate()
+    {
+        RaycastHit hit;
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+        Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask);
+        transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveZ = Input.GetAxisRaw("Vertical");
+        rigidbody.velocity = (transform.forward * moveZ + transform.right * moveX).normalized * movementSpeed;
+        animator.SetFloat("moveZ", moveZ);
+        animator.SetFloat("moveX", moveX);
     }
 
     void Update()
     {
-        RaycastHit hit;
-
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-
-        Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask);
-
-        //transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            //RaycastHit hit;
-
-            //Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-
-            if (Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask))
-            {
-                agent.SetDestination(hit.point);
-            }
-        }
-        else if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && canShoot)
         {
             weapon.FireWeapon();
 
-            //RaycastHit hit;
+            animator.SetTrigger("Shoot");
 
-            //Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-
-            //if (Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask))
-            //{
-            //    StopCoroutine(rotationCorutine);
-            //    rotationCorutine = FaceDirection((new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position).normalized);
-            //    StartCoroutine(rotationCorutine);
-            //}
+            canShoot = false;
+            StartCoroutine(ShootTimer());
         }
+    }
+    IEnumerator ShootTimer()
+    {
+        yield return new WaitForSeconds(shootCooldown);
+        canShoot = true;
     }
 }

@@ -18,9 +18,13 @@ public class Health : MonoBehaviour
 
     private DemoEnemyAI aiInstance;
 
+    private Animator animator;
+
     void Start()
     {
         aiInstance = GetComponent<DemoEnemyAI>();
+
+        animator = GetComponentInChildren<Animator>();
 
         isDead = false;
         currentHealth = startingHealth;
@@ -36,13 +40,13 @@ public class Health : MonoBehaviour
     {
         if (!invulnerable)
         {
-            if (GetComponent<BaseAI>() != null)
+            if (aiInstance != null)
             {
                 //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
                 aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
-
-                aiInstance.animator.SetTrigger("Hurt");
             }
+
+            animator.SetTrigger("Hurt");
 
             currentHealth -= damageVal;
 
@@ -64,9 +68,6 @@ public class Health : MonoBehaviour
             print("ded");
             isDead = true;
         }
-        else
-        {
-            aiInstance.animator.SetBool("Dead", true);
-        }
+        animator.SetBool("Dead", true);
     }
 }
