@@ -41,12 +41,15 @@ public class Health : MonoBehaviour
                 //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
                 aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
 
-                aiInstance.animator.SetTrigger("Hurt");
+                if (damageVal != 0)
+                {
+                    aiInstance.animator.SetTrigger("Hurt");
+                }
             }
 
             currentHealth -= damageVal;
 
-            if (hurtParticle != null)
+            if (hurtParticle != null && damageVal > 0)
                 Instantiate(hurtParticle, transform.position, transform.rotation);
 
             if (healthbar != null)
@@ -61,11 +64,11 @@ public class Health : MonoBehaviour
     {
         if (gameObject.CompareTag("Player"))
         {
-            print("ded");
             isDead = true;
         }
         else
         {
+            isDead = true;
             aiInstance.animator.SetBool("Dead", true);
         }
     }

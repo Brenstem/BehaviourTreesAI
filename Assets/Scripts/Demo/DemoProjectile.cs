@@ -32,6 +32,10 @@ public class DemoProjectile : MonoBehaviour
                 other.GetComponent<Health>().Damage(damage);
                 Destroy(this.gameObject);
             }
+            else if (other.CompareTag("EnemyNearMissRadius"))
+            {
+                other.GetComponentInParent<Health>().Damage(0);
+            }
         }
     }
 }

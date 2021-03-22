@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: FleeSeq4ac012a6-51fc-42da-9535-78ae092c8339
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

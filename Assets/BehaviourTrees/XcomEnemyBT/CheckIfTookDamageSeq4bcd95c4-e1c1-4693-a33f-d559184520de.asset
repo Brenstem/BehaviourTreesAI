@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: CheckIfTookDamageSeq4bcd95c4-e1c1-4693-a33f-d559184520de
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

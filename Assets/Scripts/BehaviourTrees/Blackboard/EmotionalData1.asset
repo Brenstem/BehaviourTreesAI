@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: EmotionalData1
   m_EditorClassIdentifier: 
   happiness: 1
-  anxiety: 1
-  anger: 1
-  sadness: 1
-  exhaustion: 1
+  anxiety: 0.1
+  anger: 0.2
+  sadness: 0.1
+  exhaustion: 0.1
   eRiskWeight: 1
-  riskWeight: 1
+  riskWeight: 0.5
   ePlanWeight: 1
-  planWeight: 1
-  planningAmount: 1
+  planWeight: 0.5
+  planningAmount: 0.5
   eTimeWeight: 1
-  timeWeight: 1
-  timeSpan: 1
+  timeWeight: 0.5
+  timeSpan: 0.5
   eOptWeight: 1
   distribution: 0.9

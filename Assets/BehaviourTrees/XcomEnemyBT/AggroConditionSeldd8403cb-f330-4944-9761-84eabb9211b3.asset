@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: AggroConditionSeldd8403cb-f330-4944-9761-84eabb9211b3
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

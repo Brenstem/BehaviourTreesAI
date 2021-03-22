@@ -49,6 +49,10 @@ public class EmotionalSelector : Composite
     {
         if (_constructed)
         {
+            CalculatePlanValue();
+            CalculateRiskValue();
+            CalculateTimeInterval();
+
             if (currentlyRunningNode != null)
             {
                 switch (currentlyRunningNode.Evaluate())
@@ -82,7 +86,6 @@ public class EmotionalSelector : Composite
                 {
                     if (random < nodeProbabilities[i])
                     {
-                        Debug.Log(nodes[i] + " " + nodeProbabilities[i]);
                         NodeState = nodes[i].Evaluate();
                         if (NodeState == NodeStates.RUNNING)
                             currentlyRunningNode = nodes[i];
@@ -186,6 +189,7 @@ public class EmotionalSelector : Composite
 
     protected override void CalculatePlanValue()
     {
+        planValue = 0;
         foreach (AbstractNode node in nodes)
         {
             planValue += node.GetPlanValue();
@@ -195,6 +199,7 @@ public class EmotionalSelector : Composite
 
     protected override void CalculateRiskValue()
     {
+        riskValue = 0;
         foreach (AbstractNode node in nodes)
         {
             riskValue += node.GetRiskValue();
@@ -203,6 +208,9 @@ public class EmotionalSelector : Composite
     }
     protected override void CalculateTimeInterval()
     {
+        minTimeValue = 0;
+        maxTimeValue = 0;
+
         foreach (AbstractNode node in nodes)
         {
             if (minTimeValue > node.GetMinTimeValue())

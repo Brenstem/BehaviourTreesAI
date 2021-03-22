@@ -33,7 +33,7 @@ public class Grenade : Explosive
 
     public override void Explode()
     {
-        //Instantiate(explosionVFX, transform.position, Quaternion.Euler(-90, 0, 0));
+        Instantiate(explosionVFX, transform.position, Quaternion.Euler(-90, 0, 0));
 
         Collider[] hitTargets = Physics.OverlapSphere(transform.position, explosionRadius, damageLayers | 1 << myLayer);
         foreach (Collider target in hitTargets)

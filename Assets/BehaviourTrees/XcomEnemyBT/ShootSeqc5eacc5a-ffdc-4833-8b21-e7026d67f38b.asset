@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: ShootSeqc5eacc5a-ffdc-4833-8b21-e7026d67f38b
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

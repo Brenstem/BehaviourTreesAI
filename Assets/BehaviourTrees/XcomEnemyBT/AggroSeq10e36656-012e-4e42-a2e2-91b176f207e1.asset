@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: AggroSeq10e36656-012e-4e42-a2e2-91b176f207e1
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

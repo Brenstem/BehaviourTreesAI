@@ -61,7 +61,6 @@ public class BurstShootNode : Action
             }
             else
             {
-                Debug.Log("Cant fire yet");
                 NodeState = NodeStates.FAILURE;
             }
 
