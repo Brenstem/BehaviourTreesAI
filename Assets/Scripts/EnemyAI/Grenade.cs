@@ -38,13 +38,6 @@ public class Grenade : Explosive
     {
         Instantiate(explosionVFX, transform.position, Quaternion.Euler(-90, 0, 0));
 
-        if (audioSource != null)
-        {
-            audioSource.PlayOneShot(audioSource.clip);
-            this.GetComponentInChildren<MeshRenderer>().enabled = false;
-            StartCoroutine(PlayExplosionSound());
-        }
-
         Collider[] hitTargets = Physics.OverlapSphere(transform.position, explosionRadius, damageLayers | 1 << myLayer);
         foreach (Collider target in hitTargets)
         {
@@ -56,6 +49,17 @@ public class Grenade : Explosive
             {
                 target.GetComponent<Health>().Damage(damage);
             }
+        }
+
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+            this.GetComponentInChildren<MeshRenderer>().enabled = false;
+            StartCoroutine(PlayExplosionSound());
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
     }
 

@@ -5,21 +5,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EmotionalData", menuName = "BehaviourTrees/EmotionalData", order = 1)]
 public class EmotionalData : ScriptableObject
 {
-    [SerializeField] private float happiness;
-    [SerializeField] private float anxiety;
-    [SerializeField] private float anger;
-    [SerializeField] private float sadness;
-    [SerializeField] private float exhaustion;
-    [SerializeField] private float eRiskWeight;
-    [SerializeField] private float riskWeight;
-    [SerializeField] private float ePlanWeight;
-    [SerializeField] private float planWeight;
-    [SerializeField] private float planningAmount;
-    [SerializeField] private float eTimeWeight;
-    [SerializeField] private float timeWeight;
-    [SerializeField] private float timeSpan;
-    [SerializeField] private float eOptWeight;
-    [SerializeField] private float distribution;
+    [SerializeField][Range(0, 1)] private float happiness;
+    [SerializeField][Range(0, 1)] private float anxiety;
+    [SerializeField][Range(0, 1)] private float anger;
+    [SerializeField][Range(0, 1)] private float sadness;
+    [SerializeField][Range(0, 1)] private float exhaustion;
+    [SerializeField][Range(0, 1)] private float eRiskWeight;
+    [SerializeField][Range(0, 1)] private float riskWeight;
+    [SerializeField][Range(0, 1)] private float ePlanWeight;
+    [SerializeField][Range(0, 1)] private float planWeight;
+    [SerializeField][Range(0, 1)] private float planningAmount;
+    [SerializeField][Range(0, 1)] private float eTimeWeight;
+    [SerializeField][Range(0, 1)] private float timeWeight;
+    [SerializeField][Range(0, 1)] private float timeSpan;
+    [SerializeField][Range(0, 1)] private float eOptWeight;
+    [SerializeField][Range(0, 1)] private float distribution;
 
     public float Happiness { get { return Mathf.Clamp(happiness, 0, 1); } set { happiness = value; } }
     public float Anxiety { get { return Mathf.Clamp(anxiety, 0, 1); } set { anxiety = value; } }

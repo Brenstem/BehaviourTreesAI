@@ -36,10 +36,10 @@ public class BurstShootNode : Action
 
             Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
 
-            ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
+            ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.fixedDeltaTime * rotationSpeed);
 
             //TODO denna är konstig fixa den så den funkar
-            timer.DecrementTimer(Time.deltaTime);
+            timer.DecrementTimer(Time.fixedDeltaTime);
 
             if (timer.Done)
             {
@@ -56,43 +56,14 @@ public class BurstShootNode : Action
                 else
                 {
                     _shotsFired = 0;
+                    timer.Reset(-1);
                     NodeState = NodeStates.SUCCESS;
                 }
             }
             else
             {
-                NodeState = NodeStates.FAILURE;
+                NodeState = NodeStates.RUNNING;
             }
-
-
-            ////ingen timer körs, skapa en ny timer som börjar köras
-            //if (timer.Done)
-            //{
-            //    timer.Reset(timeBetweenShots);
-
-            //    weapon = context.owner.GetComponent<DemoWeaponScript>();
-            //    weapon.FireWeapon();
-
-            //    shotsFired++;
-
-            //    NodeState = NodeStates.RUNNING;
-            //    return NodeState;
-            //}
-
-            //timer.DecrementTimer(Time.deltaTime);
-
-            ////timern som kördes är nu klar
-            //if (timer.Done)
-            //{
-            //    NodeState = NodeStates.SUCCESS;
-            //    return NodeState;
-            //}
-            ////timern som körs är inte än klar
-            //else
-            //{
-            //    NodeState = NodeStates.RUNNING;
-            //    return NodeState;
-            //}
 
             return NodeState;
         }

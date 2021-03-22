@@ -16,6 +16,6 @@ MonoBehaviour:
   minTimeValue: 2
   maxTimeValue: 5
   planValue: 6
-  timeBetweenShots: 0.1
+  timeBetweenShots: 0.2
   shots: 3
   rotationSpeed: 0
