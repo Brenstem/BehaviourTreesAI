@@ -6,10 +6,13 @@ public class Grenade : Explosive
 {
     Rigidbody rigidbody;
 
+    private AudioSource audioSource;
+
     protected override void Awake()
     {
         myLayer = this.gameObject.layer;
         rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(TriggerDelay());
     }
@@ -35,6 +38,13 @@ public class Grenade : Explosive
     {
         Instantiate(explosionVFX, transform.position, Quaternion.Euler(-90, 0, 0));
 
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+            this.GetComponentInChildren<MeshRenderer>().enabled = false;
+            StartCoroutine(PlayExplosionSound());
+        }
+
         Collider[] hitTargets = Physics.OverlapSphere(transform.position, explosionRadius, damageLayers | 1 << myLayer);
         foreach (Collider target in hitTargets)
         {
@@ -47,6 +57,11 @@ public class Grenade : Explosive
                 target.GetComponent<Health>().Damage(damage);
             }
         }
+    }
+
+    private IEnumerator PlayExplosionSound()
+    {
+        yield return new WaitUntil(() => { return !audioSource.isPlaying; });
         Destroy(this.gameObject);
     }
 }

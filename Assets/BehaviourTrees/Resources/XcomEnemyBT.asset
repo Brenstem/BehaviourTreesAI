@@ -458,42 +458,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: c02953ead7ea8dd4f93f6d16db6133cf, type: 2}
     GUID: 85c8c617-749c-4cb9-86f9-bb70fdd99799
     Position: {x: 2623, y: 520}
-  - nodeTitle: GoToPositionNode
-    nodeName: GoToPositionNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 1472b238cb2229049ab2bc0edb7a89e0, type: 2}
-    GUID: e6a2d777-78b8-41f7-b820-70312b3bf9f7
-    Position: {x: 2230, y: -336}
-  - nodeTitle: SeekCoverNode
-    nodeName: SeekCoverNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: d78a6fdf246c4cf4da461cbd3571fb41, type: 2}
-    GUID: 80d8975e-ee8a-49b0-a096-9fdc845640a5
-    Position: {x: 2257, y: -542}
-  - nodeTitle: UnHunker
-    nodeName: PlayAnimationNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: c5887f2a4363388479f163152cdfdcad, type: 2}
-    GUID: 005e0b33-7506-4b49-a955-642cdcffa48a
-    Position: {x: 2249, y: -433}
-  - nodeTitle: FleeSeq
-    nodeName: Sequence
-    topNode: 0
-    nodeType: 0
-    compositeInstance: {fileID: 11400000, guid: fb3dbb752180d8a4d866ed51fc2b4afb, type: 2}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 0}
-    GUID: a8446598-0cb1-411b-91c8-edae7aa6ac51
-    Position: {x: 1818, y: -446}
   - nodeTitle: SeekCoverNode
     nodeName: SeekCoverNode
     topNode: 0
@@ -683,4 +647,40 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: 7cdde1ad1db5e4e44bc8d271c96c1e63, type: 2}
     GUID: 586b5486-54f8-449c-b767-25d99c41d342
     Position: {x: 2750, y: -1305}
+  - nodeTitle: GoToPositionNode
+    nodeName: GoToPositionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 1472b238cb2229049ab2bc0edb7a89e0, type: 2}
+    GUID: e6a2d777-78b8-41f7-b820-70312b3bf9f7
+    Position: {x: 2230, y: -425}
+  - nodeTitle: SeekCoverNode
+    nodeName: SeekCoverNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: d78a6fdf246c4cf4da461cbd3571fb41, type: 2}
+    GUID: 80d8975e-ee8a-49b0-a096-9fdc845640a5
+    Position: {x: 2257, y: -631}
+  - nodeTitle: UnHunker
+    nodeName: PlayAnimationNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c5887f2a4363388479f163152cdfdcad, type: 2}
+    GUID: 005e0b33-7506-4b49-a955-642cdcffa48a
+    Position: {x: 2249, y: -522}
+  - nodeTitle: FleeSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: fb3dbb752180d8a4d866ed51fc2b4afb, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: a8446598-0cb1-411b-91c8-edae7aa6ac51
+    Position: {x: 1818, y: -535}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}
