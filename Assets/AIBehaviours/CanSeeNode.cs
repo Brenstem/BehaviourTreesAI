@@ -11,11 +11,14 @@ public class CanSeeNode : Action
 
     Transform target;
     Transform ownerTransform;
+    string targetTag;
+
 
     public override void Construct()
     {
         target = context.globalData.player.transform;
         ownerTransform = context.owner.transform;
+        targetTag = target.gameObject.tag;
         _constructed = true;
     }
 
@@ -27,7 +30,7 @@ public class CanSeeNode : Action
 
             if (Physics.Raycast(ownerTransform.position, target.position - ownerTransform.position, out hit, range, targetLayers))
             {
-                if (hit.collider.gameObject.CompareTag(target.gameObject.tag))
+                if (hit.collider.gameObject.CompareTag(targetTag))
                 {
                     context.localData.Set<Vector3>("LastKnownPlayerPosition", target.position);
 

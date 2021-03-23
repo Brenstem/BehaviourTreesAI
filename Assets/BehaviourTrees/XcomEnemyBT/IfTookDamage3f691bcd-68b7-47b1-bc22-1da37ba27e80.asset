@@ -17,4 +17,5 @@ MonoBehaviour:
   maxTimeValue: 0
   planValue: 0
   conditionToCheck: TookDamage
+  desiredValue: 1
   reset: 1

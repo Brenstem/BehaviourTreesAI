@@ -16,3 +16,7 @@ MonoBehaviour:
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 768
+  visionRange: 20
