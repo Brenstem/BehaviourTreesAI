@@ -18,9 +18,13 @@ public class Health : MonoBehaviour
 
     private DemoEnemyAI aiInstance;
 
+    private Animator animator;
+
     void Start()
     {
         aiInstance = GetComponent<DemoEnemyAI>();
+
+        animator = GetComponentInChildren<Animator>();
 
         isDead = false;
         currentHealth = startingHealth;
@@ -36,20 +40,19 @@ public class Health : MonoBehaviour
     {
         if (!invulnerable)
         {
-            if (GetComponent<BaseAI>() != null)
+            if (aiInstance != null)
             {
                 //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
                 aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
-
-                if (damageVal != 0)
-                {
-                    aiInstance.animator.SetTrigger("Hurt");
-                }
             }
+            
+            if(damageVal != 0)
+                animator.SetTrigger("Hurt");
+            animator.SetTrigger("Hurt");
 
             currentHealth -= damageVal;
 
-            if (hurtParticle != null && damageVal > 0)
+            if (hurtParticle != null)
                 Instantiate(hurtParticle, transform.position, transform.rotation);
 
             if (healthbar != null)
@@ -64,20 +67,20 @@ public class Health : MonoBehaviour
     {
         if (!invulnerable)
         {
-            if (GetComponent<BaseAI>() != null)
-            {
-                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
-
-                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
-
-                if (damageVal != 0)
-                {
-                    aiInstance.animator.SetTrigger("Hurt");
-                }
+            if (GetComponent<BaseAI>() != null)
+            {
+                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+
+                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
+
+                if (damageVal != 0)
+                {
+                    aiInstance.animator.SetTrigger("Hurt");
+                }
             }
 
-            currentHealth -= damageVal;
-
+            currentHealth -= damageVal;
+
             if (hurtParticle != null && damageVal > 0) 
                 Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
 
@@ -93,24 +96,24 @@ public class Health : MonoBehaviour
     {
         if (!invulnerable)
         {
-            if (GetComponent<BaseAI>() != null)
-            {
-                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
-
-                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
-
-                if (damageVal != 0)
-                {
-                    aiInstance.animator.SetTrigger("Hurt");
-                }
+            if (GetComponent<BaseAI>() != null)
+            {
+                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+
+                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
+
+                if (damageVal != 0)
+                {
+                    aiInstance.animator.SetTrigger("Hurt");
+                }
             }
 
-            currentHealth -= damageVal;
-
-            if (hurtParticle != null && damageVal > 0)
+            currentHealth -= damageVal;
+
+            if (hurtParticle != null && damageVal > 0)
             {
-                GameObject instance = Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
-                instance.GetComponent<AudioSource>().PlayOneShot(hitClip);
+                GameObject instance = Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
+                instance.GetComponent<AudioSource>().PlayOneShot(hitClip);
             }
 
 
@@ -124,14 +127,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        if (gameObject.CompareTag("Player"))
-        {
-            isDead = true;
-        }
-        else
-        {
-            isDead = true;
-            aiInstance.animator.SetBool("Dead", true);
-        }
+        isDead = true;
+        animator.SetBool("Dead", true);
     }
 }

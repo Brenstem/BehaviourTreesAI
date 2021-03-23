@@ -23,22 +23,6 @@ public class EmotionalSelector : Composite
 
     private AbstractNode currentlyRunningNode;
 
-    //reset currentRunningNodeIndex every time we exit play mode
-    private void OnDisable()
-    {
-        currentlyRunningNode = null;
-    }
-
-    public override void Construct(List<AbstractNode> nodes)
-    {
-        this.nodes = nodes;
-
-        riskFactors = new float[nodes.Count];
-        planFactors = new float[nodes.Count];
-        timeFactors = new float[nodes.Count];
-        nodeWeights = new float[nodes.Count];
-        nodeProbabilities = new float[nodes.Count];
-
         if (interruptable)
             Action.InterruptEvent += Reset;
 
