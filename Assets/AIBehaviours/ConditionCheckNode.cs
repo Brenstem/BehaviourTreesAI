@@ -7,6 +7,7 @@ public class ConditionCheckNode : Action
 {
     [Header("Node variables")]
     [SerializeField] private string conditionToCheck;
+    [SerializeField] private bool desiredValue;
     [SerializeField] private bool reset;
 
     public override void Construct()
@@ -18,7 +19,7 @@ public class ConditionCheckNode : Action
     {
         if (_constructed)
         {
-            if (context.localData.Get<bool>(conditionToCheck))
+            if (context.localData.Get<bool>(conditionToCheck) == desiredValue)
             {
                 if (reset)
                 {

@@ -11,6 +11,7 @@ public class DemoWeaponScript : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private List<AudioClip> environmentHitClips;
     [SerializeField] private AudioClip hitClip;
+    [SerializeField] private LayerMask enemyLayerMask;
 
     [SerializeField] DemoEnemyAI owner;
 
@@ -23,6 +24,13 @@ public class DemoWeaponScript : MonoBehaviour
 
     public void FireWeapon()
     {
+        Collider[] hearingHits = Physics.OverlapSphere(transform.position, 100f, enemyLayerMask);
+
+        foreach (var hit in hearingHits)
+        {
+            Action.RaiseInterruptEvent(new InterruptEventArgs(hit.GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+        }
+
         if (firePFX != null)
             Instantiate(firePFX, firePosition.position, Quaternion.LookRotation(firePosition.forward));
 

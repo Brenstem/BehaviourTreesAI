@@ -45,7 +45,7 @@ public class Grenade : Explosive
             {
                 target.GetComponent<Explosive>().StartCoroutine(target.GetComponent<Explosive>().ExplosionDelay());
             }
-            else
+            else if(target.CompareTag("Player") || target.CompareTag("Enemy"))
             {
                 target.GetComponent<Health>().Damage(damage);
             }
