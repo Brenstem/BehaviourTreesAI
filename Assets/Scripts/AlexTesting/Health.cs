@@ -60,6 +60,34 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void Damage(float damageVal, Vector3 hurtPFXDirection)
+    {
+        if (!invulnerable)
+        {
+            if (GetComponent<BaseAI>() != null)
+            {
+                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
+
+                if (damageVal != 0)
+                {
+                    aiInstance.animator.SetTrigger("Hurt");
+                }
+            }
+
+            currentHealth -= damageVal;
+
+            if (hurtParticle != null && damageVal > 0)
+                Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
+
+            if (healthbar != null)
+                healthbar.value = currentHealth;
+
+            if (currentHealth <= 0)
+                Die();
+        }
+    }
+
     private void Die()
     {
         if (gameObject.CompareTag("Player"))

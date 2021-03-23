@@ -5,6 +5,8 @@ using UnityEngine;
 public class DemoWeaponScript : MonoBehaviour
 {
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject firePFX;
+    [SerializeField] GameObject environmentHitPFX;
     [SerializeField] Transform firePosition;
     [SerializeField] float damage;
 
@@ -19,23 +21,45 @@ public class DemoWeaponScript : MonoBehaviour
 
     public void FireWeapon()
     {
-        GameObject instance = Instantiate(projectile, firePosition.position, firePosition.rotation);
+        if (firePFX != null)
+            Instantiate(firePFX, firePosition.position, Quaternion.LookRotation(firePosition.forward));
+
         if (audioSource != null)
             audioSource.PlayOneShot(audioSource.clip);
-        instance.tag = this.tag;
-        instance.GetComponent<DemoProjectile>().damage = damage;
-        if(owner != null)
+
+        if (Physics.Raycast(firePosition.position, firePosition.forward, 200f))
+        {
+            RaycastHit[] hit = Physics.RaycastAll(firePosition.position, firePosition.forward, 200f);
+            Hit(hit);
+        }
+
+        if (owner != null)
             owner.animator.SetTrigger("Shoot");
     }
 
-    public void FireWeapon(Quaternion parentRotation)
+    public void Hit(RaycastHit[] hits)
     {
-        GameObject instance = Instantiate(projectile, firePosition.position, parentRotation);
-        if (audioSource != null)
-            audioSource.PlayOneShot(audioSource.clip);
-        instance.tag = this.tag;
-        instance.GetComponent<DemoProjectile>().damage = damage;
-        if(owner != null)
-            owner.animator.SetTrigger("Shoot");
+        foreach (var hit in hits)
+        {
+            if (!hit.collider.CompareTag(this.tag))
+            {
+                if (hit.collider.CompareTag("Environment"))
+                {
+                    if (environmentHitPFX != null)
+                        Instantiate(environmentHitPFX, hit.point, Quaternion.LookRotation(hit.normal));
+
+                    break;
+                }
+                else if (hit.collider.CompareTag("Enemy") || hit.collider.tag == "Player")
+                {
+                    hit.collider.GetComponent<Health>().Damage(damage, hit.normal);
+                    break;
+                }
+                else if (hit.collider.CompareTag("EnemyNearMissRadius"))
+                {
+                    hit.collider.GetComponentInParent<Health>().Damage(0);
+                }
+            }
+        }
     }
 }

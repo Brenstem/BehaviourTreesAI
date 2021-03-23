@@ -637,7 +637,7 @@ MonoBehaviour:
   startingHealth: 100
   invulnerable: 0
   healthbar: {fileID: 7135488446798979419}
-  hurtParticle: {fileID: 0}
+  hurtParticle: {fileID: 6691042760147776411, guid: 2e3c2d92a4039e74f8afa2d05fc91f25, type: 3}
   isDead: 0
 --- !u!54 &1067887053
 Rigidbody:
@@ -744,6 +744,10 @@ PrefabInstance:
     - target: {fileID: 3028928427625100418, guid: 25ca7c5557cbcbd44939a42bed3473a5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2962171
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028928427625100419, guid: 25ca7c5557cbcbd44939a42bed3473a5, type: 3}
+      propertyPath: m_Size.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3028928427625100421, guid: 25ca7c5557cbcbd44939a42bed3473a5, type: 3}
       propertyPath: m_Name
@@ -1388,6 +1392,14 @@ PrefabInstance:
       propertyPath: damage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4336892499982515111, guid: 83b4c7afacf86c54e94995fc767a2a9b, type: 3}
+      propertyPath: firePFX
+      value: 
+      objectReference: {fileID: 4934024350747191876, guid: 8a8c911373f19724b9c1818581118ea7, type: 3}
+    - target: {fileID: 4336892499982515111, guid: 83b4c7afacf86c54e94995fc767a2a9b, type: 3}
+      propertyPath: environmentHitPFX
+      value: 
+      objectReference: {fileID: 4934024350747191876, guid: 8e6c7f54c44d30d409f46f8d9af57e1d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83b4c7afacf86c54e94995fc767a2a9b, type: 3}
 --- !u!1001 &5768648757333227760
@@ -1397,6 +1409,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.308
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.712
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.545
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126641850856653792, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602622866398995055, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: firePFX
+      value: 
+      objectReference: {fileID: 4934024350747191876, guid: 8a8c911373f19724b9c1818581118ea7, type: 3}
+    - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: environmentHitPFX
+      value: 
+      objectReference: {fileID: 4934024350747191876, guid: 8e6c7f54c44d30d409f46f8d9af57e1d, type: 3}
     - target: {fileID: 5370362432343984222, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

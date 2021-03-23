@@ -43,7 +43,7 @@ public class BurstShootNode : Action
 
             if (timer.Done)
             {
-                weapon.FireWeapon(ownerTransform.rotation);
+                weapon.FireWeapon();
 
                 _shotsFired++;
 
