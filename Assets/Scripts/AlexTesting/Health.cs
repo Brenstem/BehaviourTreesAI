@@ -67,6 +67,36 @@ public class Health : MonoBehaviour
             if (GetComponent<BaseAI>() != null)
             {
                 //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+
+                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
+
+                if (damageVal != 0)
+                {
+                    aiInstance.animator.SetTrigger("Hurt");
+                }
+            }
+
+            currentHealth -= damageVal;
+
+            if (hurtParticle != null && damageVal > 0) 
+                Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
+
+            if (healthbar != null)
+                healthbar.value = currentHealth;
+
+            if (currentHealth <= 0)
+                Die();
+        }
+    }
+
+    public void Damage(float damageVal, Vector3 hurtPFXDirection, AudioClip hitClip)
+    {
+        if (!invulnerable)
+        {
+            if (GetComponent<BaseAI>() != null)
+            {
+                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+
                 aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
 
                 if (damageVal != 0)
@@ -78,7 +108,11 @@ public class Health : MonoBehaviour
             currentHealth -= damageVal;
 
             if (hurtParticle != null && damageVal > 0)
-                Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
+            {
+                GameObject instance = Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
+                instance.GetComponent<AudioSource>().PlayOneShot(hitClip);
+            }
+
 
             if (healthbar != null)
                 healthbar.value = currentHealth;

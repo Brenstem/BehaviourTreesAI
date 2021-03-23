@@ -1454,6 +1454,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: environmentHitClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: firePFX
       value: 
       objectReference: {fileID: 4934024350747191876, guid: 8a8c911373f19724b9c1818581118ea7, type: 3}
@@ -1461,6 +1465,18 @@ PrefabInstance:
       propertyPath: environmentHitPFX
       value: 
       objectReference: {fileID: 4934024350747191876, guid: 8e6c7f54c44d30d409f46f8d9af57e1d, type: 3}
+    - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: environmentHitClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 198d51619e038cf4f9dd916e5ead3e98, type: 3}
+    - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: environmentHitClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0911b35d70d9d234d8a0ba9bdd298c37, type: 3}
+    - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: hitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d5a2d028fead57d4c97be6e3bee7ac01, type: 3}
     - target: {fileID: 5370362432343984222, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

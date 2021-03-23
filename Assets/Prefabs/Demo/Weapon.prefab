@@ -126,4 +126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5057084422291443370, guid: 1bbc3c312e1d44640bf7988fc0c334d3, type: 3}
+  firePFX: {fileID: 4934024350747191876, guid: 8a8c911373f19724b9c1818581118ea7, type: 3}
+  environmentHitPFX: {fileID: 4934024350747191876, guid: 8e6c7f54c44d30d409f46f8d9af57e1d, type: 3}
   firePosition: {fileID: 4336892499570355088}
+  damage: 0
+  environmentHitClips:
+  - {fileID: 8300000, guid: 0911b35d70d9d234d8a0ba9bdd298c37, type: 3}
+  - {fileID: 8300000, guid: 198d51619e038cf4f9dd916e5ead3e98, type: 3}
+  hitClip: {fileID: 8300000, guid: c44fd51a73dd13244b360281a390e00a, type: 3}
+  owner: {fileID: 0}

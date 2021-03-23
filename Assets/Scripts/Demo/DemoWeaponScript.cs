@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class DemoWeaponScript : MonoBehaviour
 {
-    [SerializeField] GameObject projectile;
-    [SerializeField] GameObject firePFX;
-    [SerializeField] GameObject environmentHitPFX;
-    [SerializeField] Transform firePosition;
-    [SerializeField] float damage;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject firePFX;
+    [SerializeField] private GameObject environmentHitPFX;
+    [SerializeField] private Transform firePosition;
+    [SerializeField] private float damage;
+    [SerializeField] private List<AudioClip> environmentHitClips;
+    [SerializeField] private AudioClip hitClip;
 
     [SerializeField] DemoEnemyAI owner;
 
@@ -46,13 +48,20 @@ public class DemoWeaponScript : MonoBehaviour
                 if (hit.collider.CompareTag("Environment"))
                 {
                     if (environmentHitPFX != null)
-                        Instantiate(environmentHitPFX, hit.point, Quaternion.LookRotation(hit.normal));
+                    {
+                        GameObject instance = Instantiate(environmentHitPFX, hit.point, Quaternion.LookRotation(hit.normal));
+                        if (environmentHitClips.Count > 0)
+                        {
+                            int i = Random.Range(0, environmentHitClips.Count);
+                            instance.GetComponent<AudioSource>().PlayOneShot(environmentHitClips[i]);
+                        }
+                    }
 
                     break;
                 }
                 else if (hit.collider.CompareTag("Enemy") || hit.collider.tag == "Player")
                 {
-                    hit.collider.GetComponent<Health>().Damage(damage, hit.normal);
+                    hit.collider.GetComponent<Health>().Damage(damage, hit.normal, hitClip);
                     break;
                 }
                 else if (hit.collider.CompareTag("EnemyNearMissRadius"))

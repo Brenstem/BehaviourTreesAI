@@ -87,8 +87,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5057084422291443370, guid: 1bbc3c312e1d44640bf7988fc0c334d3, type: 3}
+  firePFX: {fileID: 0}
+  environmentHitPFX: {fileID: 0}
   firePosition: {fileID: 126641850856653792}
   damage: 7
+  environmentHitClips: []
+  hitClip: {fileID: 0}
   owner: {fileID: 5370362433262129372}
 --- !u!114 &1453601109
 MonoBehaviour:
@@ -131,9 +135,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4910321357510465813}
-  m_LocalRotation: {x: 0.009146541, y: -0.017515808, z: 0.7051179, w: 0.70881474}
-  m_LocalPosition: {x: 0.25199986, y: 1.6459922, z: 2.6010005}
-  m_LocalScale: {x: 0.7893603, y: 0.78936, z: 0.78936005}
+  m_LocalRotation: {x: 0.00914666, y: -0.017515678, z: 0.70511794, w: 0.70881474}
+  m_LocalPosition: {x: 0.25199932, y: 1.6459918, z: 2.6009998}
+  m_LocalScale: {x: 0.7893602, y: 0.7893599, z: 0.7893599}
   m_Children: []
   m_Father: {fileID: 5370362433262129363}
   m_RootOrder: 1
