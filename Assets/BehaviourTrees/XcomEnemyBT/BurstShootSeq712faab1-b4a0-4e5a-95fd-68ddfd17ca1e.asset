@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: BurstShootSeq712faab1-b4a0-4e5a-95fd-68ddfd17ca1e
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

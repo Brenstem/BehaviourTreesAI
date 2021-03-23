@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ShootNode85c8c617-749c-4cb9-86f9-bb70fdd99799
   m_EditorClassIdentifier: 
   riskValue: 2
-  minTimeValue: 4
-  maxTimeValue: 6
+  minTimeValue: 0.5
+  maxTimeValue: 1
   planValue: 7

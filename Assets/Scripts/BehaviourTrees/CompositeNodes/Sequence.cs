@@ -27,6 +27,10 @@ public class Sequence : Composite
     {
         if (_constructed)
         {
+            CalculatePlanValue();
+            CalculateRiskValue();
+            CalculateTimeInterval();
+
             //if a node returned running last evaluate, we start evaluating from that node
             if (currentRunningNodeIndex > 0)
             {
@@ -84,6 +88,8 @@ public class Sequence : Composite
     }
     protected override void CalculatePlanValue()
     {
+        planValue = 0;
+
         foreach (AbstractNode node in nodes)
         {
             planValue +=  node.GetPlanValue();
@@ -92,6 +98,8 @@ public class Sequence : Composite
 
     protected override void CalculateRiskValue()
     {
+        riskValue = 0;
+
         float risk = 1;
         foreach (AbstractNode node in nodes)
         {
@@ -102,6 +110,9 @@ public class Sequence : Composite
 
     protected override void CalculateTimeInterval()
     {
+        minTimeValue = 0;
+        maxTimeValue = 0;
+
         foreach (AbstractNode node in nodes)
         {
             minTimeValue += node.GetMinTimeValue();

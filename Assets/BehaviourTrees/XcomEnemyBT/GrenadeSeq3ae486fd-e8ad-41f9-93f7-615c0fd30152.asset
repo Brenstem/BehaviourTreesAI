@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: GrenadeSeq3ae486fd-e8ad-41f9-93f7-615c0fd30152
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

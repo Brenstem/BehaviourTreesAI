@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593168797e2f1e14ea76d6cda4334d6c, type: 3}
   m_Name: ShootNodecb0c2226-d524-4478-81ae-b381d1079fe8
   m_EditorClassIdentifier: 
-  riskValue: 2
-  minTimeValue: 4
-  maxTimeValue: 6
-  planValue: 7
+  riskValue: 7
+  minTimeValue: 0.5
+  maxTimeValue: 1
+  planValue: 9

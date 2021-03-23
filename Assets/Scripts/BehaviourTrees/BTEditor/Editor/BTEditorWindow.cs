@@ -40,14 +40,23 @@ namespace BehaviourTreeEditor
                     {
                         case NodeTypes.Composite:
                             nodeStateLabel.text = node.compositeInstance.NodeState.ToString();
+                            node.styleSheets.Remove(successStyleSheet);
+                            node.styleSheets.Remove(failureStyleSheet);
+                            node.styleSheets.Remove(runningStyleSheet);
                             node.styleSheets.Add(UpdateStyleSheet(node.compositeInstance.NodeState));
                             break;
                         case NodeTypes.Decorator:
                             nodeStateLabel.text = node.decoratorInstance.NodeState.ToString();
+                            node.styleSheets.Remove(successStyleSheet);
+                            node.styleSheets.Remove(failureStyleSheet);
+                            node.styleSheets.Remove(runningStyleSheet); 
                             node.styleSheets.Add(UpdateStyleSheet(node.decoratorInstance.NodeState));
                             break;
                         case NodeTypes.Action:
                             nodeStateLabel.text = node.actionInstance.NodeState.ToString();
+                            node.styleSheets.Remove(successStyleSheet);
+                            node.styleSheets.Remove(failureStyleSheet);
+                            node.styleSheets.Remove(runningStyleSheet); 
                             node.styleSheets.Add(UpdateStyleSheet(node.actionInstance.NodeState));
                             break;
                         default:

@@ -6,10 +6,10 @@ public abstract class Composite : AbstractNode
 {
     [SerializeField] public List<AbstractNode> nodes = new List<AbstractNode>();
 
-    protected float riskValue;
-    protected float minTimeValue;
-    protected float maxTimeValue;
-    protected float planValue;
+    [SerializeField] protected float riskValue;
+    [SerializeField] protected float minTimeValue;
+    [SerializeField] protected float maxTimeValue;
+    [SerializeField] protected float planValue;
 
     protected abstract void CalculatePlanValue();
     protected abstract void CalculateRiskValue();

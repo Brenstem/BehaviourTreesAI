@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: AttackESel7dc4f9f6-6f5e-4e06-bea2-4e39f4a0fb35
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: Top Nodeb76a1966-ffa8-4eb8-bd55-226929718d7b
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

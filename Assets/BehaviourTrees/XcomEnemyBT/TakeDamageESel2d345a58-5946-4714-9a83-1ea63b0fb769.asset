@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: TakeDamageESel2d345a58-5946-4714-9a83-1ea63b0fb769
   m_EditorClassIdentifier: 
   nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1

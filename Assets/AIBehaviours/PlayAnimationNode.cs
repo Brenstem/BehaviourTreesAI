@@ -23,7 +23,8 @@ public class PlayAnimationNode : Action
         {
             if (animator != null)
             {
-                animator.SetBool(animVarName, true);
+                animator.SetBool(animVarName, animBoolValue);
+                NodeState = NodeStates.SUCCESS;
             }
             else
             {

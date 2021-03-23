@@ -23,14 +23,20 @@ public class DemoEnemyAI : BaseAI
 
     private void Update()
     {
-        animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
+        if (!GetComponent<Health>().isDead)
+        {
+            animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
+        }
 
         Debug.DrawRay(transform.position, transform.forward * 200, Color.green);
     }
 
     private void FixedUpdate()
     {
-        behaviourTree.topNodeInstance.Evaluate();
+        if (!GetComponent<Health>().isDead)
+        {
+            behaviourTree.topNodeInstance.Evaluate();
+        }
     }
 
     private void OnDrawGizmos()
