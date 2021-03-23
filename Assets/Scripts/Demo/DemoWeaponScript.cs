@@ -28,7 +28,7 @@ public class DemoWeaponScript : MonoBehaviour
 
         foreach (var hit in hearingHits)
         {
-            Action.RaiseInterruptEvent(new InterruptEventArgs(hit.GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+            // Action.RaiseInterruptEvent(new InterruptEventArgs(hit.GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
         }
 
         if (firePFX != null)

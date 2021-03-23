@@ -23,6 +23,16 @@ public class EmotionalSelector : Composite
 
     private AbstractNode currentlyRunningNode;
 
+    public override void Construct(List<AbstractNode> nodes) 
+    {
+        base.Construct(nodes);
+
+        riskFactors = new float[nodes.Count];
+        planFactors = new float[nodes.Count];
+        timeFactors = new float[nodes.Count];
+        nodeWeights = new float[nodes.Count];
+        nodeProbabilities = new float[nodes.Count];
+
         if (interruptable)
             Action.InterruptEvent += Reset;
 
