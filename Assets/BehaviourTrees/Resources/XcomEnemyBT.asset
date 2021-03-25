@@ -106,21 +106,12 @@ MonoBehaviour:
   - BaseNodeGuid: a8446598-0cb1-411b-91c8-edae7aa6ac51
     PortName: 2
     TargetNodeGuid: e6a2d777-78b8-41f7-b820-70312b3bf9f7
-  - BaseNodeGuid: 8dc60566-0e33-4350-9f35-86988993c3e3
-    PortName: 0
-    TargetNodeGuid: d98ecf84-52cb-4a88-b569-48b88fc869d1
-  - BaseNodeGuid: 8dc60566-0e33-4350-9f35-86988993c3e3
-    PortName: 1
-    TargetNodeGuid: c497bb9e-89ca-4969-b9cc-e8224fe00db7
   - BaseNodeGuid: dd8403cb-f330-4944-9761-84eabb9211b3
     PortName: 0
     TargetNodeGuid: 400931ee-88b3-403d-8bb6-f15a4c18231d
   - BaseNodeGuid: dd8403cb-f330-4944-9761-84eabb9211b3
     PortName: 1
     TargetNodeGuid: af6b2eb0-4c92-414e-8333-9e0d50a50a8d
-  - BaseNodeGuid: 10e36656-012e-4e42-a2e2-91b176f207e1
-    PortName: 0
-    TargetNodeGuid: dd8403cb-f330-4944-9761-84eabb9211b3
   - BaseNodeGuid: af6b2eb0-4c92-414e-8333-9e0d50a50a8d
     PortName: 0
     TargetNodeGuid: 4e8f5318-8188-4d91-9e31-c6fdd9781d05
@@ -130,6 +121,12 @@ MonoBehaviour:
   - BaseNodeGuid: af6b2eb0-4c92-414e-8333-9e0d50a50a8d
     PortName: 2
     TargetNodeGuid: 66763cc8-dbed-4bc3-a532-9c115d5e6d9a
+  - BaseNodeGuid: 8dc60566-0e33-4350-9f35-86988993c3e3
+    PortName: 0
+    TargetNodeGuid: d98ecf84-52cb-4a88-b569-48b88fc869d1
+  - BaseNodeGuid: 8dc60566-0e33-4350-9f35-86988993c3e3
+    PortName: 1
+    TargetNodeGuid: c497bb9e-89ca-4969-b9cc-e8224fe00db7
   - BaseNodeGuid: 6a387985-ae9c-4f8c-9275-81b780e251c1
     PortName: 0
     TargetNodeGuid: 2c9b9174-a48e-43f2-b56e-311675f64d27
@@ -157,15 +154,6 @@ MonoBehaviour:
   - BaseNodeGuid: e29a7b6b-1000-4ba4-ac92-85b48c7bc4ab
     PortName: 2
     TargetNodeGuid: 07eb8dd1-0e60-483e-9404-68460501d5db
-  - BaseNodeGuid: c497bb9e-89ca-4969-b9cc-e8224fe00db7
-    PortName: 0
-    TargetNodeGuid: bb3ee642-d62f-4cb6-8c19-21753670325e
-  - BaseNodeGuid: c497bb9e-89ca-4969-b9cc-e8224fe00db7
-    PortName: 1
-    TargetNodeGuid: 6a387985-ae9c-4f8c-9275-81b780e251c1
-  - BaseNodeGuid: c497bb9e-89ca-4969-b9cc-e8224fe00db7
-    PortName: 2
-    TargetNodeGuid: e29a7b6b-1000-4ba4-ac92-85b48c7bc4ab
   - BaseNodeGuid: 91b42021-77fb-4781-a176-721a465db672
     PortName: 0
     TargetNodeGuid: c5dfdf47-2276-4945-b0d0-e83747192623
@@ -175,15 +163,27 @@ MonoBehaviour:
   - BaseNodeGuid: 91b42021-77fb-4781-a176-721a465db672
     PortName: 2
     TargetNodeGuid: 3f0ed094-ccd1-489c-ab3e-3dd71dabe01c
-  - BaseNodeGuid: 10e36656-012e-4e42-a2e2-91b176f207e1
+  - BaseNodeGuid: c497bb9e-89ca-4969-b9cc-e8224fe00db7
+    PortName: 0
+    TargetNodeGuid: bb3ee642-d62f-4cb6-8c19-21753670325e
+  - BaseNodeGuid: c497bb9e-89ca-4969-b9cc-e8224fe00db7
     PortName: 1
-    TargetNodeGuid: 7b03524b-52ab-4558-b7f4-2a44ffbfff24
+    TargetNodeGuid: 6a387985-ae9c-4f8c-9275-81b780e251c1
+  - BaseNodeGuid: c497bb9e-89ca-4969-b9cc-e8224fe00db7
+    PortName: 2
+    TargetNodeGuid: e29a7b6b-1000-4ba4-ac92-85b48c7bc4ab
   - BaseNodeGuid: 7b03524b-52ab-4558-b7f4-2a44ffbfff24
     PortName: 0
     TargetNodeGuid: 8dc60566-0e33-4350-9f35-86988993c3e3
   - BaseNodeGuid: 7b03524b-52ab-4558-b7f4-2a44ffbfff24
     PortName: 1
     TargetNodeGuid: 91b42021-77fb-4781-a176-721a465db672
+  - BaseNodeGuid: 10e36656-012e-4e42-a2e2-91b176f207e1
+    PortName: 0
+    TargetNodeGuid: dd8403cb-f330-4944-9761-84eabb9211b3
+  - BaseNodeGuid: 10e36656-012e-4e42-a2e2-91b176f207e1
+    PortName: 1
+    TargetNodeGuid: 7b03524b-52ab-4558-b7f4-2a44ffbfff24
   nodeData:
   - nodeTitle: Top Node
     nodeName: Selector
@@ -653,15 +653,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: d0fe5e48488daf3479142a1f93bf7db8, type: 2}
     GUID: c5dfdf47-2276-4945-b0d0-e83747192623
     Position: {x: 1826, y: -402}
-  - nodeTitle: GuessPlayerPosition
-    nodeName: GuessPlayerPosition
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: c22c8fe6710b6f6479f32741658343bc, type: 2}
-    GUID: d5733fc0-1c42-4199-b3d6-acaa6e698f32
-    Position: {x: 1910, y: -251}
   - nodeTitle: ChaseNode
     nodeName: ChaseNode
     topNode: 0
@@ -707,4 +698,13 @@ MonoBehaviour:
     actionInstance: {fileID: 0}
     GUID: 10e36656-012e-4e42-a2e2-91b176f207e1
     Position: {x: 612, y: -753}
+  - nodeTitle: GuessPlayerPosition
+    nodeName: GuessPlayerPosition
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c22c8fe6710b6f6479f32741658343bc, type: 2}
+    GUID: d5733fc0-1c42-4199-b3d6-acaa6e698f32
+    Position: {x: 1802, y: -254}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}

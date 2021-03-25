@@ -53,7 +53,7 @@ public class DemoEnemyAI : BaseAI
         Quaternion targetRot = Quaternion.LookRotation(target.position - transform.position);
         float delta = Quaternion.Angle(transform.rotation, targetRot);
 
-        if (delta > 5f)
+        if (delta > 10f)
         {
             float t = Mathf.SmoothDampAngle(delta, 0.0f, ref AngularVelocity, RotateSmoothTime);
             t = 1.0f - t / delta;

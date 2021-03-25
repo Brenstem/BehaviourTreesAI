@@ -16,5 +16,7 @@ MonoBehaviour:
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  animVarName: 
-  animBoolValue: 0
+  animVarName: Hunkered
+  animBoolValue: 1
+  waitForAnimation: 1
+  animationName: infantry_prone_goto

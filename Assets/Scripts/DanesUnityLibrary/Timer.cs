@@ -8,6 +8,7 @@ public class Timer
     private float startTime;
     private float currentTime;
     public bool Done { get { return currentTime <= 0; } }
+    public float CurrentTime { get { return currentTime; } }
     public System.Action eventCallback;
 
     public Timer(float time, System.Action eventCallback = null)

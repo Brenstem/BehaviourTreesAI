@@ -18,3 +18,5 @@ MonoBehaviour:
   planValue: 0
   animVarName: Hunkered
   animBoolValue: 0
+  waitForAnimation: 1
+  animationName: infantry_prone_standup
