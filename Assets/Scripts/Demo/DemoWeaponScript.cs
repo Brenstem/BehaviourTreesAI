@@ -28,6 +28,11 @@ public class DemoWeaponScript : MonoBehaviour
 
         foreach (var hit in hearingHits)
         {
+            if (hit.GetComponent<DemoEnemyAI>() != null)
+            {
+                hit.GetComponent<DemoEnemyAI>().TurnTowards(transform);
+            }
+
             // Action.RaiseInterruptEvent(new InterruptEventArgs(hit.GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
         }
 
