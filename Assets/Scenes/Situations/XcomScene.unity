@@ -2550,6 +2550,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7277940364719615557, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.992
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277940364719615557, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.266
+      objectReference: {fileID: 0}
     - target: {fileID: 7277940365398376330, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
       propertyPath: invulnerable
       value: 1
