@@ -17,4 +17,4 @@ MonoBehaviour:
   maxTimeValue: 0
   planValue: 0
   runTime: 1
-  rotationSpeed: 0.5
+  rotationSpeed: 3
