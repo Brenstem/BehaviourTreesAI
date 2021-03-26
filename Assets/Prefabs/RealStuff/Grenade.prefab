@@ -63,11 +63,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionVFX: {fileID: 6691042760147776411, guid: 80c086e29a149db4380f6c3c60ba1632, type: 3}
-  explosionRadius: 3
+  explosionRadius: 4.5
   damageLayers:
     serializedVersion: 2
     m_Bits: 1536
-  triggerDelayTime: 3
+  triggerDelayTime: 1.5
   explosionDelayTime: 0.1
   damage: 40
 --- !u!82 &4049692748631189145

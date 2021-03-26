@@ -27,6 +27,12 @@ public class DemoEnemyAI : BaseAI
         if (!GetComponent<Health>().isDead)
         {
             animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
+
+            float moveX = agent.velocity.x;
+            float moveZ = agent.velocity.z;
+
+            animator.SetFloat("moveZ", moveZ);
+            animator.SetFloat("moveX", moveX);
         }
 
         if (turn)

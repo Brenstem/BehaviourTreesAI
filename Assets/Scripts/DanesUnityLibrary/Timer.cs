@@ -24,7 +24,7 @@ public class Timer
 
         if (currentTime <= 0)
         {
-            if(eventCallback != null)
+            if (eventCallback != null)
                 eventCallback();
         }
     }
@@ -33,7 +33,7 @@ public class Timer
     {
         currentTime = startTime;
     }
-    
+
     public void Reset(float newTime)
     {
         startTime = newTime;

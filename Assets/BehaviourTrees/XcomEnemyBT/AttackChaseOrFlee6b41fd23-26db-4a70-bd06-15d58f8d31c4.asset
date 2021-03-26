@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e68e0d1a421e244c803b0c780c734cb, type: 3}
-  m_Name: HunkerAnim8de19dff-a256-461a-a5e3-fa480f6b65a4
+  m_Script: {fileID: 11500000, guid: 7391c1183ad7d8f4099920316e2a2bc0, type: 3}
+  m_Name: AttackChaseOrFlee6b41fd23-26db-4a70-bd06-15d58f8d31c4
   m_EditorClassIdentifier: 
-  riskValue: 0.6
+  nodes: []
+  riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  animVarName: Hunkered
-  animBoolValue: 1
-  waitForAnimation: 1
-  animationName: infantry_prone_goto
+  interruptable: 1

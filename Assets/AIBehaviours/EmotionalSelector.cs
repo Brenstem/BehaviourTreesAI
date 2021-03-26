@@ -7,6 +7,7 @@ using UnityEngine;
 public class EmotionalSelector : Composite
 {
     [SerializeField] private bool interruptable = true;
+    [SerializeField] private float[] nodeProbabilities;
 
     private float eRisk;
     private float ePlan;
@@ -18,7 +19,6 @@ public class EmotionalSelector : Composite
     private float[] timeFactors;
 
     private float[] nodeWeights;
-    private float[] nodeProbabilities;
 
 
     private AbstractNode currentlyRunningNode;

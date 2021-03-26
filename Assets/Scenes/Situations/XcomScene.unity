@@ -2299,6 +2299,10 @@ PrefabInstance:
       propertyPath: throwAngleBase
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4602622866398995055, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5370362431932693947, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2369,15 +2373,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129375, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Speed
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129375, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Acceleration
-      value: 12
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370362433262129375, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5768648756812700169, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: startingHealth
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
@@ -2621,6 +2629,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 7135488446798979419}
+    - target: {fileID: 7277940365398376330, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
+      propertyPath: startingHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7277940365398376333, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
       propertyPath: shootCooldown
       value: 0.05

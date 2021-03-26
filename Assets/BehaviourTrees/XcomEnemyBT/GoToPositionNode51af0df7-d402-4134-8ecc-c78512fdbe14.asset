@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111ad3a8c365280428a7e9164d326f5d, type: 3}
-  m_Name: GuessPlayerPositiond5733fc0-1c42-4199-b3d6-acaa6e698f32
+  m_Script: {fileID: 11500000, guid: 251894acd0aae954484651c67cd1c92e, type: 3}
+  m_Name: GoToPositionNode51af0df7-d402-4134-8ecc-c78512fdbe14
   m_EditorClassIdentifier: 
-  riskValue: 0
-  minTimeValue: 1
-  maxTimeValue: 2
+  riskValue: 0.2
+  minTimeValue: 2
+  maxTimeValue: 5
   planValue: 5
-  influence: 1
+  setPositionManually: 0
+  relativeTargetPosition: {x: 0, y: 0, z: 0}
+  blackboardPositionName: positionToGoTo
