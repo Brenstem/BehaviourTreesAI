@@ -18,6 +18,11 @@ public abstract class Composite : AbstractNode
     public virtual void Construct(List<AbstractNode> nodes)
     {
         this.nodes = nodes;
+
+        CalculatePlanValue();
+        CalculateRiskValue();
+        CalculateTimeInterval();
+
         _constructed = true;
     }
     public override float GetRiskValue()

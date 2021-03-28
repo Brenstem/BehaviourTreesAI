@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
@@ -45,44 +46,14 @@ public class Health : MonoBehaviour
                 //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
                 aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
             }
-            
-            if(damageVal != 0)
+
+            if (damageVal != 0)
                 animator.SetTrigger("Hurt");
-            animator.SetTrigger("Hurt");
 
             currentHealth -= damageVal;
 
             if (hurtParticle != null)
-                Instantiate(hurtParticle, transform.position, transform.rotation);
-
-            if (healthbar != null)
-                healthbar.value = currentHealth;
-
-            if (currentHealth <= 0)
-                Die();
-        }
-    }
-
-    public void Damage(float damageVal, Vector3 hurtPFXDirection)
-    {
-        if (!invulnerable)
-        {
-            if (GetComponent<BaseAI>() != null)
-            {
-                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
-
-                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
-
-                if (damageVal != 0)
-                {
-                    aiInstance.animator.SetTrigger("Hurt");
-                }
-            }
-
-            currentHealth -= damageVal;
-
-            if (hurtParticle != null && damageVal > 0) 
-                Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
+                // Instantiate(hurtParticle, transform.position, transform.rotation);
 
             if (healthbar != null)
                 healthbar.value = currentHealth;
@@ -94,28 +65,29 @@ public class Health : MonoBehaviour
 
     public void Damage(float damageVal, Vector3 hurtPFXDirection, AudioClip hitClip)
     {
+        Debug.Log("hit");
+
         if (!invulnerable)
         {
-            if (GetComponent<BaseAI>() != null)
-            {
-                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
-
-                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
-
-                if (damageVal != 0)
-                {
-                    aiInstance.animator.SetTrigger("Hurt");
-                }
-            }
-
-            currentHealth -= damageVal;
-
-            if (hurtParticle != null && damageVal > 0)
+            if (GetComponent<BaseAI>() != null)
             {
-                GameObject instance = Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
-                instance.GetComponent<AudioSource>().PlayOneShot(hitClip);
+                //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
+                if (damageVal != 0)
+                {
+                    Debug.Log("hurt");
+
+                    aiInstance.animator.SetTrigger("Hurt");
+                    currentHealth -= damageVal;
+                }
             }
 
+
+            if (hurtParticle != null && damageVal > 0)
+            {
+                GameObject instance = Instantiate(hurtParticle, transform.position, Quaternion.LookRotation(hurtPFXDirection));
+                instance.GetComponent<AudioSource>().PlayOneShot(hitClip);
+            }
 
             if (healthbar != null)
                 healthbar.value = currentHealth;
@@ -129,5 +101,10 @@ public class Health : MonoBehaviour
     {
         isDead = true;
         animator.SetBool("Dead", true);
+
+        if (GetComponent<NavMeshAgent>() != null)
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
     }
 }

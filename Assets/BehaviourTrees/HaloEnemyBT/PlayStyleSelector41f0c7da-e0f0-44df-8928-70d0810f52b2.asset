@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7391c1183ad7d8f4099920316e2a2bc0, type: 3}
+  m_Name: PlayStyleSelector41f0c7da-e0f0-44df-8928-70d0810f52b2
+  m_EditorClassIdentifier: 
+  nodes: []
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  interruptable: 1
+  nodeProbabilities: []

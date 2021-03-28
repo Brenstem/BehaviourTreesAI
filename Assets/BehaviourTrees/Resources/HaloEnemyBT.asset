@@ -1,0 +1,434 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: HaloEnemyBT
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: e0774d42-a590-46b0-9e18-620e5c0ced39
+    PortName: 0
+    TargetNodeGuid: addd2ca0-872b-438b-b99f-c713508b4fac
+  - BaseNodeGuid: e0774d42-a590-46b0-9e18-620e5c0ced39
+    PortName: 1
+    TargetNodeGuid: 534f4477-7d1b-4115-bccd-69492c644bcf
+  - BaseNodeGuid: e0774d42-a590-46b0-9e18-620e5c0ced39
+    PortName: 2
+    TargetNodeGuid: 18fc5ad6-c01c-44d5-b229-85ffd7ae9b0f
+  - BaseNodeGuid: 534f4477-7d1b-4115-bccd-69492c644bcf
+    PortName: 0
+    TargetNodeGuid: 47144431-f32e-4af8-b7af-e76c7a18deb2
+  - BaseNodeGuid: 534f4477-7d1b-4115-bccd-69492c644bcf
+    PortName: 1
+    TargetNodeGuid: 5067d0fc-c126-4ae9-9afc-b51f8e098050
+  - BaseNodeGuid: 5067d0fc-c126-4ae9-9afc-b51f8e098050
+    PortName: 0
+    TargetNodeGuid: 7019a2f6-c10f-4e8a-b96a-efcc96105b98
+  - BaseNodeGuid: 5067d0fc-c126-4ae9-9afc-b51f8e098050
+    PortName: 1
+    TargetNodeGuid: b9e8ffd5-3107-4505-8f6b-f322cdc56c78
+  - BaseNodeGuid: b9e8ffd5-3107-4505-8f6b-f322cdc56c78
+    PortName: 0
+    TargetNodeGuid: e6d8f66b-cf3a-4481-a498-249170c660f4
+  - BaseNodeGuid: b9e8ffd5-3107-4505-8f6b-f322cdc56c78
+    PortName: 1
+    TargetNodeGuid: 1ab12d63-c4ce-4cd8-b8c9-c7217f59f6d2
+  - BaseNodeGuid: 678f6b3b-c655-479e-97dc-9aef753972c3
+    PortName: 0
+    TargetNodeGuid: 4099f793-626d-4f75-9176-20ed6fac1896
+  - BaseNodeGuid: 678f6b3b-c655-479e-97dc-9aef753972c3
+    PortName: 1
+    TargetNodeGuid: 7204f660-2206-4af8-ac4e-964382846ff1
+  - BaseNodeGuid: e6d8f66b-cf3a-4481-a498-249170c660f4
+    PortName: 0
+    TargetNodeGuid: ab498aac-94e4-4faf-b1a8-4810e9063eb7
+  - BaseNodeGuid: e6d8f66b-cf3a-4481-a498-249170c660f4
+    PortName: 1
+    TargetNodeGuid: 678f6b3b-c655-479e-97dc-9aef753972c3
+  - BaseNodeGuid: 1ab12d63-c4ce-4cd8-b8c9-c7217f59f6d2
+    PortName: 0
+    TargetNodeGuid: daeed6d9-1874-41c0-8526-65d1304fa8d4
+  - BaseNodeGuid: 1ab12d63-c4ce-4cd8-b8c9-c7217f59f6d2
+    PortName: 1
+    TargetNodeGuid: c80fc308-5395-422f-b2c0-e4a5be8e9180
+  - BaseNodeGuid: b70f3112-75cd-44b4-8ae3-35928757a952
+    PortName: 0
+    TargetNodeGuid: d38deb0b-a645-48a2-a10e-dafc82ef51b4
+  - BaseNodeGuid: b70f3112-75cd-44b4-8ae3-35928757a952
+    PortName: 1
+    TargetNodeGuid: 826c7464-4d51-46e1-aec5-67853a5a34bc
+  - BaseNodeGuid: 47144431-f32e-4af8-b7af-e76c7a18deb2
+    PortName: 0
+    TargetNodeGuid: 44aa927b-ec4e-4421-aa1d-c46a59d9681e
+  - BaseNodeGuid: 47144431-f32e-4af8-b7af-e76c7a18deb2
+    PortName: 1
+    TargetNodeGuid: b70f3112-75cd-44b4-8ae3-35928757a952
+  - BaseNodeGuid: 826c7464-4d51-46e1-aec5-67853a5a34bc
+    PortName: 0
+    TargetNodeGuid: 37814222-c472-469f-aa8d-3d321cb8b756
+  - BaseNodeGuid: 826c7464-4d51-46e1-aec5-67853a5a34bc
+    PortName: 1
+    TargetNodeGuid: 8b11b8ac-ac63-4159-8de0-43b7d7defe32
+  - BaseNodeGuid: 8fa49226-d66b-40e9-b286-511458e56faa
+    PortName: 0
+    TargetNodeGuid: 02b85f39-8cc8-41d8-8338-04dafa0f28d6
+  - BaseNodeGuid: 8fa49226-d66b-40e9-b286-511458e56faa
+    PortName: 1
+    TargetNodeGuid: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
+  - BaseNodeGuid: d38deb0b-a645-48a2-a10e-dafc82ef51b4
+    PortName: 0
+    TargetNodeGuid: f9f69906-7190-44d6-8c70-c3f9a1d343bc
+  - BaseNodeGuid: d38deb0b-a645-48a2-a10e-dafc82ef51b4
+    PortName: 1
+    TargetNodeGuid: 8fa49226-d66b-40e9-b286-511458e56faa
+  - BaseNodeGuid: addd2ca0-872b-438b-b99f-c713508b4fac
+    PortName: 0
+    TargetNodeGuid: 99a618fa-f28f-49fb-946b-319c507e068a
+  - BaseNodeGuid: addd2ca0-872b-438b-b99f-c713508b4fac
+    PortName: 1
+    TargetNodeGuid: b2493ffb-42e1-4366-8fcd-022c48fc966f
+  - BaseNodeGuid: addd2ca0-872b-438b-b99f-c713508b4fac
+    PortName: 2
+    TargetNodeGuid: 4c3e13c6-0887-4042-8fd4-85241f2064b3
+  - BaseNodeGuid: b2493ffb-42e1-4366-8fcd-022c48fc966f
+    PortName: 0
+    TargetNodeGuid: 208d83ce-4889-4c76-94b5-da6a81f930b7
+  - BaseNodeGuid: b2493ffb-42e1-4366-8fcd-022c48fc966f
+    PortName: 1
+    TargetNodeGuid: 41f0c7da-e0f0-44df-8928-70d0810f52b2
+  - BaseNodeGuid: 41f0c7da-e0f0-44df-8928-70d0810f52b2
+    PortName: 0
+    TargetNodeGuid: 5a859350-90a1-44c8-b855-1526658d81ba
+  - BaseNodeGuid: 41f0c7da-e0f0-44df-8928-70d0810f52b2
+    PortName: 1
+    TargetNodeGuid: 2173b883-0faf-401c-b722-933aa3077253
+  - BaseNodeGuid: 4c3e13c6-0887-4042-8fd4-85241f2064b3
+    PortName: 0
+    TargetNodeGuid: c673d77a-e477-444c-a5c9-0874bb50811b
+  - BaseNodeGuid: 4c3e13c6-0887-4042-8fd4-85241f2064b3
+    PortName: 1
+    TargetNodeGuid: faf6d44a-c29f-48a3-a6da-584a4a2047be
+  nodeData:
+  - nodeTitle: Top Node
+    nodeName: Selector
+    topNode: 1
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: b07ce85207bbc1c4bbb18ef8dbfcecc3, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: e0774d42-a590-46b0-9e18-620e5c0ced39
+    Position: {x: 0, y: 0}
+  - nodeTitle: IdleNode
+    nodeName: IdleNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 8c87046e81d86be4aaa308745c4c4eaa, type: 2}
+    GUID: 18fc5ad6-c01c-44d5-b229-85ffd7ae9b0f
+    Position: {x: 510, y: 423}
+  - nodeTitle: PlayStyleSel
+    nodeName: Selector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 6542791b49247964f835d3749aba3d3f, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 534f4477-7d1b-4115-bccd-69492c644bcf
+    Position: {x: 524, y: 32}
+  - nodeTitle: CowardSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: d26077262012a22458063917ecaa9d67, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 5067d0fc-c126-4ae9-9afc-b51f8e098050
+    Position: {x: 1025, y: 362}
+  - nodeTitle: AggroSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: a9a8ef67abbd03b45a60d36d24b6f010, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 47144431-f32e-4af8-b7af-e76c7a18deb2
+    Position: {x: 1019, y: -122}
+  - nodeTitle: IsAggroPlaystyle
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 56c27e860ed78ae48b9e94bf06710877, type: 2}
+    GUID: 44aa927b-ec4e-4421-aa1d-c46a59d9681e
+    Position: {x: 1436, y: -197}
+  - nodeTitle: AggroPlayStyleSel
+    nodeName: Selector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 81216607920712549865c0ba56aef418, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: b70f3112-75cd-44b4-8ae3-35928757a952
+    Position: {x: 1439, y: -98}
+  - nodeTitle: ChasePlayerSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 279a87b86d65f6c4183f6974a41dde7a, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 826c7464-4d51-46e1-aec5-67853a5a34bc
+    Position: {x: 1950, y: -41}
+  - nodeTitle: AttackESel
+    nodeName: EmotionalSelector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 5de39abb750962c4d80c625634ec5340, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 8fa49226-d66b-40e9-b286-511458e56faa
+    Position: {x: 2422, y: -215}
+  - nodeTitle: AttackSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 69d016a510c72aa4a83e80f5674f144d, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: d38deb0b-a645-48a2-a10e-dafc82ef51b4
+    Position: {x: 1956, y: -186}
+  - nodeTitle: RangeAndSightCheck
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 022ee7ded261c6d4fb91b7b23cc37bed, type: 2}
+    GUID: f9f69906-7190-44d6-8c70-c3f9a1d343bc
+    Position: {x: 2420, y: -322}
+  - nodeTitle: ShootSequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 5bd15357d37debe4ba2fbe9070883a13, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 02b85f39-8cc8-41d8-8338-04dafa0f28d6
+    Position: {x: 2987, y: -263}
+  - nodeTitle: GrenadeSequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 2d48d877db8a35a4187c8061dd50a075, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
+    Position: {x: 2985, y: -154}
+  - nodeTitle: IfPlayerFar
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 1dadddfa5d3baef4fbf408872db4468e, type: 2}
+    GUID: 37814222-c472-469f-aa8d-3d321cb8b756
+    Position: {x: 2405, y: -84}
+  - nodeTitle: ChasePlayer
+    nodeName: DebugNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 22454b90fedc8fb48b3c2abf9f4a3fd4, type: 2}
+    GUID: 8b11b8ac-ac63-4159-8de0-43b7d7defe32
+    Position: {x: 2410, y: 22}
+  - nodeTitle: IsAggroPlayStyle
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 2905575e0f6badc41b1ca103c02800cc, type: 2}
+    GUID: 7019a2f6-c10f-4e8a-b96a-efcc96105b98
+    Position: {x: 1464, y: 299}
+  - nodeTitle: Selector
+    nodeName: Selector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: e497c970509711d41bc18f2bb6c0c28c, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: b9e8ffd5-3107-4505-8f6b-f322cdc56c78
+    Position: {x: 1457, y: 444}
+  - nodeTitle: AttackSequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: b84e593f567bbde48bf2605bd66c9e5a, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: e6d8f66b-cf3a-4481-a498-249170c660f4
+    Position: {x: 1882, y: 418}
+  - nodeTitle: AttackESel
+    nodeName: EmotionalSelector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 8bd5fc7b4aac4e64185d5c772cda390d, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 678f6b3b-c655-479e-97dc-9aef753972c3
+    Position: {x: 2374, y: 445}
+  - nodeTitle: RangeAndSightCheck
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 449ab461f1aa686409b4fc24b978c99a, type: 2}
+    GUID: ab498aac-94e4-4faf-b1a8-4810e9063eb7
+    Position: {x: 2372, y: 331}
+  - nodeTitle: IfPlayerClose
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: dd87634b9364bfb4a8433cacf3e9c0f8, type: 2}
+    GUID: daeed6d9-1874-41c0-8526-65d1304fa8d4
+    Position: {x: 2350, y: 590}
+  - nodeTitle: FleeToCover
+    nodeName: DebugNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 0c5ddddc16866684baef2f9dc8a7d5ce, type: 2}
+    GUID: c80fc308-5395-422f-b2c0-e4a5be8e9180
+    Position: {x: 2356, y: 696}
+  - nodeTitle: GrenadeSequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: fdf74ebdb68154c4fa8015ac8982efb3, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 7204f660-2206-4af8-ac4e-964382846ff1
+    Position: {x: 2950, y: 490}
+  - nodeTitle: ShootSequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 25741df5443356b449e6b7ce1404e968, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 4099f793-626d-4f75-9176-20ed6fac1896
+    Position: {x: 2949, y: 379}
+  - nodeTitle: FleeSequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 9718df0d269b3e5479015ee92d556207, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 1ab12d63-c4ce-4cd8-b8c9-c7217f59f6d2
+    Position: {x: 1893, y: 555}
+  - nodeTitle: GeneralHurtSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 720169cf2b1bde742b325bdacdce746e, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: addd2ca0-872b-438b-b99f-c713508b4fac
+    Position: {x: 495, y: -844}
+  - nodeTitle: IsGeneralHurt
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 060a80f0df1afbf408e7c352d5d19978, type: 2}
+    GUID: 99a618fa-f28f-49fb-946b-319c507e068a
+    Position: {x: 993, y: -954}
+  - nodeTitle: GeneralDeadSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 6da64777c10bcde4798c9d0e84dc34a0, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: b2493ffb-42e1-4366-8fcd-022c48fc966f
+    Position: {x: 998, y: -835}
+  - nodeTitle: IsGeneralDead
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 35c34ae7d288efe439f970bee42bb13b, type: 2}
+    GUID: 208d83ce-4889-4c76-94b5-da6a81f930b7
+    Position: {x: 1497, y: -892}
+  - nodeTitle: PlayStyleSelector
+    nodeName: EmotionalSelector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 8222d56fd25f9c7498e629353f0c101b, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 41f0c7da-e0f0-44df-8928-70d0810f52b2
+    Position: {x: 1509, y: -783}
+  - nodeTitle: SetAggroPlayStyle
+    nodeName: SetConditionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 7bcd1dce20c3a224ebe065547c6c4991, type: 2}
+    GUID: 5a859350-90a1-44c8-b855-1526658d81ba
+    Position: {x: 2061, y: -832}
+  - nodeTitle: SetCowardPlaystyle
+    nodeName: SetConditionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 9f63c4e23ad34e34f918b0c1b25ab94e, type: 2}
+    GUID: 2173b883-0faf-401c-b722-933aa3077253
+    Position: {x: 2069, y: -731}
+  - nodeTitle: PlayStyleSelector
+    nodeName: EmotionalSelector
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: be58dff2d6090fd4aa7594238c09cf4a, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 4c3e13c6-0887-4042-8fd4-85241f2064b3
+    Position: {x: 999, y: -619}
+  - nodeTitle: SetAggroPlayStyle
+    nodeName: SetConditionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 1f24de7f02f05a34fb56ced5d757b48c, type: 2}
+    GUID: c673d77a-e477-444c-a5c9-0874bb50811b
+    Position: {x: 1534, y: -618}
+  - nodeTitle: SetCowardPlayStyle
+    nodeName: SetConditionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c424c53ec221ad847ba7aa557f9ef287, type: 2}
+    GUID: faf6d44a-c29f-48a3-a6da-584a4a2047be
+    Position: {x: 1517, y: -520}
+  globalData: {fileID: 0}

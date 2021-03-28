@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3499305c562ab3349b4314424421df17, type: 3}
   m_Name: SeekCoverNodeac541268-26ee-4f28-a9b3-bda9875112d5
   m_EditorClassIdentifier: 
-  riskValue: 1
+  riskValue: 0.1
   minTimeValue: 2
   maxTimeValue: 4
   planValue: 7

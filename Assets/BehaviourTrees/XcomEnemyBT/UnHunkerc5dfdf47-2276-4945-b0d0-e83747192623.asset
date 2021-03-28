@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e68e0d1a421e244c803b0c780c734cb, type: 3}
   m_Name: UnHunkerc5dfdf47-2276-4945-b0d0-e83747192623
   m_EditorClassIdentifier: 
-  riskValue: 0
-  minTimeValue: 0
-  maxTimeValue: 0
-  planValue: 0
+  riskValue: 0.4
+  minTimeValue: 1
+  maxTimeValue: 2
+  planValue: 1
   animVarName: Hunkered
   animBoolValue: 0
+  waitForAnimation: 1
+  animationName: infantry_prone_standup

@@ -65,15 +65,15 @@ public class Selector : Composite
                 case NodeStates.SUCCESS:
                     currentRunningNodeIndex = -1;
                     NodeState = NodeStates.SUCCESS;
-                    break;
-                
+                    return NodeState;
+
                 case NodeStates.FAILURE:
                     break;
             }
         }
-        //if all nodes returns success reset currentRunningNodeIndex
+        //if all nodes returns failure reset currentRunningNodeIndex
         currentRunningNodeIndex = -1;
-        NodeState = NodeStates.SUCCESS;
+        NodeState = NodeStates.FAILURE;
         return NodeState;
     }
     private void Reset(InterruptEventArgs args)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251894acd0aae954484651c67cd1c92e, type: 3}
   m_Name: GoToPositionNode5a14ac1d-5fe3-4523-9722-b70da1fe241c
   m_EditorClassIdentifier: 
-  riskValue: 3
+  riskValue: 0.3
   minTimeValue: 5
   maxTimeValue: 10
   planValue: 3

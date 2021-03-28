@@ -28,7 +28,12 @@ public class DemoWeaponScript : MonoBehaviour
 
         foreach (var hit in hearingHits)
         {
-            Action.RaiseInterruptEvent(new InterruptEventArgs(hit.GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
+            if (hit.GetComponent<DemoEnemyAI>() != null)
+            {
+                hit.GetComponent<DemoEnemyAI>().TurnTowards(transform);
+            }
+
+            // Action.RaiseInterruptEvent(new InterruptEventArgs(hit.GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
         }
 
         if (firePFX != null)
@@ -39,8 +44,14 @@ public class DemoWeaponScript : MonoBehaviour
 
         if (Physics.Raycast(firePosition.position, firePosition.forward, 200f))
         {
-            RaycastHit[] hit = Physics.RaycastAll(firePosition.position, firePosition.forward, 200f);
-            Hit(hit);
+            RaycastHit[] hits = Physics.RaycastAll(firePosition.position, firePosition.forward, 200f);
+
+            foreach (var hit in hits)
+            {
+                Debug.Log(hit.collider.name);
+            }
+
+            Hit(hits);
         }
 
         if (owner != null)
@@ -49,27 +60,29 @@ public class DemoWeaponScript : MonoBehaviour
 
     public void Hit(RaycastHit[] hits)
     {
+        System.Array.Sort(hits, (x, y) => x.distance.CompareTo(y.distance));
+
         foreach (var hit in hits)
         {
             if (!hit.collider.CompareTag(this.tag))
             {
-                if (hit.collider.CompareTag("Environment"))
+                if (hit.collider.CompareTag("Enemy") || hit.collider.tag == "Player")
+                {
+                    hit.collider.GetComponent<Health>().Damage(damage, hit.normal, hitClip);
+                    break;
+                }
+                else if (hit.collider.CompareTag("Environment"))
                 {
                     if (environmentHitPFX != null)
                     {
                         GameObject instance = Instantiate(environmentHitPFX, hit.point, Quaternion.LookRotation(hit.normal));
+
                         if (environmentHitClips.Count > 0)
                         {
                             int i = Random.Range(0, environmentHitClips.Count);
                             instance.GetComponent<AudioSource>().PlayOneShot(environmentHitClips[i]);
                         }
                     }
-
-                    break;
-                }
-                else if (hit.collider.CompareTag("Enemy") || hit.collider.tag == "Player")
-                {
-                    hit.collider.GetComponent<Health>().Damage(damage, hit.normal, hitClip);
                     break;
                 }
                 else if (hit.collider.CompareTag("EnemyNearMissRadius"))

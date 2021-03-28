@@ -17,4 +17,5 @@ MonoBehaviour:
   maxTimeValue: 0
   planValue: 0
   conditionToCheck: Aggroed
-  reset: 1
+  desiredValue: 1
+  reset: 0
