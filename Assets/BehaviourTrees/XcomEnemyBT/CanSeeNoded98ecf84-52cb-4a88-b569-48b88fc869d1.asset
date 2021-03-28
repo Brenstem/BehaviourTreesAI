@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e24e53f372260e4c829c63fa298d6b5, type: 3}
   m_Name: CanSeeNoded98ecf84-52cb-4a88-b569-48b88fc869d1
   m_EditorClassIdentifier: 
-  riskValue: 0
+  riskValue: 0.1
   minTimeValue: 0
   maxTimeValue: 0
-  planValue: 0
+  planValue: 4
   targetLayers:
     serializedVersion: 2
     m_Bits: 768
-  range: 20
+  range: 30

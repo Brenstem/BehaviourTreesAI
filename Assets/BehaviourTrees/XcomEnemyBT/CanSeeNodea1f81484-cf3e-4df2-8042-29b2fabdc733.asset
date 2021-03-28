@@ -19,4 +19,4 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 768
-  range: 20
+  range: 30

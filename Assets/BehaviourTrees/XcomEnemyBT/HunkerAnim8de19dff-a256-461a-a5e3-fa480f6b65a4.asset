@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e68e0d1a421e244c803b0c780c734cb, type: 3}
   m_Name: HunkerAnim8de19dff-a256-461a-a5e3-fa480f6b65a4
   m_EditorClassIdentifier: 
-  riskValue: 0
+  riskValue: 0.6
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  animVarName: 
-  animBoolValue: 0
+  animVarName: Hunkered
+  animBoolValue: 1
+  waitForAnimation: 0
+  animationName: "\xB4"

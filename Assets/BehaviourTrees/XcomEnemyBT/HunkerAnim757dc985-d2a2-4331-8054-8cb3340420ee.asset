@@ -18,3 +18,5 @@ MonoBehaviour:
   planValue: 0
   animVarName: Hunkered
   animBoolValue: 1
+  waitForAnimation: 0
+  animationName: 

@@ -101,6 +101,7 @@ public class Sequence : Composite
         riskValue = 0;
 
         float risk = 1;
+
         foreach (AbstractNode node in nodes)
         {
             risk *= (1 - node.GetRiskValue());

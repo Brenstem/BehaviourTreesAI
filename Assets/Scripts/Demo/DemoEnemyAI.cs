@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,26 +27,63 @@ public class DemoEnemyAI : BaseAI
         if (!GetComponent<Health>().isDead)
         {
             animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
+
+            float moveX = agent.velocity.x;
+            float moveZ = agent.velocity.z;
+
+            animator.SetFloat("moveZ", moveZ);
+            animator.SetFloat("moveX", moveX);
         }
 
-        Debug.Log(Vector3.Distance(transform.position, behaviourTree.context.globalData.player.transform.position));
+        if (turn)
+        {
+            turn = TurnTowardsInternal(turnTarget);
+        }
+        
+    }
 
-        Debug.DrawRay(transform.position, transform.forward * 200, Color.green);
+    private bool turn = false;
+    private Transform turnTarget;
+
+    public void TurnTowards(Transform target)
+    {
+        turn = true;
+        turnTarget = target;
+    }
+
+    private bool TurnTowardsInternal(Transform target)
+    {
+        float RotateSmoothTime = 0.05f;
+        float AngularVelocity = 0f;
+
+        Quaternion targetRot = Quaternion.LookRotation(target.position - transform.position);
+        float delta = Quaternion.Angle(transform.rotation, targetRot);
+
+        if (delta > 10f)
+        {
+            float t = Mathf.SmoothDampAngle(delta, 0.0f, ref AngularVelocity, RotateSmoothTime);
+            t = 1.0f - t / delta;
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, t);
+            return true;
+        }
+
+        return false;
     }
 
     private void FixedUpdate()
+{
+    if (!GetComponent<Health>().isDead)
     {
-        if (!GetComponent<Health>().isDead)
-        {
-            behaviourTree.topNodeInstance.Evaluate();
-        }
+        behaviourTree.topNodeInstance.Evaluate();
     }
+}
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, fakeVisionRange);
+private void OnDrawGizmos()
+{
+    Gizmos.DrawWireSphere(transform.position, fakeVisionRange);
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, fakeShootRange);
-    }
+    Gizmos.color = Color.red;
+    Gizmos.DrawWireSphere(transform.position, fakeShootRange);
+}
 }
