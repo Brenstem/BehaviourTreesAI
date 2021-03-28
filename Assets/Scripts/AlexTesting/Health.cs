@@ -65,8 +65,6 @@ public class Health : MonoBehaviour
 
     public void Damage(float damageVal, Vector3 hurtPFXDirection, AudioClip hitClip)
     {
-        Debug.Log("hit");
-
         if (!invulnerable)
         {
             if (GetComponent<BaseAI>() != null)
@@ -75,8 +73,6 @@ public class Health : MonoBehaviour
                 aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
                 if (damageVal != 0)
                 {
-                    Debug.Log("hurt");
-
                     aiInstance.animator.SetTrigger("Hurt");
                     currentHealth -= damageVal;
                 }

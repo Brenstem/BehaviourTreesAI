@@ -44,7 +44,6 @@ public class PlayAnimationNode : Action
                     if (!animationDone)
                     {
                         NodeState = NodeStates.RUNNING;
-                        Debug.Log("running");
                     }
                     else
                     {

@@ -46,11 +46,6 @@ public class DemoWeaponScript : MonoBehaviour
         {
             RaycastHit[] hits = Physics.RaycastAll(firePosition.position, firePosition.forward, 200f);
 
-            foreach (var hit in hits)
-            {
-                Debug.Log(hit.collider.name);
-            }
-
             Hit(hits);
         }
 

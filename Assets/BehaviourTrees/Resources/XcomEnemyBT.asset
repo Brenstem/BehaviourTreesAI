@@ -70,6 +70,9 @@ MonoBehaviour:
   - BaseNodeGuid: 92665779-eaf0-4707-81e7-0acf881b787e
     PortName: 3
     TargetNodeGuid: 757dc985-d2a2-4331-8054-8cb3340420ee
+  - BaseNodeGuid: 92665779-eaf0-4707-81e7-0acf881b787e
+    PortName: 4
+    TargetNodeGuid: df0de644-d3be-46d5-bb6e-a55c6fa37071
   - BaseNodeGuid: d9773345-3b2b-4e13-92b7-d10f934b396e
     PortName: 0
     TargetNodeGuid: 92665779-eaf0-4707-81e7-0acf881b787e
@@ -196,9 +199,6 @@ MonoBehaviour:
   - BaseNodeGuid: e29a7b6b-1000-4ba4-ac92-85b48c7bc4ab
     PortName: 2
     TargetNodeGuid: 07eb8dd1-0e60-483e-9404-68460501d5db
-  - BaseNodeGuid: 92665779-eaf0-4707-81e7-0acf881b787e
-    PortName: 4
-    TargetNodeGuid: df0de644-d3be-46d5-bb6e-a55c6fa37071
   nodeData:
   - nodeTitle: Top Node
     nodeName: Selector
@@ -713,15 +713,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: ee5c1569ec826fb4aacb11f42da1738b, type: 2}
     GUID: 51af0df7-d402-4134-8ecc-c78512fdbe14
     Position: {x: 1908, y: 115}
-  - nodeTitle: SeekCoverNode
-    nodeName: SeekCoverNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 69e802171f94add46b7f1443a2c96394, type: 2}
-    GUID: ac541268-26ee-4f28-a9b3-bda9875112d5
-    Position: {x: 2751, y: -1848}
   - nodeTitle: Unhunker
     nodeName: PlayAnimationNode
     topNode: 0
@@ -767,4 +758,13 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: 7e102189139af064e9cf72446b4cdd68, type: 2}
     GUID: df0de644-d3be-46d5-bb6e-a55c6fa37071
     Position: {x: 2777, y: -1453}
+  - nodeTitle: SeekCoverNode
+    nodeName: SeekCoverNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 69e802171f94add46b7f1443a2c96394, type: 2}
+    GUID: ac541268-26ee-4f28-a9b3-bda9875112d5
+    Position: {x: 2751, y: -1848}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}
