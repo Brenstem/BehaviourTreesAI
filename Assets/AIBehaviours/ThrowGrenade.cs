@@ -10,7 +10,7 @@ public class ThrowGrenade : Action
         _constructed = true;
     }
 
-    //TODO den skapas i AIn så de kolliderar med varandra, måste skapa den på en annan position
+
     public override NodeStates Evaluate()
     {
         if (_constructed)

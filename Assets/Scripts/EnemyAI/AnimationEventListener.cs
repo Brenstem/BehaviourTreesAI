@@ -13,6 +13,7 @@ public class AnimationEventListener : MonoBehaviour
 
     private DemoEnemyAI owner;
 
+
     private void Start()
     {
         owner = GetComponentInParent<DemoEnemyAI>();

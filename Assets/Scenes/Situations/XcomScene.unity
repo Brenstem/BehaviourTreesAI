@@ -2317,7 +2317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.84
+      value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2325,7 +2325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -49.01
+      value: -35.14
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2362,7 +2362,7 @@ PrefabInstance:
     - target: {fileID: 5370362433262129372, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: btGenerationData
       value: 
-      objectReference: {fileID: 11400000, guid: 8a8cd84a41aef824dbb8b18de0187338, type: 2}
+      objectReference: {fileID: 11400000, guid: cc6f00448a134de4eaa3eef2e3f2e182, type: 2}
     - target: {fileID: 5370362433262129373, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Name
       value: Frantz the nazi

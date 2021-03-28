@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
-  m_Name: RangeNode160e1bda-f311-468f-b39e-bed964d68b5f
+  m_Name: RangeNode38668484-0b3f-4998-974f-4429692afe33
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  range: 20
+  range: 8
