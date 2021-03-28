@@ -1941,6 +1941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'New Enemy '
       objectReference: {fileID: 0}
+    - target: {fileID: 5768648756812700169, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: startingHealth
+      value: 99
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
 --- !u!1001 &5772118702735309337
@@ -2204,10 +2208,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7277940364383781547, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7277940365398376330, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 7135488446798979419}
+    - target: {fileID: 7277940365398376333, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
+      propertyPath: movementSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7277940365398376334, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.85

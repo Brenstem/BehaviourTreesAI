@@ -28,7 +28,7 @@ public class DemoEnemyAI : BaseAI
             animator.SetBool("Moving", agent.desiredVelocity.magnitude > agent.stoppingDistance);
         }
 
-        Debug.Log(Vector3.Distance(transform.position, behaviourTree.context.globalData.player.transform.position));
+        //Debug.Log(Vector3.Distance(transform.position, behaviourTree.context.globalData.player.transform.position));
 
         Debug.DrawRay(transform.position, transform.forward * 200, Color.green);
     }
