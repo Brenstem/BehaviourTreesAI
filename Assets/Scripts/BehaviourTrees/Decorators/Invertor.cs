@@ -18,7 +18,7 @@ public class Invertor : Decorator
                     NodeState = NodeStates.FAILURE;
                     break;
                 case NodeStates.FAILURE:
-                    NodeState = NodeStates.RUNNING;
+                    NodeState = NodeStates.SUCCESS;
                     break;
                 default:
                     break;

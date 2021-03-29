@@ -19,7 +19,8 @@ public class HealthNode : Action
     {
         if (_constructed)
         {
-            return aiHealth.percentageHealth <= percentageThreshold ? NodeStates.SUCCESS : NodeStates.FAILURE;
+            NodeState = aiHealth.percentageHealth <= percentageThreshold ? NodeStates.SUCCESS : NodeStates.FAILURE;
+            return NodeState;
         }
         else
         {
