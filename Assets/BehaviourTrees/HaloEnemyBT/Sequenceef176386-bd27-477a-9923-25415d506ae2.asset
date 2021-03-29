@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cde2d7a08692f640b9172acbdd0b551, type: 3}
-  m_Name: SetAggroPlayStylec673d77a-e477-444c-a5c9-0874bb50811b
+  m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
+  m_Name: Sequenceef176386-bd27-477a-9923-25415d506ae2
   m_EditorClassIdentifier: 
+  nodes: []
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  conditionToSet: AggressiveCombatStyle
-  value: 1
+  interruptable: 1

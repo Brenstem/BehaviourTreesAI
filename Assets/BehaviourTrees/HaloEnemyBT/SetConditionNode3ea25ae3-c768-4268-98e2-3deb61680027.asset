@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cde2d7a08692f640b9172acbdd0b551, type: 3}
-  m_Name: SetAggroPlayStylec673d77a-e477-444c-a5c9-0874bb50811b
+  m_Name: SetConditionNode3ea25ae3-c768-4268-98e2-3deb61680027
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  conditionToSet: AggressiveCombatStyle
-  value: 1
+  conditionToSet: Aggroed
+  value: 0

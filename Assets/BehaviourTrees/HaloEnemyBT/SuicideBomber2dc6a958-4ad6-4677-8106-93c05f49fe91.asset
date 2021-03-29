@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cde2d7a08692f640b9172acbdd0b551, type: 3}
-  m_Name: SetAggroPlayStylec673d77a-e477-444c-a5c9-0874bb50811b
+  m_Script: {fileID: 11500000, guid: 314eca22099ca2847b6735246a608a22, type: 3}
+  m_Name: SuicideBomber2dc6a958-4ad6-4677-8106-93c05f49fe91
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  conditionToSet: AggressiveCombatStyle
-  value: 1
+  debugText: 

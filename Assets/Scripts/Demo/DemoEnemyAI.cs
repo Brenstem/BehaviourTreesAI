@@ -16,10 +16,18 @@ public class DemoEnemyAI : BaseAI
     {
         base.Awake();
 
+        // General vars
         behaviourTree.context.localData.Add<Vector3>(positionToGoToProperty);
-        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("TookDamage", false); });
         behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("Aggroed", false); });
         behaviourTree.context.localData.Add<Vector3>(() => { return new BlackBoardProperty<Vector3>("LastKnownPlayerPosition", Vector3.zero); });
+
+        // XCOM vars
+        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("TookDamage", false); });
+
+        // HALO vars
+        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("AggressiveCombatStyle", true); });
+        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("GeneralHurt", false); });
+        behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("GeneralDead", false); });
     }
 
     private void Update()

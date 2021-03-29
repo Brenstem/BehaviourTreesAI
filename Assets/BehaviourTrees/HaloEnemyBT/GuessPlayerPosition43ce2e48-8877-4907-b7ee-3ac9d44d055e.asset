@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cde2d7a08692f640b9172acbdd0b551, type: 3}
-  m_Name: SetAggroPlayStylec673d77a-e477-444c-a5c9-0874bb50811b
+  m_Script: {fileID: 11500000, guid: 111ad3a8c365280428a7e9164d326f5d, type: 3}
+  m_Name: GuessPlayerPosition43ce2e48-8877-4907-b7ee-3ac9d44d055e
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  conditionToSet: AggressiveCombatStyle
-  value: 1
+  influence: 1
