@@ -27,15 +27,7 @@ public class WaitAndRotateNode : Action
     {
         if (_constructed)
         {
-            //TODO fixa rotationen
-            Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
-
-            ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
-
-            //ownerTransform.rotation = Quaternion.RotateTowards(ownerTransform.rotation, lookAtRotation, Time.deltaTime * rotationSpeed);
-
-            //ownerTransform.rotation = Quaternion.Euler(Vector3.RotateTowards(ownerTransform.forward, playerTransform.position - ownerTransform.position, rotationSpeed, 0));
-            //ownerTransform.rotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position, Vector3.up);
+            context.owner.GetComponent<DemoEnemyAI>().TurnTowards(playerTransform, Random.Range(0.03f, 0.1f), Random.Range(0.03f, 0.06f));
 
             //ingen timer körs, skapa en ny timer som börjar köras
             if (timer.Done)

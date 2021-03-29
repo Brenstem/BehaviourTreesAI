@@ -34,9 +34,9 @@ public class BurstShootNode : Action
         {
             animator.SetTrigger("BurstShoot");
 
-            Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
+            //Quaternion lookAtRotation = Quaternion.LookRotation(playerTransform.position - ownerTransform.position);
 
-            ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.fixedDeltaTime * rotationSpeed);
+            //ownerTransform.rotation = Quaternion.Lerp(ownerTransform.rotation, lookAtRotation, Time.fixedDeltaTime * rotationSpeed);
 
             //TODO denna är konstig fixa den så den funkar
             timer.DecrementTimer(Time.fixedDeltaTime);

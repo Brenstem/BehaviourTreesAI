@@ -67,6 +67,7 @@ public class Health : MonoBehaviour
     {
         if (!invulnerable)
         {
+
             if (GetComponent<BaseAI>() != null)
             {
                 //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
@@ -74,10 +75,10 @@ public class Health : MonoBehaviour
                 if (damageVal != 0)
                 {
                     aiInstance.animator.SetTrigger("Hurt");
-                    currentHealth -= damageVal;
                 }
             }
 
+            currentHealth -= damageVal;
 
             if (hurtParticle != null && damageVal > 0)
             {

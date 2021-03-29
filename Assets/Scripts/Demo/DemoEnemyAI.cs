@@ -35,31 +35,35 @@ public class DemoEnemyAI : BaseAI
             animator.SetFloat("moveX", moveX);
         }
 
-        if (turn)
+        if (turn && !GetComponent<Health>().isDead)
         {
-            turn = TurnTowardsInternal(turnTarget);
+            turn = TurnTowardsInternal(turnTarget, accuracy, speed);
         }
-        
     }
 
     private bool turn = false;
     private Transform turnTarget;
+    private float accuracy;
+    private float speed;
 
-    public void TurnTowards(Transform target)
+
+    public void TurnTowards(Transform target, float accuracy, float speed)
     {
         turn = true;
         turnTarget = target;
+        this.accuracy = accuracy;
+        this.speed = speed;
     }
 
-    private bool TurnTowardsInternal(Transform target)
+    public bool TurnTowardsInternal(Transform target, float accuracy, float speed)
     {
-        float RotateSmoothTime = 0.05f;
+        float RotateSmoothTime = speed;
         float AngularVelocity = 0f;
 
         Quaternion targetRot = Quaternion.LookRotation(target.position - transform.position);
         float delta = Quaternion.Angle(transform.rotation, targetRot);
 
-        if (delta > 10f)
+        if (delta > accuracy)
         {
             float t = Mathf.SmoothDampAngle(delta, 0.0f, ref AngularVelocity, RotateSmoothTime);
             t = 1.0f - t / delta;

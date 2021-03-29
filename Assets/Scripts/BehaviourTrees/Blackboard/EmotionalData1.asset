@@ -16,7 +16,7 @@ MonoBehaviour:
   anxiety: 0.847
   anger: 0.604
   sadness: 0.32
-  exhaustion: 0.3
+  exhaustion: 0.41
   eRiskWeight: 1
   riskWeight: 0.3
   ePlanWeight: 1

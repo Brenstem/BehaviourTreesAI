@@ -2293,15 +2293,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1453601109, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: throwPowerBase
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1453601109, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: throwAngleBase
-      value: 30
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453601109, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: throwPowerVariance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4602622866398995055, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027938056163457790, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 5370362431932693947, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Camera
@@ -2317,7 +2329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.95
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2325,7 +2337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -45.29
+      value: -45.69
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129363, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2377,7 +2389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129375, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Acceleration
-      value: 100
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129375, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Enabled
@@ -2385,7 +2397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5768648756812700169, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: startingHealth
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
@@ -2631,11 +2643,11 @@ PrefabInstance:
       objectReference: {fileID: 7135488446798979419}
     - target: {fileID: 7277940365398376330, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
       propertyPath: startingHealth
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7277940365398376333, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
       propertyPath: shootCooldown
-      value: 0.05
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7277940365398376334, guid: 40448198a26a4f84ea0b9cea6972ba8c, type: 3}
       propertyPath: m_LocalPosition.x

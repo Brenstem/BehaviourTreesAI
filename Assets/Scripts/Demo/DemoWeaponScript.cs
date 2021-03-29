@@ -30,7 +30,7 @@ public class DemoWeaponScript : MonoBehaviour
         {
             if (hit.GetComponent<DemoEnemyAI>() != null)
             {
-                hit.GetComponent<DemoEnemyAI>().TurnTowards(transform);
+                hit.GetComponent<DemoEnemyAI>().TurnTowards(transform, 10f, 0.1f);
             }
 
             // Action.RaiseInterruptEvent(new InterruptEventArgs(hit.GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
@@ -59,8 +59,10 @@ public class DemoWeaponScript : MonoBehaviour
 
         foreach (var hit in hits)
         {
+
             if (!hit.collider.CompareTag(this.tag))
             {
+
                 if (hit.collider.CompareTag("Enemy") || hit.collider.tag == "Player")
                 {
                     hit.collider.GetComponent<Health>().Damage(damage, hit.normal, hitClip);

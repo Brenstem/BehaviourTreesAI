@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e68e0d1a421e244c803b0c780c734cb, type: 3}
-  m_Name: UnHunker005e0b33-7506-4b49-a955-642cdcffa48a
+  m_Script: {fileID: 11500000, guid: cb02a489cd20df346abf89fdd80d8c12, type: 3}
+  m_Name: WaitNode16b94aa2-a21a-419f-8d7a-62087daff30c
   m_EditorClassIdentifier: 
-  riskValue: 0.4
-  minTimeValue: 2
-  maxTimeValue: 3
-  planValue: 1
-  animVarName: Hunkered
-  animBoolValue: 0
-  waitForAnimation: 1
-  animationName: 
+  riskValue: 0.1
+  minTimeValue: 1.5
+  maxTimeValue: 2
+  planValue: 0
+  runTime: 0.75
