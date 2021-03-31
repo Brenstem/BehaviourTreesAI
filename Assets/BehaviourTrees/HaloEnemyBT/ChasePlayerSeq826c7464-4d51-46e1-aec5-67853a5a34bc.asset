@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
   m_Name: ChasePlayerSeq826c7464-4d51-46e1-aec5-67853a5a34bc
   m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: 0}
-  - {fileID: 0}
+  nodes: []
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0

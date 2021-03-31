@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
+  m_Name: GeneralEnemyBT
+  m_EditorClassIdentifier: 
+  nodeLinks:
+  - BaseNodeGuid: 258510de-1251-465c-a7cc-d0006dedf6e9
+    PortName: 0
+    TargetNodeGuid: 15c0045f-d62d-497e-9b00-9f77aab5988e
+  - BaseNodeGuid: 15c0045f-d62d-497e-9b00-9f77aab5988e
+    PortName: 0
+    TargetNodeGuid: 77a0ea33-9c1b-48b2-8a6f-c9624c5563ff
+  - BaseNodeGuid: 15c0045f-d62d-497e-9b00-9f77aab5988e
+    PortName: 1
+    TargetNodeGuid: 09b33ea8-d106-4bb4-82eb-ff97d02c6557
+  - BaseNodeGuid: 09b33ea8-d106-4bb4-82eb-ff97d02c6557
+    PortName: 0
+    TargetNodeGuid: 21479976-a233-406e-a1ff-ea43f5a8d88c
+  - BaseNodeGuid: 09b33ea8-d106-4bb4-82eb-ff97d02c6557
+    PortName: 1
+    TargetNodeGuid: c3050c08-7143-4a85-b6e8-ea2c620a3d5b
+  - BaseNodeGuid: 09b33ea8-d106-4bb4-82eb-ff97d02c6557
+    PortName: 2
+    TargetNodeGuid: db5cbbc1-056d-4c87-bf11-d559666b87a8
+  nodeData:
+  - nodeTitle: Top Node
+    nodeName: Selector
+    topNode: 1
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 49feb91fef8369149b823ba35c6194e5, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 258510de-1251-465c-a7cc-d0006dedf6e9
+    Position: {x: 0, y: 0}
+  - nodeTitle: Sequence
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: 82e671af80f626b4192676f9267dd7e1, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 15c0045f-d62d-497e-9b00-9f77aab5988e
+    Position: {x: 448, y: -11}
+  - nodeTitle: ConditionCheckNode
+    nodeName: ConditionCheckNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 37b57544e7ddff14c970a075b8c4c244, type: 2}
+    GUID: 77a0ea33-9c1b-48b2-8a6f-c9624c5563ff
+    Position: {x: 867, y: -81}
+  - nodeTitle: FleeSeq
+    nodeName: Sequence
+    topNode: 0
+    nodeType: 0
+    compositeInstance: {fileID: 11400000, guid: a2c96dba35f001d4db8dfb521bbd8f33, type: 2}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 0}
+    GUID: 09b33ea8-d106-4bb4-82eb-ff97d02c6557
+    Position: {x: 878, y: 63}
+  - nodeTitle: SeekCoverNode
+    nodeName: SeekCoverNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 57e9ffaf47259d24aa50d2c7de3747fe, type: 2}
+    GUID: 21479976-a233-406e-a1ff-ea43f5a8d88c
+    Position: {x: 1359, y: 20}
+  - nodeTitle: GoToPositionNode
+    nodeName: GoToPositionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 6e33da965185d664ba9de6a91dc6570d, type: 2}
+    GUID: c3050c08-7143-4a85-b6e8-ea2c620a3d5b
+    Position: {x: 1368, y: 125}
+  - nodeTitle: WaitNode
+    nodeName: WaitNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 974188e84fcf63444b434e7be60a4c93, type: 2}
+    GUID: db5cbbc1-056d-4c87-bf11-d559666b87a8
+    Position: {x: 1367, y: 225}
+  globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}

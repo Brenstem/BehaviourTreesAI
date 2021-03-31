@@ -16,4 +16,4 @@ MonoBehaviour:
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  runTime: 0.75
+  runTime: 1.5

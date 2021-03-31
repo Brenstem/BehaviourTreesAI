@@ -18,5 +18,5 @@ MonoBehaviour:
   planValue: 0
   targetLayers:
     serializedVersion: 2
-    m_Bits: 768
-  visionRange: 20
+    m_Bits: 512
+  visionRange: 30

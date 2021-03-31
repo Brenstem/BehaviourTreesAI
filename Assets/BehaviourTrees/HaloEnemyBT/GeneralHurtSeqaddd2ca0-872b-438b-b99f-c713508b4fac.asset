@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
   m_Name: GeneralHurtSeqaddd2ca0-872b-438b-b99f-c713508b4fac
   m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: 11400000, guid: 060a80f0df1afbf408e7c352d5d19978, type: 2}
-  - {fileID: 11400000, guid: 6da64777c10bcde4798c9d0e84dc34a0, type: 2}
-  - {fileID: 0}
+  nodes: []
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
