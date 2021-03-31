@@ -16,5 +16,5 @@ MonoBehaviour:
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  conditionToSet: 
-  value: 0
+  conditionToSet: AggressiveCombatStyle
+  value: 1

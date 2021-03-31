@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
   m_Name: CowardSeq5067d0fc-c126-4ae9-9afc-b51f8e098050
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: e497c970509711d41bc18f2bb6c0c28c, type: 2}
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
