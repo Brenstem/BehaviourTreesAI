@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: AttackESelc215341f-7817-433c-b767-7201ed741458
+  m_Script: {fileID: 11500000, guid: 8cde2d7a08692f640b9172acbdd0b551, type: 3}
+  m_Name: SetConditionNode26319d63-bb3e-4272-afe4-1add992b3575
   m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: 0}
-  - {fileID: 0}
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  interruptable: 1
+  conditionToSet: Aggroed
+  value: 1

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
   m_Name: AggroPlayStyleSelb70f3112-75cd-44b4-8ae3-35928757a952
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {fileID: 11400000, guid: 69d016a510c72aa4a83e80f5674f144d, type: 2}
+  - {fileID: 11400000, guid: 279a87b86d65f6c4183f6974a41dde7a, type: 2}
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0

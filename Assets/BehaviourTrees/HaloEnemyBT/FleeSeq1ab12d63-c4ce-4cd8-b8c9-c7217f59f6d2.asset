@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: AttackESelc215341f-7817-433c-b767-7201ed741458
+  m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
+  m_Name: FleeSeq1ab12d63-c4ce-4cd8-b8c9-c7217f59f6d2
   m_EditorClassIdentifier: 
   nodes:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   riskValue: 0

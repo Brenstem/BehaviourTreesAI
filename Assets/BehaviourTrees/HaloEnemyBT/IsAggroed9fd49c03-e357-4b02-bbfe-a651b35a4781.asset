@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
   m_Name: IsAggroed9fd49c03-e357-4b02-bbfe-a651b35a4781
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {fileID: 11400000, guid: bab4130c4004509409e5f46a106b6acf, type: 2}
+  - {fileID: 11400000, guid: 07322851484375944ae5f0875a595f33, type: 2}
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0

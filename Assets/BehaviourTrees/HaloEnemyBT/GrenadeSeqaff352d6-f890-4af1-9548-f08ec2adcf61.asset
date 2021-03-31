@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
   m_Name: GrenadeSeqaff352d6-f890-4af1-9548-f08ec2adcf61
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0

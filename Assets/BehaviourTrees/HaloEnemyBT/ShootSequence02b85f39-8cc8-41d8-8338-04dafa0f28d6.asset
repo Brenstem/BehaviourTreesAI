@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
   m_Name: ShootSequence02b85f39-8cc8-41d8-8338-04dafa0f28d6
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {fileID: 11400000, guid: 810e8977152bfa34cae01a58c5cbb68c, type: 2}
+  - {fileID: 11400000, guid: 1778b1435d1c3b7459bc5442aaa8cf31, type: 2}
+  - {fileID: 11400000, guid: bf167789fe879884f8e7752a21044ab1, type: 2}
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0

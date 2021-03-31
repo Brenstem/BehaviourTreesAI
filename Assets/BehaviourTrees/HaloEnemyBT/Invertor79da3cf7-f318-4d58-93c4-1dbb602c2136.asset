@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99a969aa1e53284f876a4718dafd8e6, type: 3}
   m_Name: Invertor79da3cf7-f318-4d58-93c4-1dbb602c2136
   m_EditorClassIdentifier: 
-  node: {fileID: 0}
+  node: {fileID: 11400000, guid: eb4e4a559e4dc6948801c85421521f5e, type: 2}

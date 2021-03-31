@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
-  m_Name: AttackESelc215341f-7817-433c-b767-7201ed741458
+  m_Script: {fileID: 11500000, guid: 80f2e210032321f43ab79381cfffe78b, type: 3}
+  m_Name: IsAggroed4932a8f0-4833-4d3c-bac8-f5dcb56a0064
   m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: 0}
-  - {fileID: 0}
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  interruptable: 1
+  conditionToCheck: Aggroed
+  desiredValue: 1
+  reset: 0

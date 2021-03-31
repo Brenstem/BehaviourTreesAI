@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa538b23ca2024eb6d47289a2c2838, type: 3}
   m_Name: Selector1beeea2c-5611-484f-8f42-99628ad8a761
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {fileID: 11400000, guid: 25741df5443356b449e6b7ce1404e968, type: 2}
+  - {fileID: 11400000, guid: fdf74ebdb68154c4fa8015ac8982efb3, type: 2}
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
