@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f2e210032321f43ab79381cfffe78b, type: 3}
-  m_Name: IsAggroPlaystyle44aa927b-ec4e-4421-aa1d-c46a59d9681e
+  m_Script: {fileID: 11500000, guid: ed85552a88ca44340bcb0ed34d0541f2, type: 3}
+  m_Name: RangeNode2efbdad5-ded1-4a8c-a6b1-59f644758b27
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  conditionToCheck: GeneralDead
-  desiredValue: 0
-  reset: 0
+  range: 5

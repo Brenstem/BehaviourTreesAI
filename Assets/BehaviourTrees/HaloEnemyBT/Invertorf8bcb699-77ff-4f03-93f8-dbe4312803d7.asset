@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f2e210032321f43ab79381cfffe78b, type: 3}
-  m_Name: IsAggroPlaystyle44aa927b-ec4e-4421-aa1d-c46a59d9681e
+  m_Script: {fileID: 11500000, guid: f99a969aa1e53284f876a4718dafd8e6, type: 3}
+  m_Name: Invertorf8bcb699-77ff-4f03-93f8-dbe4312803d7
   m_EditorClassIdentifier: 
-  riskValue: 0
-  minTimeValue: 0
-  maxTimeValue: 0
-  planValue: 0
-  conditionToCheck: GeneralDead
-  desiredValue: 0
-  reset: 0
+  node: {fileID: 0}
