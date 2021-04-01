@@ -177,7 +177,7 @@ MonoBehaviour:
     TargetNodeGuid: 7175ff2f-18fd-4e8a-9213-ff6ff19ef44b
   - BaseNodeGuid: 1ab12d63-c4ce-4cd8-b8c9-c7217f59f6d2
     PortName: 4
-    TargetNodeGuid: 90997fe3-9157-4ffe-85ee-c362e668a08c
+    TargetNodeGuid: be6b35f5-e5b6-425c-88e1-620c86401198
   nodeData:
   - nodeTitle: Top Node
     nodeName: Selector
@@ -260,15 +260,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: 2905575e0f6badc41b1ca103c02800cc, type: 2}
     GUID: 7019a2f6-c10f-4e8a-b96a-efcc96105b98
     Position: {x: 1438, y: 549}
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 593d2be2d7954444da57e939588152d6, type: 2}
-    GUID: 44c0ac9c-780c-47cc-9cf4-2b961c8d015c
-    Position: {x: 2422, y: -602}
   - nodeTitle: CanSeeNode
     nodeName: CanSeeNode
     topNode: 0
@@ -278,15 +269,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: ded7b1ebac839b14cbae8cf85d3b13ba, type: 2}
     GUID: c833ad0a-822c-461b-8380-c2c7bb432bd4
     Position: {x: 2423, y: -513}
-  - nodeTitle: SetConditionNode
-    nodeName: SetConditionNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: e4f3b01b837cfe0459a6fa721472f58e, type: 2}
-    GUID: 26319d63-bb3e-4272-afe4-1add992b3575
-    Position: {x: 2423, y: -422}
   - nodeTitle: WaitAndRotateNode
     nodeName: WaitAndRotateNode
     topNode: 0
@@ -629,24 +611,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: 9b31b873e01be004fbdb63c5472d4b78, type: 2}
     GUID: 7175ff2f-18fd-4e8a-9213-ff6ff19ef44b
     Position: {x: 2585, y: 829}
-  - nodeTitle: WaitNode
-    nodeName: WaitNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: cf615df4d0ac5fb41bea98a5c02436da, type: 2}
-    GUID: 90997fe3-9157-4ffe-85ee-c362e668a08c
-    Position: {x: 2589, y: 934}
-  - nodeTitle: RangeNode
-    nodeName: RangeNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: ff677f9d700f22644afd9103ec7fac51, type: 2}
-    GUID: ac3fd0d3-7e2e-4bc8-b3cd-96b0a0dd7ef0
-    Position: {x: 2576, y: 515}
   - nodeTitle: SeekCoverNode
     nodeName: SeekCoverNode
     topNode: 0
@@ -683,4 +647,40 @@ MonoBehaviour:
     actionInstance: {fileID: 0}
     GUID: 1ab12d63-c4ce-4cd8-b8c9-c7217f59f6d2
     Position: {x: 2109, y: 657}
+  - nodeTitle: SetConditionNode
+    nodeName: SetConditionNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: e4f3b01b837cfe0459a6fa721472f58e, type: 2}
+    GUID: 26319d63-bb3e-4272-afe4-1add992b3575
+    Position: {x: 2423, y: -418}
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 593d2be2d7954444da57e939588152d6, type: 2}
+    GUID: 44c0ac9c-780c-47cc-9cf4-2b961c8d015c
+    Position: {x: 2421, y: -607}
+  - nodeTitle: WaitAndLookForPlayerNode
+    nodeName: WaitAndLookForPlayerNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 5c01ba015b54584419318d869de1af37, type: 2}
+    GUID: be6b35f5-e5b6-425c-88e1-620c86401198
+    Position: {x: 2585, y: 925}
+  - nodeTitle: RangeNode
+    nodeName: RangeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: ff677f9d700f22644afd9103ec7fac51, type: 2}
+    GUID: ac3fd0d3-7e2e-4bc8-b3cd-96b0a0dd7ef0
+    Position: {x: 2591, y: 519}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}
