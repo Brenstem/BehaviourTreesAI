@@ -84,18 +84,18 @@ public class DemoEnemyAI : BaseAI
     }
 
     private void FixedUpdate()
-{
-    if (!GetComponent<Health>().isDead)
     {
-        behaviourTree.topNodeInstance.Evaluate();
+        if (!GetComponent<Health>().isDead)
+        {
+            behaviourTree.topNodeInstance.Evaluate();
+        }
     }
-}
 
-private void OnDrawGizmos()
-{
-    Gizmos.DrawWireSphere(transform.position, fakeVisionRange);
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, fakeVisionRange);
 
-    Gizmos.color = Color.red;
-    Gizmos.DrawWireSphere(transform.position, fakeShootRange);
-}
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, fakeShootRange);
+    }
 }

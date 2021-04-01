@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
   m_Name: FleeSeq1ab12d63-c4ce-4cd8-b8c9-c7217f59f6d2
   m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  nodes: []
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0

@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
   m_Name: GeneralDeadSeqb2493ffb-42e1-4366-8fcd-022c48fc966f
   m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: 11400000, guid: 35c34ae7d288efe439f970bee42bb13b, type: 2}
-  - {fileID: 0}
+  nodes: []
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0

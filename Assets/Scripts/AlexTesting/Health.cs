@@ -17,13 +17,13 @@ public class Health : MonoBehaviour
 
     [HideInInspector] public bool isDead;
 
-    private DemoEnemyAI aiInstance;
+    private BaseAI aiInstance;
 
     private Animator animator;
 
     void Start()
     {
-        aiInstance = GetComponent<DemoEnemyAI>();
+        aiInstance = GetComponent<BaseAI>();
 
         animator = GetComponentInChildren<Animator>();
 
@@ -67,15 +67,17 @@ public class Health : MonoBehaviour
     {
         if (!invulnerable)
         {
-
             if (GetComponent<BaseAI>() != null)
             {
                 //Action.RaiseInterruptEvent(new InterruptEventArgs(GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
-                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
-                if (damageVal != 0)
-                {
-                    aiInstance.animator.SetTrigger("Hurt");
-                }
+                aiInstance.animator.SetTrigger("Hurt");
+                aiInstance.GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
+            }
+
+            if (GetComponent<GeneralEnemyAI>() != null)
+            {
+                GetComponent<GeneralEnemyAI>().SoldierAI.GetBehaviourTreeInstance().context.localData.Set<bool>("GeneralHurt", true);
+                GetComponent<GeneralEnemyAI>().GetBehaviourTreeInstance().context.localData.Set<bool>("TookDamage", true);
             }
 
             currentHealth -= damageVal;
@@ -90,7 +92,14 @@ public class Health : MonoBehaviour
                 healthbar.value = currentHealth;
 
             if (currentHealth <= 0)
+            {
+                if (GetComponent<GeneralEnemyAI>() != null)
+                {
+                    GetComponent<GeneralEnemyAI>().SoldierAI.GetBehaviourTreeInstance().context.localData.Set<bool>("GeneralDead", true);
+                }
+
                 Die();
+            }
         }
     }
 

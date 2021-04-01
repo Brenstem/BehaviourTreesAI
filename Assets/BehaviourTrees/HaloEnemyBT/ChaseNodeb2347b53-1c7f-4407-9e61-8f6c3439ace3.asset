@@ -19,4 +19,4 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 768
-  visionRange: 20
+  visionRange: 30
