@@ -16,5 +16,4 @@ MonoBehaviour:
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  percentageThreshold: 0.6
-  hasMoreThan: 0
+  percentageThreshold: 0.75
