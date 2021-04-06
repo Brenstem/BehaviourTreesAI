@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3499305c562ab3349b4314424421df17, type: 3}
   m_Name: SeekCoverNode6cb03e34-822f-423c-bf24-9434fdbcc764
   m_EditorClassIdentifier: 
-  riskValue: 0
-  minTimeValue: 0
-  maxTimeValue: 0
-  planValue: 0
+  riskValue: 0.1
+  minTimeValue: 1
+  maxTimeValue: 2
+  planValue: 4
   minimumCoverDistance: 20
   coverVisionRadius: 30
   coverLayerMask:

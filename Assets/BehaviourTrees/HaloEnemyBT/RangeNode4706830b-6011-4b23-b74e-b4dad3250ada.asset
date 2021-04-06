@@ -16,4 +16,4 @@ MonoBehaviour:
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  range: 5
+  range: 0

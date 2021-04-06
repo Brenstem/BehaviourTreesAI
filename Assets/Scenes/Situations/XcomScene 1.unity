@@ -2859,7 +2859,7 @@ PrefabInstance:
     - target: {fileID: 5370362433262129372, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: btGenerationData
       value: 
-      objectReference: {fileID: 11400000, guid: ade68700212010e46886fae074b5106a, type: 2}
+      objectReference: {fileID: 11400000, guid: e0710d3607d5bdc4a8b436712c9fc755, type: 2}
     - target: {fileID: 5370362433262129373, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Name
       value: Frantz the nazi
