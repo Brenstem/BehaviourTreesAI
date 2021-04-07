@@ -292,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.035588853
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalPosition.y
@@ -300,23 +300,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07954484
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.058101974
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9983106
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_RootOrder
@@ -328,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 6.662
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 2acdd75e09b5eda48adcb40397158996, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2859,7 +2859,7 @@ PrefabInstance:
     - target: {fileID: 5370362433262129372, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: btGenerationData
       value: 
-      objectReference: {fileID: 11400000, guid: ade68700212010e46886fae074b5106a, type: 2}
+      objectReference: {fileID: 11400000, guid: e0710d3607d5bdc4a8b436712c9fc755, type: 2}
     - target: {fileID: 5370362433262129373, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Name
       value: Frantz the nazi

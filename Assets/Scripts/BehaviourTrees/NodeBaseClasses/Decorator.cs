@@ -14,7 +14,28 @@ public abstract class Decorator : AbstractNode
     public virtual void Construct(AbstractNode node)
     {
         this.node = node;
+
+        CalculatePlanValue();
+        CalculateRiskValue();
+        CalculateTimeInterval();
+
         _constructed = true;
+    }
+
+    private void CalculatePlanValue()
+    {
+        planValue = node.GetPlanValue();
+    }
+
+    private void CalculateRiskValue()
+    {
+        riskValue = node.GetRiskValue();
+    }
+
+    private void CalculateTimeInterval()
+    {
+        minTimeValue = node.GetMinTimeValue();
+        maxTimeValue = node.GetMaxTimeValue();
     }
 
     public override float GetRiskValue()

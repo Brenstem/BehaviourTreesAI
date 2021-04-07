@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be1a04bf39db3d469b2a92279150958, type: 3}
-  m_Name: WaitAndRotateNode2b10cf22-5444-45cd-8fd7-f56d9fdf1cf4
+  m_Script: {fileID: 11500000, guid: be23ff695f51b6d4abdb80114c392f27, type: 3}
+  m_Name: WaitAndLookForPlayerNodebe6b35f5-e5b6-425c-88e1-620c86401198
   m_EditorClassIdentifier: 
   riskValue: 0.1
-  minTimeValue: 0.5
-  maxTimeValue: 0.5
-  planValue: 3
-  runTime: 0.5
-  rotationSpeed: 0.5
+  minTimeValue: 0.1
+  maxTimeValue: 1.5
+  planValue: 0.5
+  runTime: 1.5
+  visionLayers:
+    serializedVersion: 2
+    m_Bits: 768
+  visionRange: 30

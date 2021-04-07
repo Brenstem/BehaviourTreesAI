@@ -107,7 +107,7 @@ public class Selector : Composite
 
     protected override void CalculateTimeInterval()
     {
-        minTimeValue = 0;
+        minTimeValue = nodes[0].GetMinTimeValue(); 
         maxTimeValue = 0;
 
         foreach (AbstractNode node in nodes)
