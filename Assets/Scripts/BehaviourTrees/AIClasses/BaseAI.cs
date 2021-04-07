@@ -36,7 +36,6 @@ public abstract class BaseAI : MonoBehaviour
         behaviourTree.btData = btGenerationData;
 
         behaviourTree.ConstructBehaviourTree(this);
-
     }
 
 }

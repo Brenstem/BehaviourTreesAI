@@ -16,6 +16,6 @@ MonoBehaviour:
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  conditionToCheck: 
+  conditionToCheck: GeneralDead
   desiredValue: 0
   reset: 0

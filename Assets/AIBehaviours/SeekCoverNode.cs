@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [AddNodeMenu("Actions/Movement", "SeekCoverNode")]
 public class SeekCoverNode : Action
 {
+    [SerializeField] float minimumCoverDistance = 0;
     [SerializeField] float coverVisionRadius;
     [SerializeField] LayerMask coverLayerMask;
     [SerializeField] LayerMask visibilityLayerMask;
@@ -36,9 +37,12 @@ public class SeekCoverNode : Action
 
                     if (hit.collider.transform != playerTransform)
                     {
-                        if (Vector3.Distance(ownerTransform.position, currentBestCoverPosition) > Vector3.Distance(ownerTransform.position, cover.transform.position))
+                        if (Vector3.Distance(ownerTransform.position, cover.transform.position) >= minimumCoverDistance)
                         {
-                            currentBestCoverPosition = cover.transform.position;
+                            if (Vector3.Distance(ownerTransform.position, currentBestCoverPosition) > Vector3.Distance(ownerTransform.position, cover.transform.position))
+                            {
+                                currentBestCoverPosition = cover.transform.position;
+                            }
                         }
                     }
                 }
