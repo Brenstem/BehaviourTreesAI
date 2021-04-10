@@ -8,6 +8,7 @@ public class DemoEnemyAI : BaseAI
 {
     [SerializeField] float fakeVisionRange;
     [SerializeField] float fakeShootRange;
+    [SerializeField] GameObject general;
 
     public BlackBoardProperty<Vector3> positionToGoToProperty { get; private set; } = new BlackBoardProperty<Vector3>("positionToGoTo", Vector3.zero);
 
@@ -28,6 +29,8 @@ public class DemoEnemyAI : BaseAI
         behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("AggressiveCombatStyle", true); });
         behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("GeneralHurt", false); });
         behaviourTree.context.localData.Add<bool>(() => { return new BlackBoardProperty<bool>("GeneralDead", false); });
+        if(general != null)
+            behaviourTree.context.localData.Add<GameObject>(() => { return new BlackBoardProperty<GameObject>("General", general); });
     }
 
     private void Update()

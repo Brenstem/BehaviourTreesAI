@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d289f7046cb97ce47829b73bc240b814, type: 3}
-  m_Name: HaloEnemyBT
+  m_Name: NewBehaviourTree
   m_EditorClassIdentifier: 
   nodeLinks:
   - BaseNodeGuid: e0774d42-a590-46b0-9e18-620e5c0ced39
@@ -49,6 +49,15 @@ MonoBehaviour:
   - BaseNodeGuid: 79da3cf7-f318-4d58-93c4-1dbb602c2136
     PortName: Single
     TargetNodeGuid: 5c7c0889-28e6-4c0c-be4f-37b52fa36153
+  - BaseNodeGuid: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
+    PortName: 0
+    TargetNodeGuid: 79da3cf7-f318-4d58-93c4-1dbb602c2136
+  - BaseNodeGuid: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
+    PortName: 1
+    TargetNodeGuid: 63dc2930-86e3-4752-b353-eb5e1d360e5a
+  - BaseNodeGuid: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
+    PortName: 2
+    TargetNodeGuid: c3b5275a-4d6c-4520-acdb-b028873eefa8
   - BaseNodeGuid: c215341f-7817-433c-b767-7201ed741458
     PortName: 0
     TargetNodeGuid: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
@@ -88,6 +97,21 @@ MonoBehaviour:
   - BaseNodeGuid: 47144431-f32e-4af8-b7af-e76c7a18deb2
     PortName: 2
     TargetNodeGuid: b70f3112-75cd-44b4-8ae3-35928757a952
+  - BaseNodeGuid: 1c1894e1-b5b0-4be7-918e-12b1eeedd609
+    PortName: 0
+    TargetNodeGuid: 44c0ac9c-780c-47cc-9cf4-2b961c8d015c
+  - BaseNodeGuid: 1c1894e1-b5b0-4be7-918e-12b1eeedd609
+    PortName: 1
+    TargetNodeGuid: c833ad0a-822c-461b-8380-c2c7bb432bd4
+  - BaseNodeGuid: 1c1894e1-b5b0-4be7-918e-12b1eeedd609
+    PortName: 2
+    TargetNodeGuid: 26319d63-bb3e-4272-afe4-1add992b3575
+  - BaseNodeGuid: 810477d9-90e2-4592-9c1a-8eb0ff1e34be
+    PortName: 0
+    TargetNodeGuid: 4932a8f0-4833-4d3c-bac8-f5dcb56a0064
+  - BaseNodeGuid: 810477d9-90e2-4592-9c1a-8eb0ff1e34be
+    PortName: 1
+    TargetNodeGuid: 1c1894e1-b5b0-4be7-918e-12b1eeedd609
   - BaseNodeGuid: 28ef3280-7511-446b-b229-508ccb833586
     PortName: 0
     TargetNodeGuid: 751c614a-8b60-452f-b109-eaaa1aca6f1a
@@ -148,21 +172,6 @@ MonoBehaviour:
   - BaseNodeGuid: b9e8ffd5-3107-4505-8f6b-f322cdc56c78
     PortName: 1
     TargetNodeGuid: 1beeea2c-5611-484f-8f42-99628ad8a761
-  - BaseNodeGuid: 1c1894e1-b5b0-4be7-918e-12b1eeedd609
-    PortName: 0
-    TargetNodeGuid: 44c0ac9c-780c-47cc-9cf4-2b961c8d015c
-  - BaseNodeGuid: 1c1894e1-b5b0-4be7-918e-12b1eeedd609
-    PortName: 1
-    TargetNodeGuid: c833ad0a-822c-461b-8380-c2c7bb432bd4
-  - BaseNodeGuid: 1c1894e1-b5b0-4be7-918e-12b1eeedd609
-    PortName: 2
-    TargetNodeGuid: 26319d63-bb3e-4272-afe4-1add992b3575
-  - BaseNodeGuid: 810477d9-90e2-4592-9c1a-8eb0ff1e34be
-    PortName: 0
-    TargetNodeGuid: 4932a8f0-4833-4d3c-bac8-f5dcb56a0064
-  - BaseNodeGuid: 810477d9-90e2-4592-9c1a-8eb0ff1e34be
-    PortName: 1
-    TargetNodeGuid: 1c1894e1-b5b0-4be7-918e-12b1eeedd609
   - BaseNodeGuid: 64049996-206c-4a5a-b44a-b104fb9e1ef8
     PortName: 0
     TargetNodeGuid: 56fcc85b-6967-49be-ab29-1b7fbbd4ea1c
@@ -172,15 +181,6 @@ MonoBehaviour:
   - BaseNodeGuid: 64049996-206c-4a5a-b44a-b104fb9e1ef8
     PortName: 2
     TargetNodeGuid: 10718a4b-0fa7-497c-b57e-27ad50c7e8af
-  - BaseNodeGuid: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
-    PortName: 0
-    TargetNodeGuid: 79da3cf7-f318-4d58-93c4-1dbb602c2136
-  - BaseNodeGuid: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
-    PortName: 1
-    TargetNodeGuid: 63dc2930-86e3-4752-b353-eb5e1d360e5a
-  - BaseNodeGuid: a6131ccf-7325-4e64-9968-ee61dfe5b5a6
-    PortName: 2
-    TargetNodeGuid: c3b5275a-4d6c-4520-acdb-b028873eefa8
   - BaseNodeGuid: b70f3112-75cd-44b4-8ae3-35928757a952
     PortName: 0
     TargetNodeGuid: 64049996-206c-4a5a-b44a-b104fb9e1ef8
@@ -677,6 +677,15 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: e4f3b01b837cfe0459a6fa721472f58e, type: 2}
     GUID: 26319d63-bb3e-4272-afe4-1add992b3575
     Position: {x: 2401, y: -686}
+  - nodeTitle: RunToGeneralNode
+    nodeName: RunToGeneralNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 2e829601a56dab6428649cce81eeb591, type: 2}
+    GUID: ce2c1c6a-c67d-47bd-b876-98e647fb5677
+    Position: {x: 2317, y: -399}
   - nodeTitle: Sequence
     nodeName: Sequence
     topNode: 0
@@ -686,6 +695,24 @@ MonoBehaviour:
     actionInstance: {fileID: 0}
     GUID: 64049996-206c-4a5a-b44a-b104fb9e1ef8
     Position: {x: 1941, y: -425}
+  - nodeTitle: GeneralRangeNode
+    nodeName: GeneralRangeNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c59f6df2820c8834ba8ed52e42349629, type: 2}
+    GUID: 56fcc85b-6967-49be-ab29-1b7fbbd4ea1c
+    Position: {x: 2315, y: -493}
+  - nodeTitle: WaitNode
+    nodeName: WaitNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c98caaab21ce13a4eb3bd939968d37ea, type: 2}
+    GUID: 10718a4b-0fa7-497c-b57e-27ad50c7e8af
+    Position: {x: 2318, y: -303}
   - nodeTitle: GrenadeOrShootSeq
     nodeName: Sequence
     topNode: 0
@@ -704,31 +731,4 @@ MonoBehaviour:
     actionInstance: {fileID: 0}
     GUID: b70f3112-75cd-44b4-8ae3-35928757a952
     Position: {x: 1461, y: -2}
-  - nodeTitle: RunToGeneralNode
-    nodeName: RunToGeneralNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 2e829601a56dab6428649cce81eeb591, type: 2}
-    GUID: ce2c1c6a-c67d-47bd-b876-98e647fb5677
-    Position: {x: 2403, y: -416}
-  - nodeTitle: GeneralRangeNode
-    nodeName: GeneralRangeNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: c59f6df2820c8834ba8ed52e42349629, type: 2}
-    GUID: 56fcc85b-6967-49be-ab29-1b7fbbd4ea1c
-    Position: {x: 2401, y: -510}
-  - nodeTitle: WaitNode
-    nodeName: WaitNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: c98caaab21ce13a4eb3bd939968d37ea, type: 2}
-    GUID: 10718a4b-0fa7-497c-b57e-27ad50c7e8af
-    Position: {x: 2404, y: -320}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}

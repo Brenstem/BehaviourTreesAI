@@ -1533,7 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0aa0b15537f9c24fa55c8015d3721ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 5
+  startingHealth: 20
   invulnerable: 0
   healthbar: {fileID: 2004696773}
   hurtParticle: {fileID: 6691042760147776411, guid: 2e3c2d92a4039e74f8afa2d05fc91f25, type: 3}
@@ -2788,6 +2788,14 @@ PrefabInstance:
       propertyPath: throwPowerVariance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1888727537, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888727537, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4602622866398995055, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2860,6 +2868,10 @@ PrefabInstance:
       propertyPath: btGenerationData
       value: 
       objectReference: {fileID: 11400000, guid: e0710d3607d5bdc4a8b436712c9fc755, type: 2}
+    - target: {fileID: 5370362433262129372, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: general
+      value: 
+      objectReference: {fileID: 1129498251}
     - target: {fileID: 5370362433262129373, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Name
       value: Frantz the nazi
