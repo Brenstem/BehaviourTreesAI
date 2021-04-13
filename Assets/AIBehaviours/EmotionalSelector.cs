@@ -144,7 +144,6 @@ public class EmotionalSelector : Composite
             nodeWeights[i] = context.emotionalData.RiskWeight * riskFactors[i] + context.emotionalData.PlanWeight * planFactors[i] + context.emotionalData.TimeWeight * timeFactors[i];
         }
 
-        
 
         Array.Sort(nodeWeights, nodes);
         
