@@ -50,7 +50,7 @@ public class Sequence : Composite
 
     private NodeStates EvaluateFromIndex(int startingIndex)
     {
-        for (int i = startingIndex; i < nodes.Count; i++)
+        for (int i = startingIndex; i < nodes.Length; i++)
         {
             AbstractNode node = nodes[i];
 

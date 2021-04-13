@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc5c1c46baa05b044a69baeeb2ce6186, type: 3}
-  m_Name: ThrowGrenaded0190c78-412d-4d5b-8014-caf0ac73e63f
+  m_Script: {fileID: 11500000, guid: 593168797e2f1e14ea76d6cda4334d6c, type: 3}
+  m_Name: ShootNode93a0df9b-9aa4-4d62-b26a-f9b8d19a11db
   m_EditorClassIdentifier: 
-  riskValue: 1
-  minTimeValue: 1
-  maxTimeValue: 1
-  planValue: 1
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0

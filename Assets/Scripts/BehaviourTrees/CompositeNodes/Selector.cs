@@ -49,7 +49,7 @@ public class Selector : Composite
     }
     private NodeStates EvaluateFromIndex(int startingIndex)
     {
-        for (int i = startingIndex; i < nodes.Count; i++)
+        for (int i = startingIndex; i < nodes.Length; i++)
         {
             AbstractNode node = nodes[i];
 
@@ -91,7 +91,7 @@ public class Selector : Composite
         {
             planValue += node.GetPlanValue();
         }
-        planValue = planValue / nodes.Count;
+        planValue = planValue / nodes.Length;
     }
 
     protected override void CalculateRiskValue()
@@ -102,7 +102,7 @@ public class Selector : Composite
         {
             riskValue += node.GetRiskValue();
         }
-        riskValue = riskValue / nodes.Count;
+        riskValue = riskValue / nodes.Length;
     }
 
     protected override void CalculateTimeInterval()

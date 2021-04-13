@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class Composite : AbstractNode
 {
-    [SerializeField] public List<AbstractNode> nodes = new List<AbstractNode>();
+    //[SerializeField] public List<AbstractNode> nodes = new List<AbstractNode>();
+    [SerializeField] public AbstractNode[] nodes;
 
     [SerializeField] protected float riskValue;
     [SerializeField] protected float minTimeValue;
@@ -17,7 +18,7 @@ public abstract class Composite : AbstractNode
 
     public virtual void Construct(List<AbstractNode> nodes)
     {
-        this.nodes = nodes;
+        this.nodes = nodes.ToArray();
 
         CalculatePlanValue();
         CalculateRiskValue();

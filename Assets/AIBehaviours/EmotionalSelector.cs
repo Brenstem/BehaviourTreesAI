@@ -128,7 +128,7 @@ public class EmotionalSelector : Composite
 
         float remainder = 1;
 
-        for (int i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
             nodeProbabilities[i] = context.emotionalData.Distribution * Mathf.Pow(1 - context.emotionalData.Distribution, i);
             remainder -= nodeProbabilities[i];
@@ -139,13 +139,17 @@ public class EmotionalSelector : Composite
 
     private void CalculateWeights()
     {
-        for (int i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
             nodeWeights[i] = context.emotionalData.RiskWeight * riskFactors[i] + context.emotionalData.PlanWeight * planFactors[i] + context.emotionalData.TimeWeight * timeFactors[i];
         }
 
-        Array.Sort(nodeWeights);
-        Array.Reverse(nodeWeights);
+        
+
+        Array.Sort(nodeWeights, nodes);
+        
+        //Array.Sort(nodeWeights);
+        //Array.Reverse(nodeWeights);
     }
 
     private void CalculateEmotionalFactors()
@@ -157,7 +161,7 @@ public class EmotionalSelector : Composite
 
     private void CalculateRiskFactors()
     {
-        for (int i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
             riskFactors[i] = (1 - eRisk * context.emotionalData.ERiskWeight) * nodes[i].GetRiskValue();
         }
@@ -165,7 +169,7 @@ public class EmotionalSelector : Composite
 
     private void CalculateTimeFactors()
     {
-        for (int i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
             float time = nodes[i].GetMinTimeValue() + ((nodes[i].GetMaxTimeValue() + nodes[i].GetMinTimeValue()) / 2) * (1 - context.emotionalData.EOptWeight * eOpt);
             timeFactors[i] = (1 - (1 / (1 + context.emotionalData.TimeSpan * time))) * Mathf.Max(1 - context.emotionalData.ETimeWeight + context.emotionalData.ETimeWeight * eTime, 0);
@@ -174,7 +178,7 @@ public class EmotionalSelector : Composite
 
     private void CalculatePlanFactors()
     {
-        for (int i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
             planFactors[i] = (1 - 1 / (1 + context.emotionalData.PlanningAmount * nodes[i].GetPlanValue())) * Mathf.Max(1 - context.emotionalData.EPlanWeight + context.emotionalData.EPlanWeight * ePlan, 0);
         }
@@ -188,7 +192,7 @@ public class EmotionalSelector : Composite
         {
             planValue += node.GetPlanValue();
         }
-        planValue = planValue / nodes.Count;
+        planValue = planValue / nodes.Length;
     }
 
     protected override void CalculateRiskValue()
@@ -198,7 +202,7 @@ public class EmotionalSelector : Composite
         {
             riskValue += node.GetRiskValue();
         }
-        riskValue = riskValue / nodes.Count;
+        riskValue = riskValue / nodes.Length;
     }
     protected override void CalculateTimeInterval()
     {
