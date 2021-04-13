@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e0c7105319e374e9bc889a6a0de283, type: 3}
   m_Name: EmotionalData1
   m_EditorClassIdentifier: 
-  happiness: 0.2
-  anxiety: 0.847
-  anger: 0.2
-  sadness: 0.75
+  happiness: 0.67
+  anxiety: 0.35
+  anger: 0.83
+  sadness: 0.5
   exhaustion: 0.65
   eRiskWeight: 1
   riskWeight: 0.3
@@ -26,4 +26,4 @@ MonoBehaviour:
   timeWeight: 0.3
   timeSpan: 0.3
   eOptWeight: 0.3
-  distribution: 0.8
+  distribution: 0.7

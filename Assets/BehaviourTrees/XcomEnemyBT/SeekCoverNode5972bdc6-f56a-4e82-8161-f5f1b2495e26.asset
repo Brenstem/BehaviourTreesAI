@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SeekCoverNode5972bdc6-f56a-4e82-8161-f5f1b2495e26
   m_EditorClassIdentifier: 
   riskValue: 0
-  minTimeValue: 1
-  maxTimeValue: 2
-  planValue: 4
-  minimumCoverDistance: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  minimumCoverDistance: 5
   coverVisionRadius: 20
   coverLayerMask:
     serializedVersion: 2

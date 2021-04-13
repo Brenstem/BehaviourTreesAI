@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251894acd0aae954484651c67cd1c92e, type: 3}
   m_Name: GoToPositionNode51af0df7-d402-4134-8ecc-c78512fdbe14
   m_EditorClassIdentifier: 
-  riskValue: 0.2
-  minTimeValue: 2
-  maxTimeValue: 5
+  riskValue: 0.1
+  minTimeValue: 5
+  maxTimeValue: 10
   planValue: 5
   setPositionManually: 0
   relativeTargetPosition: {x: 0, y: 0, z: 0}

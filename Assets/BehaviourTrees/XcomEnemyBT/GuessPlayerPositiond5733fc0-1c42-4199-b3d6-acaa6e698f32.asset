@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GuessPlayerPositiond5733fc0-1c42-4199-b3d6-acaa6e698f32
   m_EditorClassIdentifier: 
   riskValue: 0
-  minTimeValue: 1
-  maxTimeValue: 2
-  planValue: 5
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
   influence: 1

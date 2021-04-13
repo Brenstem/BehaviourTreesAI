@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaitNode16b94aa2-a21a-419f-8d7a-62087daff30c
   m_EditorClassIdentifier: 
   riskValue: 0
-  minTimeValue: 1.5
-  maxTimeValue: 2
+  minTimeValue: 0
+  maxTimeValue: 0
   planValue: 0
   runTime: 0.75

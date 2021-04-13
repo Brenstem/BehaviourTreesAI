@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GoToPositionNode5a14ac1d-5fe3-4523-9722-b70da1fe241c
   m_EditorClassIdentifier: 
   riskValue: 0.3
-  minTimeValue: 5
-  maxTimeValue: 10
+  minTimeValue: 4
+  maxTimeValue: 7
   planValue: 3
   setPositionManually: 0
   relativeTargetPosition: {x: 0, y: 0, z: 0}

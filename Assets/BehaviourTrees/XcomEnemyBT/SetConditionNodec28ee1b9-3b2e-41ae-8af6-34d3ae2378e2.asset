@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf76a4276415e5348a310ba4c7dff3bd, type: 3}
-  m_Name: ChaseNode3f0ed094-ccd1-489c-ab3e-3dd71dabe01c
+  m_Script: {fileID: 11500000, guid: 8cde2d7a08692f640b9172acbdd0b551, type: 3}
+  m_Name: SetConditionNodec28ee1b9-3b2e-41ae-8af6-34d3ae2378e2
   m_EditorClassIdentifier: 
-  riskValue: 0.5
-  minTimeValue: 3
-  maxTimeValue: 5
-  planValue: 5
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 768
-  visionRange: 20
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
+  conditionToSet: Aggroed
+  value: 0
