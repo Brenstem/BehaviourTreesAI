@@ -1504,7 +1504,7 @@ PrefabInstance:
     - target: {fileID: 5370362433262129372, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: btGenerationData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 8a8cd84a41aef824dbb8b18de0187338, type: 2}
     - target: {fileID: 5370362433262129373, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Name
       value: Frantz the Nazi
@@ -1515,11 +1515,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129375, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_StoppingDistance
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5370362433262129375, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: m_Acceleration
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370362433262129375, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5768648756812700169, guid: fdd34ef922626ba4c99fc8bda2dbdcc4, type: 3}
       propertyPath: startingHealth

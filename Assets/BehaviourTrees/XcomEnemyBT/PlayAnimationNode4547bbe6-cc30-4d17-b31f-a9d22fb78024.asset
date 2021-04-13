@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e68e0d1a421e244c803b0c780c734cb, type: 3}
   m_Name: PlayAnimationNode4547bbe6-cc30-4d17-b31f-a9d22fb78024
   m_EditorClassIdentifier: 
-  riskValue: 0
+  riskValue: 0.3
   minTimeValue: 0
-  maxTimeValue: 0
+  maxTimeValue: 1
   planValue: 0
   animVarName: Hunkered
   animBoolValue: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ThrowGrenaded6eca6ea-0eaa-4090-8189-789d6e66962b
   m_EditorClassIdentifier: 
   riskValue: 0.5
-  minTimeValue: 0
-  maxTimeValue: 1
+  minTimeValue: 1
+  maxTimeValue: 2
   planValue: 1

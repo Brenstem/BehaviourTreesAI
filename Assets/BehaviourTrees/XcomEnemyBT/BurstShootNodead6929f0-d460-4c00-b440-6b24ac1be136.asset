@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244d417e71db3a740854e25504a73e4f, type: 3}
   m_Name: BurstShootNodead6929f0-d460-4c00-b440-6b24ac1be136
   m_EditorClassIdentifier: 
-  riskValue: 0.6
-  minTimeValue: 2
-  maxTimeValue: 4
-  planValue: 6
+  riskValue: 0.7
+  minTimeValue: 1
+  maxTimeValue: 2
+  planValue: 3
   timeBetweenShots: 0.1
   shots: 3
   rotationSpeed: 0.5

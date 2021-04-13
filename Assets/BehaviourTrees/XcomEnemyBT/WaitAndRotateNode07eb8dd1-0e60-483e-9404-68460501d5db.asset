@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
-  maxTimeValue: 0
+  maxTimeValue: 1
   planValue: 0
   runTime: 1.5
   rotationSpeed: 3
