@@ -15,7 +15,7 @@ MonoBehaviour:
   riskValue: 0.8
   minTimeValue: 2
   maxTimeValue: 4
-  planValue: 6
+  planValue: 8
   timeBetweenShots: 0.1
   shots: 3
   rotationSpeed: 0.5

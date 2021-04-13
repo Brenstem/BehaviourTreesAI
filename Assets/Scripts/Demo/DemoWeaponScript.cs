@@ -12,6 +12,7 @@ public class DemoWeaponScript : MonoBehaviour
     [SerializeField] private List<AudioClip> environmentHitClips;
     [SerializeField] private AudioClip hitClip;
     [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private LayerMask environmentLayerMask;
 
     [SerializeField] DemoEnemyAI owner;
 
@@ -32,8 +33,6 @@ public class DemoWeaponScript : MonoBehaviour
             {
                 hit.GetComponent<DemoEnemyAI>().TurnTowards(transform, 10f, 0.1f);
             }
-
-            // Action.RaiseInterruptEvent(new InterruptEventArgs(hit.GetComponent<BaseAI>().GetBehaviourTreeInstance().context.id));
         }
 
         if (firePFX != null)
@@ -42,7 +41,22 @@ public class DemoWeaponScript : MonoBehaviour
         if (audioSource != null)
             audioSource.PlayOneShot(audioSource.clip);
 
-        if (Physics.Raycast(firePosition.position, firePosition.forward, 200f))
+        if (gameObject.CompareTag("Player"))
+        {
+            RaycastHit hit;
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+            Physics.Raycast(mousePosition, Camera.main.transform.forward, out hit, Mathf.Infinity, environmentLayerMask);
+
+            firePosition.transform.LookAt(hit.point);
+
+            if (Physics.Raycast(firePosition.position, firePosition.forward, 200f))
+            {
+                RaycastHit[] hits = Physics.RaycastAll(firePosition.position, firePosition.forward, 200f);
+
+                Hit(hits);
+            }
+        }
+        else if (Physics.Raycast(firePosition.position, firePosition.forward, 200f))
         {
             RaycastHit[] hits = Physics.RaycastAll(firePosition.position, firePosition.forward, 200f);
 

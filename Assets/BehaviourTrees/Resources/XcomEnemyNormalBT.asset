@@ -65,9 +65,6 @@ MonoBehaviour:
     PortName: 1
     TargetNodeGuid: 4c7f3bb6-7c9b-48a8-93a0-22411071344b
   - BaseNodeGuid: 8e80d4c2-bb61-483d-a2a5-aa44c2b0e07a
-    PortName: 0
-    TargetNodeGuid: 7770126a-fb5f-48cc-8ce8-53fe1811000e
-  - BaseNodeGuid: 8e80d4c2-bb61-483d-a2a5-aa44c2b0e07a
     PortName: 1
     TargetNodeGuid: 45048c53-27d8-411d-9e79-25d6db34f316
   - BaseNodeGuid: 3ae486fd-e8ad-41f9-93f7-615c0fd30152
@@ -253,6 +250,9 @@ MonoBehaviour:
   - BaseNodeGuid: 92665779-eaf0-4707-81e7-0acf881b787e
     PortName: 3
     TargetNodeGuid: 757dc985-d2a2-4331-8054-8cb3340420ee
+  - BaseNodeGuid: 92665779-eaf0-4707-81e7-0acf881b787e
+    PortName: 4
+    TargetNodeGuid: f15b9c85-3ce3-4d64-a394-da3a58372fe0
   - BaseNodeGuid: e02f9e43-daf9-4d4a-928c-b669b9939d53
     PortName: 1
     TargetNodeGuid: 457d5c80-bcc8-4e6b-8012-820782b519ac
@@ -304,9 +304,9 @@ MonoBehaviour:
   - BaseNodeGuid: 622a5aea-adc3-49b1-b40e-5f2e6cafeaa2
     PortName: 5
     TargetNodeGuid: 31b1027a-bbb2-4bed-b4d0-31ab3f00fcf5
-  - BaseNodeGuid: 92665779-eaf0-4707-81e7-0acf881b787e
-    PortName: 4
-    TargetNodeGuid: f15b9c85-3ce3-4d64-a394-da3a58372fe0
+  - BaseNodeGuid: 8e80d4c2-bb61-483d-a2a5-aa44c2b0e07a
+    PortName: 0
+    TargetNodeGuid: e2e4d637-4bf1-4431-82f3-406d40ee7bbc
   nodeData:
   - nodeTitle: AggroSeq
     nodeName: Sequence
@@ -407,15 +407,6 @@ MonoBehaviour:
     actionInstance: {fileID: 0}
     GUID: 8e80d4c2-bb61-483d-a2a5-aa44c2b0e07a
     Position: {x: 2241, y: -1734}
-  - nodeTitle: CanSeeNode
-    nodeName: CanSeeNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: ed3997653e22ffa4ca8ba8879b086326, type: 2}
-    GUID: 7770126a-fb5f-48cc-8ce8-53fe1811000e
-    Position: {x: 2687, y: -1831}
   - nodeTitle: WaitAndRotateNode
     nodeName: WaitAndRotateNode
     topNode: 0
@@ -1199,4 +1190,13 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: b592e98598dc2da4687fc711a050d564, type: 2}
     GUID: f15b9c85-3ce3-4d64-a394-da3a58372fe0
     Position: {x: 3888, y: -2273}
+  - nodeTitle: RandomNode
+    nodeName: RandomNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 608f5a68fe1585f4fa9fcf063d03692d, type: 2}
+    GUID: e2e4d637-4bf1-4431-82f3-406d40ee7bbc
+    Position: {x: 2708, y: -1801}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}

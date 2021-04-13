@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465754df6ac71c245af62d3926eb675f, type: 3}
-  m_Name: RandomNode4257c8ef-389a-4a09-b42a-79f5debdbd97
+  m_Script: {fileID: 11500000, guid: 6a9b28001fa7f9f43be750af5bad2598, type: 3}
+  m_Name: Sequence3de7cd23-f515-407b-8b78-d8f8698a07e2
   m_EditorClassIdentifier: 
+  nodes: []
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  chanceOfSuccess: 0.9
+  interruptable: 1

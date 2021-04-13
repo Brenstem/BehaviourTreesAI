@@ -15,4 +15,4 @@ MonoBehaviour:
   riskValue: 1
   minTimeValue: 1
   maxTimeValue: 3
-  planValue: 3
+  planValue: 5

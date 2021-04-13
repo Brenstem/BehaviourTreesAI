@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb02a489cd20df346abf89fdd80d8c12, type: 3}
   m_Name: WaitNode16b94aa2-a21a-419f-8d7a-62087daff30c
   m_EditorClassIdentifier: 
-  riskValue: 0.1
+  riskValue: 0
   minTimeValue: 1.5
   maxTimeValue: 2
   planValue: 0

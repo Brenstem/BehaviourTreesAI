@@ -32,8 +32,6 @@ public class GoToPositionNode : Action
 
             float distance = Vector3.Distance(targetPosition, agent.transform.position);
 
-            Debug.Log(distance);
-
             if (distance >= agent.stoppingDistance)
             {
                 agent.isStopped = false;
