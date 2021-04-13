@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be1a04bf39db3d469b2a92279150958, type: 3}
   m_Name: WaitAndRotateNode9d8d1395-6129-4bb3-9cc8-004be20d9003
   m_EditorClassIdentifier: 
-  riskValue: 0.1
-  minTimeValue: 0.5
-  maxTimeValue: 0.5
-  planValue: 2
+  riskValue: 0
+  minTimeValue: 0
+  maxTimeValue: 0
+  planValue: 0
   runTime: 0.5
   rotationSpeed: 0.5
