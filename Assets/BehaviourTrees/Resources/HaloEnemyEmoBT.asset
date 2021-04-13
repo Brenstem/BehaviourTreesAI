@@ -88,6 +88,12 @@ MonoBehaviour:
   - BaseNodeGuid: 28ef3280-7511-446b-b229-508ccb833586
     PortName: 2
     TargetNodeGuid: e303dd89-a6e2-4f6a-abf5-b658aa9ac972
+  - BaseNodeGuid: 59971452-efff-4fd6-949c-32bcb57c2270
+    PortName: 0
+    TargetNodeGuid: 28ef3280-7511-446b-b229-508ccb833586
+  - BaseNodeGuid: 59971452-efff-4fd6-949c-32bcb57c2270
+    PortName: 1
+    TargetNodeGuid: 02b85f39-8cc8-41d8-8338-04dafa0f28d6
   - BaseNodeGuid: b70f3112-75cd-44b4-8ae3-35928757a952
     PortName: 1
     TargetNodeGuid: 931861b0-285c-458d-9e05-fde0e3b26be1
@@ -133,12 +139,6 @@ MonoBehaviour:
   - BaseNodeGuid: 02b85f39-8cc8-41d8-8338-04dafa0f28d6
     PortName: 3
     TargetNodeGuid: 2f184121-374a-4be5-8a76-89a6db77e7fb
-  - BaseNodeGuid: 59971452-efff-4fd6-949c-32bcb57c2270
-    PortName: 0
-    TargetNodeGuid: 02b85f39-8cc8-41d8-8338-04dafa0f28d6
-  - BaseNodeGuid: 59971452-efff-4fd6-949c-32bcb57c2270
-    PortName: 1
-    TargetNodeGuid: 28ef3280-7511-446b-b229-508ccb833586
   nodeData:
   - nodeTitle: Top Node
     nodeName: Selector
@@ -374,15 +374,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: 78de412ff86554f449d9ab0341a388f5, type: 2}
     GUID: 63dc2930-86e3-4752-b353-eb5e1d360e5a
     Position: {x: 2394, y: -194}
-  - nodeTitle: WaitAndRotateNode
-    nodeName: WaitAndRotateNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: 810e8977152bfa34cae01a58c5cbb68c, type: 2}
-    GUID: 9d8d1395-6129-4bb3-9cc8-004be20d9003
-    Position: {x: 3436, y: 109}
   - nodeTitle: SeekCoverNode
     nodeName: SeekCoverNode
     topNode: 0
@@ -527,4 +518,13 @@ MonoBehaviour:
     actionInstance: {fileID: 0}
     GUID: 02b85f39-8cc8-41d8-8338-04dafa0f28d6
     Position: {x: 2944, y: -10}
+  - nodeTitle: WaitAndRotateNode
+    nodeName: WaitAndRotateNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: 810e8977152bfa34cae01a58c5cbb68c, type: 2}
+    GUID: 9d8d1395-6129-4bb3-9cc8-004be20d9003
+    Position: {x: 3436, y: 109}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}
