@@ -16,4 +16,4 @@ MonoBehaviour:
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  stoppingDistance: 7
+  stoppingDistance: 4.5
