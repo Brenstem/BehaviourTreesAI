@@ -29,8 +29,13 @@ public class NewPlayerController : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+
+        Debug.DrawRay(mousePosition, mainCamera.transform.forward * 100, Color.green, 1f);
+        
         Physics.Raycast(mousePosition, mainCamera.transform.forward, out hit, Mathf.Infinity, environmentLayerMask);
         transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+
+        Debug.DrawRay(transform.position, transform.forward * 10, Color.blue, 1f);
 
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");

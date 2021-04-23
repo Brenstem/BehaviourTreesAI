@@ -47,7 +47,10 @@ public class DemoWeaponScript : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
             Physics.Raycast(mousePosition, Camera.main.transform.forward, out hit, Mathf.Infinity, environmentLayerMask);
 
-            firePosition.transform.LookAt(hit.point);
+
+            //firePosition.transform.LookAt(hit.point);
+
+            firePosition.transform.LookAt(new Vector3(hit.point.x, firePosition.transform.position.y, hit.point.z));
 
             if (Physics.Raycast(firePosition.position, firePosition.forward, 200f))
             {
@@ -55,6 +58,8 @@ public class DemoWeaponScript : MonoBehaviour
 
                 Hit(hits);
             }
+
+            Debug.DrawRay(firePosition.position, firePosition.forward * 10, Color.red, 5f);
         }
         else if (Physics.Raycast(firePosition.position, firePosition.forward, 200f))
         {
