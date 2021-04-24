@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [AddNodeMenu("Actions/Movement", "GoToPositionNode")]
 public class GoToPositionNode : Action
 {
+    [Header("Node variables")]
     [SerializeField] bool setPositionManually;
     [SerializeField] Vector3 relativeTargetPosition;
     [SerializeField] string blackboardPositionName;

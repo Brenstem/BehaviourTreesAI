@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [AddNodeMenu("Actions/Movement", "SeekCoverNode")]
 public class SeekCoverNode : Action
 {
+    [Header("Node variables")]
     [SerializeField] float minimumCoverDistance = 0;
     [SerializeField] float coverVisionRadius;
     [SerializeField] LayerMask coverLayerMask;
