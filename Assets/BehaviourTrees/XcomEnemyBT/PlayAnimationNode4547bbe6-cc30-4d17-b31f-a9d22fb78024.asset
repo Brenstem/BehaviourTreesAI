@@ -18,5 +18,5 @@ MonoBehaviour:
   planValue: 0
   animVarName: Hunkered
   animBoolValue: 0
-  waitForAnimation: 0
-  animationName: 
+  waitForAnimation: 1
+  animationToWaitFor: Movement Blend Tree

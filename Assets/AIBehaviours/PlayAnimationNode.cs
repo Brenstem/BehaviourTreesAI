@@ -10,17 +10,19 @@ public class PlayAnimationNode : Action
     [SerializeField] private bool animBoolValue;
 
     [SerializeField] private bool waitForAnimation;
-    [SerializeField] private string animationName;
+    [SerializeField] private string animationToWaitFor;
+
+
 
     private Animator animator;
-    private Timer timer;
+    //private Timer timer;
     private bool animationDone = false;
-
+    bool animationPlaying = false;
     public override void Construct()
     {
         _constructed = true;
         animator = context.owner.GetComponentInChildren<Animator>();
-        timer = new Timer(1f, () => { animationDone = true; timer.Reset(); });
+        //timer = new Timer(1f, () => { animationDone = true; timer.Reset(); });
     }
 
     public override NodeStates Evaluate()
@@ -35,24 +37,16 @@ public class PlayAnimationNode : Action
                 {
                     NodeState = NodeStates.SUCCESS;
                 }
-                else if (animator.GetCurrentAnimatorStateInfo(0).IsName(animationName))
+                else
                 {
-                    animationDone = false;
-
-                    timer.DecrementTimer(Time.fixedDeltaTime);
-
-                    if (!animationDone)
-                    {
-                        NodeState = NodeStates.RUNNING;
-                    }
-                    else
+                    if(animator.GetCurrentAnimatorStateInfo(0).IsName(animationToWaitFor))
                     {
                         NodeState = NodeStates.SUCCESS;
                     }
-                }
-                else
-                {
-                    NodeState = NodeStates.SUCCESS;
+                    else
+                    {
+                        NodeState = NodeStates.RUNNING;
+                    }
                 }
             }
             else

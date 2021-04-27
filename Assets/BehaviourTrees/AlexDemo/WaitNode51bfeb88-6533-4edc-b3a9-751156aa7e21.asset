@@ -9,18 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3499305c562ab3349b4314424421df17, type: 3}
-  m_Name: SeekCoverNodebbb2583d-75d3-4448-aa6a-228905c3ad87
+  m_Script: {fileID: 11500000, guid: cb02a489cd20df346abf89fdd80d8c12, type: 3}
+  m_Name: WaitNode51bfeb88-6533-4edc-b3a9-751156aa7e21
   m_EditorClassIdentifier: 
   riskValue: 0
   minTimeValue: 0
   maxTimeValue: 0
   planValue: 0
-  minimumCoverDistance: 4
-  coverVisionRadius: 30
-  coverLayerMask:
-    serializedVersion: 2
-    m_Bits: 8192
-  visibilityLayerMask:
-    serializedVersion: 2
-    m_Bits: 768
+  runTime: 1.5

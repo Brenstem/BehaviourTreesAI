@@ -16,7 +16,8 @@ MonoBehaviour:
   minTimeValue: 2
   maxTimeValue: 4
   planValue: 7
-  coverVisionRadius: 20
+  minimumCoverDistance: 4
+  coverVisionRadius: 30
   coverLayerMask:
     serializedVersion: 2
     m_Bits: 8192

@@ -614,15 +614,6 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: d78a6fdf246c4cf4da461cbd3571fb41, type: 2}
     GUID: 80d8975e-ee8a-49b0-a096-9fdc845640a5
     Position: {x: 2201, y: -1346}
-  - nodeTitle: UnHunker
-    nodeName: PlayAnimationNode
-    topNode: 0
-    nodeType: 2
-    compositeInstance: {fileID: 0}
-    decoratorInstance: {fileID: 0}
-    actionInstance: {fileID: 11400000, guid: c5887f2a4363388479f163152cdfdcad, type: 2}
-    GUID: 005e0b33-7506-4b49-a955-642cdcffa48a
-    Position: {x: 2193, y: -1237}
   - nodeTitle: WaitNode
     nodeName: WaitNode
     topNode: 0
@@ -767,4 +758,13 @@ MonoBehaviour:
     actionInstance: {fileID: 11400000, guid: 37f55034a3aa6684e88b209c763989a8, type: 2}
     GUID: 49a51fb2-a7c0-499a-8523-d38fcdd56319
     Position: {x: 2717, y: -1747}
+  - nodeTitle: UnHunker
+    nodeName: PlayAnimationNode
+    topNode: 0
+    nodeType: 2
+    compositeInstance: {fileID: 0}
+    decoratorInstance: {fileID: 0}
+    actionInstance: {fileID: 11400000, guid: c5887f2a4363388479f163152cdfdcad, type: 2}
+    GUID: 005e0b33-7506-4b49-a955-642cdcffa48a
+    Position: {x: 2193, y: -1237}
   globalData: {fileID: 11400000, guid: 854e5fb40dde3df48a4997fb122179ea, type: 2}
