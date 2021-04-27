@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5328495704646209916}
   - component: {fileID: 446340456160813681}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: NearMissRadiusObject
   m_TagString: EnemyNearMissRadius
   m_Icon: {fileID: 0}
@@ -192,6 +192,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0911b35d70d9d234d8a0ba9bdd298c37, type: 3}
   hitClip: {fileID: 8300000, guid: d5a2d028fead57d4c97be6e3bee7ac01, type: 3}
   enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  environmentLayerMask:
     serializedVersion: 2
     m_Bits: 0
   owner: {fileID: 5370362433262129372}
